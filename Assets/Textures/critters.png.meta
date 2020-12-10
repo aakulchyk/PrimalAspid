@@ -1,58 +1,70 @@
 fileFormatVersion: 2
-guid: b4bcc277f00750e9595307d04b19c739
+guid: 9a077bdcb7b73a549b42d85fc25c2250
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -2861588119735482088
-    second: eJqrhUu_0
+      213: 2521232002814953734
+    second: critters_0
   - first:
-      213: -150951022961582088
-    second: eJqrhUu_1
+      213: -2086291807556124730
+    second: critters_1
   - first:
-      213: 7914105607542175425
-    second: eJqrhUu_2
+      213: -3844223528806272646
+    second: critters_2
   - first:
-      213: 6875395075007626709
-    second: eJqrhUu_3
+      213: 6249577196761235046
+    second: critters_3
   - first:
-      213: 2475482277311675957
-    second: eJqrhUu_4
+      213: -3557600109054692809
+    second: critters_4
   - first:
-      213: -2740107433668139089
-    second: eJqrhUu_5
+      213: -6477703969899194238
+    second: critters_5
   - first:
-      213: -216273852714411347
-    second: eJqrhUu_6
+      213: -8013225747276542897
+    second: critters_6
   - first:
-      213: -2731933403916728067
-    second: eJqrhUu_7
+      213: -8045106213729320756
+    second: critters_7
   - first:
-      213: -7987619886797804926
-    second: eJqrhUu_8
+      213: -1416687569279199842
+    second: critters_8
   - first:
-      213: -2039000239838516033
-    second: eJqrhUu_9
+      213: 5380517501368046697
+    second: critters_9
   - first:
-      213: -8418154177813585530
-    second: eJqrhUu_10
+      213: 2832466106271208503
+    second: critters_10
   - first:
-      213: 1818742239286153878
-    second: eJqrhUu_11
+      213: 9139027748289926928
+    second: critters_11
   - first:
-      213: 5366629627658408084
-    second: eJqrhUu_12
+      213: 3223865592597575675
+    second: critters_12
   - first:
-      213: 2108913715784226746
-    second: eJqrhUu_13
+      213: 4814637531541276045
+    second: critters_13
   - first:
-      213: 8508710179467539282
-    second: eJqrhUu_14
+      213: 1723257226561652784
+    second: critters_14
   - first:
-      213: 5412716826155126567
-    second: eJqrhUu_15
+      213: 8547550229932424849
+    second: critters_15
   - first:
-      213: 7682918010174022429
-    second: eJqrhUu_16
+      213: -5050050473691789107
+    second: critters_16
+  - first:
+      213: -7765727813790475085
+    second: critters_17
+  - first:
+      213: -2282716061379440593
+    second: critters_18
+  - first:
+      213: 8026338527249515694
+    second: critters_19
+  - first:
+      213: 2114644687712509372
+    second: critters_20
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -134,29 +146,101 @@ TextureImporter:
     overridden: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
-  - serializedVersion: 3
-    buildTarget: Android
-    maxTextureSize: 2048
-    resizeAlgorithm: 0
-    textureFormat: -1
-    textureCompression: 1
-    compressionQuality: 50
-    crunchedCompression: 0
-    allowsAlphaSplitting: 0
-    overridden: 0
-    androidETC2FallbackOverride: 0
-    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: eJqrhUu_0
+      name: critters_0
       rect:
         serializedVersion: 2
-        x: 0
-        y: 1265
+        x: 2
+        y: 1751
+        width: 849
+        height: 297
+      alignment: 9
+      pivot: {x: 0.076893106, y: -0.15700379}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 609c12406273df220800000000000000
+      internalID: 2521232002814953734
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: critters_1
+      rect:
+        serializedVersion: 2
+        x: 2
+        y: 1313
+        width: 555
+        height: 218
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6cf3fc897a00c03e0800000000000000
+      internalID: -2086291807556124730
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: critters_2
+      rect:
+        serializedVersion: 2
+        x: 559
+        y: 1344
+        width: 728
+        height: 170
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a71bd40711396aac0800000000000000
+      internalID: -3844223528806272646
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: critters_3
+      rect:
+        serializedVersion: 2
+        x: 2
+        y: 1094
+        width: 554
+        height: 217
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 66eb5594955fab650800000000000000
+      internalID: 6249577196761235046
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: critters_4
+      rect:
+        serializedVersion: 2
+        x: 559
+        y: 1172
         width: 556
-        height: 783
+        height: 170
       alignment: 7
       pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -164,20 +248,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 81940b534c89948d0800000000000000
-      internalID: -2861588119735482088
+      spriteID: 73277eebc8dd0aec0800000000000000
+      internalID: -3557600109054692809
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: eJqrhUu_1
+      name: critters_5
       rect:
         serializedVersion: 2
-        x: 1174
-        y: 2035
-        width: 4
-        height: 13
+        x: 2
+        y: 875
+        width: 554
+        height: 214
       alignment: 7
       pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -185,83 +269,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 8ff94e928d6b7edf0800000000000000
-      internalID: -150951022961582088
+      spriteID: 288550a4f829a16a0800000000000000
+      internalID: -6477703969899194238
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: eJqrhUu_2
+      name: critters_6
       rect:
         serializedVersion: 2
-        x: 1121
-        y: 1834
-        width: 927
-        height: 194
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 1c67a7c8e1d84dd60800000000000000
-      internalID: 7914105607542175425
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: eJqrhUu_3
-      rect:
-        serializedVersion: 2
-        x: 1121
-        y: 1493
-        width: 517
-        height: 251
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 5ddbc40b46f4a6f50800000000000000
-      internalID: 6875395075007626709
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: eJqrhUu_4
-      rect:
-        serializedVersion: 2
-        x: 1187
-        y: 1016
-        width: 366
-        height: 481
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 53effeaf30eaa5220800000000000000
-      internalID: 2475482277311675957
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: eJqrhUu_5
-      rect:
-        serializedVersion: 2
-        x: 1552
+        x: 559
         y: 1000
-        width: 496
-        height: 516
+        width: 445
+        height: 170
       alignment: 7
       pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -269,197 +290,302 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: fa7adc98ece29f9d0800000000000000
-      internalID: -2740107433668139089
+      spriteID: f4c419483ad4bc090800000000000000
+      internalID: -8013225747276542897
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: eJqrhUu_6
+      name: critters_7
+      rect:
+        serializedVersion: 2
+        x: 1007
+        y: 1000
+        width: 1041
+        height: 170
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cc0406ef58a0a5090800000000000000
+      internalID: -8045106213729320756
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: critters_8
+      rect:
+        serializedVersion: 2
+        x: 2
+        y: 656
+        width: 554
+        height: 217
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e95d663692ae65ce0800000000000000
+      internalID: -1416687569279199842
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: critters_9
+      rect:
+        serializedVersion: 2
+        x: 559
+        y: 828
+        width: 445
+        height: 170
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 96490d809207baa40800000000000000
+      internalID: 5380517501368046697
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: critters_10
+      rect:
+        serializedVersion: 2
+        x: 1007
+        y: 828
+        width: 1041
+        height: 170
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 73411a6aae0fe4720800000000000000
+      internalID: 2832466106271208503
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: critters_11
+      rect:
+        serializedVersion: 2
+        x: 2
+        y: 437
+        width: 554
+        height: 217
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0175241015954de70800000000000000
+      internalID: 9139027748289926928
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: critters_12
+      rect:
+        serializedVersion: 2
+        x: 559
+        y: 0
+        width: 554
+        height: 826
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bf7f16afca87dbc20800000000000000
+      internalID: 3223865592597575675
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: critters_13
+      rect:
+        serializedVersion: 2
+        x: 1007
+        y: 586
+        width: 1041
+        height: 240
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d8508cd635701d240800000000000000
+      internalID: 4814637531541276045
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: critters_14
+      rect:
+        serializedVersion: 2
+        x: 2
+        y: 218
+        width: 554
+        height: 217
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 03805dd315d3ae710800000000000000
+      internalID: 1723257226561652784
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: critters_15
+      rect:
+        serializedVersion: 2
+        x: 1116
+        y: 343
+        width: 728
+        height: 170
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 19e3ee2b5affe9670800000000000000
+      internalID: 8547550229932424849
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: critters_16
+      rect:
+        serializedVersion: 2
+        x: 2
+        y: 0
+        width: 554
+        height: 213
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: dc8cec9b9dd9ae9b0800000000000000
+      internalID: -5050050473691789107
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: critters_17
+      rect:
+        serializedVersion: 2
+        x: 1116
+        y: 171
+        width: 556
+        height: 170
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3bcd5aca2b79a3490800000000000000
+      internalID: -7765727813790475085
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: critters_18
+      rect:
+        serializedVersion: 2
+        x: 1116
+        y: 0
+        width: 445
+        height: 169
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f20566626d92250e0800000000000000
+      internalID: -2282716061379440593
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: critters_19
+      rect:
+        serializedVersion: 2
+        x: 1564
+        y: 0
+        width: 484
+        height: 169
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ea44dbb7d58436f60800000000000000
+      internalID: 8026338527249515694
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: critters_20
       rect:
         serializedVersion: 2
         x: 0
-        y: 0
-        width: 352
-        height: 1261
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: daa90caa314affcf0800000000000000
-      internalID: -216273852714411347
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: eJqrhUu_7
-      rect:
-        serializedVersion: 2
-        x: 639
-        y: 0
-        width: 549
-        height: 1416
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: df805852b09361ad0800000000000000
-      internalID: -2731933403916728067
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: eJqrhUu_8
-      rect:
-        serializedVersion: 2
-        x: 1187
-        y: 0
-        width: 523
-        height: 1003
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 28a229e7806462190800000000000000
-      internalID: -7987619886797804926
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: eJqrhUu_9
-      rect:
-        serializedVersion: 2
-        x: 1307
-        y: 1000
-        width: 10
-        height: 12
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: fbc2d7fb51404b3e0800000000000000
-      internalID: -2039000239838516033
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: eJqrhUu_10
-      rect:
-        serializedVersion: 2
-        x: 1710
-        y: 412
-        width: 103
-        height: 95
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 68163f66065bc2b80800000000000000
-      internalID: -8418154177813585530
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: eJqrhUu_11
-      rect:
-        serializedVersion: 2
-        x: 1710
-        y: 347
-        width: 338
-        height: 65
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 69256a63e687d3910800000000000000
-      internalID: 1818742239286153878
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: eJqrhUu_12
-      rect:
-        serializedVersion: 2
-        x: 1710
-        y: 272
-        width: 202
-        height: 73
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 4909aa576391a7a40800000000000000
-      internalID: 5366629627658408084
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: eJqrhUu_13
-      rect:
-        serializedVersion: 2
-        x: 1710
-        y: 0
-        width: 338
-        height: 272
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: ab7944bd9dd544d10800000000000000
-      internalID: 2108913715784226746
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: eJqrhUu_14
-      rect:
-        serializedVersion: 2
-        x: 567
-        y: 1448
-        width: 550
-        height: 494
-      alignment: 0
+        y: 1532
+        width: 705
+        height: 217
+      alignment: 6
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 253b9efb3d2051670800000000000000
-      internalID: 8508710179467539282
+      spriteID: cbd554db32ab85d10800000000000000
+      internalID: 2114644687712509372
       vertices: []
       indices: 
       edges: []

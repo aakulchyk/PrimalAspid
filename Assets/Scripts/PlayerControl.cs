@@ -17,22 +17,40 @@ public class PlayerControl : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //float magnitude = body.velocity.y;
-        if (Input.GetKeyDown(KeyCode.Space) && anim.GetBool("IsFlapping") == false) {
+        bool isAlreadyTurning = anim.GetCurrentAnimatorStateInfo(0).IsName("AspidTurn");
+        bool isAlreadyFlapping = anim.GetCurrentAnimatorStateInfo(0).IsName("AspidFlap");
+
+        //float magnitude = body.velocity.y; 
+        if (Input.GetKeyDown(KeyCode.Space) && !isAlreadyFlapping && !isAlreadyTurning) {
         	body.AddForce(new Vector2(0f, 180f));
-            anim.SetTrigger("Flap");
             anim.SetBool("IsFlapping", true);
+            anim.SetTrigger("Flap");
         }
         
         float moveX = Input.GetAxis ("Horizontal");
         body.velocity = new Vector2 (moveX * maxSpeed, body.velocity.y);
         
+
+        
+        bool newTurnStarted = false;
         if (moveX > 0 && !faceRight) {
-            anim.SetBool("Turn", true);
+            newTurnStarted = true;
+            Debug.Log("Start turn right");
+            faceRight = !faceRight;
         }
 
-        if ((moveX < 0 && faceRight)) {
+        if (moveX < 0 && faceRight) {
+            newTurnStarted = true;
+            Debug.Log("Start turn left");
+            faceRight = !faceRight;
+            
+        }
+
+        if (!isAlreadyTurning && newTurnStarted) {
             anim.SetBool("Turn", true);
+        }
+        if (isAlreadyTurning && newTurnStarted) {
+            flip();
         }
         
         if (Input.GetKeyDown(KeyCode.Escape))
@@ -42,20 +60,23 @@ public class PlayerControl : MonoBehaviour
 
     }
     
-    public void flip() {
+    public void onTurnFinished() {
+        Debug.Log("onTurnFinished");
         anim.SetBool("Turn", false);
-        faceRight = !faceRight;
+        flip();
+    }
+
+    public void flip() {
         Vector3 scale = transform.localScale;
         transform.localScale = new Vector3(-1*scale.x, scale.y, scale.z);
-         Debug.Log("Flip:  called at: " + Time.time);
     }
 
     public void endFlap() {
         anim.SetBool("IsFlapping", false);
     }
     
-    void OnTriggerEnter2D(Collider2D other){
-	if (other.tag == "Spike")
-	    SceneManager.LoadScene("MainScene");
+    void OnTriggerEnter2D(Collider2D other) {
+	    if (other.tag == "Spike" || other.tag == "Enemy")
+	        SceneManager.LoadScene("MainScene");
     }
 }

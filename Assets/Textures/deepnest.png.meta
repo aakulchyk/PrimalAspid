@@ -1,0 +1,1352 @@
+fileFormatVersion: 2
+guid: 86d55ae2e77199d42b82674d6e1c810f
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 4634541721593740903
+    second: deepnest_0
+  - first:
+      213: 8608355297347233127
+    second: deepnest_1
+  - first:
+      213: -635571989999211720
+    second: deepnest_2
+  - first:
+      213: 5985066634409521422
+    second: deepnest_3
+  - first:
+      213: 5199241466268727745
+    second: deepnest_4
+  - first:
+      213: -8674269581717084170
+    second: deepnest_5
+  - first:
+      213: -8680108801719434893
+    second: deepnest_6
+  - first:
+      213: -8584200861858068918
+    second: deepnest_7
+  - first:
+      213: -7430277170663854497
+    second: deepnest_8
+  - first:
+      213: -3183383791552707749
+    second: deepnest_9
+  - first:
+      213: 1227327520324005498
+    second: deepnest_10
+  - first:
+      213: 2396711802589619335
+    second: deepnest_11
+  - first:
+      213: 6450237115290958136
+    second: deepnest_12
+  - first:
+      213: -3138970088237748999
+    second: deepnest_13
+  - first:
+      213: 241569412249373163
+    second: deepnest_14
+  - first:
+      213: -7131694056737607825
+    second: deepnest_15
+  - first:
+      213: 7925145142867687606
+    second: deepnest_16
+  - first:
+      213: -6805501676694398453
+    second: deepnest_17
+  - first:
+      213: 3273058361978017298
+    second: deepnest_18
+  - first:
+      213: -6602187704428737307
+    second: deepnest_19
+  - first:
+      213: 4081044408154496610
+    second: deepnest_20
+  - first:
+      213: -4266878218369016598
+    second: deepnest_21
+  - first:
+      213: -4738071239429490713
+    second: deepnest_22
+  - first:
+      213: -3549687725027817956
+    second: deepnest_23
+  - first:
+      213: -163414387312782189
+    second: deepnest_24
+  - first:
+      213: 5419694173071760130
+    second: deepnest_25
+  - first:
+      213: -3348084608208792688
+    second: deepnest_26
+  - first:
+      213: -3355892602620017589
+    second: deepnest_27
+  - first:
+      213: 3113093320769746956
+    second: deepnest_28
+  - first:
+      213: 3507961677569031639
+    second: deepnest_29
+  - first:
+      213: 7826108724129439016
+    second: deepnest_30
+  - first:
+      213: -3329527058542855158
+    second: deepnest_31
+  - first:
+      213: -6715357816123685942
+    second: deepnest_32
+  - first:
+      213: 2305798015933550535
+    second: deepnest_33
+  - first:
+      213: 3860035924388549445
+    second: deepnest_34
+  - first:
+      213: -4375442136633052718
+    second: deepnest_35
+  - first:
+      213: -5564125806867245275
+    second: deepnest_36
+  - first:
+      213: 6035819506187938285
+    second: deepnest_37
+  - first:
+      213: -3796054168508513725
+    second: deepnest_38
+  - first:
+      213: -1636271511783347224
+    second: deepnest_39
+  - first:
+      213: 365923952475541614
+    second: deepnest_40
+  - first:
+      213: 3047165566833171206
+    second: deepnest_41
+  - first:
+      213: -6054573907294176732
+    second: deepnest_42
+  - first:
+      213: 3019736134202601746
+    second: deepnest_43
+  - first:
+      213: -6391877718233055459
+    second: deepnest_44
+  - first:
+      213: -3517453055643975499
+    second: deepnest_45
+  - first:
+      213: -7753037995364607354
+    second: deepnest_46
+  - first:
+      213: -8261694004959903610
+    second: deepnest_47
+  - first:
+      213: 7027772329298761516
+    second: deepnest_48
+  - first:
+      213: -3362813273341208164
+    second: deepnest_49
+  - first:
+      213: 6199480507681794697
+    second: deepnest_50
+  - first:
+      213: -5908605886037933156
+    second: deepnest_51
+  externalObjects: {}
+  serializedVersion: 11
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: -1
+    aniso: -1
+    mipBias: -100
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  applyGammaDecoding: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: deepnest_0
+      rect:
+        serializedVersion: 2
+        x: 2
+        y: 915
+        width: 820
+        height: 1133
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 76e72541423315040800000000000000
+      internalID: 4634541721593740903
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: deepnest_1
+      rect:
+        serializedVersion: 2
+        x: 827
+        y: 1928
+        width: 168
+        height: 120
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 765ebbea885077770800000000000000
+      internalID: 8608355297347233127
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: deepnest_2
+      rect:
+        serializedVersion: 2
+        x: 998
+        y: 1928
+        width: 136
+        height: 55
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 83ba8ea74aefd27f0800000000000000
+      internalID: -635571989999211720
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: deepnest_3
+      rect:
+        serializedVersion: 2
+        x: 1147
+        y: 1926
+        width: 153
+        height: 48
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e01b50dc46a3f0350800000000000000
+      internalID: 5985066634409521422
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: deepnest_4
+      rect:
+        serializedVersion: 2
+        x: 1304
+        y: 1929
+        width: 221
+        height: 32
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1c9bd6a119a672840800000000000000
+      internalID: 5199241466268727745
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: deepnest_5
+      rect:
+        serializedVersion: 2
+        x: 1517
+        y: 1935
+        width: 53
+        height: 113
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6f7e6cf06cdce9780800000000000000
+      internalID: -8674269581717084170
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: deepnest_6
+      rect:
+        serializedVersion: 2
+        x: 1575
+        y: 1926
+        width: 111
+        height: 56
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 37185c5b80f0a8780800000000000000
+      internalID: -8680108801719434893
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: deepnest_7
+      rect:
+        serializedVersion: 2
+        x: 1873
+        y: 1913
+        width: 107
+        height: 71
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a4609541ccaced880800000000000000
+      internalID: -8584200861858068918
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: deepnest_8
+      rect:
+        serializedVersion: 2
+        x: 833
+        y: 1446
+        width: 1030
+        height: 480
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f5ee2e3d74a52e890800000000000000
+      internalID: -7430277170663854497
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: deepnest_9
+      rect:
+        serializedVersion: 2
+        x: 1873
+        y: 1830
+        width: 106
+        height: 73
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b53c3c0de4952d3d0800000000000000
+      internalID: -3183383791552707749
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: deepnest_10
+      rect:
+        serializedVersion: 2
+        x: 1871
+        y: 1696
+        width: 71
+        height: 134
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a7e29f780e7580110800000000000000
+      internalID: 1227327520324005498
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: deepnest_11
+      rect:
+        serializedVersion: 2
+        x: 1871
+        y: 1554
+        width: 71
+        height: 141
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7842756afa4d24120800000000000000
+      internalID: 2396711802589619335
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: deepnest_12
+      rect:
+        serializedVersion: 2
+        x: 825
+        y: 1217
+        width: 118
+        height: 181
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 83935f54b78d38950800000000000000
+      internalID: 6450237115290958136
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: deepnest_13
+      rect:
+        serializedVersion: 2
+        x: 1269
+        y: 28
+        width: 351
+        height: 1414
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9fc2302f5532074d0800000000000000
+      internalID: -3138970088237748999
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: deepnest_14
+      rect:
+        serializedVersion: 2
+        x: 1623
+        y: 1043
+        width: 42
+        height: 388
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: be949bdb91a3a5300800000000000000
+      internalID: 241569412249373163
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: deepnest_15
+      rect:
+        serializedVersion: 2
+        x: 1669
+        y: 1287
+        width: 106
+        height: 116
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f6fe36d6a02270d90800000000000000
+      internalID: -7131694056737607825
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: deepnest_16
+      rect:
+        serializedVersion: 2
+        x: 1873
+        y: 1383
+        width: 63
+        height: 169
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6b87a0aa485cbfd60800000000000000
+      internalID: 7925145142867687606
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: deepnest_17
+      rect:
+        serializedVersion: 2
+        x: 945
+        y: 1245
+        width: 99
+        height: 86
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b0a1e4a38400e81a0800000000000000
+      internalID: -6805501676694398453
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: deepnest_18
+      rect:
+        serializedVersion: 2
+        x: 1048
+        y: 1283
+        width: 156
+        height: 71
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 21652d22d3d3c6d20800000000000000
+      internalID: 3273058361978017298
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: deepnest_19
+      rect:
+        serializedVersion: 2
+        x: 1780
+        y: 1290
+        width: 82
+        height: 81
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5ecc21143415064a0800000000000000
+      internalID: -6602187704428737307
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: deepnest_20
+      rect:
+        serializedVersion: 2
+        x: 1866
+        y: 1256
+        width: 91
+        height: 122
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 26e94a45448c2a830800000000000000
+      internalID: 4081044408154496610
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: deepnest_21
+      rect:
+        serializedVersion: 2
+        x: 825
+        y: 1081
+        width: 130
+        height: 136
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: aec53460ed009c4c0800000000000000
+      internalID: -4266878218369016598
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: deepnest_22
+      rect:
+        serializedVersion: 2
+        x: 955
+        y: 1127
+        width: 136
+        height: 114
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7e77f45af4dfe3eb0800000000000000
+      internalID: -4738071239429490713
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: deepnest_23
+      rect:
+        serializedVersion: 2
+        x: 1097
+        y: 1120
+        width: 78
+        height: 157
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c16072632d9fcbec0800000000000000
+      internalID: -3549687725027817956
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: deepnest_24
+      rect:
+        serializedVersion: 2
+        x: 1667
+        y: 1157
+        width: 118
+        height: 130
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 39498050b7f6bbdf0800000000000000
+      internalID: -163414387312782189
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: deepnest_25
+      rect:
+        serializedVersion: 2
+        x: 1781
+        y: 1019
+        width: 188
+        height: 263
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 20b5239b22f963b40800000000000000
+      internalID: 5419694173071760130
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: deepnest_26
+      rect:
+        serializedVersion: 2
+        x: 1865
+        y: 1136
+        width: 107
+        height: 116
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 09313c9a9c63981d0800000000000000
+      internalID: -3348084608208792688
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: deepnest_27
+      rect:
+        serializedVersion: 2
+        x: 1099
+        y: 1056
+        width: 51
+        height: 50
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b44097c45797d61d0800000000000000
+      internalID: -3355892602620017589
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: deepnest_28
+      rect:
+        serializedVersion: 2
+        x: 1121
+        y: 1102
+        width: 20
+        height: 21
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c083f11a1ede33b20800000000000000
+      internalID: 3113093320769746956
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: deepnest_29
+      rect:
+        serializedVersion: 2
+        x: 1134
+        y: 1084
+        width: 19
+        height: 19
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7dd7f2d4f88cea030800000000000000
+      internalID: 3507961677569031639
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: deepnest_30
+      rect:
+        serializedVersion: 2
+        x: 1669
+        y: 1021
+        width: 109
+        height: 136
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 82d125b8b6ceb9c60800000000000000
+      internalID: 7826108724129439016
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: deepnest_31
+      rect:
+        serializedVersion: 2
+        x: 828
+        y: 964
+        width: 96
+        height: 105
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a0c7085e7c42bc1d0800000000000000
+      internalID: -3329527058542855158
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: deepnest_32
+      rect:
+        serializedVersion: 2
+        x: 928
+        y: 961
+        width: 127
+        height: 128
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ac30e4e45a14ec2a0800000000000000
+      internalID: -6715357816123685942
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: deepnest_33
+      rect:
+        serializedVersion: 2
+        x: 1077
+        y: 1062
+        width: 27
+        height: 26
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7cf058f2417dfff10800000000000000
+      internalID: 2305798015933550535
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: deepnest_34
+      rect:
+        serializedVersion: 2
+        x: 1156
+        y: 963
+        width: 101
+        height: 110
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5431d6dc83a919530800000000000000
+      internalID: 3860035924388549445
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: deepnest_35
+      rect:
+        serializedVersion: 2
+        x: 1076
+        y: 1040
+        width: 19
+        height: 20
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2d1f5be0f8e4743c0800000000000000
+      internalID: -4375442136633052718
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: deepnest_36
+      rect:
+        serializedVersion: 2
+        x: 1098
+        y: 1036
+        width: 24
+        height: 26
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 52718140f0148c2b0800000000000000
+      internalID: -5564125806867245275
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: deepnest_37
+      rect:
+        serializedVersion: 2
+        x: 1128
+        y: 1029
+        width: 18
+        height: 19
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: de9a4ba9cd983c350800000000000000
+      internalID: 6035819506187938285
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: deepnest_38
+      rect:
+        serializedVersion: 2
+        x: 1066
+        y: 1013
+        width: 22
+        height: 21
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 342c8e998d4b15bc0800000000000000
+      internalID: -3796054168508513725
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: deepnest_39
+      rect:
+        serializedVersion: 2
+        x: 1086
+        y: 989
+        width: 22
+        height: 26
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8ebef08babbca49e0800000000000000
+      internalID: -1636271511783347224
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: deepnest_40
+      rect:
+        serializedVersion: 2
+        x: 1103
+        y: 1014
+        width: 17
+        height: 19
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e609c1265e5041500800000000000000
+      internalID: 365923952475541614
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: deepnest_41
+      rect:
+        serializedVersion: 2
+        x: 1116
+        y: 980
+        width: 30
+        height: 42
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 60b94ee30f4b94a20800000000000000
+      internalID: 3047165566833171206
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: deepnest_42
+      rect:
+        serializedVersion: 2
+        x: 1626
+        y: 618
+        width: 359
+        height: 401
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 42ab16d1c15d9fba0800000000000000
+      internalID: -6054573907294176732
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: deepnest_43
+      rect:
+        serializedVersion: 2
+        x: 1058
+        y: 983
+        width: 24
+        height: 24
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 211be8ac30248e920800000000000000
+      internalID: 3019736134202601746
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: deepnest_44
+      rect:
+        serializedVersion: 2
+        x: 1078
+        y: 962
+        width: 21
+        height: 23
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d1ffbf4b41d7b47a0800000000000000
+      internalID: -6391877718233055459
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: deepnest_45
+      rect:
+        serializedVersion: 2
+        x: 829
+        y: 919
+        width: 381
+        height: 39
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5b08a38051f7f2fc0800000000000000
+      internalID: -3517453055643975499
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: deepnest_46
+      rect:
+        serializedVersion: 2
+        x: 1
+        y: 2
+        width: 1262
+        height: 911
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 68a9f24450da76490800000000000000
+      internalID: -7753037995364607354
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: deepnest_47
+      rect:
+        serializedVersion: 2
+        x: 1627
+        y: 1
+        width: 237
+        height: 615
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 68004672311985d80800000000000000
+      internalID: -8261694004959903610
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: deepnest_48
+      rect:
+        serializedVersion: 2
+        x: 1868
+        y: 233
+        width: 57
+        height: 132
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c271c22e2b9a78160800000000000000
+      internalID: 7027772329298761516
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: deepnest_49
+      rect:
+        serializedVersion: 2
+        x: 1929
+        y: 234
+        width: 119
+        height: 92
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c9957841523e451d0800000000000000
+      internalID: -3362813273341208164
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: deepnest_50
+      rect:
+        serializedVersion: 2
+        x: 1866
+        y: 119
+        width: 182
+        height: 110
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 98ae45cecaaf80650800000000000000
+      internalID: 6199480507681794697
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: deepnest_51
+      rect:
+        serializedVersion: 2
+        x: 1868
+        y: 1
+        width: 122
+        height: 116
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c934de4704a600ea0800000000000000
+      internalID: -5908605886037933156
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+  spritePackingTag: 
+  pSDRemoveMatte: 0
+  pSDShowRemoveMatteOption: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

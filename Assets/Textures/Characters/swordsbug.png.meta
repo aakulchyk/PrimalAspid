@@ -1,0 +1,1688 @@
+fileFormatVersion: 2
+guid: 3317f93cdd9b8de4082efc6e4f4aa5ae
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 6828654213902301670
+    second: swordsbug_0
+  - first:
+      213: 5523118421073621002
+    second: swordsbug_1
+  - first:
+      213: -7152922111457385704
+    second: swordsbug_2
+  - first:
+      213: 6037948083702469947
+    second: swordsbug_3
+  - first:
+      213: -7204098754122042545
+    second: swordsbug_4
+  - first:
+      213: 3366126243824285474
+    second: swordsbug_5
+  - first:
+      213: 1766664440656558253
+    second: swordsbug_6
+  - first:
+      213: 6548436990247463646
+    second: swordsbug_7
+  - first:
+      213: -6279312343486789214
+    second: swordsbug_8
+  - first:
+      213: 7682919282427378324
+    second: swordsbug_9
+  - first:
+      213: -5161811393089020314
+    second: swordsbug_10
+  - first:
+      213: 1648360228340113636
+    second: swordsbug_11
+  - first:
+      213: -6969231207703843112
+    second: swordsbug_12
+  - first:
+      213: 2588367519026292805
+    second: swordsbug_13
+  - first:
+      213: -4244042820449239979
+    second: swordsbug_14
+  - first:
+      213: -7464976189436583755
+    second: swordsbug_15
+  - first:
+      213: 2597550294828277718
+    second: swordsbug_16
+  - first:
+      213: 4965464466191516630
+    second: swordsbug_17
+  - first:
+      213: 8773999939762309701
+    second: swordsbug_18
+  - first:
+      213: 3642941308952545705
+    second: swordsbug_19
+  - first:
+      213: 5114776757007135936
+    second: swordsbug_20
+  - first:
+      213: 7670880371764547564
+    second: swordsbug_21
+  - first:
+      213: -9131453906649399787
+    second: swordsbug_22
+  - first:
+      213: 104378129955083421
+    second: swordsbug_23
+  - first:
+      213: -1460884533996198233
+    second: swordsbug_24
+  - first:
+      213: -853606472403075674
+    second: swordsbug_25
+  - first:
+      213: -519346443113380094
+    second: swordsbug_26
+  - first:
+      213: 4644448405266197525
+    second: swordsbug_27
+  - first:
+      213: -8853356393537873848
+    second: swordsbug_28
+  - first:
+      213: 4611888568854952463
+    second: swordsbug_29
+  - first:
+      213: 8965314785564127449
+    second: swordsbug_30
+  - first:
+      213: 3807471348429118953
+    second: swordsbug_31
+  - first:
+      213: -2731074264179509600
+    second: swordsbug_32
+  - first:
+      213: -7657842746934693036
+    second: swordsbug_33
+  - first:
+      213: -639938211503920118
+    second: swordsbug_34
+  - first:
+      213: -5628280898924991071
+    second: swordsbug_35
+  - first:
+      213: -823728572228516780
+    second: swordsbug_36
+  - first:
+      213: -8022712188336258622
+    second: swordsbug_37
+  - first:
+      213: -8790106094825682437
+    second: swordsbug_38
+  - first:
+      213: 1352787232119926643
+    second: swordsbug_39
+  - first:
+      213: -8843735792873488966
+    second: swordsbug_40
+  - first:
+      213: 9059671181602710649
+    second: swordsbug_41
+  - first:
+      213: 3653374497000674736
+    second: swordsbug_42
+  - first:
+      213: -4936955237460954553
+    second: swordsbug_43
+  - first:
+      213: 830409422609077778
+    second: swordsbug_44
+  - first:
+      213: -1372029913561332821
+    second: swordsbug_45
+  - first:
+      213: 8221049014285933492
+    second: swordsbug_46
+  - first:
+      213: -489019565321157810
+    second: swordsbug_47
+  - first:
+      213: 4405687737850033853
+    second: swordsbug_48
+  - first:
+      213: -184432025814843761
+    second: swordsbug_49
+  - first:
+      213: 6147670685116301359
+    second: swordsbug_50
+  - first:
+      213: 6087116859672926816
+    second: swordsbug_51
+  - first:
+      213: -2724423564736249458
+    second: swordsbug_52
+  - first:
+      213: -6635617700718884619
+    second: swordsbug_53
+  - first:
+      213: -4890884951939269784
+    second: swordsbug_54
+  - first:
+      213: -4085480442268846825
+    second: swordsbug_55
+  - first:
+      213: 8495700238129183214
+    second: swordsbug_56
+  - first:
+      213: 2186374165146666225
+    second: swordsbug_57
+  - first:
+      213: -3376906567823768089
+    second: swordsbug_58
+  - first:
+      213: -716189726845552025
+    second: swordsbug_59
+  - first:
+      213: 7417284299242089364
+    second: swordsbug_60
+  - first:
+      213: -5497499171792431634
+    second: swordsbug_61
+  - first:
+      213: -383429579964791051
+    second: swordsbug_62
+  - first:
+      213: -1944985903083011196
+    second: swordsbug_63
+  - first:
+      213: -804029441582367383
+    second: swordsbug_64
+  - first:
+      213: 6048241237113178856
+    second: swordsbug_65
+  externalObjects: {}
+  serializedVersion: 11
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: -1
+    aniso: -1
+    mipBias: -100
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  applyGammaDecoding: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: swordsbug_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1462
+        width: 127
+        height: 104
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6e9fe99e3d044ce50800000000000000
+      internalID: 6828654213902301670
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: swordsbug_1
+      rect:
+        serializedVersion: 2
+        x: 133
+        y: 1347
+        width: 117
+        height: 118
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a007284f0fe06ac40800000000000000
+      internalID: 5523118421073621002
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: swordsbug_2
+      rect:
+        serializedVersion: 2
+        x: 253
+        y: 1405
+        width: 117
+        height: 90
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 813ab88cc37bbbc90800000000000000
+      internalID: -7152922111457385704
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: swordsbug_3
+      rect:
+        serializedVersion: 2
+        x: 3
+        y: 1342
+        width: 124
+        height: 117
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b35165daac91bc350800000000000000
+      internalID: 6037948083702469947
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: swordsbug_4
+      rect:
+        serializedVersion: 2
+        x: 217
+        y: 1222
+        width: 125
+        height: 122
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f43b8b12a56e50c90800000000000000
+      internalID: -7204098754122042545
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: swordsbug_5
+      rect:
+        serializedVersion: 2
+        x: 345
+        y: 1286
+        width: 117
+        height: 116
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2273448fbf1e6be20800000000000000
+      internalID: 3366126243824285474
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: swordsbug_6
+      rect:
+        serializedVersion: 2
+        x: 470
+        y: 1311
+        width: 119
+        height: 112
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: da8f5a6d2f3748810800000000000000
+      internalID: 1766664440656558253
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: swordsbug_7
+      rect:
+        serializedVersion: 2
+        x: 646
+        y: 1263
+        width: 116
+        height: 112
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: eda6abd5fb8b0ea50800000000000000
+      internalID: 6548436990247463646
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: swordsbug_8
+      rect:
+        serializedVersion: 2
+        x: 100
+        y: 1175
+        width: 114
+        height: 161
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2a98ebc51b66bd8a0800000000000000
+      internalID: -6279312343486789214
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: swordsbug_9
+      rect:
+        serializedVersion: 2
+        x: 232
+        y: 1087
+        width: 147
+        height: 132
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 49a351ba1663f9a60800000000000000
+      internalID: 7682919282427378324
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: swordsbug_10
+      rect:
+        serializedVersion: 2
+        x: 382
+        y: 1155
+        width: 125
+        height: 125
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 66e5d5de2ef8d58b0800000000000000
+      internalID: -5161811393089020314
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: swordsbug_11
+      rect:
+        serializedVersion: 2
+        x: 511
+        y: 1198
+        width: 132
+        height: 110
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4e02810f4e620e610800000000000000
+      internalID: 1648360228340113636
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: swordsbug_12
+      rect:
+        serializedVersion: 2
+        x: 660
+        y: 1143
+        width: 124
+        height: 117
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8deee332421584f90800000000000000
+      internalID: -6969231207703843112
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: swordsbug_13
+      rect:
+        serializedVersion: 2
+        x: 787
+        y: 1167
+        width: 124
+        height: 103
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 548a8b77b8abbe320800000000000000
+      internalID: 2588367519026292805
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: swordsbug_14
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1074
+        width: 92
+        height: 116
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 55c739b6a812a15c0800000000000000
+      internalID: -4244042820449239979
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: swordsbug_15
+      rect:
+        serializedVersion: 2
+        x: 107
+        y: 1005
+        width: 119
+        height: 164
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5b022e3f4b3176890800000000000000
+      internalID: -7464976189436583755
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: swordsbug_16
+      rect:
+        serializedVersion: 2
+        x: 235
+        y: 957
+        width: 157
+        height: 130
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6df53711b3a5c0420800000000000000
+      internalID: 2597550294828277718
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: swordsbug_17
+      rect:
+        serializedVersion: 2
+        x: 395
+        y: 997
+        width: 125
+        height: 155
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6d38b24bf9fd8e440800000000000000
+      internalID: 4965464466191516630
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: swordsbug_18
+      rect:
+        serializedVersion: 2
+        x: 526
+        y: 1073
+        width: 128
+        height: 120
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 54ac4d4657283c970800000000000000
+      internalID: 8773999939762309701
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: swordsbug_19
+      rect:
+        serializedVersion: 2
+        x: 706
+        y: 1014
+        width: 151
+        height: 123
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9a986b1c1d35e8230800000000000000
+      internalID: 3642941308952545705
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: swordsbug_20
+      rect:
+        serializedVersion: 2
+        x: 860
+        y: 1040
+        width: 146
+        height: 120
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0c4b5da7c565bf640800000000000000
+      internalID: 5114776757007135936
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: swordsbug_21
+      rect:
+        serializedVersion: 2
+        x: 3
+        y: 809
+        width: 105
+        height: 259
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cefca895e01747a60800000000000000
+      internalID: 7670880371764547564
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: swordsbug_22
+      rect:
+        serializedVersion: 2
+        x: 111
+        y: 690
+        width: 167
+        height: 309
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 51e3f4b6d0f864180800000000000000
+      internalID: -9131453906649399787
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: swordsbug_23
+      rect:
+        serializedVersion: 2
+        x: 281
+        y: 789
+        width: 125
+        height: 165
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d94da4e2b53d27100800000000000000
+      internalID: 104378129955083421
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: swordsbug_24
+      rect:
+        serializedVersion: 2
+        x: 409
+        y: 834
+        width: 130
+        height: 158
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7a66b45a145e9bbe0800000000000000
+      internalID: -1460884533996198233
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: swordsbug_25
+      rect:
+        serializedVersion: 2
+        x: 543
+        y: 942
+        width: 156
+        height: 128
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6adb07a9f616724f0800000000000000
+      internalID: -853606472403075674
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: swordsbug_26
+      rect:
+        serializedVersion: 2
+        x: 734
+        y: 851
+        width: 129
+        height: 160
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2074dde5929eac8f0800000000000000
+      internalID: -519346443113380094
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: swordsbug_27
+      rect:
+        serializedVersion: 2
+        x: 866
+        y: 872
+        width: 125
+        height: 161
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 51c658d9735647040800000000000000
+      internalID: 4644448405266197525
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: swordsbug_28
+      rect:
+        serializedVersion: 2
+        x: 441
+        y: 665
+        width: 124
+        height: 163
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 848dd35644f822580800000000000000
+      internalID: -8853356393537873848
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: swordsbug_29
+      rect:
+        serializedVersion: 2
+        x: 573
+        y: 811
+        width: 158
+        height: 131
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f0ab842f738b00040800000000000000
+      internalID: 4611888568854952463
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: swordsbug_30
+      rect:
+        serializedVersion: 2
+        x: 738
+        y: 704
+        width: 148
+        height: 140
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9d07b151c423b6c70800000000000000
+      internalID: 8965314785564127449
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: swordsbug_31
+      rect:
+        serializedVersion: 2
+        x: 889
+        y: 712
+        width: 129
+        height: 157
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9ed589fb40bd6d430800000000000000
+      internalID: 3807471348429118953
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: swordsbug_32
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 680
+        width: 109
+        height: 129
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0a67e543d66491ad0800000000000000
+      internalID: -2731074264179509600
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: swordsbug_33
+      rect:
+        serializedVersion: 2
+        x: 109
+        y: 569
+        width: 189
+        height: 118
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 453f72b3890e9b590800000000000000
+      internalID: -7657842746934693036
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: swordsbug_34
+      rect:
+        serializedVersion: 2
+        x: 298
+        y: 629
+        width: 137
+        height: 157
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a0c2c11569b7e17f0800000000000000
+      internalID: -639938211503920118
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: swordsbug_35
+      rect:
+        serializedVersion: 2
+        x: 572
+        y: 683
+        width: 160
+        height: 125
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1ada573a75454e1b0800000000000000
+      internalID: -5628280898924991071
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: swordsbug_36
+      rect:
+        serializedVersion: 2
+        x: 736
+        y: 575
+        width: 166
+        height: 128
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 454caf45a378194f0800000000000000
+      internalID: -823728572228516780
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: swordsbug_37
+      rect:
+        serializedVersion: 2
+        x: 908
+        y: 572
+        width: 115
+        height: 116
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2c1450755c999a090800000000000000
+      internalID: -8022712188336258622
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: swordsbug_38
+      rect:
+        serializedVersion: 2
+        x: 3
+        y: 530
+        width: 103
+        height: 146
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bf94be72415430680800000000000000
+      internalID: -8790106094825682437
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: swordsbug_39
+      rect:
+        serializedVersion: 2
+        x: 119
+        y: 442
+        width: 189
+        height: 120
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 37f213bf1d016c210800000000000000
+      internalID: 1352787232119926643
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: swordsbug_40
+      rect:
+        serializedVersion: 2
+        x: 315
+        y: 439
+        width: 120
+        height: 184
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: abd3e5a072db44580800000000000000
+      internalID: -8843735792873488966
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: swordsbug_41
+      rect:
+        serializedVersion: 2
+        x: 440
+        y: 481
+        width: 129
+        height: 179
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 974e54180fa6abd70800000000000000
+      internalID: 9059671181602710649
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: swordsbug_42
+      rect:
+        serializedVersion: 2
+        x: 573
+        y: 553
+        width: 149
+        height: 124
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0b55235afb463b230800000000000000
+      internalID: 3653374497000674736
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: swordsbug_43
+      rect:
+        serializedVersion: 2
+        x: 787
+        y: 449
+        width: 189
+        height: 120
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 742b22f5e596c7bb0800000000000000
+      internalID: -4936955237460954553
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: swordsbug_44
+      rect:
+        serializedVersion: 2
+        x: 3
+        y: 395
+        width: 116
+        height: 129
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 21650cc58f4368b00800000000000000
+      internalID: 830409422609077778
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: swordsbug_45
+      rect:
+        serializedVersion: 2
+        x: 264
+        y: 322
+        width: 129
+        height: 117
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ba387fc101295fce0800000000000000
+      internalID: -1372029913561332821
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: swordsbug_46
+      rect:
+        serializedVersion: 2
+        x: 462
+        y: 335
+        width: 118
+        height: 145
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4bb96918588071270800000000000000
+      internalID: 8221049014285933492
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: swordsbug_47
+      rect:
+        serializedVersion: 2
+        x: 590
+        y: 426
+        width: 190
+        height: 124
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e4301d8db47a639f0800000000000000
+      internalID: -489019565321157810
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: swordsbug_48
+      rect:
+        serializedVersion: 2
+        x: 826
+        y: 292
+        width: 165
+        height: 153
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: db678ddb7a5242d30800000000000000
+      internalID: 4405687737850033853
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: swordsbug_49
+      rect:
+        serializedVersion: 2
+        x: 3
+        y: 184
+        width: 122
+        height: 138
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f8eb918bc04c07df0800000000000000
+      internalID: -184432025814843761
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: swordsbug_50
+      rect:
+        serializedVersion: 2
+        x: 281
+        y: 144
+        width: 114
+        height: 173
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f2080769ae9e05550800000000000000
+      internalID: 6147670685116301359
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: swordsbug_51
+      rect:
+        serializedVersion: 2
+        x: 593
+        y: 296
+        width: 189
+        height: 126
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 06a981f6888c97450800000000000000
+      internalID: 6087116859672926816
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: swordsbug_52
+      rect:
+        serializedVersion: 2
+        x: 462
+        y: 143
+        width: 121
+        height: 138
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e814136d337e03ad0800000000000000
+      internalID: -2724423564736249458
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: swordsbug_53
+      rect:
+        serializedVersion: 2
+        x: 650
+        y: 142
+        width: 173
+        height: 151
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5f84b53bbdc89e3a0800000000000000
+      internalID: -6635617700718884619
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: swordsbug_54
+      rect:
+        serializedVersion: 2
+        x: 833
+        y: 88
+        width: 119
+        height: 170
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 86b3b5a9c06102cb0800000000000000
+      internalID: -4890884951939269784
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: swordsbug_55
+      rect:
+        serializedVersion: 2
+        x: 960
+        y: 170
+        width: 30
+        height: 88
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 71572cdfe257d47c0800000000000000
+      internalID: -4085480442268846825
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: swordsbug_56
+      rect:
+        serializedVersion: 2
+        x: 993
+        y: 170
+        width: 30
+        height: 88
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ee934ebba5ac6e570800000000000000
+      internalID: 8495700238129183214
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: swordsbug_57
+      rect:
+        serializedVersion: 2
+        x: 132
+        y: 3
+        width: 116
+        height: 111
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1f488a328bf875e10800000000000000
+      internalID: 2186374165146666225
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: swordsbug_58
+      rect:
+        serializedVersion: 2
+        x: 428
+        y: 5
+        width: 118
+        height: 107
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7e54e214e51d221d0800000000000000
+      internalID: -3376906567823768089
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: swordsbug_59
+      rect:
+        serializedVersion: 2
+        x: 704
+        y: 5
+        width: 118
+        height: 107
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 76a369bec359f06f0800000000000000
+      internalID: -716189726845552025
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: swordsbug_60
+      rect:
+        serializedVersion: 2
+        x: 959
+        y: 81
+        width: 28
+        height: 85
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 49b286e85cc7fe660800000000000000
+      internalID: 7417284299242089364
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: swordsbug_61
+      rect:
+        serializedVersion: 2
+        x: 990
+        y: 79
+        width: 34
+        height: 87
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ee5de4851a5f4b3b0800000000000000
+      internalID: -5497499171792431634
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: swordsbug_62
+      rect:
+        serializedVersion: 2
+        x: 162
+        y: 0
+        width: 8
+        height: 10
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5f642d914d8cdaaf0800000000000000
+      internalID: -383429579964791051
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: swordsbug_63
+      rect:
+        serializedVersion: 2
+        x: 463
+        y: 3
+        width: 6
+        height: 5
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 483489940a50205e0800000000000000
+      internalID: -1944985903083011196
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: swordsbug_64
+      rect:
+        serializedVersion: 2
+        x: 739
+        y: 0
+        width: 6
+        height: 8
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 96df6899b7387d4f0800000000000000
+      internalID: -804029441582367383
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: swordsbug_65
+      rect:
+        serializedVersion: 2
+        x: 959
+        y: 3
+        width: 40
+        height: 73
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8ea00063c5bafe350800000000000000
+      internalID: 6048241237113178856
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+  spritePackingTag: 
+  pSDRemoveMatte: 0
+  pSDShowRemoveMatteOption: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
