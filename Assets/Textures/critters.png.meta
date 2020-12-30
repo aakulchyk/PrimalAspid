@@ -7,7 +7,7 @@ TextureImporter:
     second: critters_0
   - first:
       213: -2086291807556124730
-    second: critters_1
+    second: critters_2
   - first:
       213: -3844223528806272646
     second: critters_2
@@ -19,7 +19,7 @@ TextureImporter:
     second: critters_4
   - first:
       213: -6477703969899194238
-    second: critters_5
+    second: critters_4
   - first:
       213: -8013225747276542897
     second: critters_6
@@ -28,7 +28,7 @@ TextureImporter:
     second: critters_7
   - first:
       213: -1416687569279199842
-    second: critters_8
+    second: critters_5
   - first:
       213: 5380517501368046697
     second: critters_9
@@ -37,7 +37,7 @@ TextureImporter:
     second: critters_10
   - first:
       213: 9139027748289926928
-    second: critters_11
+    second: critters_6
   - first:
       213: 3223865592597575675
     second: critters_12
@@ -46,13 +46,13 @@ TextureImporter:
     second: critters_13
   - first:
       213: 1723257226561652784
-    second: critters_14
+    second: critters_7
   - first:
       213: 8547550229932424849
     second: critters_15
   - first:
       213: -5050050473691789107
-    second: critters_16
+    second: critters_8
   - first:
       213: -7765727813790475085
     second: critters_17
@@ -64,7 +64,7 @@ TextureImporter:
     second: critters_19
   - first:
       213: 2114644687712509372
-    second: critters_20
+    second: critters_1
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -110,7 +110,7 @@ TextureImporter:
   spritePivot: {x: 0.5, y: 0.5}
   spritePixelsToUnits: 100
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
-  spriteGenerateFallbackPhysicsShape: 1
+  spriteGenerateFallbackPhysicsShape: 0
   alphaUsage: 1
   alphaIsTransparency: 1
   spriteTessellationDetail: -1
@@ -153,12 +153,12 @@ TextureImporter:
       name: critters_0
       rect:
         serializedVersion: 2
-        x: 2
+        x: 0
         y: 1751
-        width: 849
-        height: 297
-      alignment: 9
-      pivot: {x: 0.076893106, y: -0.15700379}
+        width: 554
+        height: 215
+      alignment: 6
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -171,15 +171,15 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: critters_1
+      name: critters_2
       rect:
         serializedVersion: 2
-        x: 2
+        x: 0
         y: 1313
         width: 555
         height: 218
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
+      alignment: 6
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -192,36 +192,15 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: critters_2
-      rect:
-        serializedVersion: 2
-        x: 559
-        y: 1344
-        width: 728
-        height: 170
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: a71bd40711396aac0800000000000000
-      internalID: -3844223528806272646
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
       name: critters_3
       rect:
         serializedVersion: 2
-        x: 2
+        x: 0
         y: 1094
         width: 554
-        height: 217
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
+        height: 216
+      alignment: 6
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -237,33 +216,12 @@ TextureImporter:
       name: critters_4
       rect:
         serializedVersion: 2
-        x: 559
-        y: 1172
-        width: 556
-        height: 170
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 73277eebc8dd0aec0800000000000000
-      internalID: -3557600109054692809
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: critters_5
-      rect:
-        serializedVersion: 2
-        x: 2
+        x: 0
         y: 875
         width: 554
         height: 214
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
+      alignment: 6
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -276,57 +234,15 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: critters_6
+      name: critters_5
       rect:
         serializedVersion: 2
-        x: 559
-        y: 1000
-        width: 445
-        height: 170
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: f4c419483ad4bc090800000000000000
-      internalID: -8013225747276542897
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: critters_7
-      rect:
-        serializedVersion: 2
-        x: 1007
-        y: 1000
-        width: 1041
-        height: 170
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: cc0406ef58a0a5090800000000000000
-      internalID: -8045106213729320756
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: critters_8
-      rect:
-        serializedVersion: 2
-        x: 2
+        x: 0
         y: 656
         width: 554
         height: 217
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
+      alignment: 6
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -346,8 +262,8 @@ TextureImporter:
         y: 828
         width: 445
         height: 170
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
+      alignment: 6
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -367,8 +283,8 @@ TextureImporter:
         y: 828
         width: 1041
         height: 170
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
+      alignment: 6
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -381,15 +297,15 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: critters_11
+      name: critters_6
       rect:
         serializedVersion: 2
-        x: 2
+        x: 0
         y: 437
         width: 554
         height: 217
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
+      alignment: 6
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -409,8 +325,8 @@ TextureImporter:
         y: 0
         width: 554
         height: 826
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
+      alignment: 6
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -430,8 +346,8 @@ TextureImporter:
         y: 586
         width: 1041
         height: 240
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
+      alignment: 6
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -444,15 +360,15 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: critters_14
+      name: critters_7
       rect:
         serializedVersion: 2
-        x: 2
+        x: 0
         y: 218
         width: 554
         height: 217
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
+      alignment: 6
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -472,8 +388,8 @@ TextureImporter:
         y: 343
         width: 728
         height: 170
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
+      alignment: 6
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -486,15 +402,15 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: critters_16
+      name: critters_8
       rect:
         serializedVersion: 2
-        x: 2
+        x: 0
         y: 0
         width: 554
         height: 213
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
+      alignment: 6
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -514,8 +430,8 @@ TextureImporter:
         y: 171
         width: 556
         height: 170
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
+      alignment: 6
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -535,8 +451,8 @@ TextureImporter:
         y: 0
         width: 445
         height: 169
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
+      alignment: 6
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -556,8 +472,8 @@ TextureImporter:
         y: 0
         width: 484
         height: 169
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
+      alignment: 6
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -570,13 +486,13 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: critters_20
+      name: critters_1
       rect:
         serializedVersion: 2
         x: 0
         y: 1532
-        width: 705
-        height: 217
+        width: 556
+        height: 216
       alignment: 6
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}

@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6903810293661835054}
   - component: {fileID: 6903810293661835053}
-  - component: {fileID: 6903810293661835052}
+  - component: {fileID: 9127805722733653413}
   m_Layer: 0
   m_Name: TiltedPlatform
   m_TagString: Untagged
@@ -70,7 +70,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: -10
+  m_SortingOrder: -2
   m_Sprite: {fileID: -6140475021772034141, guid: f784dcc90480cc704b21e152f0a22c31,
     type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -83,7 +83,7 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!60 &6903810293661835052
+--- !u!60 &9127805722733653413
 PolygonCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -109,26 +109,8 @@ PolygonCollider2D:
   m_Points:
     m_Paths:
     - - {x: -0.98499995, y: -1.9749999}
-      - {x: -1.4549999, y: -1.895}
-      - {x: -1.675, y: -1.865}
-      - {x: -1.8549999, y: -1.8449999}
-      - {x: -2.2849998, y: -1.8149999}
-      - {x: -2.5249999, y: -1.805}
-      - {x: -2.825, y: -1.805}
-      - {x: -3.0349998, y: -1.8249999}
-      - {x: -3.235, y: -1.8549999}
-      - {x: -3.625, y: -1.915}
-      - {x: -3.985, y: -1.925}
-      - {x: -4.2149997, y: -1.9449999}
-      - {x: -4.4049997, y: -1.9549999}
-      - {x: -4.595, y: -1.9749999}
-      - {x: -4.6549997, y: -1.995}
-      - {x: -4.725, y: -2.0249999}
-      - {x: -4.835, y: -2.145}
-      - {x: -4.855, y: -2.195}
-      - {x: -0.36499998, y: -2.195}
-      - {x: -0.375, y: -2.165}
-      - {x: -0.545, y: -2.085}
+      - {x: -0.98499995, y: -1.9749999}
+      - {x: -0.98499995, y: -1.9749999}
     - - {x: 5.765, y: -1.175}
       - {x: 5.7549996, y: -1.0749999}
       - {x: 5.685, y: -0.935}

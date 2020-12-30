@@ -1,0 +1,845 @@
+fileFormatVersion: 2
+guid: fae31cee59a99f44a8f00b2c6f0f8099
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -8732521349864911730
+    second: Aspid_0
+  - first:
+      213: -3832664144296634815
+    second: Aspid_1
+  - first:
+      213: 3027475329354611751
+    second: Aspid_2
+  - first:
+      213: -2267994328062446662
+    second: Aspid_3
+  - first:
+      213: 1026514260178821788
+    second: Aspid_4
+  - first:
+      213: 7404672081563836673
+    second: Aspid_5
+  - first:
+      213: -1094135053914656387
+    second: Aspid_6
+  - first:
+      213: 744268404666986156
+    second: Aspid_7
+  - first:
+      213: 7856574149500709120
+    second: Aspid_8
+  - first:
+      213: -26440565831672561
+    second: Aspid_9
+  - first:
+      213: -1807267886265037171
+    second: Aspid_10
+  - first:
+      213: 4198694120839539489
+    second: Aspid_11
+  - first:
+      213: -4902369717126900318
+    second: Aspid_13
+  - first:
+      213: 1655309783818397549
+    second: Aspid_14
+  - first:
+      213: -7405205704763660584
+    second: Aspid_18
+  - first:
+      213: -5957519305025310025
+    second: Aspid_19
+  - first:
+      213: -6801080489394760656
+    second: Aspid_20
+  - first:
+      213: -1778873413335258863
+    second: Aspid_21
+  - first:
+      213: -4170140544866874245
+    second: Aspid_22
+  - first:
+      213: 8181932333057712569
+    second: Aspid_23
+  - first:
+      213: -7631956074471515203
+    second: death1
+  - first:
+      213: -1080856692532739444
+    second: Aspid_26
+  - first:
+      213: -244928038667492665
+    second: death0
+  - first:
+      213: 7977312509082110185
+    second: Aspid_29
+  - first:
+      213: 22736405709143597
+    second: Aspid_30
+  - first:
+      213: 4667681583471934643
+    second: death2
+  - first:
+      213: 5361345557068721118
+    second: Aspid_32
+  - first:
+      213: 6144808238319460148
+    second: Aspid_33
+  - first:
+      213: 8629682988446426806
+    second: Aspid_34
+  - first:
+      213: 7693165036047954911
+    second: death3
+  - first:
+      213: 3407165281640151922
+    second: Aspid_36
+  - first:
+      213: 2561844821756604318
+    second: Aspid_37
+  - first:
+      213: 3226697130727875052
+    second: Aspid_38
+  - first:
+      213: 8674293926473688735
+    second: Aspid_39
+  - first:
+      213: 135430838112555511
+    second: Aspid_40
+  - first:
+      213: 4722322598108754083
+    second: Aspid_41
+  - first:
+      213: -1367658285893127320
+    second: Aspid_42
+  externalObjects: {}
+  serializedVersion: 11
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: -1
+    aniso: -1
+    mipBias: -100
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  applyGammaDecoding: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Aspid_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 704
+        width: 88
+        height: 113
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e8c89c3691adfc680800000000000000
+      internalID: -8732521349864911730
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Aspid_1
+      rect:
+        serializedVersion: 2
+        x: 91
+        y: 640
+        width: 85
+        height: 122
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 14692df5444afcac0800000000000000
+      internalID: -3832664144296634815
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Aspid_2
+      rect:
+        serializedVersion: 2
+        x: 319
+        y: 703
+        width: 14
+        height: 16
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 72cb07495c0c30a20800000000000000
+      internalID: 3027475329354611751
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Aspid_3
+      rect:
+        serializedVersion: 2
+        x: 355
+        y: 691
+        width: 14
+        height: 14
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ab3bc3bcc277680e0800000000000000
+      internalID: -2267994328062446662
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Aspid_4
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 584
+        width: 91
+        height: 120
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c92e4dae749ee3e00800000000000000
+      internalID: 1026514260178821788
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Aspid_5
+      rect:
+        serializedVersion: 2
+        x: 311
+        y: 685
+        width: 9
+        height: 8
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1016ddbc60ea2c660800000000000000
+      internalID: 7404672081563836673
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Aspid_6
+      rect:
+        serializedVersion: 2
+        x: 319
+        y: 663
+        width: 40
+        height: 38
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d713d1727f9d0d0f0800000000000000
+      internalID: -1094135053914656387
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Aspid_7
+      rect:
+        serializedVersion: 2
+        x: 348
+        y: 640
+        width: 49
+        height: 53
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: caee8b5bb2c245a00800000000000000
+      internalID: 744268404666986156
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Aspid_8
+      rect:
+        serializedVersion: 2
+        x: 371
+        y: 691
+        width: 14
+        height: 11
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 009a1842098280d60800000000000000
+      internalID: 7856574149500709120
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Aspid_9
+      rect:
+        serializedVersion: 2
+        x: 392
+        y: 667
+        width: 21
+        height: 26
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f0d51f9027012aff0800000000000000
+      internalID: -26440565831672561
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Aspid_10
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 457
+        width: 91
+        height: 125
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d8e8339ce6b4be6e0800000000000000
+      internalID: -1807267886265037171
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Aspid_11
+      rect:
+        serializedVersion: 2
+        x: 91
+        y: 539
+        width: 113
+        height: 101
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 12b6929ae02c44a30800000000000000
+      internalID: 4198694120839539489
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Aspid_13
+      rect:
+        serializedVersion: 2
+        x: 314
+        y: 563
+        width: 117
+        height: 76
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2a5d40557b847fbb0800000000000000
+      internalID: -4902369717126900318
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Aspid_14
+      rect:
+        serializedVersion: 2
+        x: 431
+        y: 563
+        width: 78
+        height: 106
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d6769b96a77d8f610800000000000000
+      internalID: 1655309783818397549
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Aspid_18
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 334
+        width: 104
+        height: 123
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8d6adde55ac6b3990800000000000000
+      internalID: -7405205704763660584
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Aspid_19
+      rect:
+        serializedVersion: 2
+        x: 120
+        y: 228
+        width: 142
+        height: 197
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7b23f61a1c3a25da0800000000000000
+      internalID: -5957519305025310025
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Aspid_20
+      rect:
+        serializedVersion: 2
+        x: 245
+        y: 337
+        width: 123
+        height: 104
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 03419cc1455bd91a0800000000000000
+      internalID: -6801080489394760656
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Aspid_21
+      rect:
+        serializedVersion: 2
+        x: 368
+        y: 375
+        width: 129
+        height: 88
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 119e3c13e0c2057e0800000000000000
+      internalID: -1778873413335258863
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Aspid_22
+      rect:
+        serializedVersion: 2
+        x: 3
+        y: 222
+        width: 116
+        height: 112
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b7c81cfc44fa026c0800000000000000
+      internalID: -4170140544866874245
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Aspid_23
+      rect:
+        serializedVersion: 2
+        x: 151
+        y: 108
+        width: 129
+        height: 120
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9b120307b101c8170800000000000000
+      internalID: 8181932333057712569
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: death1
+      rect:
+        serializedVersion: 2
+        x: 280
+        y: 216
+        width: 128
+        height: 121
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: dbb9db7d268d51690800000000000000
+      internalID: -7631956074471515203
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Aspid_26
+      rect:
+        serializedVersion: 2
+        x: 3
+        y: 110
+        width: 119
+        height: 112
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c828b7490960001f0800000000000000
+      internalID: -1080856692532739444
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: death0
+      rect:
+        serializedVersion: 2
+        x: 298
+        y: 97
+        width: 128
+        height: 117
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7c2e0bb1f37d99cf0800000000000000
+      internalID: -244928038667492665
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: death2
+      rect:
+        serializedVersion: 2
+        x: 153
+        y: 3
+        width: 142
+        height: 106
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3bc3a737bafe6c040800000000000000
+      internalID: 4667681583471934643
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Aspid_32
+      rect:
+        serializedVersion: 2
+        x: 301
+        y: 3
+        width: 159
+        height: 94
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: edb2337e063576a40800000000000000
+      internalID: 5361345557068721118
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Aspid_33
+      rect:
+        serializedVersion: 2
+        x: 296
+        y: 84
+        width: 4
+        height: 5
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 43fdce1498eb64550800000000000000
+      internalID: 6144808238319460148
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: death3
+      rect:
+        serializedVersion: 2
+        x: 2
+        y: 6
+        width: 143
+        height: 103
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fd3f71417dc93ca60800000000000000
+      internalID: 7693165036047954911
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Aspid_40
+      rect:
+        serializedVersion: 2
+        x: 460
+        y: 26
+        width: 22
+        height: 29
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7f1155531a521e100800000000000000
+      internalID: 135430838112555511
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Aspid_41
+      rect:
+        serializedVersion: 2
+        x: 473
+        y: 3
+        width: 17
+        height: 14
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3a0721f026f098140800000000000000
+      internalID: 4722322598108754083
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Aspid_42
+      rect:
+        serializedVersion: 2
+        x: 276
+        y: 643
+        width: 143
+        height: 115
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 863783ff80a150de0800000000000000
+      internalID: -1367658285893127320
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+  spritePackingTag: 
+  pSDRemoveMatte: 0
+  pSDShowRemoveMatteOption: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

@@ -1,7 +1,58 @@
 fileFormatVersion: 2
 guid: 38158eae9ff8df946a08325a7d05d5e9
 TextureImporter:
-  internalIDToNameTable: []
+  internalIDToNameTable:
+  - first:
+      213: 7345888850971135605
+    second: morda1
+  - first:
+      213: -2714726348218475886
+    second: morda2
+  - first:
+      213: 3245146709375254638
+    second: platf_2
+  - first:
+      213: -1927361279087995609
+    second: platf_3
+  - first:
+      213: -6828310093421432718
+    second: platf_4
+  - first:
+      213: 294432075430503282
+    second: platf_5
+  - first:
+      213: -8277504663631080414
+    second: platf_6
+  - first:
+      213: 8467620358180724336
+    second: platf_7
+  - first:
+      213: 3117699673793309453
+    second: platf_8
+  - first:
+      213: -5104360179681937216
+    second: morda3
+  - first:
+      213: 897688882232363791
+    second: platf_10
+  - first:
+      213: 4919512357667701973
+    second: platf_11
+  - first:
+      213: -2706628200036360892
+    second: platf_12
+  - first:
+      213: -7098977950505092371
+    second: morda4
+  - first:
+      213: 3471637923833388577
+    second: platf_14
+  - first:
+      213: 1978810937655248136
+    second: morda5
+  - first:
+      213: 8916528219672630279
+    second: platf_16
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -40,7 +91,7 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 1
+  spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
@@ -71,9 +122,378 @@ TextureImporter:
     overridden: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
-    sprites: []
+    sprites:
+    - serializedVersion: 2
+      name: morda1
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 14
+        width: 401
+        height: 497
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 57e03a16df6d1f560800000000000000
+      internalID: 7345888850971135605
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: morda2
+      rect:
+        serializedVersion: 2
+        x: 400
+        y: 357
+        width: 140
+        height: 263
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 29a5b0005ca535ad0800000000000000
+      internalID: -2714726348218475886
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: platf_2
+      rect:
+        serializedVersion: 2
+        x: 676
+        y: 358
+        width: 104
+        height: 113
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e6007581db3190d20800000000000000
+      internalID: 3245146709375254638
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: platf_3
+      rect:
+        serializedVersion: 2
+        x: 997
+        y: 431
+        width: 6
+        height: 5
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7251e16d023a045e0800000000000000
+      internalID: -1927361279087995609
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: platf_4
+      rect:
+        serializedVersion: 2
+        x: 541
+        y: 353
+        width: 133
+        height: 127
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 270b661e528fc31a0800000000000000
+      internalID: -6828310093421432718
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: platf_5
+      rect:
+        serializedVersion: 2
+        x: 1075
+        y: 184
+        width: 423
+        height: 147
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2732482a968061400800000000000000
+      internalID: 294432075430503282
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: platf_6
+      rect:
+        serializedVersion: 2
+        x: 1494
+        y: 257
+        width: 205
+        height: 182
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 22451a15d55602d80800000000000000
+      internalID: -8277504663631080414
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: platf_7
+      rect:
+        serializedVersion: 2
+        x: 1702
+        y: 259
+        width: 249
+        height: 143
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 07e5a363ad7038570800000000000000
+      internalID: 8467620358180724336
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: platf_8
+      rect:
+        serializedVersion: 2
+        x: 400
+        y: 184
+        width: 453
+        height: 173
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d0b2dc4c55b444b20800000000000000
+      internalID: 3117699673793309453
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: morda3
+      rect:
+        serializedVersion: 2
+        x: 860
+        y: 199
+        width: 186
+        height: 219
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0c8b86ce57ba929b0800000000000000
+      internalID: -5104360179681937216
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: platf_10
+      rect:
+        serializedVersion: 2
+        x: 1060
+        y: 390
+        width: 11
+        height: 26
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f0b0740484b357c00800000000000000
+      internalID: 897688882232363791
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: platf_11
+      rect:
+        serializedVersion: 2
+        x: 1076
+        y: 325
+        width: 11
+        height: 9
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5d48de2bc6e954440800000000000000
+      internalID: 4919512357667701973
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: platf_12
+      rect:
+        serializedVersion: 2
+        x: 400
+        y: 0
+        width: 1108
+        height: 176
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 44d17cd0eff107ad0800000000000000
+      internalID: -2706628200036360892
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: morda4
+      rect:
+        serializedVersion: 2
+        x: 1706
+        y: 0
+        width: 185
+        height: 257
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: dea30df7a2d5b7d90800000000000000
+      internalID: -7098977950505092371
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: platf_14
+      rect:
+        serializedVersion: 2
+        x: 1889
+        y: 124
+        width: 5
+        height: 10
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 12e1dd65c4cbd2030800000000000000
+      internalID: 3471637923833388577
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: morda5
+      rect:
+        serializedVersion: 2
+        x: 1896
+        y: 0
+        width: 152
+        height: 320
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 80549984016267b10800000000000000
+      internalID: 1978810937655248136
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: platf_16
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 513
+        width: 375
+        height: 84
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 704555b8c2fddbb70800000000000000
+      internalID: 8916528219672630279
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []
