@@ -10,6 +10,10 @@ public class FollowCamera : MonoBehaviour {
     public Vector3 offset;
     public bool vertical;
     Vector3 targetPos;
+
+    public GameObject leftBorder;
+    public GameObject bottomBorder;
+
     // Use this for initialization
     void Start () {
         targetPos = transform.position;
@@ -30,10 +34,13 @@ public class FollowCamera : MonoBehaviour {
 
             targetPos = transform.position + (targetDirection.normalized * interpVelocity * Time.deltaTime); 
 
-            if (vertical)
+            if (targetPos.x < posNoZ.x && posNoZ.x - leftBorder.transform.position.x < 11f) {
                 targetPos.x = oldX;
-            else
+            }
+            if (targetPos.y < posNoZ.y && posNoZ.y - bottomBorder.transform.position.y < 6f) {
                 targetPos.y = oldY;
+            }   
+
             transform.position = Vector3.Lerp( transform.position, targetPos + offset, 0.25f);
 
         }

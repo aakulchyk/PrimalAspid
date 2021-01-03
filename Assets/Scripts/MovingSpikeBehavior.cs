@@ -38,4 +38,6 @@ public class MovingSpikeBehavior : MonoBehaviour
         //double dist  = Math.Sqrt(playerPos.x-enemyPos.x)*(playerPos.x-enemyPos.x) + (playerPos.y-enemyPos.y)*(playerPos.y-enemyPos.y);
         return (Vector2.Distance(playerPos, enemyPos) < _followRadius);
     }
+
+
 }

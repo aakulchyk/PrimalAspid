@@ -54,7 +54,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 29691a7e31e9de54c99bb0da196170cf, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -145,7 +145,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _fromUpside: 0
-  _followRadius: 5
+  _followRadius: 0
+  switchedOff: 0
 --- !u!82 &4443869990457874159
 AudioSource:
   m_ObjectHideFlags: 0
@@ -301,4 +302,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   clip_appear: {fileID: 8300000, guid: f7503083c7614784ba315aa47a4d0254, type: 3}
   clip_disappear: {fileID: 8300000, guid: 9fe9198d109c2a24d9a7d4dd29a90542, type: 3}
+  worm_appear: {fileID: 0}
   source: {fileID: 0}

@@ -6,10 +6,10 @@ public class PlayerControl : MonoBehaviour
 {
     private Rigidbody2D body;
     private Animator anim;
-    private Renderer renderer;
+    private Renderer _renderer;
     private bool faceRight = true;
     public float _maxSpeed = 5;
-    public float _flapForce = 180f;
+    public float _flapForce;
     //private Time startTime;
     private bool invulnerable;
 
@@ -27,7 +27,7 @@ public class PlayerControl : MonoBehaviour
 
 	    body = GetComponent<Rigidbody2D> ();  
         anim = GetComponent<Animator>();      
-        renderer = GetComponent<Renderer>();
+        _renderer = GetComponent<Renderer>();
         invulnerable = true;
         StartCoroutine(blinkInvulnerable());
     }
@@ -35,9 +35,9 @@ public class PlayerControl : MonoBehaviour
     IEnumerator blinkInvulnerable() {
         for (int i=0; i<5; i++)
         {
-            renderer.enabled = false;
+            _renderer.enabled = false;
             yield return new WaitForSeconds(0.15F);
-            renderer.enabled = true;
+            _renderer.enabled = true;
             yield return new WaitForSeconds(0.15F);
         }
         invulnerable = false;
@@ -55,6 +55,7 @@ public class PlayerControl : MonoBehaviour
         }
         
         float moveX = Input.GetAxis ("Horizontal");
+        //Debug.Log("moveX: " + moveX);
         body.velocity = new Vector2 (moveX * _maxSpeed, body.velocity.y);
         
         bool newTurnStarted = false;
@@ -75,11 +76,43 @@ public class PlayerControl : MonoBehaviour
             flip();
         }
 
-        if (Input.GetKeyDown(KeyCode.X) || Input.GetKeyDown(KeyCode.JoystickButton2))
+        if ((Input.GetKey(KeyCode.X) || Input.GetKey(KeyCode.JoystickButton5)))
         {
-            isLeading = !isLeading;
+            
+            Vector3 checkPosition = new Vector3(transform.position.x, transform.position.y-1f, transform.position.z);
+            Collider2D[] grabColliders = Physics2D.OverlapCircleAll(checkPosition, 0.5f);
+            foreach (var grabCollider in grabColliders)
+            {
+                
+                if (grabCollider.tag == "Player")
+                    continue;
+                Rigidbody2D body = grabCollider.gameObject.GetComponent<Rigidbody2D>();
+
+                if (body == null)
+                    continue;
+
+                StupidEnemyBehavior behavior = grabCollider.gameObject.GetComponent<StupidEnemyBehavior>();
+                if (behavior) {
+                    behavior.captured = true;
+                }
+                
+                GetComponent<FixedJoint2D>().connectedBody = body;
+                GetComponent<FixedJoint2D>().enabled = true;
+                isLeading = true;//!isLeading;
+                break;
+            }
         }
-        
+        else {
+            isLeading = false;
+            GetComponent<FixedJoint2D>().enabled = false;
+            GetComponent<FixedJoint2D>().connectedBody = null;
+        }
+
+        if (!isLeading && PlayerStats.Stamina < 1f) {
+             PlayerStats.Stamina += 0.001f;
+        }
+
+
         if (Input.GetKeyDown(KeyCode.Escape))
         {
             Application.Quit();
@@ -99,13 +132,29 @@ public class PlayerControl : MonoBehaviour
     }
 
     public void startFlap() {
+
+        float potentialStamina = PlayerStats.Stamina - 0.05f;
+
+        if (isLeading) {
+            
+            if (potentialStamina < 0f) {
+                PlayerStats.Stamina = 0f;
+                return;
+            }
+
+
+            PlayerStats.Stamina = potentialStamina;
+        }
+
         float magnitude = body.velocity.y > 0 ? body.velocity.y : 0; 
-        float force = magnitude < 1f ? _flapForce : _flapForce / magnitude;
+        float force = magnitude < 2f ? _flapForce : _flapForce / magnitude;
         //Debug.Log("Magnitude = " + magnitude);
         GetComponent<AudioSource>().PlayOneShot(clip_flap);
         
         body.AddForce(new Vector2(0f, force));
         anim.SetBool("IsFlapping", true);
+
+        
     }
 
     public void endFlap() {
@@ -148,9 +197,7 @@ public class PlayerControl : MonoBehaviour
                 return;
             
             script.switchTarget();
-        }
-
-            
+        }       
     }
 
     void dieAndRespawn() {

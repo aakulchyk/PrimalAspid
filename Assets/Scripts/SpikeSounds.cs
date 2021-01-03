@@ -6,6 +6,7 @@ public class SpikeSounds : MonoBehaviour
 {
     public AudioClip clip_appear;
     public AudioClip clip_disappear;
+    public AudioClip worm_appear;
     public AudioSource source; 
     // Start is called before the first frame update
     void Start()
@@ -27,5 +28,12 @@ public class SpikeSounds : MonoBehaviour
     public void playDisappearSound()
     {
         source.PlayOneShot(clip_disappear);
+    }
+
+    
+
+    public void playSpikeWormSound()
+    {
+        source.PlayOneShot(worm_appear);
     }
 }

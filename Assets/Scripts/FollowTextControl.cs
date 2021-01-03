@@ -14,7 +14,7 @@ public class FollowTextControl : MonoBehaviour
     void Start()
     {
         text = new String[4] {
-            "Save the poor Maggot!\nPress \"x\" to let him folow you",
+            "Find the lost children!\nSome of them will never get back though...",
             "Come closer so he notice you and he will follow you",
             "Lead him to his siblings! Good luck!",
             "YOU KILLED HIM! YOU FUCKING BASTARD!!!"

@@ -14,7 +14,7 @@ public class MaggotRescuedBehavior : MonoBehaviour
 
     private Animator anim;
     private Rigidbody2D body; 
-    private AudioSource audio;
+    private AudioSource sounds;
 
     public bool isDead = false;
     public bool isFollowing = false;
@@ -24,7 +24,6 @@ public class MaggotRescuedBehavior : MonoBehaviour
     public Transform targetSibling;
 
     public AudioClip clip_death;
-
     public AudioClip clip_sad_idle;
     public AudioClip clip_follow_start;
     public AudioClip clip_follow_stop;
@@ -39,7 +38,7 @@ public class MaggotRescuedBehavior : MonoBehaviour
         playerTransform = GameObject.FindWithTag("Player").transform;
         anim = GetComponent<Animator>();
         body = GetComponent<Rigidbody2D>();
-        audio = GetComponent<AudioSource>(); 
+        sounds = GetComponent<AudioSource>(); 
     }
 
     // Update is called once per frame
@@ -52,11 +51,11 @@ public class MaggotRescuedBehavior : MonoBehaviour
         // interact with sibling
         float distS = Vector2.Distance(targetSibling.position, transform.position);
         if (distS < _followRadius) {
-            if (!audio.isPlaying)
-                    audio.PlayOneShot(clip_success);
+            if (!sounds.isPlaying)
+                    sounds.PlayOneShot(clip_success);
 
             Vector3 direction = targetSibling.position - transform.position;     
-            body.velocity = new Vector2 (direction.x * moveSpeed, direction.y * moveSpeed);
+            body.velocity = new Vector2 (direction.x * moveSpeed, body.velocity.y);
             return;
         }
 
@@ -67,37 +66,37 @@ public class MaggotRescuedBehavior : MonoBehaviour
         {
             if (isFollowing == false) {
                 isFollowing = true;
-                if (audio.isPlaying)
-                    audio.Stop();
+                if (sounds.isPlaying)
+                    sounds.Stop();
 
-                audio.PlayOneShot(clip_follow_start);
-                anim.SetTrigger("Troubled");
+                sounds.PlayOneShot(clip_follow_start);
+                anim.SetBool("isFollowing", true);
             }
 
-            if (distP < 1.5) {
+            /*if (distP < 1.5) {
                 body.velocity = new Vector2(0, 0);
                 return;
-            }
+            }*/
                 
-            Vector3 direction = playerTransform.position - transform.position;
-            
-            body.velocity = new Vector2 (direction.x * moveSpeed, direction.y * moveSpeed);
+            //Vector3 direction = playerTransform.position - transform.position;
+            //body.velocity = new Vector2 (direction.x * moveSpeed, direction.y * moveSpeed);
         }
         else {
             if (isFollowing) {
                 isFollowing = false;
-                audio.PlayOneShot(clip_follow_stop);
+                anim.SetBool("isFollowing", false);
+                sounds.PlayOneShot(clip_follow_stop);
             } else {
-                if (!audio.isPlaying)
-                    audio.PlayOneShot(clip_sad_idle);
+                if (!sounds.isPlaying)
+                    sounds.PlayOneShot(clip_sad_idle);
             }
             
-            body.velocity = new Vector2(0, 0);
+            //body.velocity = new Vector2(0, 0);
         }
     }
 
     void OnTriggerEnter2D(Collider2D other) {
-	    if (other.tag == "Spike") {
+	    if (other.tag == "Spike" || other.tag == "Enemy") {
             GetComponent<AudioSource>().PlayOneShot(clip_death);
             Debug.Log("Maggot Die");
 	        anim.SetTrigger("Die");

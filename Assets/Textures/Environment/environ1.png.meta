@@ -1,0 +1,1256 @@
+fileFormatVersion: 2
+guid: 085cc07e909c31f409340adc44bba300
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -6164619343759303754
+    second: environ1_0
+  - first:
+      213: 4600612356043259848
+    second: environ1_1
+  - first:
+      213: -7713854418611476558
+    second: environ1_2
+  - first:
+      213: 225905245059411111
+    second: environ1_3
+  - first:
+      213: -69162859611613603
+    second: environ1_4
+  - first:
+      213: 4501927187409232657
+    second: environ1_5
+  - first:
+      213: -3448480414523848885
+    second: environ1_6
+  - first:
+      213: -8197094584893926634
+    second: environ1_7
+  - first:
+      213: 9115514733364584535
+    second: environ1_8
+  - first:
+      213: -5838042976733595806
+    second: environ1_9
+  - first:
+      213: -7392779448128194925
+    second: environ1_10
+  - first:
+      213: 7426409674523831420
+    second: environ1_11
+  - first:
+      213: 4397942379949867646
+    second: environ1_12
+  - first:
+      213: 7449269092763865072
+    second: environ1_13
+  - first:
+      213: 6825787152895852047
+    second: environ1_14
+  - first:
+      213: -6271111987310083247
+    second: environ1_15
+  - first:
+      213: 4076511954673056418
+    second: environ1_16
+  - first:
+      213: -161509893166199981
+    second: environ1_17
+  - first:
+      213: 779688836463469782
+    second: environ1_18
+  - first:
+      213: 9201710591798400923
+    second: environ1_19
+  - first:
+      213: -5670324751001220632
+    second: environ1_20
+  - first:
+      213: 8355610871894388789
+    second: environ1_21
+  - first:
+      213: 8513082523253755960
+    second: environ1_22
+  - first:
+      213: -8421876418360935399
+    second: environ1_23
+  - first:
+      213: -6525333020887674123
+    second: environ1_24
+  - first:
+      213: 4664635946294696268
+    second: environ1_25
+  - first:
+      213: -1140061072539605390
+    second: environ1_26
+  - first:
+      213: -1724745906857842259
+    second: environ1_27
+  - first:
+      213: -425267628942580476
+    second: environ1_28
+  - first:
+      213: 14889235495428035
+    second: environ1_29
+  - first:
+      213: 2442067209783861410
+    second: environ1_30
+  - first:
+      213: -1839057152171384734
+    second: environ1_31
+  - first:
+      213: 143118719529925745
+    second: environ1_32
+  - first:
+      213: -1940916915151422352
+    second: environ1_33
+  - first:
+      213: 3897151602065104158
+    second: environ1_34
+  - first:
+      213: -468616222994558027
+    second: environ1_35
+  - first:
+      213: 2895909208931510906
+    second: environ1_36
+  - first:
+      213: -8429344448274120127
+    second: environ1_37
+  - first:
+      213: -6535885091125051951
+    second: environ1_38
+  - first:
+      213: -2669272393777564861
+    second: environ1_39
+  - first:
+      213: -8716997863339915897
+    second: environ1_40
+  - first:
+      213: -5905150389018977372
+    second: environ1_41
+  - first:
+      213: 1497474303535109966
+    second: environ1_42
+  - first:
+      213: 382209213719461985
+    second: environ1_43
+  - first:
+      213: -7305407957465237566
+    second: environ1_44
+  - first:
+      213: 5127682850893142988
+    second: environ1_45
+  - first:
+      213: -2425322627772493579
+    second: environ1_46
+  - first:
+      213: -1273176304441080969
+    second: environ1_47
+  externalObjects: {}
+  serializedVersion: 11
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: -1
+    aniso: -1
+    mipBias: -100
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  applyGammaDecoding: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: environ1_0
+      rect:
+        serializedVersion: 2
+        x: 1
+        y: 1418
+        width: 93
+        height: 630
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6bb99bf4e5fd27aa0800000000000000
+      internalID: -6164619343759303754
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: environ1_1
+      rect:
+        serializedVersion: 2
+        x: 98
+        y: 1496
+        width: 46
+        height: 552
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8cf3b3f0098a8df30800000000000000
+      internalID: 4600612356043259848
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: environ1_2
+      rect:
+        serializedVersion: 2
+        x: 147
+        y: 1473
+        width: 76
+        height: 475
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2b7e599a642e2f490800000000000000
+      internalID: -7713854418611476558
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: environ1_3
+      rect:
+        serializedVersion: 2
+        x: 362
+        y: 1259
+        width: 99
+        height: 789
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7ace9ac9f93922300800000000000000
+      internalID: 225905245059411111
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: environ1_4
+      rect:
+        serializedVersion: 2
+        x: 607
+        y: 1745
+        width: 118
+        height: 124
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d561331eeb84a0ff0800000000000000
+      internalID: -69162859611613603
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: environ1_5
+      rect:
+        serializedVersion: 2
+        x: 911
+        y: 1240
+        width: 95
+        height: 766
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 113633abcee0a7e30800000000000000
+      internalID: 4501927187409232657
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: environ1_6
+      rect:
+        serializedVersion: 2
+        x: 1010
+        y: 1781
+        width: 434
+        height: 267
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b470a6575598420d0800000000000000
+      internalID: -3448480414523848885
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: environ1_7
+      rect:
+        serializedVersion: 2
+        x: 1765
+        y: 1532
+        width: 95
+        height: 332
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6139e15b7e11e3e80800000000000000
+      internalID: -8197094584893926634
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: environ1_8
+      rect:
+        serializedVersion: 2
+        x: 1865
+        y: 1721
+        width: 77
+        height: 266
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 750290b9a50d08e70800000000000000
+      internalID: 9115514733364584535
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: environ1_9
+      rect:
+        serializedVersion: 2
+        x: 1944
+        y: 1706
+        width: 77
+        height: 267
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 267745c08da1bfea0800000000000000
+      internalID: -5838042976733595806
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: environ1_10
+      rect:
+        serializedVersion: 2
+        x: 470
+        y: 1481
+        width: 129
+        height: 271
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 396b283b242976990800000000000000
+      internalID: -7392779448128194925
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: environ1_11
+      rect:
+        serializedVersion: 2
+        x: 691
+        y: 1655
+        width: 40
+        height: 66
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c7c648e8048ef0760800000000000000
+      internalID: 7426409674523831420
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: environ1_12
+      rect:
+        serializedVersion: 2
+        x: 826
+        y: 1384
+        width: 64
+        height: 314
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e724c831b41a80d30800000000000000
+      internalID: 4397942379949867646
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: environ1_13
+      rect:
+        serializedVersion: 2
+        x: 1011
+        y: 1695
+        width: 434
+        height: 84
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0ff8c7e95ce116760800000000000000
+      internalID: 7449269092763865072
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: environ1_14
+      rect:
+        serializedVersion: 2
+        x: 1672
+        y: 924
+        width: 89
+        height: 776
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f0e38c040411abe50800000000000000
+      internalID: 6825787152895852047
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: environ1_15
+      rect:
+        serializedVersion: 2
+        x: 1864
+        y: 1532
+        width: 146
+        height: 167
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 15340b19fd888f8a0800000000000000
+      internalID: -6271111987310083247
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: environ1_16
+      rect:
+        serializedVersion: 2
+        x: 605
+        y: 1476
+        width: 215
+        height: 219
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2aabbe4460ea29830800000000000000
+      internalID: 4076511954673056418
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: environ1_17
+      rect:
+        serializedVersion: 2
+        x: 1018
+        y: 1572
+        width: 235
+        height: 105
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 35b0e1e9b9332cdf0800000000000000
+      internalID: -161509893166199981
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: environ1_18
+      rect:
+        serializedVersion: 2
+        x: 1398
+        y: 1225
+        width: 109
+        height: 444
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6d42eb4add202da00800000000000000
+      internalID: 779688836463469782
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: environ1_19
+      rect:
+        serializedVersion: 2
+        x: 1514
+        y: 1229
+        width: 61
+        height: 367
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b97d71ec70b03bf70800000000000000
+      internalID: 9201710591798400923
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: environ1_20
+      rect:
+        serializedVersion: 2
+        x: 231
+        y: 1434
+        width: 26
+        height: 128
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8e9877f7ea5fe41b0800000000000000
+      internalID: -5670324751001220632
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: environ1_21
+      rect:
+        serializedVersion: 2
+        x: 466
+        y: 1344
+        width: 337
+        height: 127
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 53038ac61d715f370800000000000000
+      internalID: 8355610871894388789
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: environ1_22
+      rect:
+        serializedVersion: 2
+        x: 1008
+        y: 1430
+        width: 358
+        height: 126
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 830502e537b842670800000000000000
+      internalID: 8513082523253755960
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: environ1_23
+      rect:
+        serializedVersion: 2
+        x: 1773
+        y: 1239
+        width: 125
+        height: 280
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 91c7b5db40c7f1b80800000000000000
+      internalID: -8421876418360935399
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: environ1_24
+      rect:
+        serializedVersion: 2
+        x: 4
+        y: 1133
+        width: 348
+        height: 279
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5f21dd0b03c5175a0800000000000000
+      internalID: -6525333020887674123
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: environ1_25
+      rect:
+        serializedVersion: 2
+        x: 361
+        y: 1106
+        width: 27
+        height: 148
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c49d969cdad1cb040800000000000000
+      internalID: 4664635946294696268
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: environ1_26
+      rect:
+        serializedVersion: 2
+        x: 471
+        y: 1234
+        width: 453
+        height: 101
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 276a60dae70bd20f0800000000000000
+      internalID: -1140061072539605390
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: environ1_27
+      rect:
+        serializedVersion: 2
+        x: 918
+        y: 938
+        width: 312
+        height: 350
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: da9eded5cb87018e0800000000000000
+      internalID: -1724745906857842259
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: environ1_28
+      rect:
+        serializedVersion: 2
+        x: 1021
+        y: 1208
+        width: 29
+        height: 128
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 405a76a3855291af0800000000000000
+      internalID: -425267628942580476
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: environ1_29
+      rect:
+        serializedVersion: 2
+        x: 1241
+        y: 935
+        width: 151
+        height: 473
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3cf9ea84ea5e43000800000000000000
+      internalID: 14889235495428035
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: environ1_30
+      rect:
+        serializedVersion: 2
+        x: 1781
+        y: 999
+        width: 174
+        height: 238
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2a0ebcc4037f3e120800000000000000
+      internalID: 2442067209783861410
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: environ1_31
+      rect:
+        serializedVersion: 2
+        x: 1
+        y: 639
+        width: 291
+        height: 489
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 260ee2b834b5a76e0800000000000000
+      internalID: -1839057152171384734
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: environ1_32
+      rect:
+        serializedVersion: 2
+        x: 295
+        y: 639
+        width: 271
+        height: 476
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 17c3a4697b57cf100800000000000000
+      internalID: 143118719529925745
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: environ1_33
+      rect:
+        serializedVersion: 2
+        x: 570
+        y: 950
+        width: 354
+        height: 277
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 07c3add595a7015e0800000000000000
+      internalID: -1940916915151422352
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: environ1_34
+      rect:
+        serializedVersion: 2
+        x: 1398
+        y: 1060
+        width: 273
+        height: 163
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e1d5fecebb6751630800000000000000
+      internalID: 3897151602065104158
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: environ1_35
+      rect:
+        serializedVersion: 2
+        x: 1575
+        y: 938
+        width: 84
+        height: 109
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5b39c6c27042f79f0800000000000000
+      internalID: -468616222994558027
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: environ1_36
+      rect:
+        serializedVersion: 2
+        x: 1640
+        y: 1023
+        width: 25
+        height: 36
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a7a25241516503820800000000000000
+      internalID: 2895909208931510906
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: environ1_37
+      rect:
+        serializedVersion: 2
+        x: 572
+        y: 612
+        width: 138
+        height: 332
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 142c53782e3f40b80800000000000000
+      internalID: -8429344448274120127
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: environ1_38
+      rect:
+        serializedVersion: 2
+        x: 719
+        y: 666
+        width: 58
+        height: 278
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1dd38b2632fdb45a0800000000000000
+      internalID: -6535885091125051951
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: environ1_39
+      rect:
+        serializedVersion: 2
+        x: 772
+        y: 630
+        width: 63
+        height: 314
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 343b12876e6d4fad0800000000000000
+      internalID: -2669272393777564861
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: environ1_40
+      rect:
+        serializedVersion: 2
+        x: 864
+        y: 562
+        width: 349
+        height: 278
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 78509cfb0a0070780800000000000000
+      internalID: -8716997863339915897
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: environ1_41
+      rect:
+        serializedVersion: 2
+        x: 1219
+        y: 557
+        width: 308
+        height: 369
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4ab934d0201bc0ea0800000000000000
+      internalID: -5905150389018977372
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: environ1_42
+      rect:
+        serializedVersion: 2
+        x: 1529
+        y: 643
+        width: 348
+        height: 277
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e475c72f1f818c410800000000000000
+      internalID: 1497474303535109966
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: environ1_43
+      rect:
+        serializedVersion: 2
+        x: 3
+        y: 0
+        width: 495
+        height: 637
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 16041ad3141ed4500800000000000000
+      internalID: 382209213719461985
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: environ1_44
+      rect:
+        serializedVersion: 2
+        x: 498
+        y: 1
+        width: 162
+        height: 583
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2c7f8fb1b2afd9a90800000000000000
+      internalID: -7305407957465237566
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: environ1_45
+      rect:
+        serializedVersion: 2
+        x: 797
+        y: 85
+        width: 59
+        height: 318
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ccb1950a260392740800000000000000
+      internalID: 5127682850893142988
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: environ1_46
+      rect:
+        serializedVersion: 2
+        x: 859
+        y: 5
+        width: 333
+        height: 544
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5f057e18be5875ed0800000000000000
+      internalID: -2425322627772493579
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: environ1_47
+      rect:
+        serializedVersion: 2
+        x: 1195
+        y: 1
+        width: 853
+        height: 637
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 773485d85e4c45ee0800000000000000
+      internalID: -1273176304441080969
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+  spritePackingTag: 
+  pSDRemoveMatte: 0
+  pSDShowRemoveMatteOption: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

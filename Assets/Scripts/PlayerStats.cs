@@ -7,6 +7,10 @@ public static class PlayerStats
     private static System.TimeSpan time;
 
 
+    //private static const int max_stamina = 100;
+    private static float stamina = 1f;
+
+
     public static int Deaths 
     {
         get 
@@ -40,6 +44,18 @@ public static class PlayerStats
         set 
         {
             time = value;
+        }
+    }
+
+    public static float Stamina 
+    {
+        get 
+        {
+            return stamina;
+        }
+        set 
+        {
+            stamina = value;
         }
     }
 }
