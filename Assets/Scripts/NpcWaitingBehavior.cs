@@ -9,7 +9,7 @@ public class NpcWaitingBehavior : MonoBehaviour
     private Rigidbody2D body; 
     private AudioSource audio;
     private float noticeRadius = 6;
-    private float _moveSpeed = 0.8f;
+    //private float _moveSpeed = 0.8f;
 
     private bool wallOpened = false;
     
@@ -31,6 +31,7 @@ public class NpcWaitingBehavior : MonoBehaviour
 
     IEnumerator OpenDoorAfterDelay(float time)
     {
+        if (controlledWall == null) yield break;
         yield return new WaitForSeconds(time);
         controlledWall.GetComponent<Animator>().SetTrigger("Opened");
         yield return new WaitForSeconds(0.5f);

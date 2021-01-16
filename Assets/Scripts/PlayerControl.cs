@@ -20,6 +20,8 @@ public class PlayerControl : MonoBehaviour
 
     private System.DateTime startTime;
 
+    private int _lives = 2;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -28,11 +30,12 @@ public class PlayerControl : MonoBehaviour
 	    body = GetComponent<Rigidbody2D> ();  
         anim = GetComponent<Animator>();      
         _renderer = GetComponent<Renderer>();
-        invulnerable = true;
+        
         StartCoroutine(blinkInvulnerable());
     }
 
     IEnumerator blinkInvulnerable() {
+        invulnerable = true;
         for (int i=0; i<5; i++)
         {
             _renderer.enabled = false;
@@ -79,7 +82,7 @@ public class PlayerControl : MonoBehaviour
         if ((Input.GetKey(KeyCode.X) || Input.GetKey(KeyCode.JoystickButton5)))
         {
             
-            Vector3 checkPosition = new Vector3(transform.position.x, transform.position.y-1f, transform.position.z);
+            Vector3 checkPosition = new Vector3(transform.position.x, transform.position.y-0.5f, transform.position.z);
             Collider2D[] grabColliders = Physics2D.OverlapCircleAll(checkPosition, 0.5f);
             foreach (var grabCollider in grabColliders)
             {
@@ -161,6 +164,33 @@ public class PlayerControl : MonoBehaviour
         anim.SetBool("IsFlapping", false);
     }
 
+    void OnCollisionEnter2D(Collision2D collision) {
+        if (invulnerable == true)
+            return;
+
+        Collider2D collider = collision.collider;
+
+        if (collider.tag == "Throwable") {
+            //Debug.Log("Relative Velocity " + collision.relativeVelocity.magnitude);
+
+            if (collision.relativeVelocity.magnitude > 8) {
+                hurt(0);
+            }
+        }
+
+        if (collider.tag == "Spike" || collider.tag == "Enemy")
+        {
+            hurt(0);
+        }
+
+        if (collider.tag == "Ground" && !isLeading/*GetComponent<FixedJoint2D>().enabled*/)
+        {
+            PlayerStats.Stamina = 1f;
+            /*if (PlayerStats.Stamina < 1f)
+                PlayerStats.Stamina += 0.05f;*/
+        }
+    }
+
     void OnTriggerEnter2D(Collider2D other) {
         if (invulnerable == true)
             return;
@@ -177,7 +207,7 @@ public class PlayerControl : MonoBehaviour
             return;
         }
 
-	    if (other.tag == "Spike" || other.tag == "Enemy")
+	    /*if (other.tag == "Spike" || other.tag == "Enemy")
         {
             body.velocity = new Vector2 (0, 0);
 
@@ -186,18 +216,30 @@ public class PlayerControl : MonoBehaviour
             if (cs !=null) {
                 if (cs._fromUpside) force = -90f;
             }
-            body.AddForce(new Vector2(0f, force));
-            anim.SetBool("IsDying", true);
-            GetComponent<AudioSource>().PlayOneShot(clip_death);
-        }
+            
+            hurt(force);
+        }*/
 
         if (other.tag == "Lever") {
             LeverBehavior script = other.gameObject.GetComponent<LeverBehavior>();
             if (!script || script.toggled)
                 return;
             
-            script.switchTarget();
+            script.SwitchLever();
         }       
+    }
+
+    void hurt(float force) {
+        body.AddForce(new Vector2(0f, force));
+        GetComponent<AudioSource>().PlayOneShot(clip_death);
+        if (--_lives < 0) {
+            anim.SetBool("IsDying", true);
+        } else {
+            anim.SetTrigger("Hurt");
+            StartCoroutine(blinkInvulnerable());
+        }
+        
+        
     }
 
     void dieAndRespawn() {

@@ -2,31 +2,24 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class StupidEnemyBehavior : MonoBehaviour
+public class StupidEnemyBehavior : NpcBehavior
 {
-    public AudioClip clip_death;
 
-    private PlayerControl player;
-    private Transform playerTransform;
-    private Animator anim;
     private float _followRadius = 14f;
-    private float moveSpeed = 2f;
+    private float moveSpeed = 3f;
 
-
-    public bool captured = false;
-
-   
+    public bool captured = false;   
     private bool faceRight = false;
+    
     void Start()
     {
-        player = (PlayerControl)FindObjectOfType(typeof(PlayerControl));
-        playerTransform = GameObject.FindWithTag("Player").transform;
-        anim = GetComponent<Animator>();
+        BaseInit();
     }
 
     // Update is called once per frame
     void Update()
     {
+        if (isDead) return;
          // interact with player
         float distP = Vector2.Distance(playerTransform.position, transform.position);
         if (distP < _followRadius)
@@ -58,27 +51,11 @@ public class StupidEnemyBehavior : MonoBehaviour
         
     }
 
-    void OnTriggerEnter2D(Collider2D other) {
-	    if (other.tag == "Spike") {
-            GetComponent<AudioSource>().PlayOneShot(clip_death);
-            Debug.Log("Enemy Die");
-            anim.SetBool("hurt", true);
-	        
-            Destroy(this.gameObject, 0.5f);
-            
-            //GetComponent<AudioSource>().enabled = false;
-            //isDead = true;
-            //this.transform.tag = "Untagged";
-            //GetComponent<CapsuleCollider2D>().isTrigger = false;
-        }
-    }
-
-    public void die() {
-        Debug.Log("Enemy is DEAD");
-        anim.SetTrigger("death");
-        GetComponent<AudioSource>().enabled = false;
-        
-    }
+   protected override void die()
+   {
+        base.die();
+        Destroy(this.gameObject, 0.5f);
+   }    
 
     public void flip() {
         Vector3 scale = transform.localScale;

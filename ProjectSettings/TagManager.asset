@@ -11,6 +11,8 @@ TagManager:
   - Text
   - RescuedOne
   - Lever
+  - Throwable
+  - Ground
   layers:
   - Default
   - TransparentFX

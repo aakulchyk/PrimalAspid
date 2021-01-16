@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 3093761592343481081}
   m_Layer: 0
   m_Name: FlatPlatform
-  m_TagString: Obstacle
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

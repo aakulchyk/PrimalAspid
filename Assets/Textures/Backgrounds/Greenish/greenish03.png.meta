@@ -7,22 +7,22 @@ TextureImporter:
     second: greenish03_0
   - first:
       213: 6849300768932974539
-    second: greenish03_1
+    second: stone_2
   - first:
       213: -5968057936392811453
     second: greenish03_2
   - first:
       213: -5753224884307201687
-    second: greenish03_3
+    second: stone_3
   - first:
       213: -5579309482831988751
-    second: greenish03_4
+    second: stone_4
   - first:
       213: 7731772706341654700
     second: greenish03_5
   - first:
       213: 7771081727244624252
-    second: greenish03_6
+    second: stone_1
   - first:
       213: 1839294248887779785
     second: greenish03_7
@@ -43,13 +43,19 @@ TextureImporter:
     second: greenish03_12
   - first:
       213: -4522711124682682045
-    second: greenish03_13
+    second: stone_7
   - first:
       213: 8870208213218339154
     second: greenish03_14
   - first:
       213: -1851497875249233028
     second: greenish03_15
+  - first:
+      213: 6758325127399187927
+    second: stone_5
+  - first:
+      213: 5999741307351332140
+    second: stone_6
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -156,15 +162,15 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: greenish03_1
+      name: stone_2
       rect:
         serializedVersion: 2
         x: 1104
         y: 1449
         width: 356
         height: 305
-      alignment: 6
-      pivot: {x: 0, y: 0}
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -184,8 +190,8 @@ TextureImporter:
         y: 1784
         width: 492
         height: 264
-      alignment: 6
-      pivot: {x: 0, y: 0}
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -198,15 +204,15 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: greenish03_3
+      name: stone_3
       rect:
         serializedVersion: 2
         x: 1463
         y: 1702
         width: 258
         height: 211
-      alignment: 6
-      pivot: {x: 0, y: 0}
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -219,15 +225,15 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: greenish03_4
+      name: stone_4
       rect:
         serializedVersion: 2
         x: 1718
         y: 1828
         width: 330
         height: 220
-      alignment: 6
-      pivot: {x: 0, y: 0}
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -261,15 +267,15 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: greenish03_6
+      name: stone_1
       rect:
         serializedVersion: 2
         x: 740
         y: 1458
         width: 366
         height: 324
-      alignment: 6
-      pivot: {x: 0, y: 0}
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -310,8 +316,8 @@ TextureImporter:
         y: 1
         width: 505
         height: 1118
-      alignment: 6
-      pivot: {x: 0, y: 0}
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -374,7 +380,7 @@ TextureImporter:
         width: 108
         height: 689
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -395,7 +401,7 @@ TextureImporter:
         width: 223
         height: 445
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -408,7 +414,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: greenish03_13
+      name: stone_7
       rect:
         serializedVersion: 2
         x: 1589
@@ -416,7 +422,7 @@ TextureImporter:
         width: 331
         height: 263
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -437,7 +443,7 @@ TextureImporter:
         width: 556
         height: 176
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -458,7 +464,7 @@ TextureImporter:
         width: 667
         height: 366
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -466,6 +472,48 @@ TextureImporter:
       bones: []
       spriteID: c73016bfd782e46e0800000000000000
       internalID: -1851497875249233028
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: stone_5
+      rect:
+        serializedVersion: 2
+        x: 1587
+        y: 927
+        width: 284
+        height: 198
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7d5a93f65e46acd50800000000000000
+      internalID: 6758325127399187927
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: stone_6
+      rect:
+        serializedVersion: 2
+        x: 1587
+        y: 686
+        width: 286
+        height: 237
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c25f9e85eec534350800000000000000
+      internalID: 5999741307351332140
       vertices: []
       indices: 
       edges: []

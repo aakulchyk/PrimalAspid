@@ -116,7 +116,7 @@ BoxCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0.11110214}
@@ -168,7 +168,7 @@ AudioSource:
   Priority: 128
   DopplerLevel: 2.52
   MinDistance: 1
-  MaxDistance: 50
+  MaxDistance: 30
   Pan2D: 0
   rolloffMode: 2
   BypassEffects: 0
@@ -223,8 +223,8 @@ AudioSource:
       inWeight: 0
       outWeight: 0
     - serializedVersion: 3
-      time: 0.64
-      value: 0.03125
+      time: 0.6457068
+      value: 0.022781372
       inSlope: -0.04884758
       outSlope: -0.04884758
       tangentMode: 0

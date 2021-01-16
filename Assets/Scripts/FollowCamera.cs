@@ -13,6 +13,7 @@ public class FollowCamera : MonoBehaviour {
 
     public GameObject leftBorder;
     public GameObject bottomBorder;
+    public GameObject topBorder;
 
     // Use this for initialization
     void Start () {
@@ -37,6 +38,11 @@ public class FollowCamera : MonoBehaviour {
             if (targetPos.x < posNoZ.x && posNoZ.x - leftBorder.transform.position.x < 11f) {
                 targetPos.x = oldX;
             }
+
+            if (targetPos.y > posNoZ.y && topBorder.transform.position.y - posNoZ.y < 11f) {
+                targetPos.y = oldY;
+            }
+            
             if (targetPos.y < posNoZ.y && posNoZ.y - bottomBorder.transform.position.y < 6f) {
                 targetPos.y = oldY;
             }   

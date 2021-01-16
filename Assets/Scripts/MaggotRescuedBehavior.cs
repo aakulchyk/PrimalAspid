@@ -4,40 +4,27 @@ using System.Collections.Generic;
 using UnityEngine;
 
 
-public class MaggotRescuedBehavior : MonoBehaviour
+public class MaggotRescuedBehavior : NpcBehavior
 {
     private float moveSpeed = 0.8f;
     private float _followRadius = 8f;
 
-    private Transform playerTransform;
- 
-
-    private Animator anim;
-    private Rigidbody2D body; 
     private AudioSource sounds;
 
-    public bool isDead = false;
     public bool isFollowing = false;
-
-    private PlayerControl player;
 
     public Transform targetSibling;
 
-    public AudioClip clip_death;
     public AudioClip clip_sad_idle;
     public AudioClip clip_follow_start;
     public AudioClip clip_follow_stop;
     public AudioClip clip_success;
 
 
-
     // Start is called before the first frame update
     void Start()
     {
-        player = (PlayerControl)FindObjectOfType(typeof(PlayerControl));
-        playerTransform = GameObject.FindWithTag("Player").transform;
-        anim = GetComponent<Animator>();
-        body = GetComponent<Rigidbody2D>();
+        BaseInit();
         sounds = GetComponent<AudioSource>(); 
     }
 
@@ -46,7 +33,6 @@ public class MaggotRescuedBehavior : MonoBehaviour
     {
         if (isDead)
             return;
-
 
         // interact with sibling
         float distS = Vector2.Distance(targetSibling.position, transform.position);
@@ -95,22 +81,17 @@ public class MaggotRescuedBehavior : MonoBehaviour
         }
     }
 
-    void OnTriggerEnter2D(Collider2D other) {
-	    if (other.tag == "Spike" || other.tag == "Enemy") {
-            GetComponent<AudioSource>().PlayOneShot(clip_death);
-            Debug.Log("Maggot Die");
-	        anim.SetTrigger("Die");
-            
-            isDead = true;
-            //this.transform.tag = "Untagged";
-            //GetComponent<CapsuleCollider2D>().isTrigger = false;
-        }
+    public override void hurt(float force) {
+        GetComponent<AudioSource>().Stop();
+        GetComponent<AudioSource>().PlayOneShot(clip_death);
+        anim.SetTrigger("Die");
+        isDead = true;
     }
 
-    public void die() {
+    protected override void die() {
         Debug.Log("Maggot is DEAD");
         anim.SetBool("isDead", true);
         GetComponent<AudioSource>().enabled = false;
-        player.LoseAndRespawn();
+        //player.LoseAndRespawn();
     }
 }

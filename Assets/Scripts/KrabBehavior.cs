@@ -2,33 +2,23 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class KrabBehavior : MonoBehaviour
+public class KrabBehavior : NpcBehavior
 {
-    public AudioClip clip_death;
     public AudioClip clip_crawl;
     public AudioClip clip_jump;
 
-    private PlayerControl player;
-    private Transform playerTransform;
     public  float _followRadius = 7f;
     public float _moveSpeed = 1.5f;
     public float _jumpForce = 600f;
 
     private float distToGround;
-    private Animator anim;
-    private Rigidbody2D body;
 
     private bool isGrounded = true;
-    private bool isDead = false;
+    
     // Start is called before the first frame update
     void Start()
     {
-        player = (PlayerControl)FindObjectOfType(typeof(PlayerControl));
-        playerTransform = GameObject.FindWithTag("Player").transform;
-
-        anim = GetComponent<Animator>();
-        body = GetComponent<Rigidbody2D> ();  
-
+        BaseInit();
         distToGround = GetComponent<CircleCollider2D>().bounds.extents.y;
     }
 
@@ -52,12 +42,12 @@ public class KrabBehavior : MonoBehaviour
             }
         
             // jump
-                        // Cast a ray straight down.
+            // Cast a ray straight down.
             RaycastHit2D hit = Physics2D.Raycast(transform.position, Vector2.up);
             // If it hits something...
             if (hit.collider != null)
             {
-                Debug.Log("raycast true " + hit.collider.tag);
+                //Debug.Log("raycast true " + hit.collider.tag);
                 if (hit.collider.tag == "Player") {
                     anim.SetBool("jump", true);
                     body.AddForce(new Vector2(0f, _jumpForce));
@@ -69,26 +59,19 @@ public class KrabBehavior : MonoBehaviour
         }
     }
 
-
-
-   void OnCollisionEnter2D(Collision2D hit)
+    protected override void processCollision(Collision2D hit)
     {
-        if (hit.gameObject.CompareTag ("Obstacle")) {
+        if (hit.gameObject.CompareTag ("Obstacle") || hit.gameObject.CompareTag ("Ground")) {
             isGrounded = true;
             anim.SetBool("jump", false);
         }
+
+        base.processCollision(hit);
     }
 
-    void OnTriggerEnter2D(Collider2D other)
-    {
-	    if (other.tag == "Spike" && !isDead)
-        {
-            GetComponent<AudioSource>().Stop();
-            GetComponent<AudioSource>().PlayOneShot(clip_death);
-            anim.SetTrigger("die");
-	        isDead = true;
-            body.constraints = 0;
-            Destroy(this.gameObject, 5f);
-        }
-    }
+   protected override void die()
+   {
+        base.die();
+        Destroy(this.gameObject, 5f);
+   }
 }
