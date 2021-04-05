@@ -79,14 +79,11 @@ public class PlayerControl : MonoBehaviour
             flip();
         }
 
-        if ((Input.GetKey(KeyCode.X) || Input.GetKey(KeyCode.JoystickButton5)))
-        {
-            
+        if ((Input.GetKey(KeyCode.X) || Input.GetKey(KeyCode.JoystickButton5))) {
             Vector3 checkPosition = new Vector3(transform.position.x, transform.position.y-0.5f, transform.position.z);
             Collider2D[] grabColliders = Physics2D.OverlapCircleAll(checkPosition, 0.5f);
             foreach (var grabCollider in grabColliders)
             {
-                
                 if (grabCollider.tag == "Player")
                     continue;
                 Rigidbody2D body = grabCollider.gameObject.GetComponent<Rigidbody2D>();
@@ -105,7 +102,8 @@ public class PlayerControl : MonoBehaviour
                 break;
             }
         }
-        else {
+        else
+        {
             isLeading = false;
             GetComponent<FixedJoint2D>().enabled = false;
             GetComponent<FixedJoint2D>().connectedBody = null;
@@ -115,12 +113,9 @@ public class PlayerControl : MonoBehaviour
              PlayerStats.Stamina += 0.001f;
         }
 
-
-        if (Input.GetKeyDown(KeyCode.Escape))
-        {
+        if (Input.GetKeyDown(KeyCode.Escape)) {
             Application.Quit();
         }
-
     }
     
     public void onTurnFinished() {
@@ -145,7 +140,6 @@ public class PlayerControl : MonoBehaviour
                 return;
             }
 
-
             PlayerStats.Stamina = potentialStamina;
         }
 
@@ -156,8 +150,6 @@ public class PlayerControl : MonoBehaviour
         
         body.AddForce(new Vector2(0f, force));
         anim.SetBool("IsFlapping", true);
-
-        
     }
 
     public void endFlap() {

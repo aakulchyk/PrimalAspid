@@ -5,8 +5,8 @@ using UnityEngine;
 public class StupidEnemyBehavior : NpcBehavior
 {
 
-    private float _followRadius = 14f;
-    private float moveSpeed = 3f;
+    public float _followRadius = 14f;
+    public float moveSpeed = 3f;
 
     public bool captured = false;   
     private bool faceRight = false;
@@ -57,7 +57,8 @@ public class StupidEnemyBehavior : NpcBehavior
         Destroy(this.gameObject, 0.5f);
    }    
 
-    public void flip() {
+    public void flip()
+    {
         Vector3 scale = transform.localScale;
         transform.localScale = new Vector3(-1*scale.x, scale.y, scale.z);
     }

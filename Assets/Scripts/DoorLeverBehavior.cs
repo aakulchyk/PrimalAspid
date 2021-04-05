@@ -21,8 +21,6 @@ public class DoorLeverBehavior : LeverBehavior
         } else {
             Debug.Log("Door: animation not found");
         }
-
-
     }
 
 

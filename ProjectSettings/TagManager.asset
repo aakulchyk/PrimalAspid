@@ -13,6 +13,7 @@ TagManager:
   - Lever
   - Throwable
   - Ground
+  - Collectable
   layers:
   - Default
   - TransparentFX

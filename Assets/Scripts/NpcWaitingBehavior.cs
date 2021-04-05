@@ -7,7 +7,7 @@ public class NpcWaitingBehavior : MonoBehaviour
     private bool waitSuccess = false;
     private Animator anim;
     private Rigidbody2D body; 
-    private AudioSource audio;
+    private AudioSource sounds;
     private float noticeRadius = 6;
     //private float _moveSpeed = 0.8f;
 
@@ -25,7 +25,7 @@ public class NpcWaitingBehavior : MonoBehaviour
     void Start()
     {
         anim = GetComponent<Animator>();
-        audio = GetComponent<AudioSource>(); 
+        sounds = GetComponent<AudioSource>(); 
         body = GetComponent<Rigidbody2D>();
     }
 
@@ -58,13 +58,13 @@ public class NpcWaitingBehavior : MonoBehaviour
             /*Vector3 direction = target.position - transform.position;
             body.velocity = new Vector2 (direction.x * _moveSpeed, direction.y * _moveSpeed);*/
 
-            if (!audio.isPlaying)
-                audio.PlayOneShot(clip_success);
+            if (!sounds.isPlaying)
+                sounds.PlayOneShot(clip_success);
         }
 
         if (!waitSuccess) {
-            if (!audio.isPlaying)
-                audio.PlayOneShot(clip_sad_idle);
+            if (!sounds.isPlaying)
+                sounds.PlayOneShot(clip_sad_idle);
         }
     }
 }

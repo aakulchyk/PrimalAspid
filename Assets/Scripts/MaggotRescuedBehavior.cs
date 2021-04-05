@@ -20,7 +20,6 @@ public class MaggotRescuedBehavior : NpcBehavior
     public AudioClip clip_follow_stop;
     public AudioClip clip_success;
 
-
     // Start is called before the first frame update
     void Start()
     {

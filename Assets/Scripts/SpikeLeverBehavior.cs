@@ -2,7 +2,6 @@
 
 public class SpikeLeverBehavior : LeverBehavior
 {
-
     public override void switchSpecificTarget()
     {
         foreach (Transform trans in target.transform)
@@ -12,7 +11,5 @@ public class SpikeLeverBehavior : LeverBehavior
 
             script.switchedOff = true;
         }
-
-        
     }
 }
