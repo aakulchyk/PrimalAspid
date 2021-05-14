@@ -11,7 +11,6 @@ public class KrabBehavior : NpcBehavior
     public float _moveSpeed = 1.5f;
     public float _jumpForce = 600f;
 
-    private float distToGround;
 
     private bool isGrounded = true;
     
@@ -19,7 +18,6 @@ public class KrabBehavior : NpcBehavior
     void Start()
     {
         BaseInit();
-        distToGround = GetComponent<CircleCollider2D>().bounds.extents.y;
     }
 
     // Update is called once per frame

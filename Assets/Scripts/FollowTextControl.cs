@@ -31,9 +31,9 @@ public class FollowTextControl : MonoBehaviour
         int newState = -1;
         if (maggot.isDead)
             newState = 3;
-        else if (player.isLeading && maggot.isFollowing)
+        else if (player.isPulling && maggot.isFollowing)
             newState = 2;
-        else if (player.isLeading && !maggot.isFollowing)
+        else if (player.isPulling && !maggot.isFollowing)
             newState = 1;
         else
             newState = 0;

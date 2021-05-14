@@ -7,9 +7,12 @@ public class StupidEnemyBehavior : NpcBehavior
 
     public float _followRadius = 14f;
     public float moveSpeed = 3f;
-
-    public bool captured = false;   
+ 
     private bool faceRight = false;
+
+    public AudioClip clip_captured;
+
+    private bool prev_captured = false;
     
     void Start()
     {
@@ -17,7 +20,7 @@ public class StupidEnemyBehavior : NpcBehavior
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
         if (isDead) return;
          // interact with player
@@ -34,17 +37,30 @@ public class StupidEnemyBehavior : NpcBehavior
             }
 
             if (!captured) {
-                Vector3 direction = playerTransform.position - transform.position;
-                direction.x = direction.x > 0 ? 1f : -1f;
-                direction.y = direction.y > 0 ? 1f : -1f;
-                GetComponent<Rigidbody2D>().velocity = new Vector2 (direction.x * moveSpeed, direction.y * moveSpeed);
+
+                if (prev_captured) {
+                    sounds.Stop();
+                    sounds.Play();
+                }
+
+                GetComponent<Rigidbody2D>().velocity = new Vector2 (GetVectorToPlayer().x * moveSpeed, GetVectorToPlayer().y * moveSpeed);
+                anim.SetBool("chase", true);
             } else {
                 anim.SetBool("hurt", true);
-                captured = false;
+                
+                if (!prev_captured)
+                    sounds.Stop();    
+                
+
+                if (!sounds.isPlaying)
+                    sounds.PlayOneShot(clip_captured);
             }
+
+            prev_captured = captured;
 
 
         } else {
+            anim.SetBool("chase", false);
             GetComponent<Rigidbody2D>().velocity = new Vector2(0, 0.25f);
         }
 

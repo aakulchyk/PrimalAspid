@@ -3,11 +3,18 @@ using UnityEngine;
 
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using System.IO;
 
 public class MenuControls : MonoBehaviour
 {
     public bool _gamePad = false;
     public void StartPressed()
+    {
+        File.Delete(Application.persistentDataPath + "/gamesave.save");
+        SceneManager.LoadScene("MainScene");
+    }
+
+    public void ContinuePressed()
     {
          SceneManager.LoadScene("MainScene");
     }
@@ -25,7 +32,5 @@ public class MenuControls : MonoBehaviour
         Text buttonText = GameObject.Find("InputButtonText").GetComponent<Text>();
         Debug.Log("Button text: " + buttonText.text);
         buttonText.text = _gamePad ? "Gamepad" : "Keyboard";
-        //UI.Text text = buttonText.GetComponent<Text>;
-        //text.text = "hui";
     }
 }

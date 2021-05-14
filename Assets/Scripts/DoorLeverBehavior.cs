@@ -4,6 +4,7 @@ using System.Collections.Generic;
 
 public class DoorLeverBehavior : LeverBehavior
 {
+    public bool closing = false;
     IEnumerator OpenDoorAfterDelay(float time)
     {
         yield return new WaitForSeconds(time);
@@ -11,7 +12,7 @@ public class DoorLeverBehavior : LeverBehavior
         Animator anim = target.GetComponent<Animator>();
         if (anim) 
         {
-            anim.SetTrigger("Opened");
+            anim.SetTrigger(closing ? "Closed" : "Opened");
             yield return new WaitForSeconds(0.5f);
 
             AudioSource au = target.GetComponent<AudioSource>();

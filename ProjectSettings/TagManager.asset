@@ -14,6 +14,8 @@ TagManager:
   - Throwable
   - Ground
   - Collectable
+  - CheckPoint
+  - Waypoint
   layers:
   - Default
   - TransparentFX

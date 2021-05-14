@@ -1,7 +1,46 @@
 fileFormatVersion: 2
 guid: 74f1f5cd71d3c5948b51d7f30cfc65d7
 TextureImporter:
-  internalIDToNameTable: []
+  internalIDToNameTable:
+  - first:
+      213: 2189956658547348223
+    second: vengefly_0
+  - first:
+      213: -3773286071252788064
+    second: vengefly_1
+  - first:
+      213: -8207006162821869258
+    second: vengefly_2
+  - first:
+      213: -4686625382395578201
+    second: vengefly_3
+  - first:
+      213: 1906772021520426802
+    second: vengefly_4
+  - first:
+      213: -4579077671031893977
+    second: vengefly_hurt_0
+  - first:
+      213: 2811207854542537526
+    second: vengefly_hurt_1
+  - first:
+      213: -4843929514079517864
+    second: vengefly_death_0
+  - first:
+      213: -1793025556107014840
+    second: vengefly_death_1
+  - first:
+      213: -5764846714115930336
+    second: vengefly_death_2
+  - first:
+      213: -1947273778876428405
+    second: vengefly_chase_0
+  - first:
+      213: 9002387843728423011
+    second: vengefly_chase_1
+  - first:
+      213: 2352961436388636054
+    second: vengefly_hurt_2
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -40,7 +79,7 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 1
+  spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
@@ -71,9 +110,294 @@ TextureImporter:
     overridden: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
-    sprites: []
+    sprites:
+    - serializedVersion: 2
+      name: vengefly_0
+      rect:
+        serializedVersion: 2
+        x: 3
+        y: 640
+        width: 117
+        height: 137
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ff257326af9446e10800000000000000
+      internalID: 2189956658547348223
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: vengefly_1
+      rect:
+        serializedVersion: 2
+        x: 123
+        y: 640
+        width: 117
+        height: 137
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0ac5c075f4892abc0800000000000000
+      internalID: -3773286071252788064
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: vengefly_2
+      rect:
+        serializedVersion: 2
+        x: 243
+        y: 640
+        width: 117
+        height: 137
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6319f83a06bda1e80800000000000000
+      internalID: -8207006162821869258
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: vengefly_3
+      rect:
+        serializedVersion: 2
+        x: 363
+        y: 640
+        width: 117
+        height: 137
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7a87bf6ab03c5feb0800000000000000
+      internalID: -4686625382395578201
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: vengefly_4
+      rect:
+        serializedVersion: 2
+        x: 483
+        y: 640
+        width: 117
+        height: 137
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 237e0621d07367a10800000000000000
+      internalID: 1906772021520426802
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: vengefly_hurt_0
+      rect:
+        serializedVersion: 2
+        x: 295
+        y: 133
+        width: 143
+        height: 136
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 72098338e19d370c0800000000000000
+      internalID: -4579077671031893977
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: vengefly_hurt_1
+      rect:
+        serializedVersion: 2
+        x: 441
+        y: 133
+        width: 143
+        height: 136
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 633cbc736aa630720800000000000000
+      internalID: 2811207854542537526
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: vengefly_death_0
+      rect:
+        serializedVersion: 2
+        x: 3
+        y: 3
+        width: 140
+        height: 108
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 853824c65c7e6ccb0800000000000000
+      internalID: -4843929514079517864
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: vengefly_death_1
+      rect:
+        serializedVersion: 2
+        x: 146
+        y: 3
+        width: 140
+        height: 108
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 84d4b0fa1c4ed17e0800000000000000
+      internalID: -1793025556107014840
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: vengefly_death_2
+      rect:
+        serializedVersion: 2
+        x: 289
+        y: 3
+        width: 140
+        height: 108
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 027ca8cf4762fffa0800000000000000
+      internalID: -5764846714115930336
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: vengefly_chase_0
+      rect:
+        serializedVersion: 2
+        x: 3
+        y: 133
+        width: 143
+        height: 136
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b8f43a1b0d4e9f4e0800000000000000
+      internalID: -1947273778876428405
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: vengefly_chase_1
+      rect:
+        serializedVersion: 2
+        x: 149
+        y: 133
+        width: 143
+        height: 136
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3683ab31c08eeec70800000000000000
+      internalID: 9002387843728423011
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: vengefly_hurt_2
+      rect:
+        serializedVersion: 2
+        x: 30
+        y: 302
+        width: 56
+        height: 77
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 695332ab5f567a020800000000000000
+      internalID: 2352961436388636054
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []

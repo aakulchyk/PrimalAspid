@@ -4,7 +4,7 @@ using System.Collections;
 
 public class PlayerControl : MonoBehaviour
 {
-    private Rigidbody2D body;
+    public Rigidbody2D body;
     private Animator anim;
     private Renderer _renderer;
     private bool faceRight = true;
@@ -13,14 +13,18 @@ public class PlayerControl : MonoBehaviour
     //private Time startTime;
     private bool invulnerable;
 
-    public bool isLeading = false;
+    public bool isPulling = false;
+    public AudioClip clip_hurt;
     public AudioClip clip_death;
     public AudioClip clip_flap;
+
+    public const int MAX_HP = 2;
 
 
     private System.DateTime startTime;
 
-    private int _lives = 2;
+    private bool prev_flap = false;
+    
 
     // Start is called before the first frame update
     void Start()
@@ -30,8 +34,20 @@ public class PlayerControl : MonoBehaviour
 	    body = GetComponent<Rigidbody2D> ();  
         anim = GetComponent<Animator>();      
         _renderer = GetComponent<Renderer>();
+
+        PlayerStats.HP = MAX_HP;
+
+        Game game = (Game)FindObjectOfType(typeof(Game));
+        game.LoadGame();
         
+
         StartCoroutine(blinkInvulnerable());
+    }
+
+    public void throwByImpulse(Vector2 vector) {
+        Debug.Log("Throw player back " + vector);
+        StartCoroutine(shortInvulnerability());
+        body.velocity = vector;
     }
 
     IEnumerator blinkInvulnerable() {
@@ -46,15 +62,28 @@ public class PlayerControl : MonoBehaviour
         invulnerable = false;
     }
 
+    IEnumerator shortInvulnerability() {
+        invulnerable = true;
+        yield return new WaitForSeconds(0.5F);
+        invulnerable = false;
+    }
+
+
+
+
     // Update is called once per frame
     void Update()
     {
-        bool isAlreadyTurning = anim.GetCurrentAnimatorStateInfo(0).IsName("AspidTurn");
-        bool isAlreadyFlapping = anim.GetCurrentAnimatorStateInfo(0).IsName("AspidFlap");
+        bool isAlreadyTurning = anim.GetCurrentAnimatorStateInfo(0).IsName("GrimTurn");
+        bool isAlreadyFlapping = anim.GetCurrentAnimatorStateInfo(0).IsName("GrimFlap");
 
-        if ((Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.JoystickButton0))
+        if ((Input.GetKey(KeyCode.Space) || Input.GetKey(KeyCode.JoystickButton0))
                 && !isAlreadyFlapping && !isAlreadyTurning) {
-            startFlap();
+
+            if (!prev_flap) {
+                startFlap();
+                prev_flap = true;
+            } else prev_flap = false;
         }
         
         float moveX = Input.GetAxis ("Horizontal");
@@ -72,6 +101,10 @@ public class PlayerControl : MonoBehaviour
             faceRight = !faceRight;
         }
 
+        /*bool isGrounded = anim.GetCurrentAnimatorStateInfo(0).IsName("IsGrounded");
+        if (isGrounded)
+            isAlreadyTurning = true;*/
+
         if (!isAlreadyTurning && newTurnStarted) {
             anim.SetBool("Turn", true);
         }
@@ -84,38 +117,61 @@ public class PlayerControl : MonoBehaviour
             Collider2D[] grabColliders = Physics2D.OverlapCircleAll(checkPosition, 0.5f);
             foreach (var grabCollider in grabColliders)
             {
-                if (grabCollider.tag == "Player")
+                if (grabCollider.tag == "Player" || grabCollider.tag == "Spike")
                     continue;
                 Rigidbody2D body = grabCollider.gameObject.GetComponent<Rigidbody2D>();
 
                 if (body == null)
                     continue;
 
-                StupidEnemyBehavior behavior = grabCollider.gameObject.GetComponent<StupidEnemyBehavior>();
-                if (behavior) {
-                    behavior.captured = true;
-                }
-                
-                GetComponent<FixedJoint2D>().connectedBody = body;
-                GetComponent<FixedJoint2D>().enabled = true;
-                isLeading = true;//!isLeading;
+                grabBody(body);
                 break;
             }
         }
         else
         {
-            isLeading = false;
-            GetComponent<FixedJoint2D>().enabled = false;
-            GetComponent<FixedJoint2D>().connectedBody = null;
+            releaseBody();
         }
 
-        if (!isLeading && PlayerStats.Stamina < 1f) {
+        if (!isPulling && PlayerStats.Stamina < 1f) {
              PlayerStats.Stamina += 0.001f;
         }
 
         if (Input.GetKeyDown(KeyCode.Escape)) {
             Application.Quit();
         }
+    }
+
+    public void grabBody(Rigidbody2D body) {
+
+        NpcBehavior behavior = body.gameObject.GetComponent<NpcBehavior>();
+        if (behavior) {
+            if (!behavior.invulnerable) {
+                behavior.getCaptured();
+            } else return;
+        }
+
+        GetComponent<FixedJoint2D>().connectedBody = body;
+        GetComponent<FixedJoint2D>().enabled = true;
+        isPulling = true;
+    }
+
+    public void releaseBody() {
+        isPulling = false;
+
+        Rigidbody2D body = GetComponent<FixedJoint2D>().connectedBody;
+
+        if (body && body.gameObject) {
+            NpcBehavior behavior = body.gameObject.GetComponent<NpcBehavior>();
+
+            if (behavior)
+                behavior.getReleased();
+            GetComponent<FixedJoint2D>().connectedBody = null;
+        }
+
+        GetComponent<FixedJoint2D>().enabled = false;
+        
+       
     }
     
     public void onTurnFinished() {
@@ -133,7 +189,7 @@ public class PlayerControl : MonoBehaviour
 
         float potentialStamina = PlayerStats.Stamina - 0.05f;
 
-        if (isLeading) {
+        if (isPulling) {
             
             if (potentialStamina < 0f) {
                 PlayerStats.Stamina = 0f;
@@ -150,6 +206,7 @@ public class PlayerControl : MonoBehaviour
         
         body.AddForce(new Vector2(0f, force));
         anim.SetBool("IsFlapping", true);
+        anim.SetBool("IsGrounded", false);
     }
 
     public void endFlap() {
@@ -170,16 +227,32 @@ public class PlayerControl : MonoBehaviour
             }
         }
 
-        if (collider.tag == "Spike" || collider.tag == "Enemy")
+        if (collider.tag == "Spike")
         {
             hurt(0);
         }
 
-        if (collider.tag == "Ground" && !isLeading/*GetComponent<FixedJoint2D>().enabled*/)
+        if (collider.tag == "Enemy") {
+            NpcBehavior behavior = collider.gameObject.GetComponent<NpcBehavior>();
+            if (!behavior.isDead)
+                hurt(0);
+        }
+
+        
+
+        if (collider.tag == "Ground" && !isPulling/*GetComponent<FixedJoint2D>().enabled*/)
         {
+            anim.SetBool("IsGrounded", true);
             PlayerStats.Stamina = 1f;
-            /*if (PlayerStats.Stamina < 1f)
-                PlayerStats.Stamina += 0.05f;*/
+        }
+    }
+
+    void OnCollisionExit2D(Collision2D other) {
+        Collider2D collider = other.collider;
+        if (collider.tag == "Ground")
+        {
+            //Debug.Log("Leave ground");
+            anim.SetBool("IsGrounded", false);
         }
     }
 
@@ -199,35 +272,34 @@ public class PlayerControl : MonoBehaviour
             return;
         }
 
-	    /*if (other.tag == "Spike" || other.tag == "Enemy")
-        {
-            body.velocity = new Vector2 (0, 0);
-
-            MovingSpikeBehavior cs = other.GetComponent<MovingSpikeBehavior>();
-            float force = 90f;
-            if (cs !=null) {
-                if (cs._fromUpside) force = -90f;
-            }
-            
-            hurt(force);
-        }*/
-
         if (other.tag == "Lever") {
             LeverBehavior script = other.gameObject.GetComponent<LeverBehavior>();
             if (!script || script.toggled)
                 return;
             
             script.SwitchLever();
-        }       
+        }
+
+        if (other.tag == "Collectable") {
+            PlayerStats.HP++;
+            other.gameObject.GetComponent<PrizeBehavior>().GetCollected();
+        }
+
+        if (other.tag == "CheckPoint") {
+            Game game = (Game)FindObjectOfType(typeof(Game));
+            game.SaveGame();
+        }
     }
 
     void hurt(float force) {
         body.AddForce(new Vector2(0f, force));
-        GetComponent<AudioSource>().PlayOneShot(clip_death);
-        if (--_lives < 0) {
+        
+        if (--PlayerStats.HP < 0) {
+            GetComponent<AudioSource>().PlayOneShot(clip_death);
             anim.SetBool("IsDying", true);
         } else {
             anim.SetTrigger("Hurt");
+            GetComponent<AudioSource>().PlayOneShot(clip_hurt);
             StartCoroutine(blinkInvulnerable());
         }
         
@@ -248,6 +320,7 @@ public class PlayerControl : MonoBehaviour
 
     public void LoseAndRespawn() {
         PlayerStats.Losses++;
+        //PlayerStats.HP = PlayerStats.MAX_HP;
         Debug.Log("Losses: " + PlayerStats.Losses);
         StartCoroutine(RestartAfterDelay());
     }

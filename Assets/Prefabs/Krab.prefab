@@ -13,9 +13,8 @@ GameObject:
   - component: {fileID: 544185562659053995}
   - component: {fileID: 544185562659053992}
   - component: {fileID: 544185562659053996}
-  - component: {fileID: 544185562659053998}
-  - component: {fileID: 544185562659053999}
   - component: {fileID: 544185562659054001}
+  - component: {fileID: 8271568179984976108}
   m_Layer: 0
   m_Name: Krab
   m_TagString: Enemy
@@ -120,8 +119,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isDead: 0
+  captured: 0
+  clip_hurt: {fileID: 0}
   clip_death: {fileID: 8300000, guid: 3603262efd8d41e4996baccdc1df2124, type: 3}
-  _hp: 1
+  _hp: 0
+  invulnerable: 0
   clip_crawl: {fileID: 8300000, guid: 83dcfb28d387bc940bb4093bb3724b01, type: 3}
   clip_jump: {fileID: 8300000, guid: 041574ae82d18024a919b0a456a986f3, type: 3}
   _followRadius: 12
@@ -148,48 +150,6 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
---- !u!58 &544185562659053998
-CircleCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 544185562659053993}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: -0.096693754}
-  serializedVersion: 2
-  m_Radius: 0.55331516
---- !u!61 &544185562659053999
-BoxCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 544185562659053993}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0.022274017, y: -0.044548035}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1.61, y: 1.61}
-    newSize: {x: 1.61, y: 1.61}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 1.5431824, y: 1.3204379}
-  m_EdgeRadius: 0
 --- !u!82 &544185562659054001
 AudioSource:
   m_ObjectHideFlags: 0
@@ -286,3 +246,19 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!70 &8271568179984976108
+CapsuleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 544185562659053993}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0.012909353, y: -0.06454682}
+  m_Size: {x: 1.5067254, y: 1.558363}
+  m_Direction: 0

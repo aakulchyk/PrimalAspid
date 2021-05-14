@@ -9,8 +9,6 @@ public class MaggotRescuedBehavior : NpcBehavior
     private float moveSpeed = 0.8f;
     private float _followRadius = 8f;
 
-    private AudioSource sounds;
-
     public bool isFollowing = false;
 
     public Transform targetSibling;
@@ -24,7 +22,6 @@ public class MaggotRescuedBehavior : NpcBehavior
     void Start()
     {
         BaseInit();
-        sounds = GetComponent<AudioSource>(); 
     }
 
     // Update is called once per frame
@@ -41,13 +38,14 @@ public class MaggotRescuedBehavior : NpcBehavior
 
             Vector3 direction = targetSibling.position - transform.position;     
             body.velocity = new Vector2 (direction.x * moveSpeed, body.velocity.y);
+            anim.SetBool("isFollowing", true);
             return;
         }
 
 
         // interact with player
         float distP = Vector2.Distance(playerTransform.position, transform.position);
-        if (distP < _followRadius && player.isLeading)
+        if (distP < _followRadius && player.isPulling)
         {
             if (isFollowing == false) {
                 isFollowing = true;
@@ -58,13 +56,6 @@ public class MaggotRescuedBehavior : NpcBehavior
                 anim.SetBool("isFollowing", true);
             }
 
-            /*if (distP < 1.5) {
-                body.velocity = new Vector2(0, 0);
-                return;
-            }*/
-                
-            //Vector3 direction = playerTransform.position - transform.position;
-            //body.velocity = new Vector2 (direction.x * moveSpeed, direction.y * moveSpeed);
         }
         else {
             if (isFollowing) {
@@ -75,12 +66,12 @@ public class MaggotRescuedBehavior : NpcBehavior
                 if (!sounds.isPlaying)
                     sounds.PlayOneShot(clip_sad_idle);
             }
-            
-            //body.velocity = new Vector2(0, 0);
+
         }
     }
 
     public override void hurt(float force) {
+        Debug.Log("Maggot Hurt");
         GetComponent<AudioSource>().Stop();
         GetComponent<AudioSource>().PlayOneShot(clip_death);
         anim.SetTrigger("Die");
@@ -89,8 +80,17 @@ public class MaggotRescuedBehavior : NpcBehavior
 
     protected override void die() {
         Debug.Log("Maggot is DEAD");
-        anim.SetBool("isDead", true);
+        GetComponent<Animator>().SetBool("isDead", true);
         GetComponent<AudioSource>().enabled = false;
-        //player.LoseAndRespawn();
+    }
+
+    public override void LoadInActualState() {
+        Debug.Log("LoadInActualState");
+        if (isDead) {
+            Debug.Log("Load DEAD");
+            die();
+        } else {
+            Debug.Log("Load ALIVE");
+        }
     }
 }

@@ -59,6 +59,27 @@ TextureImporter:
   - first:
       213: 2539056117506904072
     second: mantis_projectile_end_1
+  - first:
+      213: 5683559758469627696
+    second: mantis_turn_2
+  - first:
+      213: -8462738611206306280
+    second: mantis_chunk_1
+  - first:
+      213: 4025569359678284157
+    second: mantis_chunk_2
+  - first:
+      213: 4732862119804475945
+    second: mantis_chunk_3
+  - first:
+      213: 8314591750907212882
+    second: mantis_chunk_4
+  - first:
+      213: -7217674177591290684
+    second: mantis_chunk_5
+  - first:
+      213: -2594468874856888680
+    second: mantis_chunk_7
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -488,7 +509,7 @@ TextureImporter:
         width: 299
         height: 99
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -509,7 +530,7 @@ TextureImporter:
         width: 299
         height: 99
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -530,7 +551,7 @@ TextureImporter:
         width: 299
         height: 99
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -551,7 +572,7 @@ TextureImporter:
         width: 294
         height: 99
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -572,7 +593,7 @@ TextureImporter:
         width: 294
         height: 99
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -580,6 +601,153 @@ TextureImporter:
       bones: []
       spriteID: 80018cc161a8c3320800000000000000
       internalID: 2539056117506904072
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: mantis_turn_2
+      rect:
+        serializedVersion: 2
+        x: 562
+        y: 733
+        width: 274
+        height: 217
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 03f794fcc7f00ee40800000000000000
+      internalID: 5683559758469627696
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: mantis_chunk_1
+      rect:
+        serializedVersion: 2
+        x: 630
+        y: 61
+        width: 32
+        height: 40
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 816c01412105e8a80800000000000000
+      internalID: -8462738611206306280
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: mantis_chunk_2
+      rect:
+        serializedVersion: 2
+        x: 667
+        y: 8
+        width: 45
+        height: 93
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d7122561102bdd730800000000000000
+      internalID: 4025569359678284157
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: mantis_chunk_3
+      rect:
+        serializedVersion: 2
+        x: 718
+        y: 81
+        width: 35
+        height: 20
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 92a19dda5018ea140800000000000000
+      internalID: 4732862119804475945
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: mantis_chunk_4
+      rect:
+        serializedVersion: 2
+        x: 758
+        y: 26
+        width: 45
+        height: 76
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 254b735152d536370800000000000000
+      internalID: 8314591750907212882
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: mantis_chunk_5
+      rect:
+        serializedVersion: 2
+        x: 808
+        y: 57
+        width: 18
+        height: 44
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4c4592c839ba5db90800000000000000
+      internalID: -7217674177591290684
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: mantis_chunk_7
+      rect:
+        serializedVersion: 2
+        x: 831
+        y: 65
+        width: 88
+        height: 36
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 896095ded489efbd0800000000000000
+      internalID: -2594468874856888680
       vertices: []
       indices: 
       edges: []
