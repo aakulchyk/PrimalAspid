@@ -56,6 +56,12 @@ public class NpcBehavior : MonoBehaviour
 
         if (isDead) return;
 
+        if (player.isPulling && player.GetComponent<FixedJoint2D>().connectedBody == GetComponent<Rigidbody2D>()) {
+            player.releaseBody();
+            player.throwByImpulse(new Vector2 (GetVectorToPlayer().x, GetVectorToPlayer().y*6));
+            invulnerable = true;
+        }
+
         Debug.Log("NPC Hurt");
         if (--_hp < 0 && !isDead) {
             die();

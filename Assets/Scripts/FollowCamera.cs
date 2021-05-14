@@ -12,6 +12,7 @@ public class FollowCamera : MonoBehaviour {
     Vector3 targetPos;
 
     public GameObject leftBorder;
+    public GameObject rightBorder;
     public GameObject bottomBorder;
     public GameObject topBorder;
 
@@ -36,6 +37,10 @@ public class FollowCamera : MonoBehaviour {
             targetPos = transform.position + (targetDirection.normalized * interpVelocity * Time.deltaTime); 
 
             if (targetPos.x < posNoZ.x && posNoZ.x - leftBorder.transform.position.x < 11f) {
+                targetPos.x = oldX;
+            }
+
+            if (targetPos.x > posNoZ.x && rightBorder.transform.position.x - posNoZ.x < 11f) {
                 targetPos.x = oldX;
             }
 

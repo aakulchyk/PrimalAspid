@@ -23,13 +23,18 @@ public class PlayerControl : MonoBehaviour
 
     private System.DateTime startTime;
 
-    private bool prev_flap = false;
+
+    private bool isDead;
+
+    private float lastFlapTime;
     
 
     // Start is called before the first frame update
     void Start()
     {
+        isDead = false;
         startTime = System.DateTime.UtcNow;
+        lastFlapTime = Time.time;
 
 	    body = GetComponent<Rigidbody2D> ();  
         anim = GetComponent<Animator>();      
@@ -80,10 +85,10 @@ public class PlayerControl : MonoBehaviour
         if ((Input.GetKey(KeyCode.Space) || Input.GetKey(KeyCode.JoystickButton0))
                 && !isAlreadyFlapping && !isAlreadyTurning) {
 
-            if (!prev_flap) {
+            if (Time.time - lastFlapTime > 0.1f) {
                 startFlap();
-                prev_flap = true;
-            } else prev_flap = false;
+                lastFlapTime = Time.time;
+            }
         }
         
         float moveX = Input.GetAxis ("Horizontal");
@@ -206,7 +211,7 @@ public class PlayerControl : MonoBehaviour
         
         body.AddForce(new Vector2(0f, force));
         anim.SetBool("IsFlapping", true);
-        anim.SetBool("IsGrounded", false);
+        //anim.SetBool("IsGrounded", false);
     }
 
     public void endFlap() {
@@ -289,14 +294,32 @@ public class PlayerControl : MonoBehaviour
             Game game = (Game)FindObjectOfType(typeof(Game));
             game.SaveGame();
         }
+
+        if (other.tag == "BossFightTrigger") {
+            MantisBehavior boss = (MantisBehavior)FindObjectOfType(typeof(MantisBehavior));
+
+            if (boss && !boss.isDead) {
+                boss.idle = false;
+
+                GameObject bossMusic = GameObject.Find("MantisBossFightMusic");
+                bossMusic.GetComponent<AudioSource>().enabled = true;
+            }
+
+            
+
+        }
     }
 
     void hurt(float force) {
+        
+        if (isDead) return; // one cannot die twice...
+
         body.AddForce(new Vector2(0f, force));
         
         if (--PlayerStats.HP < 0) {
             GetComponent<AudioSource>().PlayOneShot(clip_death);
             anim.SetBool("IsDying", true);
+            isDead = true;
         } else {
             anim.SetTrigger("Hurt");
             GetComponent<AudioSource>().PlayOneShot(clip_hurt);

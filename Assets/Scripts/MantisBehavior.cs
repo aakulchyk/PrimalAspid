@@ -24,13 +24,14 @@ public class MantisBehavior : NpcBehavior
     public AudioClip clip_shoot;
     public AudioClip clip_captured;
 
-    public AudioClip clip_boss_music;
-
     public Transform[] waypoints;
 
     public GameObject controlledWall;
 
-    private bool noticed = false;
+    public bool idle = true;
+
+
+    private bool prev_captured = false;
 
 
     void Start()
@@ -61,13 +62,8 @@ public class MantisBehavior : NpcBehavior
 
 
         float distP = Vector2.Distance(playerTransform.position, transform.position);
-        if (distP < _followRadius)
+        if (distP < _followRadius && !idle)
         {
-            if (!noticed) {
-                GetComponent<AudioSource>().PlayOneShot(clip_boss_music);
-                noticed = true;
-            }
-
             if (playerTransform.position.x > transform.position.x && !faceRight) {
                 flip();
                 faceRight = true;
@@ -94,6 +90,11 @@ public class MantisBehavior : NpcBehavior
             }
 
             if (!captured) {
+
+                /*if (prev_captured) {
+                    sounds.Stop();
+                    sounds.Play();
+                }*/
 
                 RaycastHit2D hit = Physics2D.Raycast(transform.position, GetVectorToPlayer());
                 Vector2 moveVector;
@@ -126,12 +127,19 @@ public class MantisBehavior : NpcBehavior
                 
                 GetComponent<Rigidbody2D>().velocity = moveVector;
             } else {
-                /*anim.SetBool("hurt", true);
-                shootAnticipate = false;*/
+                //anim.SetBool("hurt", true);
+                //shootAnticipate = false;
+                if (!prev_captured)
+                    sounds.Stop(); 
 
-                if (!sounds.isPlaying)
+                if (!sounds.isPlaying) {
+                    Debug.Log("Play capture sound");
                     sounds.PlayOneShot(clip_captured);
+                }
             }
+
+
+            prev_captured = captured;
 
 
         } else {
@@ -206,15 +214,13 @@ public class MantisBehavior : NpcBehavior
 
     public override void getReleased()
     {
-        Debug.Log("GetReleased");
         anim.SetBool("hurt", false);
-        anim.SetBool("shooting", false);
         captured = false;
     }
+
     protected override void processCollision(Collision2D collision) {
         if (invulnerable) return;
 
-        //Debug.Log("Mantis collision");
         Collider2D collider = collision.collider;
         if (collider.tag == "Throwable") {
             if (collision.relativeVelocity.magnitude > 7) {
@@ -246,6 +252,7 @@ public class MantisBehavior : NpcBehavior
         if (--_hp < 0) {
             die();
         } else {
+            sounds.Stop();
             sounds.PlayOneShot(clip_hurt);
             invulnerable = true;
             StartCoroutine(blinkInvulnerable());
@@ -253,19 +260,17 @@ public class MantisBehavior : NpcBehavior
     }
 
     protected override void die() {
+        isDead = true;
         anim.SetTrigger("die");
-
-        Destroy(this.gameObject, 1.5f);
-
 
         sounds.Stop();
         sounds.pitch = 0.8f;
         sounds.volume = 1f;
         sounds.PlayOneShot(clip_death);
-        isDead = true;
+        
         GetComponent<Renderer>().enabled = false;
 
-        StartCoroutine(OpenDoorAfterDelay(1));
+        StartCoroutine(OpenDoorAfterDelay(2));
 
         //dismantle
 
@@ -282,6 +287,11 @@ public class MantisBehavior : NpcBehavior
             //rb.velocity = new Vector2 (vector.x * speed, vector.y * speed);
         }
 
+        // stop boss fight music
+        GameObject bossMusic = GameObject.Find("MantisBossFightMusic");
+        bossMusic.GetComponent<AudioSource>().enabled = false;
+
+        Destroy(this.gameObject, 3.5f);
     }
 
 
@@ -315,10 +325,11 @@ public class MantisBehavior : NpcBehavior
         controlledWall.GetComponent<Animator>().SetTrigger("Opened");
         yield return new WaitForSeconds(0.5f);
         controlledWall.GetComponent<AudioSource>().enabled = true;
-
+        
+        
         // every door opening is a checkpoint
-        Game game = (Game)FindObjectOfType(typeof(Game));
-        game.SaveGame();
+        //Game game = (Game)FindObjectOfType(typeof(Game));
+        //game.SaveGame();
     }
 
 }

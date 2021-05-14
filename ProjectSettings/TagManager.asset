@@ -16,6 +16,7 @@ TagManager:
   - Collectable
   - CheckPoint
   - Waypoint
+  - BossFightTrigger
   layers:
   - Default
   - TransparentFX

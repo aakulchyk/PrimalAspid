@@ -13,11 +13,14 @@ public class KrabBehavior : NpcBehavior
 
 
     private bool isGrounded = true;
+
+    private float lastJumpTime;
     
     // Start is called before the first frame update
     void Start()
     {
         BaseInit();
+        lastJumpTime = Time.time;
     }
 
     // Update is called once per frame
@@ -47,14 +50,24 @@ public class KrabBehavior : NpcBehavior
             {
                 //Debug.Log("raycast true " + hit.collider.tag);
                 if (hit.collider.tag == "Player") {
-                    anim.SetBool("jump", true);
-                    body.AddForce(new Vector2(0f, _jumpForce));
-                    isGrounded = false;
-                    GetComponent<AudioSource>().Stop();
-                    GetComponent<AudioSource>().PlayOneShot(clip_jump);
+
+                    if (Time.time - lastJumpTime > 0.1f) {
+                        jump();
+                        lastJumpTime = Time.time;
+                    }
+                    
                 }
             }
         }
+    }
+
+    private void jump()
+    {
+        anim.SetBool("jump", true);
+        body.AddForce(new Vector2(0f, _jumpForce));
+        isGrounded = false;
+        GetComponent<AudioSource>().Stop();
+        GetComponent<AudioSource>().PlayOneShot(clip_jump);
     }
 
     protected override void processCollision(Collision2D hit)
