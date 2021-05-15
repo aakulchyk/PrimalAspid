@@ -4,12 +4,22 @@ using UnityEngine;
 
 public class PrizeBehavior : MonoBehaviour
 {
+    bool collected = false;
     public AudioClip clip_collect;
     // Start is called before the first frame update
 
     public void GetCollected() {
+        if (collected) return;
+
+        collected = true;
+
+        // apply stats
+        PlayerStats.HP++;
+        Debug.Log("Collect item. new HP=" + PlayerStats.HP);
+
         GetComponent<AudioSource>().volume = 1f;
         GetComponent<AudioSource>().PlayOneShot(clip_collect);
-        Destroy(this.gameObject, 0.8f);
+        GetComponent<Renderer>().enabled = false;
+        Destroy(this.gameObject, 1f);
     }
 }

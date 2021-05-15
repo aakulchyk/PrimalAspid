@@ -7,7 +7,7 @@ public class PlayerControl : MonoBehaviour
     public Rigidbody2D body;
     private Animator anim;
     private Renderer _renderer;
-    private bool faceRight = true;
+    private bool faceRight;
     public float _maxSpeed = 5;
     public float _flapForce;
     //private Time startTime;
@@ -45,7 +45,9 @@ public class PlayerControl : MonoBehaviour
         Game game = (Game)FindObjectOfType(typeof(Game));
         game.LoadGame();
         
-
+        flip();
+        faceRight = false;
+        
         StartCoroutine(blinkInvulnerable());
     }
 
@@ -286,7 +288,6 @@ public class PlayerControl : MonoBehaviour
         }
 
         if (other.tag == "Collectable") {
-            PlayerStats.HP++;
             other.gameObject.GetComponent<PrizeBehavior>().GetCollected();
         }
 

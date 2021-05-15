@@ -19,6 +19,9 @@ public class DoorLeverBehavior : LeverBehavior
 
             if (au) 
                 au.enabled = true;
+
+            yield return new WaitForSeconds(5f);
+            au.enabled = false;
         } else {
             Debug.Log("Door: animation not found");
         }

@@ -5,19 +5,23 @@ using UnityEngine;
 public class StatusBar : MonoBehaviour
 {
     private Transform bar;
-    GameObject[] hpBar;
+    //GameObject[] hpBar;
+    GameObject[] hpBar2;
     void Start() {
         bar = transform.Find("Bar");
 
-        hpBar = new GameObject[] {GameObject.Find("HP1"), GameObject.Find("HP2"), GameObject.Find("HP3")};
+        //hpBar = new GameObject[] {GameObject.Find("HP1"), GameObject.Find("HP2"), GameObject.Find("HP3")};
+        hpBar2 = new GameObject[] {GameObject.Find("HP2.1"), GameObject.Find("HP2.2"), GameObject.Find("HP2.3")};
     }
 
+
     void Update() {
-        bar.localScale = new Vector3(PlayerStats.Stamina, 1f);
+        bar.localScale = new Vector3(PlayerStats.Stamina*400, 40);
 
 
         for (int i=0; i<3; i++) {
-            hpBar[i].SetActive(PlayerStats.HP > i);
+            //hpBar[i].SetActive(PlayerStats.HP > i);
+            hpBar2[i].SetActive(PlayerStats.HP > i);
         }
 
         /*if (GameObject.Find("HP3")) {

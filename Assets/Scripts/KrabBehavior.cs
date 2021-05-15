@@ -51,7 +51,7 @@ public class KrabBehavior : NpcBehavior
                 //Debug.Log("raycast true " + hit.collider.tag);
                 if (hit.collider.tag == "Player") {
 
-                    if (Time.time - lastJumpTime > 0.1f) {
+                    if (Time.time - lastJumpTime > 0.5f) {
                         jump();
                         lastJumpTime = Time.time;
                     }
