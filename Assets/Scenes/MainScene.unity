@@ -20665,12 +20665,12 @@ PrefabInstance:
     - target: {fileID: 4152528819531725585, guid: 8da2866cc93e14b4f8a054ac6a19823e,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -22.37
+      value: -22.65
       objectReference: {fileID: 0}
     - target: {fileID: 4152528819531725585, guid: 8da2866cc93e14b4f8a054ac6a19823e,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -35.37
+      value: -33.84
       objectReference: {fileID: 0}
     - target: {fileID: 4152528819531725585, guid: 8da2866cc93e14b4f8a054ac6a19823e,
         type: 3}
@@ -34971,7 +34971,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Text
       value: "You can grab your enemies by pressing \"x\"\nwhen above them. \nThey
-        are vulerable to spikes too!"
+        are vulnerable to spikes too!"
       objectReference: {fileID: 0}
     - target: {fileID: 2687546073830006362, guid: 972b231a18715f141b663153a12905d2,
         type: 3}
@@ -47607,7 +47607,7 @@ PrefabInstance:
       propertyPath: m_Text
       value: 'You can grab an object by
 
-        holding "x" when rihgt above it.'
+        holding "x" when right above it'
       objectReference: {fileID: 0}
     - target: {fileID: 2687546073830006362, guid: 972b231a18715f141b663153a12905d2,
         type: 3}
@@ -48381,21 +48381,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8441277679403195484, guid: 00b3d3b9363f83540a6da3312393376b,
-        type: 3}
-      propertyPath: m_Volume
-      value: 0.6
-      objectReference: {fileID: 0}
-    - target: {fileID: 8441277679403195484, guid: 00b3d3b9363f83540a6da3312393376b,
-        type: 3}
-      propertyPath: m_Enabled
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8441277679403195484, guid: 00b3d3b9363f83540a6da3312393376b,
-        type: 3}
-      propertyPath: panLevelCustomCurve.m_Curve.Array.data[0].value
-      value: 0.5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 00b3d3b9363f83540a6da3312393376b, type: 3}
