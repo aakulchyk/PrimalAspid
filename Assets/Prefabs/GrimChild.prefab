@@ -52,6 +52,7 @@ SpriteRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 0
+  m_RayTraceProcedural: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -119,9 +120,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c01375579b2fadb28a93e274988dd57b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  body: {fileID: 0}
   _maxSpeed: 5
   _flapForce: 390
-  isLeading: 0
+  isPulling: 0
+  clip_hurt: {fileID: 0}
   clip_death: {fileID: 8300000, guid: 3603262efd8d41e4996baccdc1df2124, type: 3}
   clip_flap: {fileID: 8300000, guid: 1d020eeb42ea90f4fa02bc3b31a5cc9d, type: 3}
 --- !u!50 &6957222627593913675

@@ -18,6 +18,8 @@ public class MaggotRescuedBehavior : NpcBehavior
     public AudioClip clip_follow_stop;
     public AudioClip clip_success;
 
+    public bool found = false;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -27,7 +29,7 @@ public class MaggotRescuedBehavior : NpcBehavior
     // Update is called once per frame
     void Update()
     {
-        if (isDead)
+        if (isDead || Time.timeScale == 0)
             return;
 
         // interact with sibling
@@ -38,7 +40,8 @@ public class MaggotRescuedBehavior : NpcBehavior
 
             Vector3 direction = targetSibling.position - transform.position;     
             body.velocity = new Vector2 (direction.x * moveSpeed, body.velocity.y);
-            anim.SetBool("isFollowing", true);
+            anim.SetTrigger("Found");
+            found = true;
             return;
         }
 

@@ -51,6 +51,7 @@ SpriteRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 0
+  m_RayTraceProcedural: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -157,6 +158,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isDead: 0
   captured: 0
+  collectiblePrefab: {fileID: 5314788777006985090, guid: cebeb26d5d10a494c9022a590111b634,
+    type: 3}
   clip_hurt: {fileID: 0}
   clip_death: {fileID: 8300000, guid: 3603262efd8d41e4996baccdc1df2124, type: 3}
   _hp: 0

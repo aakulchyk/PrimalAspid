@@ -1,5 +1,8 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
+
+using System.Text;
 using System.Collections;
 
 public class PlayerControl : MonoBehaviour
@@ -18,7 +21,7 @@ public class PlayerControl : MonoBehaviour
     public AudioClip clip_death;
     public AudioClip clip_flap;
 
-    public const int MAX_HP = 2;
+    public const int INITIAL_HP = 2;
 
 
     private System.DateTime startTime;
@@ -27,7 +30,11 @@ public class PlayerControl : MonoBehaviour
     private bool isDead;
 
     private float lastFlapTime;
+
+    private bool _turnStarted = false;
+    private bool _flapStarted = false;
     
+    private Game game;
 
     // Start is called before the first frame update
     void Start()
@@ -36,14 +43,15 @@ public class PlayerControl : MonoBehaviour
         startTime = System.DateTime.UtcNow;
         lastFlapTime = Time.time;
 
-	    body = GetComponent<Rigidbody2D> ();  
-        anim = GetComponent<Animator>();      
+	    body = GetComponent<Rigidbody2D> ();
+        anim = GetComponent<Animator>();  
         _renderer = GetComponent<Renderer>();
 
-        PlayerStats.HP = MAX_HP;
-
-        Game game = (Game)FindObjectOfType(typeof(Game));
+        game = (Game)FindObjectOfType(typeof(Game));
         game.LoadGame();
+        game.isGameInProgress = true;
+
+        PlayerStats.HP = INITIAL_HP;
         
         flip();
         faceRight = false;
@@ -51,8 +59,11 @@ public class PlayerControl : MonoBehaviour
         StartCoroutine(blinkInvulnerable());
     }
 
-    public void throwByImpulse(Vector2 vector) {
+    public void throwByImpulse(Vector2 vector, bool enemy = true) {
         Debug.Log("Throw player back " + vector);
+        if (enemy) {
+            anim.SetTrigger("Kill");
+        }
         StartCoroutine(shortInvulnerability());
         body.velocity = vector;
     }
@@ -81,11 +92,22 @@ public class PlayerControl : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        bool isAlreadyTurning = anim.GetCurrentAnimatorStateInfo(0).IsName("GrimTurn");
-        bool isAlreadyFlapping = anim.GetCurrentAnimatorStateInfo(0).IsName("GrimFlap");
+        if (Input.GetKeyDown(KeyCode.Escape)) {
+            if (game.isPopupOpen) {
+                game.ClosePopup();
+            } else {
+                SceneManager.LoadScene("TitleScreen");
+            }
+            //Application.Quit();
+        }
+
+
+        if (Time.timeScale == 0)
+            return;
 
         if ((Input.GetKey(KeyCode.Space) || Input.GetKey(KeyCode.JoystickButton0))
-                && !isAlreadyFlapping && !isAlreadyTurning) {
+                && !_flapStarted && !_turnStarted) {
+                //&& !isAlreadyFlapping && !isAlreadyTurning) {
 
             if (Time.time - lastFlapTime > 0.1f) {
                 startFlap();
@@ -97,27 +119,27 @@ public class PlayerControl : MonoBehaviour
         //Debug.Log("moveX: " + moveX);
         body.velocity = new Vector2 (moveX * _maxSpeed, body.velocity.y);
         
-        bool newTurnStarted = false;
-        if (moveX > 0 && !faceRight) {
-            newTurnStarted = true;
-            faceRight = !faceRight;
+
+        bool newTurn = false;
+        if ((moveX > 0 && !faceRight) || (moveX < 0 && faceRight)) {
+            newTurn = true;
         }
 
-        if (moveX < 0 && faceRight) {
-            newTurnStarted = true;
-            faceRight = !faceRight;
-        }
 
         /*bool isGrounded = anim.GetCurrentAnimatorStateInfo(0).IsName("IsGrounded");
         if (isGrounded)
             isAlreadyTurning = true;*/
 
-        if (!isAlreadyTurning && newTurnStarted) {
+        if (!_turnStarted && newTurn) {
+            faceRight = !faceRight;
             anim.SetBool("Turn", true);
+            endFlap();
+            _turnStarted = true;
         }
-        if (isAlreadyTurning && newTurnStarted) {
+        
+        /*if (isAlreadyTurning && newTurnStarted) {
             flip();
-        }
+        }*/
 
         if ((Input.GetKey(KeyCode.X) || Input.GetKey(KeyCode.JoystickButton5))) {
             Vector3 checkPosition = new Vector3(transform.position.x, transform.position.y-0.5f, transform.position.z);
@@ -137,15 +159,13 @@ public class PlayerControl : MonoBehaviour
         }
         else
         {
+            if (isPulling)
+                throwByImpulse(new Vector2 (0, 4), false);
             releaseBody();
         }
 
         if (!isPulling && PlayerStats.Stamina < 1f) {
              PlayerStats.Stamina += 0.001f;
-        }
-
-        if (Input.GetKeyDown(KeyCode.Escape)) {
-            Application.Quit();
         }
     }
 
@@ -184,6 +204,7 @@ public class PlayerControl : MonoBehaviour
     public void onTurnFinished() {
         //Debug.Log("onTurnFinished");
         anim.SetBool("Turn", false);
+        _turnStarted = false;
         flip();
     }
 
@@ -213,11 +234,13 @@ public class PlayerControl : MonoBehaviour
         
         body.AddForce(new Vector2(0f, force));
         anim.SetBool("IsFlapping", true);
+        _flapStarted = true;
         //anim.SetBool("IsGrounded", false);
     }
 
     public void endFlap() {
         anim.SetBool("IsFlapping", false);
+        _flapStarted = false;
     }
 
     void OnCollisionEnter2D(Collision2D collision) {
@@ -305,9 +328,13 @@ public class PlayerControl : MonoBehaviour
                 GameObject bossMusic = GameObject.Find("MantisBossFightMusic");
                 bossMusic.GetComponent<AudioSource>().enabled = true;
             }
+        }
 
-            
-
+        if (other.tag == "Text") {
+            Text text = other.gameObject.GetComponent<Text>();
+            game.SetPopupText(text.text);
+            other.gameObject.SetActive(false);
+            game.OpenPopup();
         }
     }
 
@@ -327,6 +354,17 @@ public class PlayerControl : MonoBehaviour
             StartCoroutine(blinkInvulnerable());
         }
         
+        // preliminary stop turning
+        if (_turnStarted) {
+            //_turnStarted = false;
+            //flip();
+            onTurnFinished();
+        }
+
+        if (_flapStarted) {
+            endFlap();
+        }
+
         
     }
 
@@ -344,7 +382,7 @@ public class PlayerControl : MonoBehaviour
 
     public void LoseAndRespawn() {
         PlayerStats.Losses++;
-        //PlayerStats.HP = PlayerStats.MAX_HP;
+        //PlayerStats.HP = PlayerStats.INITIAL_HP;
         Debug.Log("Losses: " + PlayerStats.Losses);
         StartCoroutine(RestartAfterDelay());
     }

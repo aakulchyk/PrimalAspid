@@ -4,11 +4,11 @@ using UnityEngine;
 
 public class PrizeBehavior : MonoBehaviour
 {
-    bool collected = false;
+    protected bool collected = false;
     public AudioClip clip_collect;
     // Start is called before the first frame update
 
-    public void GetCollected() {
+    public virtual void GetCollected() {
         if (collected) return;
 
         collected = true;

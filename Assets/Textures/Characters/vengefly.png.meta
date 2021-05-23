@@ -62,6 +62,7 @@ TextureImporter:
   isReadable: 0
   streamingMipmaps: 0
   streamingMipmapsPriority: 0
+  vTOnly: 0
   grayScaleToAlpha: 0
   generateCubemap: 6
   cubemapConvolution: 0
@@ -93,9 +94,12 @@ TextureImporter:
   textureType: 8
   textureShape: 1
   singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
   maxTextureSizeSet: 0
   compressionQualitySet: 0
   textureFormatSet: 0
+  ignorePngGamma: 0
   applyGammaDecoding: 0
   platformSettings:
   - serializedVersion: 3
@@ -129,10 +133,10 @@ TextureImporter:
       name: vengefly_0
       rect:
         serializedVersion: 2
-        x: 3
-        y: 640
-        width: 117
-        height: 137
+        x: 4
+        y: 641
+        width: 115
+        height: 135
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -150,10 +154,10 @@ TextureImporter:
       name: vengefly_1
       rect:
         serializedVersion: 2
-        x: 123
-        y: 640
-        width: 117
-        height: 137
+        x: 124
+        y: 641
+        width: 115
+        height: 135
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -171,10 +175,10 @@ TextureImporter:
       name: vengefly_2
       rect:
         serializedVersion: 2
-        x: 243
-        y: 640
-        width: 117
-        height: 137
+        x: 244
+        y: 641
+        width: 115
+        height: 135
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -192,10 +196,10 @@ TextureImporter:
       name: vengefly_3
       rect:
         serializedVersion: 2
-        x: 363
-        y: 640
-        width: 117
-        height: 137
+        x: 364
+        y: 641
+        width: 115
+        height: 135
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -213,10 +217,10 @@ TextureImporter:
       name: vengefly_4
       rect:
         serializedVersion: 2
-        x: 483
-        y: 640
-        width: 117
-        height: 137
+        x: 484
+        y: 641
+        width: 115
+        height: 135
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -234,10 +238,10 @@ TextureImporter:
       name: vengefly_hurt_0
       rect:
         serializedVersion: 2
-        x: 295
-        y: 133
-        width: 143
-        height: 136
+        x: 296
+        y: 134
+        width: 141
+        height: 134
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -255,10 +259,10 @@ TextureImporter:
       name: vengefly_hurt_1
       rect:
         serializedVersion: 2
-        x: 441
-        y: 133
-        width: 143
-        height: 136
+        x: 442
+        y: 134
+        width: 141
+        height: 134
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -276,10 +280,10 @@ TextureImporter:
       name: vengefly_death_0
       rect:
         serializedVersion: 2
-        x: 3
-        y: 3
-        width: 140
-        height: 108
+        x: 4
+        y: 4
+        width: 138
+        height: 106
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -297,10 +301,10 @@ TextureImporter:
       name: vengefly_death_1
       rect:
         serializedVersion: 2
-        x: 146
-        y: 3
-        width: 140
-        height: 108
+        x: 147
+        y: 4
+        width: 138
+        height: 106
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -318,10 +322,10 @@ TextureImporter:
       name: vengefly_death_2
       rect:
         serializedVersion: 2
-        x: 289
-        y: 3
-        width: 140
-        height: 108
+        x: 290
+        y: 4
+        width: 138
+        height: 106
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -339,12 +343,12 @@ TextureImporter:
       name: vengefly_chase_0
       rect:
         serializedVersion: 2
-        x: 3
-        y: 133
-        width: 143
-        height: 136
+        x: 4
+        y: 134
+        width: 141
+        height: 134
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -360,12 +364,12 @@ TextureImporter:
       name: vengefly_chase_1
       rect:
         serializedVersion: 2
-        x: 149
-        y: 133
-        width: 143
-        height: 136
+        x: 150
+        y: 134
+        width: 141
+        height: 134
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -386,7 +390,7 @@ TextureImporter:
         width: 56
         height: 77
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []

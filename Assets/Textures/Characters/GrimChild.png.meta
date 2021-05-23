@@ -68,6 +68,12 @@ TextureImporter:
   - first:
       213: 3258654331863422258
     second: GrimIdle1
+  - first:
+      213: 4319431321231458119
+    second: GrimKill0
+  - first:
+      213: 1793360154861129632
+    second: GrimKill1
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -89,6 +95,7 @@ TextureImporter:
   isReadable: 0
   streamingMipmaps: 0
   streamingMipmapsPriority: 0
+  vTOnly: 0
   grayScaleToAlpha: 0
   generateCubemap: 6
   cubemapConvolution: 0
@@ -120,9 +127,12 @@ TextureImporter:
   textureType: 8
   textureShape: 1
   singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
   maxTextureSizeSet: 0
   compressionQualitySet: 0
   textureFormatSet: 0
+  ignorePngGamma: 0
   applyGammaDecoding: 0
   platformSettings:
   - serializedVersion: 3
@@ -157,9 +167,9 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 5
-        y: 1709
+        y: 1710
         width: 219
-        height: 225
+        height: 224
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -282,9 +292,9 @@ TextureImporter:
       name: GrimTurn0
       rect:
         serializedVersion: 2
-        x: 3
+        x: 4
         y: 1462
-        width: 213
+        width: 212
         height: 224
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
@@ -471,10 +481,10 @@ TextureImporter:
       name: GrimAct1
       rect:
         serializedVersion: 2
-        x: 210
+        x: 211
         y: 1031
         width: 190
-        height: 212
+        height: 202
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -493,9 +503,9 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 418
-        y: 1031
+        y: 1037
         width: 180
-        height: 212
+        height: 202
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -513,10 +523,10 @@ TextureImporter:
       name: GrimAct3
       rect:
         serializedVersion: 2
-        x: 624
-        y: 1031
-        width: 180
-        height: 212
+        x: 625
+        y: 1040
+        width: 179
+        height: 202
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -610,6 +620,48 @@ TextureImporter:
       bones: []
       spriteID: 235d18889d0193d20800000000000000
       internalID: 3258654331863422258
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GrimKill0
+      rect:
+        serializedVersion: 2
+        x: 865
+        y: 1056
+        width: 209
+        height: 186
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 74f72bdb6e3b1fb30800000000000000
+      internalID: 4319431321231458119
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GrimKill1
+      rect:
+        serializedVersion: 2
+        x: 1079
+        y: 1056
+        width: 209
+        height: 186
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0af46d82f8b43e810800000000000000
+      internalID: 1793360154861129632
       vertices: []
       indices: 
       edges: []

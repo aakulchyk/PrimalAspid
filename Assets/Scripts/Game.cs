@@ -2,15 +2,22 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
+using System.Text;
 using System.IO;
 using System.Runtime.Serialization.Formatters.Binary;
 
 public class Game : MonoBehaviour
 {
-    public Transform platform0;
+    /*public Transform platform0;
     public Transform platform1;
-    public Transform platform2;
+    public Transform platform2;*/
+
+    public GameObject popupWindow;
+    public bool isPopupOpen = false;
+
+    public bool isGameInProgress = false;
     private Save CreateSaveGameObject()
     {
         Save save = new Save();
@@ -20,13 +27,15 @@ public class Game : MonoBehaviour
         PlayerControl player = (PlayerControl)FindObjectOfType(typeof(PlayerControl));
         save.px = player.transform.position.x;
         save.py = player.transform.position.y;
-        save.hp =  PlayerStats.HP;
+        //save.hp =  PlayerStats.HP;
 
         save.deaths = PlayerStats.Deaths;
         save.losses = PlayerStats.Losses;
         save.time = PlayerStats.Time;
         save.npc_saved = PlayerStats.NpcsSavedAlive;
         save.npc_dead = PlayerStats.NpcsLostDead;
+
+        save.bloodBodies = PlayerStats.BloodBodies;
 
         // npc
         var npcs = FindObjectsOfType<NpcWaitingBehavior>();  
@@ -45,6 +54,8 @@ public class Game : MonoBehaviour
         }
 
         // platform
+
+        // popups
 
 
         return save;
@@ -84,13 +95,15 @@ public class Game : MonoBehaviour
         file.Close();
 
         // assign loaded values
-        PlayerStats.HP = save.hp;
+        //PlayerStats.HP = save.hp;
 
         PlayerStats.Deaths = save.deaths;
         PlayerStats.Losses = save.losses;
         PlayerStats.Time = save.time;
         PlayerStats.NpcsSavedAlive = save.npc_saved;
         PlayerStats.NpcsLostDead = save.npc_dead;
+
+        PlayerStats.BloodBodies = save.bloodBodies;
 
         // player
         PlayerControl player = (PlayerControl)FindObjectOfType(typeof(PlayerControl));
@@ -136,5 +149,22 @@ public class Game : MonoBehaviour
         
 
         Debug.Log("Game Loaded");
+    }
+
+
+    public void SetPopupText(string text) {
+        Text textWindow = popupWindow.transform.Find("Text").gameObject.GetComponent<Text>();
+        textWindow.text = text;
+    }
+    public void OpenPopup() {
+        isPopupOpen = true;
+        Time.timeScale = 0;
+        popupWindow.SetActive(true);
+    }
+
+    public void ClosePopup() {
+        popupWindow.SetActive(false);
+        Time.timeScale = 1;
+        isPopupOpen = false;
     }
 }

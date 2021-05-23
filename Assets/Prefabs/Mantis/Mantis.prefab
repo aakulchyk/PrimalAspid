@@ -51,6 +51,7 @@ SpriteRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 0
+  m_RayTraceProcedural: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -236,8 +237,8 @@ CapsuleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.017015535, y: -0.03000857}
-  m_Size: {x: 0.39572683, y: 0.32328543}
+  m_Offset: {x: -0.02003465, y: -0.05365898}
+  m_Size: {x: 0.41182983, y: 0.26390952}
   m_Direction: 1
 --- !u!114 &5892984921452634613
 MonoBehaviour:
@@ -252,9 +253,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isDead: 0
+  captured: 0
+  collectiblePrefab: {fileID: 5314788777006985090, guid: cebeb26d5d10a494c9022a590111b634,
+    type: 3}
+  clip_hurt: {fileID: 0}
   clip_death: {fileID: 8300000, guid: 3603262efd8d41e4996baccdc1df2124, type: 3}
   _hp: 1
-  captured: 0
+  invulnerable: 0
+  _followRadius: 20
+  _shootRadius: 10
+  maxShotTimeout: 120
   projectilePrefab: {fileID: 8444222165621308518, guid: 5f76a33224f0e2e4d9938708b448a095,
     type: 3}
+  deathChunkPrefabs: []
   clip_shoot: {fileID: 8300000, guid: 1925e42ecd943e3489fd9ff9b17a380a, type: 3}
+  clip_captured: {fileID: 0}
+  waypoints: []
+  controlledWall: {fileID: 0}
+  idle: 1

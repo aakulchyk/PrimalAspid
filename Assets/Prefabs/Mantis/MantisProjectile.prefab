@@ -50,6 +50,7 @@ SpriteRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 0
+  m_RayTraceProcedural: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -135,7 +136,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d888e8cead3335f4d8c510a2065aa2ca, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 8
+  speed: 7
 --- !u!95 &4531410372800123204
 Animator:
   serializedVersion: 3

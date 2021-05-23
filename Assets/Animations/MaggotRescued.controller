@@ -27,7 +27,7 @@ AnimatorStateTransition:
   m_CanTransitionToSelf: 1
 --- !u!1102 &-5267437157950256955
 AnimatorState:
-  serializedVersion: 5
+  serializedVersion: 6
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -38,6 +38,7 @@ AnimatorState:
   m_Transitions:
   - {fileID: 630958939738845000}
   - {fileID: -3806075829480105064}
+  - {fileID: 3472000137854142036}
   m_StateMachineBehaviours: []
   m_Position: {x: 50, y: 50, z: 0}
   m_IKOnFeet: 0
@@ -55,7 +56,7 @@ AnimatorState:
   m_TimeParameter: 
 --- !u!1102 &-4061428423762560516
 AnimatorState:
-  serializedVersion: 5
+  serializedVersion: 6
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -66,6 +67,7 @@ AnimatorState:
   m_Transitions:
   - {fileID: 6491866487736097345}
   - {fileID: -8658562236510736888}
+  - {fileID: -2543739414387454463}
   m_StateMachineBehaviours: []
   m_Position: {x: 50, y: 50, z: 0}
   m_IKOnFeet: 0
@@ -106,6 +108,31 @@ AnimatorStateTransition:
   m_InterruptionSource: 0
   m_OrderedInterruption: 1
   m_CanTransitionToSelf: 1
+--- !u!1101 &-2543739414387454463
+AnimatorStateTransition:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: 
+  m_Conditions:
+  - m_ConditionMode: 1
+    m_ConditionEvent: Found
+    m_EventTreshold: 0
+  m_DstStateMachine: {fileID: 0}
+  m_DstState: {fileID: 1813625918209095426}
+  m_Solo: 0
+  m_Mute: 0
+  m_IsExit: 0
+  serializedVersion: 3
+  m_TransitionDuration: 0.25
+  m_TransitionOffset: 0
+  m_ExitTime: 0.5833334
+  m_HasExitTime: 1
+  m_HasFixedDuration: 1
+  m_InterruptionSource: 0
+  m_OrderedInterruption: 1
+  m_CanTransitionToSelf: 1
 --- !u!91 &9100000
 AnimatorController:
   m_ObjectHideFlags: 0
@@ -120,19 +147,25 @@ AnimatorController:
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
-    m_Controller: {fileID: 9100000}
+    m_Controller: {fileID: 0}
   - m_Name: Die
     m_Type: 9
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
-    m_Controller: {fileID: 9100000}
+    m_Controller: {fileID: 0}
   - m_Name: isFollowing
     m_Type: 4
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
-    m_Controller: {fileID: 9100000}
+    m_Controller: {fileID: 0}
+  - m_Name: Found
+    m_Type: 9
+    m_DefaultFloat: 0
+    m_DefaultInt: 0
+    m_DefaultBool: 0
+    m_Controller: {fileID: 0}
   m_AnimatorLayers:
   - serializedVersion: 5
     m_Name: Base Layer
@@ -148,7 +181,7 @@ AnimatorController:
     m_Controller: {fileID: 9100000}
 --- !u!1107 &428036240537362419
 AnimatorStateMachine:
-  serializedVersion: 5
+  serializedVersion: 6
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -190,9 +223,35 @@ AnimatorStateTransition:
   m_InterruptionSource: 0
   m_OrderedInterruption: 1
   m_CanTransitionToSelf: 1
+--- !u!1102 &1813625918209095426
+AnimatorState:
+  serializedVersion: 6
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: MaggotHappy
+  m_Speed: 1
+  m_CycleOffset: 0
+  m_Transitions: []
+  m_StateMachineBehaviours: []
+  m_Position: {x: 50, y: 50, z: 0}
+  m_IKOnFeet: 0
+  m_WriteDefaultValues: 1
+  m_Mirror: 0
+  m_SpeedParameterActive: 0
+  m_MirrorParameterActive: 0
+  m_CycleOffsetParameterActive: 0
+  m_TimeParameterActive: 0
+  m_Motion: {fileID: 7400000, guid: 5d104ee502261b241b090416e5d84994, type: 2}
+  m_Tag: 
+  m_SpeedParameter: 
+  m_MirrorParameter: 
+  m_CycleOffsetParameter: 
+  m_TimeParameter: 
 --- !u!1107 &3182043149016889969
 AnimatorStateMachine:
-  serializedVersion: 5
+  serializedVersion: 6
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -212,8 +271,8 @@ AnimatorStateMachine:
     m_State: {fileID: -5267437157950256955}
     m_Position: {x: 90, y: 150, z: 0}
   - serializedVersion: 1
-    m_State: {fileID: 3663489281991174628}
-    m_Position: {x: 125, y: 215, z: 0}
+    m_State: {fileID: 1813625918209095426}
+    m_Position: {x: 210, y: 350, z: 0}
   m_ChildStateMachines: []
   m_AnyStateTransitions:
   - {fileID: 7876315460854550881}
@@ -223,35 +282,34 @@ AnimatorStateMachine:
   m_StateMachineBehaviours: []
   m_AnyStatePosition: {x: 670, y: 60, z: 0}
   m_EntryPosition: {x: 0, y: 80, z: 0}
-  m_ExitPosition: {x: 910, y: 50, z: 0}
+  m_ExitPosition: {x: 550, y: 530, z: 0}
   m_ParentStateMachinePosition: {x: 800, y: 20, z: 0}
   m_DefaultState: {fileID: -5267437157950256955}
---- !u!1102 &3663489281991174628
-AnimatorState:
-  serializedVersion: 5
+--- !u!1101 &3472000137854142036
+AnimatorStateTransition:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: MaggotHang
-  m_Speed: 1
-  m_CycleOffset: 0
-  m_Transitions: []
-  m_StateMachineBehaviours: []
-  m_Position: {x: 50, y: 50, z: 0}
-  m_IKOnFeet: 0
-  m_WriteDefaultValues: 1
-  m_Mirror: 0
-  m_SpeedParameterActive: 0
-  m_MirrorParameterActive: 0
-  m_CycleOffsetParameterActive: 0
-  m_TimeParameterActive: 0
-  m_Motion: {fileID: 7400000, guid: 52e8481539a0a9d42b84b60ff402339e, type: 2}
-  m_Tag: 
-  m_SpeedParameter: 
-  m_MirrorParameter: 
-  m_CycleOffsetParameter: 
-  m_TimeParameter: 
+  m_Name: 
+  m_Conditions:
+  - m_ConditionMode: 1
+    m_ConditionEvent: Found
+    m_EventTreshold: 0
+  m_DstStateMachine: {fileID: 0}
+  m_DstState: {fileID: 1813625918209095426}
+  m_Solo: 0
+  m_Mute: 0
+  m_IsExit: 0
+  serializedVersion: 3
+  m_TransitionDuration: 0.25
+  m_TransitionOffset: 0
+  m_ExitTime: 0.8333333
+  m_HasExitTime: 1
+  m_HasFixedDuration: 1
+  m_InterruptionSource: 0
+  m_OrderedInterruption: 1
+  m_CanTransitionToSelf: 1
 --- !u!1109 &4206815671876779214
 AnimatorTransition:
   m_ObjectHideFlags: 1
@@ -268,7 +326,7 @@ AnimatorTransition:
   serializedVersion: 1
 --- !u!1102 &5720457378483046298
 AnimatorState:
-  serializedVersion: 5
+  serializedVersion: 6
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -319,7 +377,7 @@ AnimatorStateTransition:
   m_CanTransitionToSelf: 1
 --- !u!1102 &7630855446627892143
 AnimatorState:
-  serializedVersion: 5
+  serializedVersion: 6
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}

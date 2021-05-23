@@ -31,7 +31,7 @@ Transform:
   m_GameObject: {fileID: 8784207029691069461}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 175.57285, y: -3.1714249, z: 0}
-  m_LocalScale: {x: 0.75, y: 0.85, z: 1}
+  m_LocalScale: {x: 1.1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -51,6 +51,7 @@ SpriteRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 0
+  m_RayTraceProcedural: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -148,7 +149,7 @@ AudioSource:
   Priority: 128
   DopplerLevel: 1
   MinDistance: 5
-  MaxDistance: 100
+  MaxDistance: 40
   Pan2D: 0
   rolloffMode: 2
   BypassEffects: 0
@@ -287,8 +288,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0b870191c558c1646b17765d1abdf0ed, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  waitSuccess: 0
   target: {fileID: 0}
   controlledWall: {fileID: 0}
   clip_sad_idle: {fileID: 8300000, guid: c0399b503e2142c4f898ad3ccf479c50, type: 3}
   clip_success: {fileID: 8300000, guid: a3da74cad83cae04f801284ca1f26a02, type: 3}
   clip_cry: {fileID: 8300000, guid: 9bc3565e1ca748f479934a5f45fbbf2e, type: 3}
+  waitState: 0
+  happyText: Thank you for bringing my beloved child alive! I will open the gate
+    for you! Good luck!
+  sadText: Oh no... My poor baby is dead..... Thank you anyway. At least I can bury
+    him.... I will open the door for you...

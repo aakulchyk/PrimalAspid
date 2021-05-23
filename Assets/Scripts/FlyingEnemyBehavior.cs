@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class StupidEnemyBehavior : NpcBehavior
+public class FlyingEnemyBehavior : NpcBehavior
 {
 
     public float _followRadius = 14f;
@@ -19,13 +19,57 @@ public class StupidEnemyBehavior : NpcBehavior
         BaseInit();
     }
 
+    protected override bool checkAccessibility(Transform wp)
+    {
+        CircleCollider2D col = GetComponent<CircleCollider2D> ();
+        //Vector3 pos = transform.position;
+        Vector2 pos = new Vector2(transform.position.x + col.offset.x, transform.position.y + col.offset.y); 
+
+        float r = col.radius*1.6f;
+
+        Vector3[] points = new Vector3[] {
+            new Vector3(pos.x - r, pos.y, 0),
+            new Vector3(pos.x + r, pos.y, 0),
+            new Vector3(pos.x, pos.y - r, 0),
+            new Vector3(pos.x, pos.y + r, 0)
+        };
+
+        bool accessible = true;
+        foreach (var p in points) {
+            float distM = Vector2.Distance(p, wp.position);
+            Vector3 dir = wp.position - p;
+            RaycastHit2D hit = Physics2D.Raycast(p, dir.normalized, distM);
+
+            if (!hit.collider) {
+                Debug.DrawLine(p, wp.position, Color.green, 0.02f, false);
+                continue;
+            }
+
+            if (hit.collider.tag == "Player" || hit.collider == col) {
+                Debug.DrawLine(p, wp.position, Color.green, 0.02f, false);
+                continue;
+                
+            } else {
+                Debug.DrawLine(p, wp.position, Color.red, 0.02f, false);
+                accessible = false;
+            }
+        }
+        
+        
+        return accessible;
+        
+    }
+
     // Update is called once per frame
     void FixedUpdate()
     {
-        if (isDead) return;
-         // interact with player
+        if (isDead || Time.timeScale == 0) return;
+
+        // interact with player
         float distP = Vector2.Distance(playerTransform.position, transform.position);
-        if (distP < _followRadius)
+        //bool visible = ;
+
+        if (_followRadius > distP  &&  checkAccessibility(playerTransform))
         {
             anim.SetBool("hurt", false);
             if (playerTransform.position.x > transform.position.x && !faceRight) {

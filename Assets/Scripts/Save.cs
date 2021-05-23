@@ -11,6 +11,8 @@ public class Save
     public int hp = 0;
 
     public int deaths, losses;
+
+    public int bloodBodies;
     public System.TimeSpan time;
     public int npc_saved, npc_dead;
 
@@ -25,6 +27,9 @@ public class Save
     public List<bool> platformOpened;
 
 
+    public List<bool> popupsShown;
+
+
     public void Initialize()
     {
         maggotx = new List<float>();
@@ -34,6 +39,8 @@ public class Save
         maggotDead = new List<bool>();
 
         platformOpened = new List<bool>();
+
+        popupsShown = new List<bool>();
 
     }
     

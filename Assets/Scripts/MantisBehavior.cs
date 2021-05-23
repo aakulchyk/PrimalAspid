@@ -47,7 +47,7 @@ public class MantisBehavior : NpcBehavior
 
     void FixedUpdate()
     {
-        if (isDead) return;
+        if (isDead || Time.timeScale == 0) return;
          // interact with player
 
         if (shootTimeout > 0) {
@@ -91,20 +91,13 @@ public class MantisBehavior : NpcBehavior
 
             if (!captured) {
 
-                /*if (prev_captured) {
-                    sounds.Stop();
-                    sounds.Play();
-                }*/
-
-                RaycastHit2D hit = Physics2D.Raycast(transform.position, GetVectorToPlayer());
                 Vector2 moveVector;
 
-                if (checkAccessibility(playerTransform)/*hit.collider != null && hit.collider.tag == "Player"*/) {
+                if (checkAccessibility(playerTransform)) {
                     Debug.DrawLine(transform.position, playerTransform.position, Color.green, 0.1f, false);    
                     moveVector = new Vector2 (GetVectorToPlayer().x * moveSpeed, GetVectorToPlayer().y * moveSpeed);
                 } else {
                     // find a waypoint closest to the player
-
                     float minDist = 99999f;
                     Transform minDistWp = transform;
                     foreach (var wp in waypoints) {
@@ -118,17 +111,13 @@ public class MantisBehavior : NpcBehavior
                         }
                     }
 
-                    //Debug.Log("Move to waypoint " + minDistWp.gameObject.name);
                     Vector3 direction = minDistWp.position - transform.position;
                     Debug.DrawLine(transform.position, transform.position + direction, Color.green, 0.1f, false);    
                     moveVector = new Vector2 (direction.normalized.x * moveSpeed, direction.normalized.y * moveSpeed);
                 }
-
                 
                 GetComponent<Rigidbody2D>().velocity = moveVector;
             } else {
-                //anim.SetBool("hurt", true);
-                //shootAnticipate = false;
                 if (!prev_captured)
                     sounds.Stop(); 
 
@@ -147,6 +136,10 @@ public class MantisBehavior : NpcBehavior
         }
     }
 
+    private void move() {
+
+    }
+
 
     public void flip() {
         Vector3 scale = transform.localScale;
@@ -162,7 +155,7 @@ public class MantisBehavior : NpcBehavior
 
         GameObject go = Instantiate(projectilePrefab);
 
-        go.transform.position = gameObject.transform.position + GetVectorToPlayer() * 2.2f;
+        go.transform.position = gameObject.transform.position + GetVectorToPlayer() * 2.0f;
         go.transform.rotation = Quaternion.identity;
         go.transform.localScale = new Vector3(5, 5, 1);
         
@@ -172,7 +165,21 @@ public class MantisBehavior : NpcBehavior
         anim.SetBool("shooting", false);
     }
 
-    private bool checkAccessibility(Transform wp)
+    public override void getCaptured()
+    {
+        anim.SetBool("shooting", false);
+        anim.SetBool("hurt", true);
+        captured = true;
+        shootAnticipate = false;
+    }
+
+    public override void getReleased()
+    {
+        anim.SetBool("hurt", false);
+        captured = false;
+    }
+
+    protected override bool checkAccessibility(Transform wp)
     {
         CapsuleCollider2D col = GetComponent<CapsuleCollider2D> ();
         Vector3 pos = transform.position;
@@ -189,7 +196,7 @@ public class MantisBehavior : NpcBehavior
             float distM = Vector2.Distance(p, wp.position);
             Vector3 dir = wp.position - p;
             RaycastHit2D hit = Physics2D.Raycast(p, dir.normalized, distM);
-            if (hit.collider != null && hit.collider.tag != "Player") {
+            if (hit.collider != null && hit.collider.tag != "Player" && hit.collider != col) {
                 //Debug.Log(wp.gameObject.name + " not visible because of " + hit.collider.tag + "/" + hit.collider.gameObject.name);
                 Debug.DrawLine(p, wp.position, Color.red, 0.02f, false);
                 accessible = false;
@@ -202,20 +209,6 @@ public class MantisBehavior : NpcBehavior
         
         return accessible;
         
-    }
-
-    public override void getCaptured()
-    {
-        anim.SetBool("shooting", false);
-        anim.SetBool("hurt", true);
-        captured = true;
-        shootAnticipate = false;
-    }
-
-    public override void getReleased()
-    {
-        anim.SetBool("hurt", false);
-        captured = false;
     }
 
     protected override void processCollision(Collision2D collision) {
@@ -246,7 +239,7 @@ public class MantisBehavior : NpcBehavior
 
         if (player.isPulling && player.GetComponent<FixedJoint2D>().connectedBody == GetComponent<Rigidbody2D>()) {
             player.releaseBody();
-            player.throwByImpulse(new Vector2 (GetVectorToPlayer().x, GetVectorToPlayer().y*12));
+            player.throwByImpulse(new Vector2 (GetVectorToPlayer().x, GetVectorToPlayer().y*14), true);
         }
 
         if (--_hp < 0) {

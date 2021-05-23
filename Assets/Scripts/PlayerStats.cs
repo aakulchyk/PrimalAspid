@@ -13,6 +13,7 @@ public static class PlayerStats
     private static float stamina = 1f;
     private static int hp = 0;
 
+    private static int bloodBodies = 0;
     
 
     public static int Deaths 
@@ -97,6 +98,18 @@ public static class PlayerStats
         set 
         {
             hp = value;
+        }
+    }
+
+    public static int BloodBodies 
+    {
+        get 
+        {
+            return bloodBodies;
+        }
+        set 
+        {
+            bloodBodies = value;
         }
     }
 

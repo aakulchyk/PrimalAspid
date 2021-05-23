@@ -12,13 +12,15 @@ public enum WaitState
 public class NpcWaitingBehavior : MonoBehaviour
 {
     public bool waitSuccess = false;
+    private bool isTargetAlive = true;
+
     private Animator anim;
     private Rigidbody2D body; 
     private AudioSource sounds;
     private float noticeRadius = 6;
     //private float _moveSpeed = 0.8f;
 
-    private bool isTargetAlive = true;
+    
 
     private bool wallOpened = false;
     
@@ -32,12 +34,17 @@ public class NpcWaitingBehavior : MonoBehaviour
 
     public WaitState waitState = WaitState.Waiting;
 
-    private bool _loaded = false;
+    private bool _loading = false;
+    //private bool isCurrentlyLoading = false;
     
+    public string happyText;
+    public string sadText;
     
+    private Game game;
     // Start is called before the first frame update
     void Start()
     {
+        game = (Game)FindObjectOfType(typeof(Game));
         anim = GetComponent<Animator>();
         sounds = GetComponent<AudioSource>(); 
         body = GetComponent<Rigidbody2D>();
@@ -52,35 +59,50 @@ public class NpcWaitingBehavior : MonoBehaviour
         controlledWall.GetComponent<AudioSource>().enabled = true;
 
         // every door opening is a checkpoint
-        Game game = (Game)FindObjectOfType(typeof(Game));
         game.SaveGame();
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (_loaded==false) {
+        /*if (_loading==false) {
             if (waitState != WaitState.Waiting) {
                 
             }
-        }
+        }*/
         float dist = Vector2.Distance(target.position, transform.position);
 
         if (dist < noticeRadius) {
-            if (!waitSuccess) {
+            //Debug.Log("Waitting: found");
+            if (!waitSuccess || _loading) {
 
                 isTargetAlive = !target.gameObject.GetComponent<MaggotRescuedBehavior>().isDead;
 
                 if (isTargetAlive) {
-                    PlayerStats.NpcsSavedAlive++;
+
+                    if (!_loading) {
+                        PlayerStats.NpcsSavedAlive++;
+                        
+                        game.SetPopupText(happyText);
+                        game.OpenPopup();
+                    }
                     waitState = WaitState.Happy;
+                    anim.SetTrigger("Found");
                 }
                 else {
-                    PlayerStats.NpcsLostDead++;
+
+                    if (!_loading) {
+                        PlayerStats.NpcsLostDead++;
+                        game.SetPopupText(sadText);
+                        game.OpenPopup();
+                    }
                     waitState = WaitState.Sad;
+                    anim.SetTrigger("FoundDead");
                 }
+                
                 waitSuccess = true;
-                anim.SetTrigger("Found");
+                _loading = false;
+                
 
                 // open the wall
                 if (!wallOpened) {
@@ -105,8 +127,21 @@ public class NpcWaitingBehavior : MonoBehaviour
 
     public void LoadInActualState() {
         if (waitSuccess) {
-            if (controlledWall)
+            if (controlledWall) {
                 controlledWall.GetComponent<Animator>().SetTrigger("Opened");
+                wallOpened = true;
+            }
+
+            _loading = true;
+
+            /*if (target) {
+                isTargetAlive = !target.gameObject.GetComponent<MaggotRescuedBehavior>().isDead;
+                anim.SetTrigger(isTargetAlive ? "Found" : "FoundDead");
+                waitState = isTargetAlive ? WaitState.Happy : WaitState.Sad;
+            } else {
+                Debug.Log("Error: no target");
+            }*/
+
         }
     }
 }

@@ -1,17 +1,27 @@
-﻿using System.Collections;
+﻿using System.Text;
+using System.Collections;
 using System.Collections.Generic;
-using UnityEngine;
 
+using UnityEngine;
+using UnityEngine.UI;
 public class StatusBar : MonoBehaviour
 {
     private Transform bar;
     //GameObject[] hpBar;
     GameObject[] hpBar2;
+    GameObject popup;
+
+    GameObject bbCount;
     void Start() {
         bar = transform.Find("Bar");
 
         //hpBar = new GameObject[] {GameObject.Find("HP1"), GameObject.Find("HP2"), GameObject.Find("HP3")};
         hpBar2 = new GameObject[] {GameObject.Find("HP2.1"), GameObject.Find("HP2.2"), GameObject.Find("HP2.3")};
+
+
+        popup = GameObject.Find("PopUp");
+
+        bbCount = GameObject.Find("bbCount");
     }
 
 
@@ -24,17 +34,11 @@ public class StatusBar : MonoBehaviour
             hpBar2[i].SetActive(PlayerStats.HP > i);
         }
 
-        /*if (GameObject.Find("HP3")) {
-            GameObject.Find("HP3").SetActive( PlayerStats.HP > 2);
-        }
+        bbCount.GetComponent<Text>().text = PlayerStats.BloodBodies.ToString();
+    }
 
-        if (GameObject.Find("HP2")) {
-            GameObject.Find("HP2").SetActive( PlayerStats.HP > 1);
-        }
-
-        if (GameObject.Find("HP2")) {
-            GameObject.Find("HP2").SetActive( PlayerStats.HP > 0);
-        }*/
-
+    public void onPopupClose() {
+        Debug.Log("close");
+        popup.SetActive(false);
     }
 }
