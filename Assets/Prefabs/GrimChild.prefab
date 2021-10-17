@@ -127,6 +127,7 @@ MonoBehaviour:
   clip_hurt: {fileID: 0}
   clip_death: {fileID: 8300000, guid: 3603262efd8d41e4996baccdc1df2124, type: 3}
   clip_flap: {fileID: 8300000, guid: 1d020eeb42ea90f4fa02bc3b31a5cc9d, type: 3}
+  activeSpeaker: {fileID: 0}
 --- !u!50 &6957222627593913675
 Rigidbody2D:
   serializedVersion: 4
@@ -267,7 +268,7 @@ FixedJoint2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6957222627593913666}
-  m_Enabled: 0
+  m_Enabled: 1
   serializedVersion: 4
   m_EnableCollision: 0
   m_ConnectedRigidBody: {fileID: 0}
@@ -275,6 +276,6 @@ FixedJoint2D:
   m_BreakTorque: Infinity
   m_AutoConfigureConnectedAnchor: 0
   m_Anchor: {x: 0, y: 0}
-  m_ConnectedAnchor: {x: -170.365, y: 0.053}
+  m_ConnectedAnchor: {x: 0, y: -1}
   m_DampingRatio: 0.1
   m_Frequency: 2

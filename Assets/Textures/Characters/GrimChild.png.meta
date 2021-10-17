@@ -565,9 +565,9 @@ TextureImporter:
       name: GrimStand1
       rect:
         serializedVersion: 2
-        x: 666
+        x: 667
         y: 1958
-        width: 216
+        width: 215
         height: 224
       alignment: 0
       pivot: {x: 0.5, y: 0.5}

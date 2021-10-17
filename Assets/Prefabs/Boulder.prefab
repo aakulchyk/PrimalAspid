@@ -11,12 +11,10 @@ GameObject:
   - component: {fileID: 6541578554950753721}
   - component: {fileID: 6541578554950753720}
   - component: {fileID: 6541578554950753723}
-  - component: {fileID: 6541578554950753722}
   - component: {fileID: 3677584721094372472}
-  - component: {fileID: 7868851497102028417}
   m_Layer: 0
   m_Name: Boulder
-  m_TagString: Throwable
+  m_TagString: Boulder
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -28,13 +26,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6541578554950753725}
-  m_LocalRotation: {x: 0, y: 0, z: 0.122735426, w: 0.99243945}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 91.91, y: 27.616285, z: 0}
   m_LocalScale: {x: 0.4, y: 0.5, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 14.1}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &6541578554950753720
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -50,6 +48,7 @@ SpriteRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 0
+  m_RayTraceProcedural: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -107,22 +106,6 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!58 &6541578554950753722
-CircleCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6541578554950753725}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0.031373456, y: 0.026126798}
-  serializedVersion: 2
-  m_Radius: 1.401532
 --- !u!82 &3677584721094372472
 AudioSource:
   m_ObjectHideFlags: 0
@@ -219,16 +202,3 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!114 &7868851497102028417
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6541578554950753725}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2c60c9914e5a8e140b1a128efde533e2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  sound_hit: {fileID: 8300000, guid: ac7d5513afcc8e446ab4e4307ebf17bf, type: 3}

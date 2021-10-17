@@ -37,6 +37,11 @@ public class MantisBehavior : NpcBehavior
     void Start()
     {
         BaseInit();
+
+        if (grabbable) {
+            grabbable.SetGetCapturedCallback(getCaptured);
+            grabbable.SetGetReleasedCallback(getReleased);
+        }
     }
 
     IEnumerator DeleteProjectileAfterDelay(float time)
@@ -74,7 +79,7 @@ public class MantisBehavior : NpcBehavior
 
 
             if (distP < _shootRadius) {
-                if (currentProjectile == null && !shootAnticipate && !invulnerable && !captured) {
+                if (currentProjectile == null && !shootAnticipate && !invulnerable && !grabbable.captured) {
 
                     RaycastHit2D hit = Physics2D.Raycast(transform.position, new Vector2 (GetVectorToPlayer().x, GetVectorToPlayer().y));
                     //Debug.DrawLine(transform.position, playerTransform.position, Color.blue, 0.2f, false);
@@ -87,9 +92,15 @@ public class MantisBehavior : NpcBehavior
                         anim.SetBool("shooting", true);
                     }
                 }
+
             }
 
-            if (!captured) {
+            if (!grabbable) {
+                Debug.Log("Capture Error: No Grabbable found");
+                return;
+            }
+
+            if (!grabbable.captured) {
 
                 Vector2 moveVector;
 
@@ -128,7 +139,7 @@ public class MantisBehavior : NpcBehavior
             }
 
 
-            prev_captured = captured;
+            prev_captured = grabbable.captured;
 
 
         } else {
@@ -144,6 +155,10 @@ public class MantisBehavior : NpcBehavior
     public void flip() {
         Vector3 scale = transform.localScale;
         transform.localScale = new Vector3(-1*scale.x, scale.y, scale.z);
+
+        if (grabbable) {
+            grabbable.FlipCanvas();
+        }
     }
 
     public void shoot() {
@@ -169,14 +184,13 @@ public class MantisBehavior : NpcBehavior
     {
         anim.SetBool("shooting", false);
         anim.SetBool("hurt", true);
-        captured = true;
+        
         shootAnticipate = false;
     }
 
     public override void getReleased()
     {
         anim.SetBool("hurt", false);
-        captured = false;
     }
 
     protected override bool checkAccessibility(Transform wp)
@@ -215,7 +229,7 @@ public class MantisBehavior : NpcBehavior
         if (invulnerable) return;
 
         Collider2D collider = collision.collider;
-        if (collider.tag == "Throwable") {
+        if (collider.tag == "Boulder") {
             if (collision.relativeVelocity.magnitude > 7) {
                 hurt(0);
             }
@@ -266,7 +280,6 @@ public class MantisBehavior : NpcBehavior
         StartCoroutine(OpenDoorAfterDelay(2));
 
         //dismantle
-
         Vector3 v = new Vector3 (-1.5f, 0f, 0f);
         foreach (var prefab in deathChunkPrefabs) {
             GameObject go = Instantiate(prefab);
@@ -285,6 +298,23 @@ public class MantisBehavior : NpcBehavior
         bossMusic.GetComponent<AudioSource>().enabled = false;
 
         Destroy(this.gameObject, 3.5f);
+
+        // drop loot
+        if (collectiblePrefab) {
+            StartCoroutine(dropCollectibles());
+        }
+    }
+
+    IEnumerator dropCollectibles() {
+        yield return new WaitForSeconds(0.4F);
+
+        for (int i = -1; i<2; i++) {
+            GameObject go = Instantiate(collectiblePrefab);
+
+            go.transform.position = gameObject.transform.position + new Vector3(i,1,0);
+            go.transform.rotation = Quaternion.identity;
+        }
+        
     }
 
 

@@ -1,7 +1,52 @@
 fileFormatVersion: 2
 guid: 8dc16097317cea44a89ff3379cb1403c
 TextureImporter:
-  internalIDToNameTable: []
+  internalIDToNameTable:
+  - first:
+      213: -7572332669267614540
+    second: maggot2_0
+  - first:
+      213: 3129803731994004760
+    second: maggot2_1
+  - first:
+      213: -2000634664312278988
+    second: maggot2_2
+  - first:
+      213: -6062066289274906212
+    second: maggot2_3
+  - first:
+      213: -4906504305173992101
+    second: maggot2_4
+  - first:
+      213: 7897158309069344244
+    second: maggot2_5
+  - first:
+      213: 3770530393561740455
+    second: maggot2_6
+  - first:
+      213: -635807607762431565
+    second: maggot2_7
+  - first:
+      213: 1324331652307482291
+    second: maggot2_8
+  - first:
+      213: 4151562912255488495
+    second: maggot2_death10
+  - first:
+      213: 6078926752098205907
+    second: maggot2_death11
+  - first:
+      213: 740423222217041676
+    second: maggot2_death12
+  - first:
+      213: -2524726195677615376
+    second: maggot2_death0
+  - first:
+      213: -8466812722337305593
+    second: maggot2_death1
+  - first:
+      213: -418713805789394632
+    second: maggot2_death2
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -23,6 +68,7 @@ TextureImporter:
   isReadable: 0
   streamingMipmaps: 0
   streamingMipmapsPriority: 0
+  vTOnly: 0
   grayScaleToAlpha: 0
   generateCubemap: 6
   cubemapConvolution: 0
@@ -40,7 +86,7 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 1
+  spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
@@ -54,9 +100,12 @@ TextureImporter:
   textureType: 8
   textureShape: 1
   singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
   maxTextureSizeSet: 0
   compressionQualitySet: 0
   textureFormatSet: 0
+  ignorePngGamma: 0
   applyGammaDecoding: 0
   platformSettings:
   - serializedVersion: 3
@@ -71,9 +120,336 @@ TextureImporter:
     overridden: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
-    sprites: []
+    sprites:
+    - serializedVersion: 2
+      name: maggot2_0
+      rect:
+        serializedVersion: 2
+        x: 4
+        y: 2054
+        width: 177
+        height: 223
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4b4e737ae8ba9e690800000000000000
+      internalID: -7572332669267614540
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: maggot2_1
+      rect:
+        serializedVersion: 2
+        x: 186
+        y: 2054
+        width: 177
+        height: 223
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 81dc13e69eb4f6b20800000000000000
+      internalID: 3129803731994004760
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: maggot2_2
+      rect:
+        serializedVersion: 2
+        x: 368
+        y: 2054
+        width: 177
+        height: 223
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 43075546f515c34e0800000000000000
+      internalID: -2000634664312278988
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: maggot2_3
+      rect:
+        serializedVersion: 2
+        x: 4
+        y: 1820
+        width: 176
+        height: 210
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c9916eef3d63fdba0800000000000000
+      internalID: -6062066289274906212
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: maggot2_4
+      rect:
+        serializedVersion: 2
+        x: 185
+        y: 1820
+        width: 176
+        height: 210
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b5ded29845898ebb0800000000000000
+      internalID: -4906504305173992101
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: maggot2_5
+      rect:
+        serializedVersion: 2
+        x: 4
+        y: 1573
+        width: 181
+        height: 221
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4fd4a1324a7589d60800000000000000
+      internalID: 7897158309069344244
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: maggot2_6
+      rect:
+        serializedVersion: 2
+        x: 191
+        y: 1573
+        width: 181
+        height: 221
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7a4bf037a6d935430800000000000000
+      internalID: 3770530393561740455
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: maggot2_7
+      rect:
+        serializedVersion: 2
+        x: 378
+        y: 1573
+        width: 181
+        height: 221
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3b154d179582d27f0800000000000000
+      internalID: -635807607762431565
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: maggot2_8
+      rect:
+        serializedVersion: 2
+        x: 565
+        y: 1573
+        width: 181
+        height: 221
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3b6f7940f98f06210800000000000000
+      internalID: 1324331652307482291
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: maggot2_death10
+      rect:
+        serializedVersion: 2
+        x: 4
+        y: 4
+        width: 233
+        height: 150
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fe1bca709705d9930800000000000000
+      internalID: 4151562912255488495
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: maggot2_death11
+      rect:
+        serializedVersion: 2
+        x: 243
+        y: 4
+        width: 233
+        height: 150
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3d0ce6a6cafac5450800000000000000
+      internalID: 6078926752098205907
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: maggot2_death12
+      rect:
+        serializedVersion: 2
+        x: 482
+        y: 4
+        width: 233
+        height: 150
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c0762b76ff2864a00800000000000000
+      internalID: 740423222217041676
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: maggot2_death0
+      rect:
+        serializedVersion: 2
+        x: 4
+        y: 178
+        width: 257
+        height: 254
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0fa238fc6ee56fcd0800000000000000
+      internalID: -2524726195677615376
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: maggot2_death1
+      rect:
+        serializedVersion: 2
+        x: 266
+        y: 178
+        width: 257
+        height: 254
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 70ca35920b6df7a80800000000000000
+      internalID: -8466812722337305593
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: maggot2_death2
+      rect:
+        serializedVersion: 2
+        x: 528
+        y: 178
+        width: 257
+        height: 254
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8390f57130e603af0800000000000000
+      internalID: -418713805789394632
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []

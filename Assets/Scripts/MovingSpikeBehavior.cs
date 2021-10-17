@@ -21,15 +21,17 @@ public class MovingSpikeBehavior : MonoBehaviour
     void Update()
     {
         if (switchedOff) {
-            anim.SetBool("NearPlayer", false);
+            //anim.SetBool("NearPlayer", false);
+            //anim.SetTrigger()
             return;
         }
+
+        //bool isGrounded = anim.GetCurrentAnimatorStateInfo(0).IsName("NearPlayer");
         if (_followRadius==0 || checkFollowRadius(playerTransform.position, transform.position))
         {
-            anim.SetBool("NearPlayer", true);
+            anim.SetTrigger("NearPlayer");
         }
-        else
-            anim.SetBool("NearPlayer", false);
+        
     }
 
         //if player in radius move toward him 

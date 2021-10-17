@@ -20,6 +20,8 @@ public class MaggotRescuedBehavior : NpcBehavior
 
     public bool found = false;
 
+    private bool _gone = false;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -29,7 +31,7 @@ public class MaggotRescuedBehavior : NpcBehavior
     // Update is called once per frame
     void Update()
     {
-        if (isDead || Time.timeScale == 0)
+        if (isDead || Time.timeScale == 0 || _gone)
             return;
 
         // interact with sibling
@@ -95,5 +97,10 @@ public class MaggotRescuedBehavior : NpcBehavior
         } else {
             Debug.Log("Load ALIVE");
         }
+    }
+
+    public void onDisappear() {
+        this.gameObject.SetActive(false);
+        _gone = true;
     }
 }

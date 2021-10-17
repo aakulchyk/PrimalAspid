@@ -14,6 +14,10 @@ public static class PlayerStats
     private static int hp = 0;
 
     private static int bloodBodies = 0;
+
+
+    //
+    private static bool showTutorial = true;
     
 
     public static int Deaths 
@@ -110,6 +114,19 @@ public static class PlayerStats
         set 
         {
             bloodBodies = value;
+        }
+    }
+
+
+    public static bool ShowTutorial 
+    {
+        get 
+        {
+            return showTutorial;
+        }
+        set 
+        {
+            showTutorial = value;
         }
     }
 

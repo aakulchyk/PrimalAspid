@@ -6,12 +6,13 @@ public class NpcBehavior : MonoBehaviour
 {
     public bool isDead = false;
 
-    public bool captured = false;  
-    
+   
     protected Animator anim;
     protected Rigidbody2D body;
     protected PlayerControl player;
     protected Transform playerTransform;
+
+    protected GrabbableBehavior grabbable = null;
 
     protected AudioSource sounds;
 
@@ -23,6 +24,8 @@ public class NpcBehavior : MonoBehaviour
 
     public bool invulnerable = false;
 
+    
+
     protected void BaseInit()
     {
         anim = GetComponent<Animator>();
@@ -31,6 +34,11 @@ public class NpcBehavior : MonoBehaviour
         playerTransform = GameObject.FindWithTag("Player").transform;
 
         sounds =  GetComponent<AudioSource>();
+
+        Transform t = transform.Find("Grabbable");
+        if (t) {
+            grabbable = t.gameObject.GetComponent<GrabbableBehavior>();
+        }
     }
 
     void OnCollisionEnter2D(Collision2D collision) {
@@ -41,7 +49,7 @@ public class NpcBehavior : MonoBehaviour
     protected virtual void processCollision(Collision2D collision) {
        // Debug.Log("NPC collision");
         Collider2D collider = collision.collider;
-        if (collider.tag == "Throwable") {
+        if (collider.tag == "Boulder") {
             if (collision.relativeVelocity.magnitude > 8) {
                 hurt(0);
             }
@@ -49,7 +57,7 @@ public class NpcBehavior : MonoBehaviour
 
         if (collider.tag == "Spike")
         {
-            //Debug.Log("NPC Collide Spike");
+            //Debug.Log("NPC Collide Spike");p
             hurt(0);
         }
     }
@@ -81,7 +89,6 @@ public class NpcBehavior : MonoBehaviour
         if (collectiblePrefab) {
             StartCoroutine(dropCollectible());
         }
-
     }
 
 
@@ -119,12 +126,18 @@ public class NpcBehavior : MonoBehaviour
 
     public virtual void getCaptured()
     {
-        captured = true;
+        if (grabbable)
+            grabbable.getCaptured();
+        else
+            Debug.Log("Capture Error: No Grabbable found");
     }
 
     public virtual void getReleased()
     {
-        captured = false;
+        if (grabbable)
+            grabbable.getReleased();
+        else
+            Debug.Log("Capture Error: No Grabbable found");
     }
 
     public virtual void LoadInActualState()

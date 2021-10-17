@@ -22,7 +22,6 @@ public class FlyingEnemyBehavior : NpcBehavior
     protected override bool checkAccessibility(Transform wp)
     {
         CircleCollider2D col = GetComponent<CircleCollider2D> ();
-        //Vector3 pos = transform.position;
         Vector2 pos = new Vector2(transform.position.x + col.offset.x, transform.position.y + col.offset.y); 
 
         float r = col.radius*1.6f;
@@ -80,7 +79,13 @@ public class FlyingEnemyBehavior : NpcBehavior
                 faceRight = false;
             }
 
-            if (!captured) {
+            if (!grabbable) {
+                Debug.Log("Capture Error: No Grabbable found");
+                return;
+            }
+
+
+            if (!grabbable.captured) {
 
                 if (prev_captured) {
                     sounds.Stop();
@@ -100,15 +105,13 @@ public class FlyingEnemyBehavior : NpcBehavior
                     sounds.PlayOneShot(clip_captured);
             }
 
-            prev_captured = captured;
+            prev_captured = grabbable.captured;
 
 
         } else {
             anim.SetBool("chase", false);
             GetComponent<Rigidbody2D>().velocity = new Vector2(0, 0.25f);
         }
-
-        
     }
 
    protected override void die()
@@ -121,5 +124,11 @@ public class FlyingEnemyBehavior : NpcBehavior
     {
         Vector3 scale = transform.localScale;
         transform.localScale = new Vector3(-1*scale.x, scale.y, scale.z);
+
+        
+        if (grabbable) {
+            grabbable.FlipCanvas();
+        }
     }
+    
 }

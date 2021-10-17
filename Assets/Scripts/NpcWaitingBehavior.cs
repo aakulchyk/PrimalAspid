@@ -18,7 +18,7 @@ public class NpcWaitingBehavior : MonoBehaviour
     private Rigidbody2D body; 
     private AudioSource sounds;
     private float noticeRadius = 6;
-    //private float _moveSpeed = 0.8f;
+    public float interactRadius = 2f;
 
     
 
@@ -36,9 +36,22 @@ public class NpcWaitingBehavior : MonoBehaviour
 
     private bool _loading = false;
     //private bool isCurrentlyLoading = false;
-    
+
+
+    public string npcName;
+    public string initialText;
     public string happyText;
     public string sadText;
+
+    public string currentText;
+
+
+    private bool canDisappear = false;
+    private bool _gone = false;
+
+    public bool openForDialogue = false;
+
+    private PlayerControl player;
     
     private Game game;
     // Start is called before the first frame update
@@ -48,6 +61,9 @@ public class NpcWaitingBehavior : MonoBehaviour
         anim = GetComponent<Animator>();
         sounds = GetComponent<AudioSource>(); 
         body = GetComponent<Rigidbody2D>();
+
+        player = (PlayerControl)FindObjectOfType(typeof(PlayerControl));
+        currentText = initialText;
     }
 
     IEnumerator OpenDoorAfterDelay(float time)
@@ -62,16 +78,35 @@ public class NpcWaitingBehavior : MonoBehaviour
         game.SaveGame();
     }
 
+    IEnumerator DisappearAfterDelay(float time)
+    {
+        yield return new WaitForSeconds(time);
+        anim.SetTrigger("Disappear");
+        target.gameObject.GetComponent<Animator>().SetTrigger("Disappear");
+    }
+
     // Update is called once per frame
     void Update()
     {
+        if (_gone) return;
         /*if (_loading==false) {
             if (waitState != WaitState.Waiting) {
                 
             }
         }*/
-        float dist = Vector2.Distance(target.position, transform.position);
 
+        Transform playerTransform = GameObject.FindWithTag("Player").transform;
+        float pDist = Vector2.Distance(playerTransform.position, transform.position); 
+        GameObject cnvs = gameObject.transform.GetChild(0).gameObject;
+        openForDialogue = (pDist < interactRadius) && !canDisappear;
+        cnvs.SetActive(openForDialogue);
+        
+        if (openForDialogue) {
+            player.activeSpeaker = this;
+        }
+
+
+        float dist = Vector2.Distance(target.position, transform.position);
         if (dist < noticeRadius) {
             //Debug.Log("Waitting: found");
             if (!waitSuccess || _loading) {
@@ -82,10 +117,12 @@ public class NpcWaitingBehavior : MonoBehaviour
 
                     if (!_loading) {
                         PlayerStats.NpcsSavedAlive++;
-                        
-                        game.SetPopupText(happyText);
-                        game.OpenPopup();
+                        currentText = happyText;
+                    } else {
+                        onDisappear();
+                        target.gameObject.GetComponent<MaggotRescuedBehavior>().onDisappear();
                     }
+
                     waitState = WaitState.Happy;
                     anim.SetTrigger("Found");
                 }
@@ -93,8 +130,10 @@ public class NpcWaitingBehavior : MonoBehaviour
 
                     if (!_loading) {
                         PlayerStats.NpcsLostDead++;
-                        game.SetPopupText(sadText);
-                        game.OpenPopup();
+                        currentText = sadText;
+                    } else {
+                        onDisappear();
+                        target.gameObject.GetComponent<MaggotRescuedBehavior>().onDisappear();
                     }
                     waitState = WaitState.Sad;
                     anim.SetTrigger("FoundDead");
@@ -102,13 +141,6 @@ public class NpcWaitingBehavior : MonoBehaviour
                 
                 waitSuccess = true;
                 _loading = false;
-                
-
-                // open the wall
-                if (!wallOpened) {
-                    wallOpened = true;
-                    StartCoroutine(OpenDoorAfterDelay(2));
-                }
             }
 
             /*Vector3 direction = target.position - transform.position;
@@ -143,6 +175,28 @@ public class NpcWaitingBehavior : MonoBehaviour
             }*/
 
         }
+    }
+
+    public void talkToPlayer() {
+        game.SetPopupText(npcName, currentText);
+        game.OpenPopup();
+
+        if (waitSuccess) {
+            canDisappear = true;
+            // open the wall
+            if (!wallOpened) {
+                wallOpened = true;
+                StartCoroutine(OpenDoorAfterDelay(2));
+                StartCoroutine(DisappearAfterDelay(4));
+            }
+        }
+    }
+
+    public void onDisappear() {
+        //GetComponent<Renderer>().enabled = false;
+        //sounds.enabled = false;
+        this.gameObject.SetActive(false);
+        _gone = true;
     }
 }
 

@@ -8,17 +8,16 @@ public class BoulderBehavior : MonoBehaviour
 
     public AudioClip sound_hit;
     // Start is called before the first frame update
+    protected GrabbableBehavior grabbable = null;
     void Start()
     {
         sounds = GetComponent<AudioSource>();
-    }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
+        Transform t = transform.parent.Find("Grabbable");
+        if (t) {
+            grabbable = t.gameObject.GetComponent<GrabbableBehavior>();
+        }
     }
-
 
      void OnCollisionEnter2D(Collision2D collision) {
          Collider2D collider = collision.collider;

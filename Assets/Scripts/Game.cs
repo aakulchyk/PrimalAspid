@@ -18,6 +18,7 @@ public class Game : MonoBehaviour
     public bool isPopupOpen = false;
 
     public bool isGameInProgress = false;
+
     private Save CreateSaveGameObject()
     {
         Save save = new Save();
@@ -152,7 +153,10 @@ public class Game : MonoBehaviour
     }
 
 
-    public void SetPopupText(string text) {
+    public void SetPopupText(string title, string text) {
+        Text titleWindow = popupWindow.transform.Find("Title").gameObject.GetComponent<Text>();
+        titleWindow.text = title;
+
         Text textWindow = popupWindow.transform.Find("Text").gameObject.GetComponent<Text>();
         textWindow.text = text;
     }

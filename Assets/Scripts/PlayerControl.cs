@@ -33,8 +33,13 @@ public class PlayerControl : MonoBehaviour
 
     private bool _turnStarted = false;
     private bool _flapStarted = false;
+
+    private bool _cannotGrab = false;
     
     private Game game;
+
+    // TODO: rework
+    public NpcWaitingBehavior activeSpeaker;
 
     // Start is called before the first frame update
     void Start()
@@ -86,24 +91,40 @@ public class PlayerControl : MonoBehaviour
         invulnerable = false;
     }
 
+    IEnumerator shortInabilityToGrab() {
+        _cannotGrab = true;
+        yield return new WaitForSeconds(0.5F);
+        _cannotGrab = false;
+    }
+
 
 
 
     // Update is called once per frame
     void Update()
     {
+        if (game.isPopupOpen && Input.anyKeyDown) {
+            game.ClosePopup();
+            return;
+        }
+
+
         if (Input.GetKeyDown(KeyCode.Escape)) {
-            if (game.isPopupOpen) {
-                game.ClosePopup();
-            } else {
-                SceneManager.LoadScene("TitleScreen");
-            }
+            SceneManager.LoadScene("TitleScreen");
             //Application.Quit();
         }
 
 
         if (Time.timeScale == 0)
             return;
+
+
+        if (Input.GetKeyDown(KeyCode.Y) || Input.GetKey(KeyCode.JoystickButton3)) {
+            if (activeSpeaker && activeSpeaker.openForDialogue) {
+                activeSpeaker.talkToPlayer();
+            }
+        }
+
 
         if ((Input.GetKey(KeyCode.Space) || Input.GetKey(KeyCode.JoystickButton0))
                 && !_flapStarted && !_turnStarted) {
@@ -120,18 +141,16 @@ public class PlayerControl : MonoBehaviour
         body.velocity = new Vector2 (moveX * _maxSpeed, body.velocity.y);
         
 
-        bool newTurn = false;
+        bool newTurn = false;   
         if ((moveX > 0 && !faceRight) || (moveX < 0 && faceRight)) {
             newTurn = true;
         }
-
 
         /*bool isGrounded = anim.GetCurrentAnimatorStateInfo(0).IsName("IsGrounded");
         if (isGrounded)
             isAlreadyTurning = true;*/
 
         if (!_turnStarted && newTurn) {
-            faceRight = !faceRight;
             anim.SetBool("Turn", true);
             endFlap();
             _turnStarted = true;
@@ -141,9 +160,9 @@ public class PlayerControl : MonoBehaviour
             flip();
         }*/
 
-        if ((Input.GetKey(KeyCode.X) || Input.GetKey(KeyCode.JoystickButton5))) {
-            Vector3 checkPosition = new Vector3(transform.position.x, transform.position.y-0.5f, transform.position.z);
-            Collider2D[] grabColliders = Physics2D.OverlapCircleAll(checkPosition, 0.5f);
+        if ((Input.GetKey(KeyCode.LeftShift) || Input.GetKey(KeyCode.X) || Input.GetKey(KeyCode.JoystickButton2))) {
+            Vector3 checkPosition = new Vector3(transform.position.x, transform.position.y-0.6f, transform.position.z);
+            Collider2D[] grabColliders = Physics2D.OverlapCircleAll(checkPosition, 0.6f);
             foreach (var grabCollider in grabColliders)
             {
                 if (grabCollider.tag == "Player" || grabCollider.tag == "Spike")
@@ -153,7 +172,8 @@ public class PlayerControl : MonoBehaviour
                 if (body == null)
                     continue;
 
-                grabBody(body);
+                if (!_cannotGrab)
+                    grabBody(body);
                 break;
             }
         }
@@ -171,16 +191,25 @@ public class PlayerControl : MonoBehaviour
 
     public void grabBody(Rigidbody2D body) {
 
-        NpcBehavior behavior = body.gameObject.GetComponent<NpcBehavior>();
+        /*NpcBehavior behavior = body.gameObject.GetComponent<NpcBehavior>();
         if (behavior) {
             if (!behavior.invulnerable) {
                 behavior.getCaptured();
             } else return;
-        }
+        }*/
 
-        GetComponent<FixedJoint2D>().connectedBody = body;
-        GetComponent<FixedJoint2D>().enabled = true;
-        isPulling = true;
+        Transform t = body.transform.Find("Grabbable");
+
+        // if it's a framed object
+        if (!t)
+            t = body.transform.parent.Find("Grabbable");
+
+        if (t) {
+            t.gameObject.GetComponent<GrabbableBehavior>().getCaptured();
+            GetComponent<FixedJoint2D>().connectedBody = body;
+            GetComponent<FixedJoint2D>().enabled = true;
+            isPulling = true;
+        }
     }
 
     public void releaseBody() {
@@ -188,15 +217,21 @@ public class PlayerControl : MonoBehaviour
 
         Rigidbody2D body = GetComponent<FixedJoint2D>().connectedBody;
 
-        if (body && body.gameObject) {
-            NpcBehavior behavior = body.gameObject.GetComponent<NpcBehavior>();
+        if (body) {
+            //NpcBehavior behavior = body.gameObject.GetComponent<NpcBehavior>();
+            Transform t = body.transform.Find("Grabbable");
 
-            if (behavior)
-                behavior.getReleased();
+            if (!t)
+                t = body.transform.parent.Find("Grabbable");
+
+            if (t)
+                t.gameObject.GetComponent<GrabbableBehavior>().getReleased();
             GetComponent<FixedJoint2D>().connectedBody = null;
         }
 
         GetComponent<FixedJoint2D>().enabled = false;
+
+        StartCoroutine(shortInabilityToGrab());
         
        
     }
@@ -206,6 +241,7 @@ public class PlayerControl : MonoBehaviour
         anim.SetBool("Turn", false);
         _turnStarted = false;
         flip();
+        faceRight = !faceRight;
     }
 
     public void flip() {
@@ -249,7 +285,7 @@ public class PlayerControl : MonoBehaviour
 
         Collider2D collider = collision.collider;
 
-        if (collider.tag == "Throwable") {
+        if (collider.tag == "Boulder") {
             //Debug.Log("Relative Velocity " + collision.relativeVelocity.magnitude);
 
             if (collision.relativeVelocity.magnitude > 8) {
@@ -270,7 +306,7 @@ public class PlayerControl : MonoBehaviour
 
         
 
-        if (collider.tag == "Ground" && !isPulling/*GetComponent<FixedJoint2D>().enabled*/)
+        if (collider.tag == "Ground" && !isPulling)
         {
             anim.SetBool("IsGrounded", true);
             PlayerStats.Stamina = 1f;
@@ -330,9 +366,9 @@ public class PlayerControl : MonoBehaviour
             }
         }
 
-        if (other.tag == "Text") {
+        if (other.tag == "Text" && PlayerStats.ShowTutorial) { 
             Text text = other.gameObject.GetComponent<Text>();
-            game.SetPopupText(text.text);
+            game.SetPopupText("Tutorial", text.text);
             other.gameObject.SetActive(false);
             game.OpenPopup();
         }
