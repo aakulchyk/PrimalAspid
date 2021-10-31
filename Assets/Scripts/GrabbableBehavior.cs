@@ -7,12 +7,10 @@ public delegate void SimpleCallback();
 public class GrabbableBehavior : MonoBehaviour
 {
     private Transform playerTransform;
+
     // Update is called once per frame
-
     private GameObject canvas = null;
-
     public bool captured = false;  
-
     private bool hasBodyParentFrame = false;
 
     private SimpleCallback getCapturedCallback;
@@ -42,7 +40,6 @@ public class GrabbableBehavior : MonoBehaviour
                 Time.timeScale = 0.5f;
             else if (prev_grabbable)
                 Time.timeScale = 1f;
-
             prev_grabbable = showGrabText;*/
         }
 
@@ -56,12 +53,12 @@ public class GrabbableBehavior : MonoBehaviour
     protected bool CheckGrabability() {
         Vector3 checkPosition = new Vector2(playerTransform.position.x, playerTransform.position.y-1.2f);
         Collider2D col = gameObject.GetComponentInParent<Collider2D>();
-        Debug.DrawLine(playerTransform.position, checkPosition, Color.green, 0.05f, false);
+        //Debug.DrawLine(playerTransform.position, checkPosition, Color.green, 0.05f, false);
 
-        if (col)
+        if (col) {
             return col.OverlapPoint(checkPosition);
+        }
         else {
-
             Transform t = transform.parent.Find("Body");
             if (t) {
                 col = t.gameObject.GetComponentInParent<Collider2D>();

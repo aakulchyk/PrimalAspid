@@ -12,12 +12,12 @@ public class MenuControls : MonoBehaviour
     public void StartPressed()
     {
         File.Delete(Application.persistentDataPath + "/gamesave.save");
-        SceneManager.LoadScene("MainScene");
+        SceneManager.LoadScene("Level_2");
     }
 
     public void ContinuePressed()
     {
-         SceneManager.LoadScene("MainScene");
+         SceneManager.LoadScene("Level_2");
     }
 
     public void ExitPressed()

@@ -166,7 +166,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isDead: 0
-  captured: 0
   collectiblePrefab: {fileID: 0}
   clip_hurt: {fileID: 0}
   clip_death: {fileID: 8300000, guid: 3603262efd8d41e4996baccdc1df2124, type: 3}
@@ -327,8 +326,8 @@ CapsuleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.88, y: 1.12}
-  m_Size: {x: 1.6200986, y: 2.27}
+  m_Offset: {x: 0.87204725, y: 1.0724282}
+  m_Size: {x: 1.4768374, y: 2.0793583}
   m_Direction: 0
 --- !u!1 &5101497210488280252
 GameObject:

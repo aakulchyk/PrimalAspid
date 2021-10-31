@@ -9,7 +9,7 @@ public class KrabBehavior : NpcBehavior
 
     public  float _followRadius = 7f;
     public float _moveSpeed = 1.5f;
-    public float _jumpForce = 600f;
+    public float _jumpForce = 1600f;
 
 
     private bool isGrounded = true;
@@ -41,9 +41,11 @@ public class KrabBehavior : NpcBehavior
             if (direction.x !=0 && ! GetComponent<AudioSource>().isPlaying) {
                 GetComponent<AudioSource>().PlayOneShot(clip_crawl);
             }
+
+            return;
         
             // jump
-            // Cast a ray straight down.
+            // Cast a ray straight up.
             RaycastHit2D hit = Physics2D.Raycast(transform.position, Vector2.up);
             // If it hits something...
             if (hit.collider != null)

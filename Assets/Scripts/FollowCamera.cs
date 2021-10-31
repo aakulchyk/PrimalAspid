@@ -18,6 +18,11 @@ public class FollowCamera : MonoBehaviour {
 
     // Use this for initialization
     void Start () {
+        if (target) {
+            float posZ = transform.position.z;
+            transform.position = new Vector3(target.transform.position.x, target.transform.position.y, posZ);
+        }
+
         targetPos = transform.position;
     }
     
@@ -36,6 +41,8 @@ public class FollowCamera : MonoBehaviour {
 
             targetPos = transform.position + (targetDirection.normalized * interpVelocity * Time.deltaTime); 
 
+            
+
             if (targetPos.x < posNoZ.x && posNoZ.x - leftBorder.transform.position.x < 11f) {
                 targetPos.x = oldX;
             }
@@ -44,15 +51,29 @@ public class FollowCamera : MonoBehaviour {
                 targetPos.x = oldX;
             }
 
-            if (targetPos.y > posNoZ.y && topBorder.transform.position.y - posNoZ.y < 11f) {
+            /*if (targetPos.y > posNoZ.y && topBorder.transform.position.y - posNoZ.y < 11f) {
                 targetPos.y = oldY;
+            }*/
+
+
+            // find lower border
+            RaycastHit2D hit = Physics2D.Raycast(targetPos, Vector2.down);
+
+            float bottomBorderY = bottomBorder.transform.position.y;
+
+            if (hit.collider != null)
+            {
+                if (hit.collider.tag == "Ground") {
+                    bottomBorderY = hit.collider.transform.position.y;
+                }
             }
+
             
-            if (targetPos.y < posNoZ.y && posNoZ.y - bottomBorder.transform.position.y < 6f) {
+            if (targetPos.y < posNoZ.y && posNoZ.y - bottomBorderY < 6f) {
                 targetPos.y = oldY;
             }   
 
-            transform.position = Vector3.Lerp( transform.position, targetPos + offset, 0.25f);
+            transform.position = Vector3.Lerp( transform.position, targetPos + offset, 0.5f);
 
         }
     }

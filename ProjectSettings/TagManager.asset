@@ -18,6 +18,7 @@ TagManager:
   - Waypoint
   - BossFightTrigger
   - Boulder
+  - Hanger
   layers:
   - Default
   - TransparentFX

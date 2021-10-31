@@ -44,6 +44,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d742fe8a28cf0cf41a367b6f423c737f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  captured: 0
 --- !u!1 &4152528819531725588
 GameObject:
   m_ObjectHideFlags: 0
@@ -202,15 +203,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isDead: 0
-  captured: 0
   collectiblePrefab: {fileID: 5314788777006985090, guid: cebeb26d5d10a494c9022a590111b634,
     type: 3}
   clip_hurt: {fileID: 0}
   clip_death: {fileID: 8300000, guid: 3603262efd8d41e4996baccdc1df2124, type: 3}
   _hp: 0
   invulnerable: 0
-  _followRadius: 13
-  moveSpeed: 2.5
+  _followRadius: 20
+  moveSpeed: 3
   clip_captured: {fileID: 8300000, guid: 0a4612bfd38f7fe408aa30f7268a6304, type: 3}
 --- !u!82 &4152528819531725613
 AudioSource:

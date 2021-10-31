@@ -68,7 +68,7 @@ public class NpcBehavior : MonoBehaviour
 
         if (player.isPulling && player.GetComponent<FixedJoint2D>().connectedBody == GetComponent<Rigidbody2D>()) {
             player.releaseBody();
-            player.throwByImpulse(new Vector2 (GetVectorToPlayer().x, GetVectorToPlayer().y*7), true);
+            player.throwByImpulse(new Vector2 (GetVectorToPlayer().x, GetVectorToPlayer().y*20), true);
             invulnerable = true;
         }
 
