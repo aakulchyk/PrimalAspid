@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 6903810293661835054}
   - component: {fileID: 6903810293661835053}
   - component: {fileID: 9127805722733653413}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: TiltedPlatform
   m_TagString: Ground
   m_Icon: {fileID: 0}

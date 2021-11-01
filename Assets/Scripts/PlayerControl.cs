@@ -2,6 +2,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
+using System;
 using System.Text;
 using System.Collections;
 
@@ -14,16 +15,22 @@ public class PlayerControl : MonoBehaviour
     public float _maxSpeed = 5;
     public float _flapForce;
     //private Time startTime;
+    public bool isPulling = false;
+
+
     private bool invulnerable;
 
-    private bool isHanging = false;
+    private bool _isMoving = false;
+    private bool _isDashing = false;
+    private bool _isHanging = false;
 
-    private bool isGrounded = true;
+    private bool isGrounded = false;
 
-    public bool isPulling = false;
     public AudioClip clip_hurt;
     public AudioClip clip_death;
     public AudioClip clip_flap;
+
+    public AudioClip clip_dash;
 
     public const int INITIAL_HP = 2;
     public const float FLAP_MIN_TIMEOUT = 0.4f;
@@ -50,6 +57,8 @@ public class PlayerControl : MonoBehaviour
 
     private Transform nearestHanger = null;
 
+    public LayerMask groundLayer;
+
     private float pWidth, pHeight;
 
     // Start is called before the first frame update
@@ -69,8 +78,8 @@ public class PlayerControl : MonoBehaviour
 
         PlayerStats.HP = INITIAL_HP;
         
-        flip();
-        faceRight = false;
+        //flip();
+        faceRight = true;
         
         StartCoroutine(blinkInvulnerable());
 
@@ -84,6 +93,9 @@ public class PlayerControl : MonoBehaviour
         Debug.Log("Throw player back " + vector);
         if (enemy) {
             anim.SetTrigger("Kill");
+            if (PlayerStats.Stamina < 0.81f) {
+                PlayerStats.Stamina += 0.2f;
+            }
         }
         StartCoroutine(shortInvulnerability());
         body.velocity = vector;
@@ -128,9 +140,13 @@ public class PlayerControl : MonoBehaviour
             //Application.Quit();
         }
 
-
         if (Time.timeScale == 0)
             return;
+
+        if (_isDashing)
+            return;
+
+        checkGrounded();
 
         if (Input.GetKeyDown(KeyCode.Y) || Input.GetKey(KeyCode.JoystickButton3)) {
             if (activeSpeaker && activeSpeaker.openForDialogue) {
@@ -142,26 +158,42 @@ public class PlayerControl : MonoBehaviour
             }
         }
 
+
         if ((Input.GetKey(KeyCode.Space) || Input.GetKey(KeyCode.JoystickButton0) )
-                 && !_turnStarted && !isHanging) {
+                 && !_turnStarted && !_isHanging) {
                 
             if (Time.time - lastFlapTime > FLAP_MIN_TIMEOUT) {
                 startFlap();
                 lastFlapTime = Time.time;
             }
         }
-        
+
+        if (Input.GetKeyDown(KeyCode.G) && !_isDashing && !isPulling && !_isHanging) {
+            startDash();
+            return;
+        }
+
         float moveX = Input.GetAxis ("Horizontal");
         body.velocity = new Vector2 (moveX * _maxSpeed, body.velocity.y);
+        //Debug.Log("vel " + body.velocity.x);
+        bool move = Math.Abs(body.velocity.x) > 0.1f;
+        if (move) {
+            if (move != _isMoving)
+                anim.SetBool("IsMoving", true);
+            _isMoving = true;
+        } else {
+            if (move != _isMoving)
+                anim.SetBool("IsMoving", false);
+            _isMoving = false;
+        }
 
         bool newTurn = false;   
         if ((moveX > 0 && !faceRight) || (moveX < 0 && faceRight)) {
             newTurn = true;
         }
 
-
         if (!_turnStarted && newTurn) {
-            if (isHanging) {
+            if (_isHanging) {
                onTurnFinished();
             } else {
                 anim.SetBool("Turn", true);
@@ -170,10 +202,6 @@ public class PlayerControl : MonoBehaviour
             }
         }
         
-        /*if (isAlreadyTurning && newTurnStarted) {
-            flip();
-        }*/
-
         if ((Input.GetKeyDown(KeyCode.LeftShift) || Input.GetKeyDown(KeyCode.X) || Input.GetKeyDown(KeyCode.JoystickButton2)) && !Input.GetKey(KeyCode.UpArrow)) {
             anim.SetTrigger("Grab");
         }
@@ -185,6 +213,7 @@ public class PlayerControl : MonoBehaviour
                 if (nearestHanger) {
                     // HANG!
                     //Debug.Log("HANG!");
+                    endFlap();
                     anim.SetBool("IsHanging", true);
                     //RectTransform rt = nearestHanger.GetComponent<RectTransform>();
                     //float w = rt.sizeDelta.x * rt.localScale.x;
@@ -192,8 +221,8 @@ public class PlayerControl : MonoBehaviour
                     float w = bc.size.x;
                     transform.position = nearestHanger.position + new Vector3(w/2, -pHeight*1.5f, 0);
                     body.constraints |= RigidbodyConstraints2D.FreezePosition;
-                    PlayerStats.Stamina = 1f; // restore full stamina the same way as on the ground
-                    isHanging = true;
+                    //PlayerStats.Stamina = 1f; // restore full stamina the same way as on the ground
+                    _isHanging = true;
                 }
             }
 
@@ -220,10 +249,10 @@ public class PlayerControl : MonoBehaviour
             if (isPulling)
                 throwByImpulse(new Vector2 (0, 15), false);
             
-            if (isHanging) {
+            if (_isHanging) {
                 anim.SetBool("IsHanging", false);
                 Debug.Log("no hang");
-                isHanging = false;
+                _isHanging = false;
                 body.constraints &= ~RigidbodyConstraints2D.FreezePosition;
             }
 
@@ -231,30 +260,11 @@ public class PlayerControl : MonoBehaviour
         }
 
         System.DateTime now = System.DateTime.UtcNow;
-
-
         System.TimeSpan diff = now-prevUpdateTime;
-        if (!_flapStarted && !isPulling && PlayerStats.Stamina < 1f) {
-             PlayerStats.Stamina += (0.0002f * diff.Milliseconds);
+        if ((isGrounded || _isHanging) && PlayerStats.Stamina < 1f) {
+             PlayerStats.Stamina += (0.0007f * diff.Milliseconds);
         }
 
-
-        /*bool gr = false;
-        RaycastHit2D hit = Physics2D.Raycast(transform.position, Vector2.down, 1.0f);
-        if (hit.collider != null)
-        {
-            if (hit.collider.tag == "Ground") {
-                Debug.Log("Met Ground?");
-                    gr = true;
-                }
-        }
-        if (gr != isGrounded) {
-            anim.SetBool("IsGrounded", gr);
-        }
-        isGrounded = gr;
-        Debug.DrawLine(transform.position, transform.position + new Vector3(0,0.5f,0), isGrounded ? Color.green : Color.red, 0.02f, false);*/
-
-        
         prevUpdateTime = now;
     }
 
@@ -311,6 +321,35 @@ public class PlayerControl : MonoBehaviour
         faceRight = !faceRight;
     }
 
+    public void startDash() {
+        //GetComponent<CapsuleCollider2D>().enabled = false;
+        StartCoroutine(shortInvulnerability());
+        float potentialStamina = PlayerStats.Stamina - 0.25f;
+        if (potentialStamina < 0f) {
+            PlayerStats.Stamina = 0f;
+            return;
+        }
+
+        PlayerStats.Stamina = potentialStamina;
+
+        if (_turnStarted) {
+            onTurnFinished();
+        }
+        if (_flapStarted) {
+            endFlap();
+        }
+
+        GetComponent<AudioSource>().PlayOneShot(clip_dash);
+        body.velocity = new Vector2(faceRight ? 80 : -80, 10);
+        Debug.Log("Dash " + body.velocity.x);
+        _isDashing = true;
+        anim.SetTrigger("Dash");
+    }
+
+    public void endDash() {
+        _isDashing = false;
+    }
+
     public void flip() {
         Vector3 scale = transform.localScale;
         transform.localScale = new Vector3(-1*scale.x, scale.y, scale.z);
@@ -351,16 +390,35 @@ public class PlayerControl : MonoBehaviour
         _flapStarted = false;
     }
 
+    void checkGrounded()
+    {
+        if (isPulling || _isHanging) return;
+
+        Vector3 v1 = new Vector3(0,1,0);
+        //Debug.Log("Check Ground BITCH");
+        RaycastHit2D hit = Physics2D.Raycast(transform.position + v1, Vector2.down, 1.5f, groundLayer);
+        
+        bool gr = (hit.collider != null);
+
+        
+        if (gr != isGrounded) {
+            Debug.Log("GROUND = " + gr);
+            anim.SetBool("IsGrounded", gr);
+        }
+        isGrounded = gr;
+        
+        Debug.DrawLine(transform.position + v1, transform.position + new Vector3(0,-0.5f,0), isGrounded ? Color.yellow : Color.blue, 0.1f, false);
+    }
     void OnCollisionEnter2D(Collision2D collision)
     {
         Collider2D collider = collision.collider;
 
-        if (collider.tag == "Ground" && !isPulling)
+        /*if (collider.tag == "Ground" && !isPulling)
         {
             isGrounded = true;
             anim.SetBool("IsGrounded", true);
-            PlayerStats.Stamina = 1f;
-        }        
+            //PlayerStats.Stamina = 1f;
+        } */       
         
         if (invulnerable == true)
             return;
@@ -389,19 +447,19 @@ public class PlayerControl : MonoBehaviour
                 anim.SetBool("IsHanging", true);
                 body.constraints |= RigidbodyConstraints2D.FreezePosition;
                 PlayerStats.Stamina = 1f; // restore full stamina the same way as on the ground
-                isHanging = true;
+                _isHanging = true;
             }
         }*/
     }
 
     void OnCollisionExit2D(Collision2D other) {
         Collider2D collider = other.collider;
-        if (collider.tag == "Ground")
+        /*if (collider.tag == "Ground")
         {
             //Debug.Log("Leave ground");
             isGrounded = false;
             anim.SetBool("IsGrounded", false);
-        }
+        }*/
     }
 
     void OnTriggerEnter2D(Collider2D other) {

@@ -213,8 +213,18 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5215264611202258846, guid: 4cdc1e6179b2d4048a74220a9d3f63c9,
         type: 3}
+      propertyPath: clip_dash
+      value: 
+      objectReference: {fileID: 8300000, guid: 041574ae82d18024a919b0a456a986f3, type: 3}
+    - target: {fileID: 5215264611202258846, guid: 4cdc1e6179b2d4048a74220a9d3f63c9,
+        type: 3}
       propertyPath: _flapForce
       value: 2300
+      objectReference: {fileID: 0}
+    - target: {fileID: 5215264611202258846, guid: 4cdc1e6179b2d4048a74220a9d3f63c9,
+        type: 3}
+      propertyPath: groundLayer.m_Bits
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 5215264611202258847, guid: 4cdc1e6179b2d4048a74220a9d3f63c9,
         type: 3}

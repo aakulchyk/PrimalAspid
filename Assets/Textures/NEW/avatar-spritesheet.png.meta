@@ -35,6 +35,18 @@ TextureImporter:
   - first:
       213: -5868348893041503299
     second: avatar-spritesheet_22
+  - first:
+      213: 7528861282254498726
+    second: avatar-spritesheet_2
+  - first:
+      213: 4507455536244382665
+    second: stand-1
+  - first:
+      213: -6437022750287325846
+    second: avatar-spritesheet_6
+  - first:
+      213: -6031874003771136251
+    second: dash
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -65,9 +77,9 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: -1
-    aniso: -1
-    mipBias: -100
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
     wrapU: 1
     wrapV: 1
     wrapW: 1
@@ -271,22 +283,43 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: avatar-spritesheet_18
+      name: stand-1
       rect:
         serializedVersion: 2
-        x: 369
-        y: 205
-        width: 6
-        height: 5
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+        x: 4411
+        y: 25
+        width: 210
+        height: 376
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 4033206ad81739cd0800000000000000
-      internalID: -2552571710599449852
+      spriteID: 9cbd6bebde2bd8e30800000000000000
+      internalID: 4507455536244382665
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dash
+      rect:
+        serializedVersion: 2
+        x: 3772
+        y: 40
+        width: 364
+        height: 335
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 507ee434d8a7a4ca0800000000000000
+      internalID: -6031874003771136251
       vertices: []
       indices: 
       edges: []
