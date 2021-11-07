@@ -61,6 +61,8 @@ public class PlayerControl : MonoBehaviour
 
     private float pWidth, pHeight;
 
+    private bool dash_axis_flag = false;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -84,9 +86,7 @@ public class PlayerControl : MonoBehaviour
         
         StartCoroutine(blinkInvulnerable());
 
-        //RectTransform rt = transform.GetComponent<RectTransform>();
         CapsuleCollider2D col = GetComponent<CapsuleCollider2D>();
-        //pWidth = rt.sizeDelta.x * rt.localScale.x;
         pHeight = col.size.y;
     }
 
@@ -160,7 +160,7 @@ public class PlayerControl : MonoBehaviour
         }
 
 
-        if ((Input.GetKey(KeyCode.Space) || Input.GetKey(KeyCode.JoystickButton0) )
+        if ( (Input.GetKey(KeyCode.Space) || Input.GetKey(KeyCode.JoystickButton0) )
                  && !_isHanging) {
 
             if (_turnStarted)
@@ -172,7 +172,19 @@ public class PlayerControl : MonoBehaviour
             }
         }
 
-        if (Input.GetKeyDown(KeyCode.G) && !_isDashing && !isPulling && !_isHanging) {
+        // KeyCode.JoystickButton4 - LB
+        // KeyCode.JoystickButton5 - RB
+
+        float d_axis = Input.GetAxisRaw("Dash");
+        bool dash_triggered = d_axis>0.9f || d_axis < -0.9f;
+
+        if (dash_axis_flag && !dash_triggered) {
+            dash_axis_flag = false;
+        }
+        
+        if (!dash_axis_flag && (Input.GetKeyDown(KeyCode.G) || dash_triggered) && !_isDashing && !isPulling && !_isHanging) {
+            dash_axis_flag = true;
+
             startDash();
             return;
         }
@@ -211,9 +223,9 @@ public class PlayerControl : MonoBehaviour
         }
 
         if ((Input.GetKey(KeyCode.LeftShift) || Input.GetKey(KeyCode.X) || Input.GetKey(KeyCode.JoystickButton2))) {
-
-            if (Input.GetKey(KeyCode.UpArrow)) {
-                //Debug.Log("X+UP!");
+            Debug.Log("Vertical Axis: " + Input.GetAxis ("Vertical"));
+            if (Input.GetKey(KeyCode.UpArrow) || Input.GetAxis ("Vertical") > 0.1f) {
+                
                 if (nearestHanger) {
                     // HANG!
                     //Debug.Log("HANG!");
