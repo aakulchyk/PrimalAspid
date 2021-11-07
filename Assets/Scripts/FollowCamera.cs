@@ -55,7 +55,6 @@ public class FollowCamera : MonoBehaviour {
                 targetPos.y = oldY;
             }*/
 
-
             // find lower border
             RaycastHit2D hit = Physics2D.Raycast(targetPos, Vector2.down);
 
@@ -64,7 +63,7 @@ public class FollowCamera : MonoBehaviour {
             if (hit.collider != null)
             {
                 if (hit.collider.tag == "Ground") {
-                    bottomBorderY = hit.collider.transform.position.y;
+                    bottomBorderY = hit.collider.transform.position.y + 5.0f;
                 }
             }
 

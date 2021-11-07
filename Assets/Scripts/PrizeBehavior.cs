@@ -14,8 +14,9 @@ public class PrizeBehavior : MonoBehaviour
         collected = true;
 
         // apply stats
+        PlayerStats.MAX_HP++;
         PlayerStats.HP++;
-        Debug.Log("Collect item. new HP=" + PlayerStats.HP);
+        Debug.Log("Collect item. new HP=" + PlayerStats.HP + "/" + PlayerStats.MAX_HP);
 
         GetComponent<AudioSource>().volume = 1f;
         GetComponent<AudioSource>().PlayOneShot(clip_collect);

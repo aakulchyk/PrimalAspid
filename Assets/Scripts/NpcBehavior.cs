@@ -4,8 +4,11 @@ using UnityEngine;
 
 public class NpcBehavior : MonoBehaviour
 {
-    public bool isDead = false;
+    protected Game game;
 
+   
+        
+    public bool isDead = false;
    
     protected Animator anim;
     protected Rigidbody2D body;
@@ -24,10 +27,15 @@ public class NpcBehavior : MonoBehaviour
 
     public bool invulnerable = false;
 
-    
+    public bool openForDialogue = false;
+    public string currentText = "...";
+
+    public string npcName;
+
 
     protected void BaseInit()
     {
+        game = (Game)FindObjectOfType(typeof(Game));
         anim = GetComponent<Animator>();
         body = GetComponent<Rigidbody2D> ();
         player = (PlayerControl)FindObjectOfType(typeof(PlayerControl));
@@ -42,7 +50,6 @@ public class NpcBehavior : MonoBehaviour
     }
 
     void OnCollisionEnter2D(Collision2D collision) {
-        
         processCollision(collision);
     }
 
@@ -143,5 +150,10 @@ public class NpcBehavior : MonoBehaviour
     public virtual void LoadInActualState()
     {
         Debug.Log("Dummy LoadInActualState");
+    }
+
+    public virtual void talkToPlayer() {
+        game.SetPopupText(npcName, currentText);
+        game.OpenPopup();
     }
 }

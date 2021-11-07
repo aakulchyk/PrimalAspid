@@ -119,6 +119,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   clip_collect: {fileID: 8300000, guid: 69de78654dc06354d89ca0901f850e26, type: 3}
+  clip_accum: {fileID: 8300000, guid: 6dd5b29a7a56307448beee013da2b42f, type: 3}
 --- !u!58 &1900210666209054205
 CircleCollider2D:
   m_ObjectHideFlags: 0

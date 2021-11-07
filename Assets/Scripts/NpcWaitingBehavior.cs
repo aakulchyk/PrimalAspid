@@ -9,6 +9,7 @@ public enum WaitState
     Sad = 2
 }
 
+
 public class NpcWaitingBehavior : MonoBehaviour
 {
     public bool waitSuccess = false;
@@ -102,7 +103,7 @@ public class NpcWaitingBehavior : MonoBehaviour
         cnvs.SetActive(openForDialogue);
         
         if (openForDialogue) {
-            player.activeSpeaker = this;
+            //player.activeSpeaker = this;
         }
 
 

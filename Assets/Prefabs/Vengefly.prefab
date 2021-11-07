@@ -60,7 +60,7 @@ GameObject:
   - component: {fileID: 4152528819531725587}
   - component: {fileID: 4152528819531725584}
   - component: {fileID: 4152528819531725613}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Vengefly
   m_TagString: Enemy
   m_Icon: {fileID: 0}

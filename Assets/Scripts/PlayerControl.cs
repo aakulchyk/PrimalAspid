@@ -52,7 +52,7 @@ public class PlayerControl : MonoBehaviour
     private Game game;
 
     // TODO: rework
-    public NpcWaitingBehavior activeSpeaker;
+    public NpcBehavior activeSpeaker;
     public SavePointBehavior activeSavePoint;
 
     private Transform nearestHanger = null;
@@ -64,6 +64,7 @@ public class PlayerControl : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        
         isDead = false;
         startTime = System.DateTime.UtcNow;
         lastFlapTime = Time.time;
@@ -136,8 +137,8 @@ public class PlayerControl : MonoBehaviour
         }
 
         if (Input.GetKeyDown(KeyCode.Escape)) {
-            SceneManager.LoadScene("TitleScreen");
-            //Application.Quit();
+            //SceneManager.LoadScene("TitleScreen");
+            Application.Quit();
         }
 
         if (Time.timeScale == 0)
@@ -160,7 +161,10 @@ public class PlayerControl : MonoBehaviour
 
 
         if ((Input.GetKey(KeyCode.Space) || Input.GetKey(KeyCode.JoystickButton0) )
-                 && !_turnStarted && !_isHanging) {
+                 && !_isHanging) {
+
+            if (_turnStarted)
+                onTurnFinished();
                 
             if (Time.time - lastFlapTime > FLAP_MIN_TIMEOUT) {
                 startFlap();
@@ -261,9 +265,19 @@ public class PlayerControl : MonoBehaviour
 
         System.DateTime now = System.DateTime.UtcNow;
         System.TimeSpan diff = now-prevUpdateTime;
-        if ((isGrounded || _isHanging) && PlayerStats.Stamina < 1f) {
-             PlayerStats.Stamina += (0.0007f * diff.Milliseconds);
+        
+        if ((isGrounded || _isHanging)) {
+            var delta = (0.002f * diff.Milliseconds);
+            if (PlayerStats.Stamina < 1 - delta) {
+                PlayerStats.Stamina += delta;
+            }
+        } else if (!isPulling) {
+            var delta = (0.00003f * diff.Milliseconds);
+            if (PlayerStats.Stamina < 1 - delta) {
+                PlayerStats.Stamina += delta;
+            }
         }
+        
 
         prevUpdateTime = now;
     }
@@ -317,12 +331,12 @@ public class PlayerControl : MonoBehaviour
         //Debug.Log("onTurnFinished");
         anim.SetBool("Turn", false);
         _turnStarted = false;
-        flip();
         faceRight = !faceRight;
+        flip();
     }
 
     public void startDash() {
-        //GetComponent<CapsuleCollider2D>().enabled = false;
+        //Physics2D.IgnoreLayerCollision(LayerMask.NameToLayer("PC"), LayerMask.NameToLayer("NPC"), true);
         StartCoroutine(shortInvulnerability());
         float potentialStamina = PlayerStats.Stamina - 0.25f;
         if (potentialStamina < 0f) {
@@ -347,6 +361,7 @@ public class PlayerControl : MonoBehaviour
     }
 
     public void endDash() {
+        //Physics2D.IgnoreLayerCollision(LayerMask.NameToLayer("PC"), LayerMask.NameToLayer("NPC"), false);
         _isDashing = false;
     }
 
@@ -376,7 +391,9 @@ public class PlayerControl : MonoBehaviour
 
         if (isGrounded) {
             force *= 1.3f;
-        } 
+        } else if (isPulling) {
+            force *= 1.1f;
+        }
 
         GetComponent<AudioSource>().PlayOneShot(clip_flap);
         
@@ -402,12 +419,11 @@ public class PlayerControl : MonoBehaviour
 
         
         if (gr != isGrounded) {
-            Debug.Log("GROUND = " + gr);
+            //Debug.Log("GROUND = " + gr);
             anim.SetBool("IsGrounded", gr);
         }
         isGrounded = gr;
-        
-        Debug.DrawLine(transform.position + v1, transform.position + new Vector3(0,-0.5f,0), isGrounded ? Color.yellow : Color.blue, 0.1f, false);
+        //Debug.DrawLine(transform.position + v1, transform.position + new Vector3(0,-0.5f,0), isGrounded ? Color.yellow : Color.blue, 0.1f, false);
     }
     void OnCollisionEnter2D(Collision2D collision)
     {
@@ -463,8 +479,8 @@ public class PlayerControl : MonoBehaviour
     }
 
     void OnTriggerEnter2D(Collider2D other) {
-        if (invulnerable == true)
-            return;
+        //if (invulnerable == true)
+        //    return;
 
 
         if (other.tag == "LevelPortal") {

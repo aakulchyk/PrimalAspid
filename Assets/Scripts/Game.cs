@@ -39,13 +39,13 @@ public class Game : MonoBehaviour
         save.bloodBodies = PlayerStats.BloodBodies;
 
         // npc
-        var npcs = FindObjectsOfType<NpcWaitingBehavior>();  
+        var npcs = FindObjectsOfType<RatFatherBehavior>();  
         foreach (var npc in npcs) {
             save.maggotFound.Add(npc.waitSuccess);
         }
 
         // maggots
-        var maggots = FindObjectsOfType<MaggotRescuedBehavior>();  
+        var maggots = FindObjectsOfType<BabyRatBehavior>();  
         foreach (var maggot in maggots) {
 
             Debug.Log("maggot: " + maggot.gameObject.name);
@@ -117,7 +117,7 @@ public class Game : MonoBehaviour
         // maggots
         {
             int i=0;
-            var npcs = FindObjectsOfType<NpcWaitingBehavior>();  
+            var npcs = FindObjectsOfType<RatFatherBehavior>();  
             foreach (var npc in npcs)
             {
                 if (save.maggotFound==null || i >= save.maggotFound.Capacity)
@@ -132,7 +132,7 @@ public class Game : MonoBehaviour
         // load maggots
         {
             int i=0;
-            var maggots = FindObjectsOfType<MaggotRescuedBehavior>();  
+            var maggots = FindObjectsOfType<BabyRatBehavior>();  
             foreach (var maggot in maggots)
             {
                 if (save.maggotDead==null || i >= save.maggotDead.Capacity)

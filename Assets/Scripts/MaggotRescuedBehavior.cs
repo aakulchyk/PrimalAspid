@@ -42,7 +42,7 @@ public class MaggotRescuedBehavior : NpcBehavior
 
             Vector3 direction = targetSibling.position - transform.position;     
             body.velocity = new Vector2 (direction.x * moveSpeed, body.velocity.y);
-            anim.SetTrigger("Found");
+            anim.SetTrigger("found");
             found = true;
             return;
         }
@@ -72,6 +72,16 @@ public class MaggotRescuedBehavior : NpcBehavior
                     sounds.PlayOneShot(clip_sad_idle);
             }
 
+        }
+    }
+
+    protected override void processCollision(Collision2D collision) {
+        base.processCollision(collision);
+        Collider2D collider = collision.collider;
+        if (collider.tag == "Enemy")
+        {
+            //Debug.Log("NPC Collide Spike");p
+            hurt(0);
         }
     }
 

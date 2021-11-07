@@ -12,6 +12,7 @@ public static class PlayerStats
     //private static const int max_stamina = 100;
     private static float stamina = 1f;
     private static int hp = 0;
+    private static int max_hp = 2;
 
     private static int bloodBodies = 0;
 
@@ -102,6 +103,18 @@ public static class PlayerStats
         set 
         {
             hp = value;
+        }
+    }
+
+    public static int MAX_HP 
+    {
+        get 
+        {
+            return max_hp;
+        }
+        set 
+        {
+            max_hp = value;
         }
     }
 
