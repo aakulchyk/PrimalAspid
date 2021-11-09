@@ -6,8 +6,6 @@ public class NpcBehavior : MonoBehaviour
 {
     protected Game game;
 
-   
-        
     public bool isDead = false;
    
     protected Animator anim;
@@ -16,10 +14,11 @@ public class NpcBehavior : MonoBehaviour
     protected Transform playerTransform;
 
     protected GrabbableBehavior grabbable = null;
+    protected InteractableBehavior interactable = null;
 
     protected AudioSource sounds;
 
-    public GameObject collectiblePrefab;     // the prefab of our collectible
+    public GameObject collectiblePrefab;  // the prefab of our collectible
 
     public AudioClip clip_hurt;
     public AudioClip clip_death;
@@ -27,12 +26,7 @@ public class NpcBehavior : MonoBehaviour
 
     public bool invulnerable = false;
 
-    public bool openForDialogue = false;
-    public string currentText = "...";
-
-    public string npcName;
-
-
+    
     protected void BaseInit()
     {
         game = (Game)FindObjectOfType(typeof(Game));
@@ -46,6 +40,11 @@ public class NpcBehavior : MonoBehaviour
         Transform t = transform.Find("Grabbable");
         if (t) {
             grabbable = t.gameObject.GetComponent<GrabbableBehavior>();
+        }
+
+        t = transform.Find("Interactable");
+        if (t) {
+            interactable = t.gameObject.GetComponent<InteractableBehavior>();
         }
     }
 
@@ -64,7 +63,6 @@ public class NpcBehavior : MonoBehaviour
 
         if (collider.tag == "Spike")
         {
-            //Debug.Log("NPC Collide Spike");p
             hurt(0);
         }
     }
@@ -88,6 +86,7 @@ public class NpcBehavior : MonoBehaviour
     }
 
     protected virtual void die() {
+         Debug.Log("NPC die");
         sounds.Stop();
         sounds.PlayOneShot(clip_death);
         isDead = true;
@@ -96,6 +95,12 @@ public class NpcBehavior : MonoBehaviour
         if (collectiblePrefab) {
             StartCoroutine(dropCollectible());
         }
+
+        if (grabbable)
+            grabbable.gameObject.SetActive(false);
+
+        if (interactable)
+            interactable.gameObject.SetActive(false);
     }
 
 
@@ -152,8 +157,4 @@ public class NpcBehavior : MonoBehaviour
         Debug.Log("Dummy LoadInActualState");
     }
 
-    public virtual void talkToPlayer() {
-        game.SetPopupText(npcName, currentText);
-        game.OpenPopup();
-    }
 }

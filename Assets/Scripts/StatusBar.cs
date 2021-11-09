@@ -36,9 +36,7 @@ public class StatusBar : MonoBehaviour
     void Update() {
         bar.localScale = new Vector3(PlayerStats.Stamina*400, 40);
 
-
         for (int i=0; i<PlayerStats.MAX_HP; i++) {
-            //hpBar2[i].SetActive(PlayerStats.HP > i);
             hpBar2[i].GetComponent<Image>().color = PlayerStats.HP > i
                 ? new Color(1f, 1f, 1f, 1f)
                 : new Color(0.9f, 0.1f, 0.2f, 0.2f);

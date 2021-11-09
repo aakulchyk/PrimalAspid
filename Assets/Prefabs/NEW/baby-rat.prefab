@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4164921050965690983}
   - component: {fileID: 4164921050965690980}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Grabbable
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -25,7 +25,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4164921050965690982}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 2.34, y: 1.01, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4164921052835938848}
@@ -56,7 +56,7 @@ GameObject:
   - component: {fileID: 4164921051361417705}
   - component: {fileID: 4164921051361417711}
   - component: {fileID: 4164921051361417710}
-  m_Layer: 5
+  m_Layer: 6
   m_Name: Text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -139,7 +139,7 @@ GameObject:
   - component: {fileID: 4164921052686112801}
   - component: {fileID: 4164921052686112804}
   - component: {fileID: 4164921052686112806}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: baby-rat
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -154,10 +154,11 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4164921052686112813}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 35.62, y: 48.54, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1.3, y: 1.3, z: 1}
   m_Children:
   - {fileID: 4164921050965690983}
+  - {fileID: 8628960404115862218}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -381,11 +382,8 @@ MonoBehaviour:
   collectiblePrefab: {fileID: 0}
   clip_hurt: {fileID: 8300000, guid: 84b3e9d6f2fef364e99ba247aa00bd65, type: 3}
   clip_death: {fileID: 8300000, guid: 3603262efd8d41e4996baccdc1df2124, type: 3}
-  _hp: 1
+  _hp: 0
   invulnerable: 0
-  openForDialogue: 0
-  currentText: ...
-  npcName: 
   targetSibling: {fileID: 0}
   clip_sad_idle: {fileID: 8300000, guid: 66be47170b713cd43bb497b710df368f, type: 3}
   clip_follow_start: {fileID: 8300000, guid: 980e9818edd3a8b449ded9046dd774a8, type: 3}
@@ -403,7 +401,7 @@ GameObject:
   - component: {fileID: 4164921052835938855}
   - component: {fileID: 4164921052835938854}
   - component: {fileID: 4164921052835938849}
-  m_Layer: 5
+  m_Layer: 6
   m_Name: Canvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -427,7 +425,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 2.54, y: 0.79}
   m_SizeDelta: {x: 70, y: 20}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!223 &4164921052835938855
@@ -491,3 +489,118 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
+--- !u!1001 &2455121450726248084
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 4164921052686112800}
+    m_Modifications:
+    - target: {fileID: 3933646148748368951, guid: 99edda657f55b0440a59f267e99ca172,
+        type: 3}
+      propertyPath: m_Name
+      value: Interactable
+      objectReference: {fileID: 0}
+    - target: {fileID: 6184126422626761822, guid: 99edda657f55b0440a59f267e99ca172,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6184126422626761822, guid: 99edda657f55b0440a59f267e99ca172,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6184126422626761822, guid: 99edda657f55b0440a59f267e99ca172,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6184126422626761822, guid: 99edda657f55b0440a59f267e99ca172,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6184126422626761822, guid: 99edda657f55b0440a59f267e99ca172,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6184126422626761822, guid: 99edda657f55b0440a59f267e99ca172,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6184126422626761822, guid: 99edda657f55b0440a59f267e99ca172,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6184126422626761822, guid: 99edda657f55b0440a59f267e99ca172,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6184126422626761822, guid: 99edda657f55b0440a59f267e99ca172,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6184126422626761822, guid: 99edda657f55b0440a59f267e99ca172,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6184126422626761822, guid: 99edda657f55b0440a59f267e99ca172,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8064173163517968196, guid: 99edda657f55b0440a59f267e99ca172,
+        type: 3}
+      propertyPath: m_FontData.m_FontSize
+      value: 14
+      objectReference: {fileID: 0}
+    - target: {fileID: 8064173164425727592, guid: 99edda657f55b0440a59f267e99ca172,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -0.18
+      objectReference: {fileID: 0}
+    - target: {fileID: 8064173164425727592, guid: 99edda657f55b0440a59f267e99ca172,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 2.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8525202453717516412, guid: 99edda657f55b0440a59f267e99ca172,
+        type: 3}
+      propertyPath: interactableName
+      value: Rat baby
+      objectReference: {fileID: 0}
+    - target: {fileID: 8525202453717516412, guid: 99edda657f55b0440a59f267e99ca172,
+        type: 3}
+      propertyPath: initialTexts.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8525202453717516412, guid: 99edda657f55b0440a59f267e99ca172,
+        type: 3}
+      propertyPath: initialTexts.Array.data[0]
+      value: Will you bring me to mommy and daddy?..
+      objectReference: {fileID: 0}
+    - target: {fileID: 8525202453717516412, guid: 99edda657f55b0440a59f267e99ca172,
+        type: 3}
+      propertyPath: initialTexts.Array.data[1]
+      value: It's so scary here...
+      objectReference: {fileID: 0}
+    - target: {fileID: 8525202453717516412, guid: 99edda657f55b0440a59f267e99ca172,
+        type: 3}
+      propertyPath: initialTexts.Array.data[2]
+      value: 
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 99edda657f55b0440a59f267e99ca172, type: 3}
+--- !u!4 &8628960404115862218 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 6184126422626761822, guid: 99edda657f55b0440a59f267e99ca172,
+    type: 3}
+  m_PrefabInstance: {fileID: 2455121450726248084}
+  m_PrefabAsset: {fileID: 0}

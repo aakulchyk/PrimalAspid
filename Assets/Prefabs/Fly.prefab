@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 1921938679891783389}
   - component: {fileID: 1921938679891783388}
   - component: {fileID: 1921938679891783390}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Fly
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -52,6 +52,7 @@ SpriteRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 0
+  m_RayTraceProcedural: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -120,11 +121,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isDead: 0
+  collectiblePrefab: {fileID: 0}
+  clip_hurt: {fileID: 0}
   clip_death: {fileID: 8300000, guid: 3603262efd8d41e4996baccdc1df2124, type: 3}
   _hp: 1
+  invulnerable: 0
   _followRadius: 13
   moveSpeed: 2
-  captured: 0
+  clip_captured: {fileID: 0}
 --- !u!61 &1921938679891783378
 BoxCollider2D:
   m_ObjectHideFlags: 0

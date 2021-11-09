@@ -2,6 +2,16 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+/*
+"Of no... My dear son...",
+"My family was ambushed by a gang of bats... They were so sudden...",
+"They kindapped my dear wife...what for?",
+"Me and my older son Chris tried to protect her, but they were too fierce... They just killed him!",
+"My youngest daughter was able to flee... Where is she now?",
+"I am injured and too weak to search for her... Please help me! Please find Kiki and bring her back!",
+"If I could protect my family... *Sob*",
+*/
+
 
 public class RatFatherBehavior : NpcBehavior
 {
@@ -15,9 +25,9 @@ public class RatFatherBehavior : NpcBehavior
     public Transform target;
 
 
-    public string initialText;
-    public string happyText;
-    public string sadText;
+    public string[] initialTexts;
+    public string[] happyTexts;
+    public string[] sadTexts;
 
 
     private bool _gone = false;
@@ -29,7 +39,7 @@ public class RatFatherBehavior : NpcBehavior
     void Start()
     {
         BaseInit();
-        currentText = initialText;
+        interactable.currentTexts = initialTexts;
     }
 
     // Update is called once per frame
@@ -37,25 +47,18 @@ public class RatFatherBehavior : NpcBehavior
     {
         if (_gone) return;
 
-
-        // Check if is open for interaction with player
-        float pDist = Vector2.Distance(playerTransform.position, transform.position); 
-        GameObject cnvs = gameObject.transform.GetChild(0).gameObject;
-        openForDialogue = (pDist < interactRadius);// && !canDisappear;
-        cnvs.SetActive(openForDialogue);
-        
-        if (openForDialogue) {
-            player.activeSpeaker = this;
-        }
-
         float dist = Vector2.Distance(target.position, transform.position);
         if (dist < noticeRadius) {
             if (!waitSuccess) {
                 waitSuccess =true;
-                isTargetAlive = !target.gameObject.GetComponent<BabyRatBehavior>().isDead;
-                if (isTargetAlive) {
-                    currentText = happyText;
-                    anim.SetTrigger("found");
+                BabyRatBehavior baby = target.gameObject.GetComponent<BabyRatBehavior>();
+                if (baby) {
+                    isTargetAlive = !baby.isDead;
+                    if (isTargetAlive) {
+                        baby.onFound();
+                        interactable.currentTexts = happyTexts;
+                        anim.SetTrigger("found");
+                    }
                 }
             }
             if (!sounds.isPlaying)
@@ -65,14 +68,6 @@ public class RatFatherBehavior : NpcBehavior
         if (!waitSuccess) {
             if (!sounds.isPlaying)
                 sounds.PlayOneShot(clip_sad_idle);
-        }
-    }
-
-    public override void talkToPlayer() {
-        base.talkToPlayer();
-
-        if (waitSuccess) {
-            //canDisappear = true;
         }
     }
 }

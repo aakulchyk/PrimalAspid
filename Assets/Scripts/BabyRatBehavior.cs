@@ -13,6 +13,8 @@ public class BabyRatBehavior : NpcBehavior
 
     private bool _gone = false;
     private bool _pulled = false;
+
+    public string[] happyTexts;
     // Start is called before the first frame update
     void Start()
     {
@@ -48,15 +50,11 @@ public class BabyRatBehavior : NpcBehavior
     }
 
     public override void hurt(float force) {
-        Debug.Log("Baby Rat Hurt");
-        GetComponent<AudioSource>().Stop();
-        GetComponent<AudioSource>().PlayOneShot(clip_death);
-        anim.SetTrigger("die");
-        isDead = true;
+        base.hurt(force);
     }
 
     protected override void die() {
-        Debug.Log("Maggot is DEAD");
+        base.die();
         GetComponent<Animator>().SetBool("dead", true);
         GetComponent<AudioSource>().enabled = false;
     }
@@ -83,5 +81,13 @@ public class BabyRatBehavior : NpcBehavior
     public void onDisappear() {
         this.gameObject.SetActive(false);
         _gone = true;
+    }
+
+    public void onFound() {
+        if (grabbable)
+            grabbable.gameObject.SetActive(false);
+
+        if (interactable)
+            interactable.currentTexts = happyTexts;
     }
 }

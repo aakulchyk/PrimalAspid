@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4900589833041404900}
   - component: {fileID: 4086016389735927717}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Grabbable
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -60,7 +60,7 @@ GameObject:
   - component: {fileID: 4152528819531725587}
   - component: {fileID: 4152528819531725584}
   - component: {fileID: 4152528819531725613}
-  m_Layer: 6
+  m_Layer: 8
   m_Name: Vengefly
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -347,7 +347,7 @@ GameObject:
   - component: {fileID: 2725846582971665199}
   - component: {fileID: 6081303800324180059}
   - component: {fileID: 1253885240338850955}
-  m_Layer: 5
+  m_Layer: 8
   m_Name: Canvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -446,7 +446,7 @@ GameObject:
   - component: {fileID: 3274853948627927945}
   - component: {fileID: 8642154468791476236}
   - component: {fileID: 4568741883870101095}
-  m_Layer: 5
+  m_Layer: 8
   m_Name: Text
   m_TagString: Untagged
   m_Icon: {fileID: 0}

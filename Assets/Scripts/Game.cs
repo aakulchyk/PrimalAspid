@@ -19,6 +19,9 @@ public class Game : MonoBehaviour
 
     public bool isGameInProgress = false;
 
+    private string[] texts;
+    private Queue<string> textQueue = new Queue<string>();
+
     private Save CreateSaveGameObject()
     {
         Save save = new Save();
@@ -152,14 +155,35 @@ public class Game : MonoBehaviour
         Debug.Log("Game Loaded");
     }
 
-
     public void SetPopupText(string title, string text) {
         Text titleWindow = popupWindow.transform.Find("Title").gameObject.GetComponent<Text>();
         titleWindow.text = title;
 
-        Text textWindow = popupWindow.transform.Find("Text").gameObject.GetComponent<Text>();
-        textWindow.text = text;
+        textQueue.Enqueue(text);
+        PopTextAndSetToPopup();
     }
+
+
+    public void SetPopupTexts(string title, string[] texts) {
+        Text titleWindow = popupWindow.transform.Find("Title").gameObject.GetComponent<Text>();
+        titleWindow.text = title;
+
+        foreach (var t in texts) {
+            textQueue.Enqueue(t);
+        }
+
+        PopTextAndSetToPopup();
+    }
+
+    public void PopTextAndSetToPopup()
+    {
+        if (textQueue.Count > 0) {
+            var t = textQueue.Dequeue();
+            Text textWindow = popupWindow.transform.Find("Text").gameObject.GetComponent<Text>();
+            textWindow.text = t;
+        }
+    }
+
     public void OpenPopup() {
         isPopupOpen = true;
         Time.timeScale = 0;
@@ -167,8 +191,12 @@ public class Game : MonoBehaviour
     }
 
     public void ClosePopup() {
-        popupWindow.SetActive(false);
-        Time.timeScale = 1;
-        isPopupOpen = false;
+        if (textQueue.Count > 0) {
+            PopTextAndSetToPopup();
+        } else {
+            popupWindow.SetActive(false);
+            Time.timeScale = 1;
+            isPopupOpen = false;
+        }
     }
 }

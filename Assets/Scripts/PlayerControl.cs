@@ -52,7 +52,7 @@ public class PlayerControl : MonoBehaviour
     private Game game;
 
     // TODO: rework
-    public NpcBehavior activeSpeaker;
+    public InteractableBehavior activeSpeaker;
     public SavePointBehavior activeSavePoint;
 
     private Transform nearestHanger = null;
@@ -81,13 +81,15 @@ public class PlayerControl : MonoBehaviour
 
         PlayerStats.HP = INITIAL_HP;
         
-        //flip();
         faceRight = true;
         
         StartCoroutine(blinkInvulnerable());
 
         CapsuleCollider2D col = GetComponent<CapsuleCollider2D>();
+        pWidth = col.size.x;
         pHeight = col.size.y;
+
+        Physics2D.IgnoreLayerCollision(7, 6, true);
     }
 
     public void throwByImpulse(Vector2 vector, bool enemy = true) {
@@ -244,7 +246,7 @@ public class PlayerControl : MonoBehaviour
 
             // TODO rethink mechanic
             Vector3 checkPosition = new Vector3(transform.position.x, transform.position.y-0.6f, transform.position.z);
-            Collider2D[] grabColliders = Physics2D.OverlapCircleAll(checkPosition, 0.6f);
+            Collider2D[] grabColliders = Physics2D.OverlapCircleAll(checkPosition, 0.5f);
 
             foreach (var grabCollider in grabColliders)
             {
@@ -295,20 +297,10 @@ public class PlayerControl : MonoBehaviour
     }
 
     public void grabBody(Rigidbody2D body) {
-
-        /*NpcBehavior behavior = body.gameObject.GetComponent<NpcBehavior>();
-        if (behavior) {
-            if (!behavior.invulnerable) {
-                behavior.getCaptured();
-            } else return;
-        }*/
-
         Transform t = body.transform.Find("Grabbable");
-
         // if it's a framed object
         if (!t)
             t = body.transform.parent.Find("Grabbable");
-
         if (t) {
             t.gameObject.GetComponent<GrabbableBehavior>().getCaptured();
             GetComponent<FixedJoint2D>().connectedBody = body;
@@ -323,12 +315,9 @@ public class PlayerControl : MonoBehaviour
         Rigidbody2D body = GetComponent<FixedJoint2D>().connectedBody;
 
         if (body) {
-            //NpcBehavior behavior = body.gameObject.GetComponent<NpcBehavior>();
             Transform t = body.transform.Find("Grabbable");
-
             if (!t)
                 t = body.transform.parent.Find("Grabbable");
-
             if (t)
                 t.gameObject.GetComponent<GrabbableBehavior>().getReleased();
             GetComponent<FixedJoint2D>().connectedBody = null;
@@ -340,7 +329,6 @@ public class PlayerControl : MonoBehaviour
     }
     
     public void onTurnFinished() {
-        //Debug.Log("onTurnFinished");
         anim.SetBool("Turn", false);
         _turnStarted = false;
         faceRight = !faceRight;
@@ -348,7 +336,6 @@ public class PlayerControl : MonoBehaviour
     }
 
     public void startDash() {
-        //Physics2D.IgnoreLayerCollision(LayerMask.NameToLayer("PC"), LayerMask.NameToLayer("NPC"), true);
         StartCoroutine(shortInvulnerability());
         float potentialStamina = PlayerStats.Stamina - 0.25f;
         if (potentialStamina < 0f) {
@@ -373,7 +360,6 @@ public class PlayerControl : MonoBehaviour
     }
 
     public void endDash() {
-        //Physics2D.IgnoreLayerCollision(LayerMask.NameToLayer("PC"), LayerMask.NameToLayer("NPC"), false);
         _isDashing = false;
     }
 
@@ -387,9 +373,6 @@ public class PlayerControl : MonoBehaviour
         float staminaSpent = isGrounded ? 0.0f : 0.1f;
         float potentialStamina = PlayerStats.Stamina -staminaSpent;
 
-        /*if (isPulling) {
-            potentialStamina -= 0.05f;
-        }*/
 
         if (potentialStamina < 0f) {
                 PlayerStats.Stamina = 0f;
@@ -424,30 +407,21 @@ public class PlayerControl : MonoBehaviour
         if (isPulling || _isHanging) return;
 
         Vector3 v1 = new Vector3(0,1,0);
-        //Debug.Log("Check Ground BITCH");
         RaycastHit2D hit = Physics2D.Raycast(transform.position + v1, Vector2.down, 1.5f, groundLayer);
         
         bool gr = (hit.collider != null);
 
         
         if (gr != isGrounded) {
-            //Debug.Log("GROUND = " + gr);
             anim.SetBool("IsGrounded", gr);
         }
         isGrounded = gr;
-        //Debug.DrawLine(transform.position + v1, transform.position + new Vector3(0,-0.5f,0), isGrounded ? Color.yellow : Color.blue, 0.1f, false);
     }
+
     void OnCollisionEnter2D(Collision2D collision)
     {
         Collider2D collider = collision.collider;
 
-        /*if (collider.tag == "Ground" && !isPulling)
-        {
-            isGrounded = true;
-            anim.SetBool("IsGrounded", true);
-            //PlayerStats.Stamina = 1f;
-        } */       
-        
         if (invulnerable == true)
             return;
 
@@ -468,35 +442,15 @@ public class PlayerControl : MonoBehaviour
             if (!behavior.isDead)
                 hurt(2000);
         }
-
-        /*if (collider.tag == "Hanger") {
-            if ((Input.GetKey(KeyCode.LeftShift) || Input.GetKey(KeyCode.X) || Input.GetKey(KeyCode.JoystickButton2))) {
-                Debug.Log("HANG!");
-                anim.SetBool("IsHanging", true);
-                body.constraints |= RigidbodyConstraints2D.FreezePosition;
-                PlayerStats.Stamina = 1f; // restore full stamina the same way as on the ground
-                _isHanging = true;
-            }
-        }*/
     }
 
     void OnCollisionExit2D(Collision2D other) {
         Collider2D collider = other.collider;
-        /*if (collider.tag == "Ground")
-        {
-            //Debug.Log("Leave ground");
-            isGrounded = false;
-            anim.SetBool("IsGrounded", false);
-        }*/
     }
 
     void OnTriggerEnter2D(Collider2D other) {
-        //if (invulnerable == true)
-        //    return;
-
-
         if (other.tag == "LevelPortal") {
-            //Debug.Log("Go to Level 2");
+
             Debug.Log("WinWin");
 
             System.DateTime endTime = System.DateTime.UtcNow;
@@ -573,8 +527,6 @@ public class PlayerControl : MonoBehaviour
         
         // preliminary stop turning
         if (_turnStarted) {
-            //_turnStarted = false;
-            //flip();
             onTurnFinished();
         }
 
@@ -599,7 +551,6 @@ public class PlayerControl : MonoBehaviour
 
     public void LoseAndRespawn() {
         PlayerStats.Losses++;
-        //PlayerStats.HP = PlayerStats.INITIAL_HP;
         Debug.Log("Losses: " + PlayerStats.Losses);
         StartCoroutine(RestartAfterDelay());
     }

@@ -8,15 +8,12 @@ public class GrabbableBehavior : MonoBehaviour
 {
     private Transform playerTransform;
 
-    // Update is called once per frame
     private GameObject canvas = null;
     public bool captured = false;  
     private bool hasBodyParentFrame = false;
 
     private SimpleCallback getCapturedCallback;
     private SimpleCallback getReleasedCallback;
-
-    private bool prev_grabbable = false;
 
     void Start()
     {
@@ -29,31 +26,24 @@ public class GrabbableBehavior : MonoBehaviour
 
         hasBodyParentFrame = (transform.parent.Find("Body") != null);
     }
+
+    // Update is called once per frame
     void Update()
     {
         if (canvas) {
-            
             bool showGrabText = CheckGrabability() && !captured;
             canvas.SetActive(showGrabText);
-
-            /*if (showGrabText)
-                Time.timeScale = 0.5f;
-            else if (prev_grabbable)
-                Time.timeScale = 1f;
-            prev_grabbable = showGrabText;*/
         }
 
         if (hasBodyParentFrame) {
             Transform t = transform.parent.Find("Body");
-            //Vector3 scale = t.localScale;
             transform.localPosition = t.localPosition;
         }
     }
 
     protected bool CheckGrabability() {
-        Vector3 checkPosition = new Vector2(playerTransform.position.x, playerTransform.position.y-1.2f);
+        Vector3 checkPosition = new Vector2(playerTransform.position.x, playerTransform.position.y-0.5f);
         Collider2D col = gameObject.GetComponentInParent<Collider2D>();
-        //Debug.DrawLine(playerTransform.position, checkPosition, Color.green, 0.05f, false);
 
         if (col) {
             return col.OverlapPoint(checkPosition);
