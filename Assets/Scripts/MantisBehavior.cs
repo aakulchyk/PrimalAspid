@@ -244,6 +244,8 @@ public class MantisBehavior : NpcBehavior
             player.throwByImpulse(new Vector2 (GetVectorToPlayer().x, GetVectorToPlayer().y*30), true);
         }
 
+        knockback(force);
+        
         if (--_hp < 0) {
             die();
         } else {
@@ -252,6 +254,8 @@ public class MantisBehavior : NpcBehavior
             invulnerable = true;
             StartCoroutine(blinkInvulnerable());
         }
+
+        GetComponent<ParticleSystem>().Play();
     }
 
     protected override void die() {

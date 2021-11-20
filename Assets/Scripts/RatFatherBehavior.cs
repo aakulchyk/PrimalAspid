@@ -19,7 +19,7 @@ public class RatFatherBehavior : NpcBehavior
     public AudioClip clip_success;
     public AudioClip clip_cry;
 
-    private float noticeRadius = 6;
+    public float noticeRadius = 8;
     public float interactRadius = 2f;
 
     public Transform target;

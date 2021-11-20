@@ -84,8 +84,13 @@ public class BabyRatBehavior : NpcBehavior
     }
 
     public void onFound() {
-        if (grabbable)
+        Debug.Log("Bady rat: on found");
+        if (grabbable) {
+            
+            player.releaseBody();
+            
             grabbable.gameObject.SetActive(false);
+        }
 
         if (interactable)
             interactable.currentTexts = happyTexts;

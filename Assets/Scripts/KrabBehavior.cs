@@ -32,7 +32,7 @@ public class KrabBehavior : NpcBehavior
 
         bool isNotAbleToMove = isDead || !IsPlayerInRange() || !isGrounded;
 
-        float moveX = isNotAbleToMove ? 0f : GetVectorToPlayer().x > 0 ? 1f : -1f;
+        float moveX = isNotAbleToMove ? 0f : GetVectorToPlayer().x > 0 ? _moveSpeed : -_moveSpeed;
 
         if (_knockback > 0) {
             moveX = body.velocity.x;

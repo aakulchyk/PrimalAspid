@@ -235,7 +235,7 @@ PrefabInstance:
     - target: {fileID: 5215264611202258834, guid: 4cdc1e6179b2d4048a74220a9d3f63c9,
         type: 3}
       propertyPath: m_Enabled
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5215264611202258834, guid: 4cdc1e6179b2d4048a74220a9d3f63c9,
         type: 3}
@@ -245,17 +245,17 @@ PrefabInstance:
     - target: {fileID: 5215264611202258834, guid: 4cdc1e6179b2d4048a74220a9d3f63c9,
         type: 3}
       propertyPath: m_ConnectedAnchor.x
-      value: -220.9
+      value: -58.75
       objectReference: {fileID: 0}
     - target: {fileID: 5215264611202258834, guid: 4cdc1e6179b2d4048a74220a9d3f63c9,
         type: 3}
       propertyPath: m_ConnectedAnchor.y
-      value: -11.16
+      value: 59.94
       objectReference: {fileID: 0}
     - target: {fileID: 5215264611202258834, guid: 4cdc1e6179b2d4048a74220a9d3f63c9,
         type: 3}
       propertyPath: m_AutoConfigureConnectedAnchor
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5215264611202258835, guid: 4cdc1e6179b2d4048a74220a9d3f63c9,
         type: 3}
@@ -347,11 +347,26 @@ PrefabInstance:
         type: 3}
       propertyPath: clip_dash
       value: 
-      objectReference: {fileID: 8300000, guid: 041574ae82d18024a919b0a456a986f3, type: 3}
+      objectReference: {fileID: 8300000, guid: 06a8777a41f94e44480e4effd49e3ba8, type: 3}
+    - target: {fileID: 5215264611202258846, guid: 4cdc1e6179b2d4048a74220a9d3f63c9,
+        type: 3}
+      propertyPath: clip_jump
+      value: 
+      objectReference: {fileID: 8300000, guid: 4f21bd8cc9a8fb34cb5337abf92261c9, type: 3}
+    - target: {fileID: 5215264611202258846, guid: 4cdc1e6179b2d4048a74220a9d3f63c9,
+        type: 3}
+      propertyPath: clip_land
+      value: 
+      objectReference: {fileID: 8300000, guid: 6f97acafcaf80ce4e9c52ae127d88c27, type: 3}
+    - target: {fileID: 5215264611202258846, guid: 4cdc1e6179b2d4048a74220a9d3f63c9,
+        type: 3}
+      propertyPath: clip_walk
+      value: 
+      objectReference: {fileID: 8300000, guid: 2423b35d2f217ea4694b0f1cc943d4ee, type: 3}
     - target: {fileID: 5215264611202258846, guid: 4cdc1e6179b2d4048a74220a9d3f63c9,
         type: 3}
       propertyPath: _flapForce
-      value: 2300
+      value: 2500
       objectReference: {fileID: 0}
     - target: {fileID: 5215264611202258846, guid: 4cdc1e6179b2d4048a74220a9d3f63c9,
         type: 3}
@@ -365,8 +380,13 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5215264611202258847, guid: 4cdc1e6179b2d4048a74220a9d3f63c9,
         type: 3}
+      propertyPath: m_Material
+      value: 
+      objectReference: {fileID: 6200000, guid: d09bea4e828ba66479ccc93f85bb0de8, type: 2}
+    - target: {fileID: 5215264611202258847, guid: 4cdc1e6179b2d4048a74220a9d3f63c9,
+        type: 3}
       propertyPath: m_LinearDrag
-      value: 1.8
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 5215264611202258847, guid: 4cdc1e6179b2d4048a74220a9d3f63c9,
         type: 3}
@@ -376,7 +396,7 @@ PrefabInstance:
     - target: {fileID: 5215264611202258847, guid: 4cdc1e6179b2d4048a74220a9d3f63c9,
         type: 3}
       propertyPath: m_GravityScale
-      value: 4.5
+      value: 4.4
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4cdc1e6179b2d4048a74220a9d3f63c9, type: 3}

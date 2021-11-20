@@ -6,6 +6,8 @@ public class FlyingEnemyBehavior : NpcBehavior
 {
     public float _followRadius = 14f;
     public float moveSpeed = 3f;
+
+    private bool _chasingPlayer = false;
  
     private bool faceRight = false;
 
@@ -20,6 +22,7 @@ public class FlyingEnemyBehavior : NpcBehavior
 
     protected override bool checkAccessibility(Transform wp)
     {
+        
         CircleCollider2D col = GetComponent<CircleCollider2D> ();
         Vector2 pos = new Vector2(transform.position.x + col.offset.x, transform.position.y + col.offset.y); 
 
@@ -33,22 +36,23 @@ public class FlyingEnemyBehavior : NpcBehavior
         };
 
         bool accessible = true;
+        Vector3 ppos = new Vector3(wp.position.x, wp.position.y+1.5f, wp.position.z);
         foreach (var p in points) {
-            float distM = Vector2.Distance(p, wp.position);
-            Vector3 dir = wp.position - p;
-            RaycastHit2D hit = Physics2D.Raycast(p, dir.normalized, distM, 7);
+            float distM = Vector2.Distance(p, ppos);
+            Vector3 dir = ppos - p;
+            RaycastHit2D hit = Physics2D.Raycast(p, dir.normalized, distM);
 
             if (!hit.collider) {
-                Debug.DrawLine(p, wp.position, Color.green, 0.02f, false);
+                Debug.DrawLine(p, ppos, Color.green, 0.02f, false);
                 continue;
             }
 
             if (hit.collider.tag == "Player" || hit.collider == col) {
-                Debug.DrawLine(p, wp.position, Color.green, 0.02f, false);
+                Debug.DrawLine(p, ppos, Color.green, 0.02f, false);
                 continue;
                 
             } else {
-                Debug.DrawLine(p, wp.position, Color.red, 0.02f, false);
+                Debug.DrawLine(p, ppos, Color.red, 0.02f, false);
                 accessible = false;
             }
         }
@@ -65,17 +69,19 @@ public class FlyingEnemyBehavior : NpcBehavior
             return;
         }
 
-        float moveX = isDead ? 0f : GetVectorToPlayer().x * moveSpeed;
+        float distP = Vector2.Distance(playerTransform.position, transform.position);
+        _chasingPlayer = _followRadius > distP  &&  checkAccessibility(playerTransform);
+
+        float moveX = (isDead || !_chasingPlayer) ? 0f : GetVectorToPlayer().x * moveSpeed;
 
         if (_knockback > 0) {
-            Debug.Log("Fly knockback " + _knockback);
             moveX = body.velocity.x;
             --_knockback;
         } else {
             anim.SetBool("chase", true);
         }
-            
-        body.velocity = new Vector2( moveX, GetVectorToPlayer().y*moveSpeed );
+
+        body.velocity = _chasingPlayer ? new Vector2( moveX, GetVectorToPlayer().y*moveSpeed ) : new Vector2(0, 0.86f);
     }
     
     void Update()
@@ -85,9 +91,8 @@ public class FlyingEnemyBehavior : NpcBehavior
         }
 
         // interact with player
-        float distP = Vector2.Distance(playerTransform.position, transform.position);
 
-        if (_followRadius > distP  &&  checkAccessibility(playerTransform)) {
+        if (_chasingPlayer) {
             anim.SetBool("hurt", false);
             if (playerTransform.position.x > transform.position.x && !faceRight) {
                 flip();
@@ -123,7 +128,6 @@ public class FlyingEnemyBehavior : NpcBehavior
 
         } else {
             anim.SetBool("chase", false);
-            GetComponent<Rigidbody2D>().velocity = new Vector2(0, 0.25f);
         }
     }
 
