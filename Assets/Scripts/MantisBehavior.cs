@@ -80,19 +80,14 @@ public class MantisBehavior : NpcBehavior
 
             if (distP < _shootRadius) {
                 if (currentProjectile == null && !shootAnticipate && !invulnerable && !grabbable.captured) {
-
                     RaycastHit2D hit = Physics2D.Raycast(transform.position, new Vector2 (GetVectorToPlayer().x, GetVectorToPlayer().y));
-                    //Debug.DrawLine(transform.position, playerTransform.position, Color.blue, 0.2f, false);
 
                     if (hit.collider != null && hit.collider.tag == "Player") {
-                        // start shoot animation. once it's played, the projectile will be actually fired
                         shootAnticipate = true;
                         shootTimeout = maxShotTimeout;
-                        //anim.SetTrigger("shoot");
                         anim.SetBool("shooting", true);
                     }
                 }
-
             }
 
             if (!grabbable) {
@@ -101,7 +96,6 @@ public class MantisBehavior : NpcBehavior
             }
 
             if (!grabbable.captured) {
-
                 Vector2 moveVector;
 
                 if (checkAccessibility(playerTransform)) {
@@ -138,10 +132,7 @@ public class MantisBehavior : NpcBehavior
                 }
             }
 
-
             prev_captured = grabbable.captured;
-
-
         } else {
             GetComponent<Rigidbody2D>().velocity = new Vector2(0, 0.196f);
         }
@@ -211,7 +202,6 @@ public class MantisBehavior : NpcBehavior
             Vector3 dir = wp.position - p;
             RaycastHit2D hit = Physics2D.Raycast(p, dir.normalized, distM);
             if (hit.collider != null && hit.collider.tag != "Player" && hit.collider != col) {
-                //Debug.Log(wp.gameObject.name + " not visible because of " + hit.collider.tag + "/" + hit.collider.gameObject.name);
                 Debug.DrawLine(p, wp.position, Color.red, 0.02f, false);
                 accessible = false;
                 continue;
@@ -220,9 +210,7 @@ public class MantisBehavior : NpcBehavior
             }
         }
         
-        
-        return accessible;
-        
+        return accessible;    
     }
 
     protected override void processCollision(Collision2D collision) {
@@ -231,7 +219,7 @@ public class MantisBehavior : NpcBehavior
         Collider2D collider = collision.collider;
         if (collider.tag == "Boulder") {
             if (collision.relativeVelocity.magnitude > 7) {
-                hurt(0);
+                hurt(Vector2.zero);
             }
         }
 
@@ -241,11 +229,11 @@ public class MantisBehavior : NpcBehavior
                 return;
             }
             
-            hurt(0);
+            hurt(Vector2.zero);
         }
     }
 
-    public override void hurt(float force) {
+    public override void hurt(Vector2 force, Types.DamageType damageType = Types.DamageType.Spikes) {
 
         if (isDead) return;
 
@@ -290,7 +278,6 @@ public class MantisBehavior : NpcBehavior
             go.transform.localScale = new Vector3(9, 9, 1);
 
             Rigidbody2D rb = gameObject.GetComponentInChildren<Rigidbody2D>();
-            //rb.velocity = new Vector2 (vector.x * speed, vector.y * speed);
         }
 
         // stop boss fight music
@@ -313,17 +300,14 @@ public class MantisBehavior : NpcBehavior
 
             go.transform.position = gameObject.transform.position + new Vector3(i,1,0);
             go.transform.rotation = Quaternion.identity;
-        }
-        
+        }      
     }
-
 
 
     void OnDestroy()
     {
         if (currentProjectile) {
-            currentProjectile.Delete();
-            
+            currentProjectile.Delete();  
         } 
     }
 
@@ -348,11 +332,6 @@ public class MantisBehavior : NpcBehavior
         controlledWall.GetComponent<Animator>().SetTrigger("Opened");
         yield return new WaitForSeconds(0.5f);
         controlledWall.GetComponent<AudioSource>().enabled = true;
-        
-        
-        // every door opening is a checkpoint
-        //Game game = (Game)FindObjectOfType(typeof(Game));
-        //game.SaveGame();
     }
 
 }

@@ -8,6 +8,7 @@ public class GrabbableBehavior : MonoBehaviour
 {
     private Transform playerTransform;
 
+    protected PlayerControl player;
     private GameObject canvas = null;
     public bool captured = false;  
     private bool hasBodyParentFrame = false;
@@ -24,16 +25,18 @@ public class GrabbableBehavior : MonoBehaviour
             canvas = t.gameObject;
         }
 
+        SetCanvasActive(false);
+
         hasBodyParentFrame = (transform.parent.Find("Body") != null);
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (canvas) {
+       /* if (canvas) {
             bool showGrabText = CheckGrabability() && !captured;
             canvas.SetActive(showGrabText);
-        }
+        }*/
 
         if (hasBodyParentFrame) {
             Transform t = transform.parent.Find("Body");
@@ -56,6 +59,13 @@ public class GrabbableBehavior : MonoBehaviour
             } else
                 return false;
         }
+    }
+
+    public void SetCanvasActive(bool active) {
+        if (canvas)
+            canvas.SetActive(active);
+        else
+            Debug.Log("ERROR: No canvas!");
     }
 
     public void FlipCanvas() {

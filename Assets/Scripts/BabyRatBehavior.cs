@@ -49,7 +49,7 @@ public class BabyRatBehavior : NpcBehavior
         }
     }
 
-    public override void hurt(float force) {
+    public override void hurt(Vector2 force, Types.DamageType damageType = Types.DamageType.Spikes) {
         base.hurt(force);
     }
 
@@ -64,7 +64,7 @@ public class BabyRatBehavior : NpcBehavior
         Collider2D collider = collision.collider;
         if (collider.tag == "Enemy")
         {
-            hurt(0);
+            hurt(Vector2.zero);
         }
     }
 

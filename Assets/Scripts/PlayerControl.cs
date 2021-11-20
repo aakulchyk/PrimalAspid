@@ -31,6 +31,7 @@ public class PlayerControl : MonoBehaviour
     public AudioClip clip_flap;
 
     public AudioClip clip_dash;
+    public AudioClip clip_swing;
 
     public const int INITIAL_HP = 2;
     public const float FLAP_MIN_TIMEOUT = 0.4f;
@@ -41,6 +42,8 @@ public class PlayerControl : MonoBehaviour
 
 
     private bool isDead;
+
+    private int _knockback = 0;
 
     private float lastFlapTime;
 
@@ -54,6 +57,9 @@ public class PlayerControl : MonoBehaviour
     // TODO: rework
     public InteractableBehavior activeSpeaker;
     public SavePointBehavior activeSavePoint;
+    public GrabbableBehavior activeGrabbable;
+
+    protected PcAttack _attack;
 
     private Transform nearestHanger = null;
 
@@ -89,19 +95,32 @@ public class PlayerControl : MonoBehaviour
         pWidth = col.size.x;
         pHeight = col.size.y;
 
+        GetComponent<FixedJoint2D>().enabled = false;
+
         Physics2D.IgnoreLayerCollision(7, 6, true);
+
+        Transform t = transform.Find("HitBox");
+        if (t) {
+            _attack = t.gameObject.GetComponent<PcAttack>();
+        }
     }
 
     public void throwByImpulse(Vector2 vector, bool enemy = true) {
         Debug.Log("Throw player back " + vector);
-        if (enemy) {
-            anim.SetTrigger("Kill");
+        /*if (enemy) {
+            //anim.SetTrigger("Kill");
             if (PlayerStats.Stamina < 0.81f) {
                 PlayerStats.Stamina += 0.2f;
             }
-        }
+        }*/
         StartCoroutine(shortInvulnerability());
-        body.velocity = vector;
+        //body.velocity = vector;
+        body.AddForce(vector);
+    }
+
+    public void knockback(Vector2 force) {
+        _knockback = 16;
+        body.velocity = force;
     }
 
     IEnumerator blinkInvulnerable() {
@@ -118,7 +137,7 @@ public class PlayerControl : MonoBehaviour
 
     IEnumerator shortInvulnerability() {
         invulnerable = true;
-        yield return new WaitForSeconds(0.5F);
+        yield return new WaitForSeconds(0.3F);
         invulnerable = false;
     }
 
@@ -151,7 +170,7 @@ public class PlayerControl : MonoBehaviour
 
         checkGrounded();
 
-        if (Input.GetKeyDown(KeyCode.Y) || Input.GetKey(KeyCode.JoystickButton3)) {
+        if (Input.GetButtonDown("Interact")) {
             if (activeSpeaker && activeSpeaker.openForDialogue) {
                 activeSpeaker.talkToPlayer();
             } 
@@ -161,8 +180,15 @@ public class PlayerControl : MonoBehaviour
             }
         }
 
+        if (Input.GetButtonDown("Hit")) {
+            GetComponent<AudioSource>().PlayOneShot(clip_swing);
+            if (_attack)
+                _attack.Animate();
+            anim.SetTrigger("Hit");
+            
+        }
 
-        if ( (Input.GetKey(KeyCode.Space) || Input.GetKey(KeyCode.JoystickButton0) )
+        if (Input.GetButton("Flap")
                  && !_isHanging) {
 
             if (_turnStarted)
@@ -178,22 +204,35 @@ public class PlayerControl : MonoBehaviour
         // KeyCode.JoystickButton5 - RB
 
         float d_axis = Input.GetAxisRaw("Dash");
-        bool dash_triggered = d_axis>0.9f || d_axis < -0.9f;
+        bool dash_triggered = (d_axis>0.9f || d_axis < -0.9f) || Input.GetKeyDown(KeyCode.G);
 
         if (dash_axis_flag && !dash_triggered) {
             dash_axis_flag = false;
         }
         
-        if (!dash_axis_flag && (Input.GetKeyDown(KeyCode.G) || dash_triggered) && !_isDashing && !isPulling && !_isHanging) {
+        if (!dash_axis_flag && (dash_triggered) && !_isDashing && !isPulling && !_isHanging) {
             dash_axis_flag = true;
 
             startDash();
             return;
         }
 
-        float moveX = Input.GetAxis ("Horizontal");
-        body.velocity = new Vector2 (moveX * _maxSpeed, body.velocity.y);
-        //Debug.Log("vel " + body.velocity.x);
+        float moveXfloat = Input.GetAxis ("Horizontal");
+        
+        int moveX = moveXfloat > 0.1f ? 1 : moveXfloat < -0.1f ? -1 : 0;
+        
+        // moveX!=0 ? _maxSpeed*moveX : body.velocity.x
+        float moveSpeedX = _maxSpeed*moveX;
+        if (_knockback > 0) {
+            //Debug.Log("Knockback " + _knockback);
+            moveSpeedX = body.velocity.x;
+            --_knockback;
+        }
+
+
+        body.velocity = new Vector2 (moveSpeedX, body.velocity.y);
+
+        //body.AddForce(new Vector2 (_maxSpeed*moveX, 0));
         bool move = Math.Abs(body.velocity.x) > 0.1f;
         if (move) {
             if (move != _isMoving)
@@ -210,56 +249,53 @@ public class PlayerControl : MonoBehaviour
             newTurn = true;
         }
 
-        if (!_turnStarted && newTurn) {
-            if (_isHanging) {
-               onTurnFinished();
+        if (newTurn) {
+            if (_turnStarted) {
+                onTurnFinished();
             } else {
-                anim.SetBool("Turn", true);
-                endFlap();
-                _turnStarted = true;
+                if (_isHanging) {
+                    onTurnFinished();
+                } else {
+                    anim.SetBool("Turn", true);
+                    if (_flapStarted)
+                        endFlap();
+                    _turnStarted = true;
+                }
             }
         }
         
-        if ((Input.GetKeyDown(KeyCode.LeftShift) || Input.GetKeyDown(KeyCode.X) || Input.GetKeyDown(KeyCode.JoystickButton2)) && !Input.GetKey(KeyCode.UpArrow)) {
+        if (Input.GetButtonDown("Grab") && !Input.GetKey(KeyCode.UpArrow)) {
             anim.SetTrigger("Grab");
         }
 
-        if ((Input.GetKey(KeyCode.LeftShift) || Input.GetKey(KeyCode.X) || Input.GetKey(KeyCode.JoystickButton2))) {
-            Debug.Log("Vertical Axis: " + Input.GetAxis ("Vertical"));
+        if (Input.GetButton("Grab")) {
             if (Input.GetKey(KeyCode.UpArrow) || Input.GetAxis ("Vertical") > 0.1f) {
                 
                 if (nearestHanger) {
                     // HANG!
-                    //Debug.Log("HANG!");
                     endFlap();
                     anim.SetBool("IsHanging", true);
-                    //RectTransform rt = nearestHanger.GetComponent<RectTransform>();
-                    //float w = rt.sizeDelta.x * rt.localScale.x;
+
                     BoxCollider2D bc = nearestHanger.gameObject.GetComponent<BoxCollider2D>();
                     float w = bc.size.x;
                     transform.position = nearestHanger.position + new Vector3(w/2, -pHeight*1.5f, 0);
                     body.constraints |= RigidbodyConstraints2D.FreezePosition;
-                    //PlayerStats.Stamina = 1f; // restore full stamina the same way as on the ground
                     _isHanging = true;
                 }
             }
 
             // TODO rethink mechanic
-            Vector3 checkPosition = new Vector3(transform.position.x, transform.position.y-0.6f, transform.position.z);
-            Collider2D[] grabColliders = Physics2D.OverlapCircleAll(checkPosition, 0.5f);
-
-            foreach (var grabCollider in grabColliders)
-            {
-                if (grabCollider.tag == "Player" || grabCollider.tag == "Spike")
-                    continue;
-                Rigidbody2D body = grabCollider.gameObject.GetComponent<Rigidbody2D>();
-
-                if (body == null)
-                    continue;
-
-                if (!_cannotGrab)
-                    grabBody(body);
-                break;
+            if (activeGrabbable) {
+                Debug.Log("try to grab body");
+                Rigidbody2D body = activeGrabbable.gameObject.GetComponentInParent<Rigidbody2D>();
+                if (body && !_cannotGrab) {
+                    if (isGrounded) {
+                        throwByImpulse(new Vector2(0, 15), false);
+                        StartCoroutine(GrabBodyAfterShortDelay(activeGrabbable, body, 0.07f));
+                    } else {
+                        grabBody(activeGrabbable, body);
+                    }
+                }
             }
         }
         else
@@ -269,7 +305,6 @@ public class PlayerControl : MonoBehaviour
             
             if (_isHanging) {
                 anim.SetBool("IsHanging", false);
-                Debug.Log("no hang");
                 _isHanging = false;
                 body.constraints &= ~RigidbodyConstraints2D.FreezePosition;
             }
@@ -296,21 +331,31 @@ public class PlayerControl : MonoBehaviour
         prevUpdateTime = now;
     }
 
-    public void grabBody(Rigidbody2D body) {
-        Transform t = body.transform.Find("Grabbable");
-        // if it's a framed object
-        if (!t)
-            t = body.transform.parent.Find("Grabbable");
-        if (t) {
-            t.gameObject.GetComponent<GrabbableBehavior>().getCaptured();
-            GetComponent<FixedJoint2D>().connectedBody = body;
-            GetComponent<FixedJoint2D>().enabled = true;
-            isPulling = true;
-        }
+    IEnumerator GrabBodyAfterShortDelay(GrabbableBehavior grabbable, Rigidbody2D body, float delay) {
+        yield return new WaitForSeconds(delay);
+        grabBody(grabbable, body);
+    }
+
+    public void grabBody(GrabbableBehavior grabbable, Rigidbody2D body) {
+        grabbable.getCaptured();
+        GetComponent<FixedJoint2D>().connectedBody = body;
+        float coeff = body.gameObject.transform.localScale.y;
+        Debug.Log("coeff = " + coeff);
+        GetComponent<FixedJoint2D>().connectedAnchor  = new Vector2(0f, +1.2f / coeff);
+        GetComponent<FixedJoint2D>().enabled = true;
+        isPulling = true;
+
+        // deactivate ability to speak while grabbing
+        if (activeSpeaker)
+            activeSpeaker.SetActive(false);
     }
 
     public void releaseBody() {
         isPulling = false;
+
+        // activate ability again after grabbing
+        if (activeSpeaker)
+            activeSpeaker.SetActive(true);
 
         Rigidbody2D body = GetComponent<FixedJoint2D>().connectedBody;
 
@@ -336,10 +381,11 @@ public class PlayerControl : MonoBehaviour
     }
 
     public void startDash() {
+        Physics2D.IgnoreLayerCollision(7, 8, true);
+
         StartCoroutine(shortInvulnerability());
         float potentialStamina = PlayerStats.Stamina - 0.25f;
         if (potentialStamina < 0f) {
-            PlayerStats.Stamina = 0f;
             return;
         }
 
@@ -354,12 +400,14 @@ public class PlayerControl : MonoBehaviour
 
         GetComponent<AudioSource>().PlayOneShot(clip_dash);
         body.velocity = new Vector2(faceRight ? 80 : -80, 10);
+
         Debug.Log("Dash " + body.velocity.x);
         _isDashing = true;
         anim.SetTrigger("Dash");
     }
 
     public void endDash() {
+        Physics2D.IgnoreLayerCollision(7, 8, false);
         _isDashing = false;
     }
 
@@ -404,14 +452,13 @@ public class PlayerControl : MonoBehaviour
 
     void checkGrounded()
     {
-        if (isPulling || _isHanging) return;
+        //if (isPulling || _isHanging) return;
 
-        Vector3 v1 = new Vector3(0,1,0);
+        Vector3 v1 = new Vector3(0, 1, 0);
         RaycastHit2D hit = Physics2D.Raycast(transform.position + v1, Vector2.down, 1.5f, groundLayer);
         
         bool gr = (hit.collider != null);
 
-        
         if (gr != isGrounded) {
             anim.SetBool("IsGrounded", gr);
         }
@@ -428,19 +475,20 @@ public class PlayerControl : MonoBehaviour
         if (collider.tag == "Boulder") {
             //Debug.Log("Relative Velocity " + collision.relativeVelocity.magnitude);
             if (collision.relativeVelocity.magnitude > 8) {
-                hurt(0);
+                hurt(Vector2.zero);
             }
         }
 
         if (collider.tag == "Spike")
         {
-            hurt(0);
+            hurt(Vector2.zero);
         }
 
         if (collider.tag == "Enemy") {
             NpcBehavior behavior = collider.gameObject.GetComponent<NpcBehavior>();
             if (!behavior.isDead)
-                hurt(2000);
+                //hurt(2000);
+                hurt(new Vector2(0, 1000f));
         }
     }
 
@@ -500,6 +548,16 @@ public class PlayerControl : MonoBehaviour
             Debug.Log("trigger hang enter");
             nearestHanger = other.gameObject.transform;
         }
+
+        if (other.tag == "Grabbable") {
+            Debug.Log("trigger GRAB enter");
+            activeGrabbable = other.gameObject.GetComponent<GrabbableBehavior>();
+            if (activeGrabbable) {
+                Debug.Log("Now has active grabbable");
+                activeGrabbable.SetCanvasActive(true);
+            }
+            //nearestGrabbableTransform - other.gameObject.
+        }
     }
 
     void OnTriggerExit2D(Collider2D other) {
@@ -507,13 +565,21 @@ public class PlayerControl : MonoBehaviour
             Debug.Log("trigger hang exit");
             nearestHanger = null;
         }
+
+        if (other.tag == "Grabbable") {
+            Debug.Log("trigger GRAB exit");
+            if (activeGrabbable) {
+                activeGrabbable.SetCanvasActive(false);
+                activeGrabbable = null;
+            }
+        }
     }
 
-    void hurt(float force) {
+    void hurt(Vector2 force, Types.DamageType damageType = Types.DamageType.Spikes) {
         
         if (isDead) return; // one cannot die twice...
 
-        body.AddForce(new Vector2(0f, force));
+        body.AddForce(force);
         
         if (--PlayerStats.HP < 0) {
             GetComponent<AudioSource>().PlayOneShot(clip_death);
@@ -534,6 +600,9 @@ public class PlayerControl : MonoBehaviour
             endFlap();
         }
 
+        if (_isDashing)
+            endDash();
+
         
     }
 
@@ -553,6 +622,10 @@ public class PlayerControl : MonoBehaviour
         PlayerStats.Losses++;
         Debug.Log("Losses: " + PlayerStats.Losses);
         StartCoroutine(RestartAfterDelay());
+    }
+
+    public void onSaveGame() {
+        PlayerStats.HP = INITIAL_HP;
     }
 
 }

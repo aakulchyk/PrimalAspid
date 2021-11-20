@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -23,44 +24,49 @@ public class KrabBehavior : NpcBehavior
         lastJumpTime = Time.time;
     }
 
-    // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
-        if (isDead || Time.timeScale == 0) return;
-
-        if (!isGrounded) return;
-        
-        float distP = Vector2.Distance(playerTransform.position, transform.position);
-        if (distP < _followRadius)
-        {
-            // move left/right
-            Vector3 direction = playerTransform.position - transform.position;
-            direction.x = direction.x > 0 ? 1f : -1f;
-            body.velocity = new Vector2 (direction.x * _moveSpeed, body.velocity.y);
-
-            if (direction.x !=0 && ! GetComponent<AudioSource>().isPlaying) {
-                GetComponent<AudioSource>().PlayOneShot(clip_crawl);
-            }
-
+        if (Time.timeScale == 0) {
             return;
-        
-            // jump
-            // Cast a ray straight up.
-            RaycastHit2D hit = Physics2D.Raycast(transform.position, Vector2.up);
-            // If it hits something...
-            if (hit.collider != null)
-            {
-                //Debug.Log("raycast true " + hit.collider.tag);
-                if (hit.collider.tag == "Player") {
+        }
 
-                    if (Time.time - lastJumpTime > 0.5f) {
-                        jump();
-                        lastJumpTime = Time.time;
-                    }
-                    
+        bool isNotAbleToMove = isDead || !IsPlayerInRange() || !isGrounded;
+
+        float moveX = isNotAbleToMove ? 0f : GetVectorToPlayer().x > 0 ? 1f : -1f;
+
+        if (_knockback > 0) {
+            moveX = body.velocity.x;
+            --_knockback;
+        }
+            
+        // move left/right
+        body.velocity = new Vector2( moveX, body.velocity.y );
+
+        if (isNotAbleToMove)
+            return;
+
+        if (Math.Abs(moveX) > 0.01f && ! GetComponent<AudioSource>().isPlaying) {
+                GetComponent<AudioSource>().PlayOneShot(clip_crawl);
+        }
+
+        // jump
+        // Cast a ray straight up.
+        RaycastHit2D hit = Physics2D.Raycast(transform.position, Vector2.up);
+        // If it hits something...
+        if (hit.collider != null) {
+            if (hit.collider.tag == "Player") {
+                if (Time.time - lastJumpTime > 0.5f) {
+                    jump();
+                    lastJumpTime = Time.time;
                 }
             }
         }
+    }
+
+    bool IsPlayerInRange()
+    {
+        float distP = Vector2.Distance(playerTransform.position, transform.position);
+        return distP < _followRadius;
     }
 
     private void jump()
@@ -82,9 +88,25 @@ public class KrabBehavior : NpcBehavior
         base.processCollision(hit);
     }
 
+    public override void hurt(Vector2 force, Types.DamageType damageType = Types.DamageType.Spikes) {
+        if (isDead) return;
+        knockback(force);
+
+        if (damageType == Types.DamageType.Spikes) {
+            _hp = -1;
+        }
+
+        if (_hp < 0 && !isDead) {
+            die();
+        } else {
+            anim.SetBool("hurt", true);
+            sounds.PlayOneShot(clip_hurt);
+        }
+    }
    protected override void die()
    {
         base.die();
+        GetComponent<ParticleSystem>().Play();
         Destroy(this.gameObject, 5f);
    }
 }

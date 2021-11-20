@@ -9,7 +9,6 @@ TagManager:
   - Enemy
   - LevelPortal
   - Text
-  - RescuedOne
   - Lever
   - Throwable
   - Ground
@@ -19,6 +18,8 @@ TagManager:
   - BossFightTrigger
   - Boulder
   - Hanger
+  - Grabbable
+  - RescuedOne
   layers:
   - Default
   - TransparentFX
@@ -29,8 +30,8 @@ TagManager:
   - NPC
   - PC
   - Enemy
-  - 
-  - 
+  - DeadlyDanger
+  - HitBox
   - 
   - 
   - 

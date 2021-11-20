@@ -10,9 +10,10 @@ GameObject:
   m_Component:
   - component: {fileID: 4164921050965690983}
   - component: {fileID: 4164921050965690980}
-  m_Layer: 6
+  - component: {fileID: 1284298024146532081}
+  m_Layer: 0
   m_Name: Grabbable
-  m_TagString: Untagged
+  m_TagString: Grabbable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -45,6 +46,32 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   captured: 0
+--- !u!61 &1284298024146532081
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4164921050965690982}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0.074572295, y: 1.1372275}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 1.6711504, y: 2.4541597}
+  m_EdgeRadius: 0
 --- !u!1 &4164921051361417704
 GameObject:
   m_ObjectHideFlags: 0
@@ -56,7 +83,7 @@ GameObject:
   - component: {fileID: 4164921051361417705}
   - component: {fileID: 4164921051361417711}
   - component: {fileID: 4164921051361417710}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: Text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -389,6 +416,7 @@ MonoBehaviour:
   clip_follow_start: {fileID: 8300000, guid: 980e9818edd3a8b449ded9046dd774a8, type: 3}
   clip_follow_stop: {fileID: 8300000, guid: 84b3e9d6f2fef364e99ba247aa00bd65, type: 3}
   clip_success: {fileID: 8300000, guid: 50cc3b90d89b527409a12f562f25c475, type: 3}
+  happyTexts: []
 --- !u!1 &4164921052835938851
 GameObject:
   m_ObjectHideFlags: 0
@@ -401,7 +429,7 @@ GameObject:
   - component: {fileID: 4164921052835938855}
   - component: {fileID: 4164921052835938854}
   - component: {fileID: 4164921052835938849}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: Canvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -561,10 +589,30 @@ PrefabInstance:
       propertyPath: m_FontData.m_FontSize
       value: 14
       objectReference: {fileID: 0}
+    - target: {fileID: 8064173163517968197, guid: 99edda657f55b0440a59f267e99ca172,
+        type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 70
+      objectReference: {fileID: 0}
+    - target: {fileID: 8064173163517968197, guid: 99edda657f55b0440a59f267e99ca172,
+        type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 8064173164425727592, guid: 99edda657f55b0440a59f267e99ca172,
+        type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 70
+      objectReference: {fileID: 0}
+    - target: {fileID: 8064173164425727592, guid: 99edda657f55b0440a59f267e99ca172,
+        type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 20
+      objectReference: {fileID: 0}
     - target: {fileID: 8064173164425727592, guid: 99edda657f55b0440a59f267e99ca172,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: -0.18
+      value: 1.01
       objectReference: {fileID: 0}
     - target: {fileID: 8064173164425727592, guid: 99edda657f55b0440a59f267e99ca172,
         type: 3}

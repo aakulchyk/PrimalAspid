@@ -7,6 +7,8 @@ public class NpcBehavior : MonoBehaviour
     protected Game game;
 
     public bool isDead = false;
+
+    public int MAX_KNOCKBACK = 12;
    
     protected Animator anim;
     protected Rigidbody2D body;
@@ -15,6 +17,7 @@ public class NpcBehavior : MonoBehaviour
 
     protected GrabbableBehavior grabbable = null;
     protected InteractableBehavior interactable = null;
+
 
     protected AudioSource sounds;
 
@@ -26,7 +29,9 @@ public class NpcBehavior : MonoBehaviour
 
     public bool invulnerable = false;
 
-    
+    protected int _knockback = 0;
+
+        
     protected void BaseInit()
     {
         game = (Game)FindObjectOfType(typeof(Game));
@@ -57,17 +62,17 @@ public class NpcBehavior : MonoBehaviour
         Collider2D collider = collision.collider;
         if (collider.tag == "Boulder") {
             if (collision.relativeVelocity.magnitude > 8) {
-                hurt(0);
+                hurt(Vector2.zero);
             }
         }
 
         if (collider.tag == "Spike")
         {
-            hurt(0);
+            hurt(Vector2.zero);
         }
     }
 
-    public virtual void hurt(float force) {
+    public virtual void hurt(Vector2 force, Types.DamageType damageType = Types.DamageType.Spikes) {
 
         if (isDead) return;
 
@@ -78,15 +83,22 @@ public class NpcBehavior : MonoBehaviour
         }
 
         Debug.Log("NPC Hurt");
+        knockback(force);
         if (--_hp < 0 && !isDead) {
             die();
         } else {
+            anim.SetBool("hurt", true);
             sounds.PlayOneShot(clip_hurt);
         }
     }
 
+    public void knockback(Vector2 force) {
+        _knockback = MAX_KNOCKBACK;
+        body.velocity = force;
+    }
+
     protected virtual void die() {
-         Debug.Log("NPC die");
+        Debug.Log("NPC die");
         sounds.Stop();
         sounds.PlayOneShot(clip_death);
         isDead = true;

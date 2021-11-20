@@ -22,13 +22,15 @@ public class Game : MonoBehaviour
     private string[] texts;
     private Queue<string> textQueue = new Queue<string>();
 
+    private PlayerControl player;
+
     private Save CreateSaveGameObject()
     {
         Save save = new Save();
         save.Initialize();
 
         // gather player data
-        PlayerControl player = (PlayerControl)FindObjectOfType(typeof(PlayerControl));
+        player = (PlayerControl)FindObjectOfType(typeof(PlayerControl));
         save.px = player.transform.position.x;
         save.py = player.transform.position.y;
         //save.hp =  PlayerStats.HP;
@@ -73,8 +75,11 @@ public class Game : MonoBehaviour
 
     public void SaveGame()
     {
+        
         Debug.Log("Save Game");
         Save save = CreateSaveGameObject();
+
+        player.onSaveGame();
 
         BinaryFormatter bf = new BinaryFormatter();
         FileStream file = File.Create(Application.persistentDataPath + "/gamesave.save");

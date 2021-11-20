@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class FlyingEnemyBehavior : NpcBehavior
 {
-
     public float _followRadius = 14f;
     public float moveSpeed = 3f;
  
@@ -37,7 +36,7 @@ public class FlyingEnemyBehavior : NpcBehavior
         foreach (var p in points) {
             float distM = Vector2.Distance(p, wp.position);
             Vector3 dir = wp.position - p;
-            RaycastHit2D hit = Physics2D.Raycast(p, dir.normalized, distM);
+            RaycastHit2D hit = Physics2D.Raycast(p, dir.normalized, distM, 7);
 
             if (!hit.collider) {
                 Debug.DrawLine(p, wp.position, Color.green, 0.02f, false);
@@ -62,14 +61,33 @@ public class FlyingEnemyBehavior : NpcBehavior
     // Update is called once per frame
     void FixedUpdate()
     {
-        if (isDead || Time.timeScale == 0) return;
+        if (Time.timeScale == 0) {
+            return;
+        }
+
+        float moveX = isDead ? 0f : GetVectorToPlayer().x * moveSpeed;
+
+        if (_knockback > 0) {
+            Debug.Log("Fly knockback " + _knockback);
+            moveX = body.velocity.x;
+            --_knockback;
+        } else {
+            anim.SetBool("chase", true);
+        }
+            
+        body.velocity = new Vector2( moveX, GetVectorToPlayer().y*moveSpeed );
+    }
+    
+    void Update()
+    {
+        if (isDead || Time.timeScale == 0) {
+            return;
+        }
 
         // interact with player
         float distP = Vector2.Distance(playerTransform.position, transform.position);
-        //bool visible = ;
 
-        if (_followRadius > distP  &&  checkAccessibility(playerTransform))
-        {
+        if (_followRadius > distP  &&  checkAccessibility(playerTransform)) {
             anim.SetBool("hurt", false);
             if (playerTransform.position.x > transform.position.x && !faceRight) {
                 flip();
@@ -84,22 +102,18 @@ public class FlyingEnemyBehavior : NpcBehavior
                 return;
             }
 
-
             if (!grabbable.captured) {
-
                 if (prev_captured) {
                     sounds.Stop();
                     sounds.Play();
                 }
 
-                GetComponent<Rigidbody2D>().velocity = new Vector2 (GetVectorToPlayer().x * moveSpeed, GetVectorToPlayer().y * moveSpeed);
-                anim.SetBool("chase", true);
             } else {
-                anim.SetBool("hurt", true);
-                
-                if (!prev_captured)
-                    sounds.Stop();    
-                
+
+                if (!prev_captured) {
+                    anim.SetBool("hurt", true);
+                    sounds.Stop();   
+                }
 
                 if (!sounds.isPlaying)
                     sounds.PlayOneShot(clip_captured);
@@ -107,17 +121,21 @@ public class FlyingEnemyBehavior : NpcBehavior
 
             prev_captured = grabbable.captured;
 
-
         } else {
             anim.SetBool("chase", false);
             GetComponent<Rigidbody2D>().velocity = new Vector2(0, 0.25f);
         }
     }
 
+    public override void hurt(Vector2 force, Types.DamageType damageType = Types.DamageType.Spikes) {
+        base.hurt(force, damageType);
+        GetComponent<ParticleSystem>().Play();
+    }
    protected override void die()
    {
-        base.die();
-        Destroy(this.gameObject, 0.5f);
+       //anim.SetTrigger("die");
+       base.die();
+       Destroy(this.gameObject, 0.6f);
    }    
 
     public void flip()
@@ -125,7 +143,6 @@ public class FlyingEnemyBehavior : NpcBehavior
         Vector3 scale = transform.localScale;
         transform.localScale = new Vector3(-1*scale.x, scale.y, scale.z);
 
-        
         if (grabbable) {
             grabbable.FlipCanvas();
         }

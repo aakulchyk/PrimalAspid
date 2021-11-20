@@ -81,11 +81,11 @@ public class MaggotRescuedBehavior : NpcBehavior
         if (collider.tag == "Enemy")
         {
             //Debug.Log("NPC Collide Spike");p
-            hurt(0);
+            hurt(Vector2.zero);
         }
     }
 
-    public override void hurt(float force) {
+    public override void hurt(Vector2 force, Types.DamageType damageType = Types.DamageType.Spikes) {
         Debug.Log("Maggot Hurt");
         GetComponent<AudioSource>().Stop();
         GetComponent<AudioSource>().PlayOneShot(clip_death);

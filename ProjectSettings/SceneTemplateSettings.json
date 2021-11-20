@@ -82,7 +82,7 @@
             "userAdded": false,
             "type": "UnityEngine.PhysicMaterial",
             "ignore": false,
-            "defaultInstantiationMode": 0,
+            "defaultInstantiationMode": 1,
             "supportsModification": true
         },
         {
@@ -138,7 +138,7 @@
             "userAdded": false,
             "type": "UnityEngine.Texture",
             "ignore": false,
-            "defaultInstantiationMode": 0,
+            "defaultInstantiationMode": 1,
             "supportsModification": true
         },
         {

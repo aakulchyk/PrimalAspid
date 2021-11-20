@@ -13,6 +13,8 @@ public class InteractableBehavior : MonoBehaviour
 
     public float interactRadius = 3f;
     public bool openForDialogue = false;
+    
+    public bool active = true;
     public string interactableName;
     public string[] initialTexts;
 
@@ -39,13 +41,17 @@ public class InteractableBehavior : MonoBehaviour
     {
         if (canvas) {
             float pDist = Vector2.Distance(playerTransform.position, transform.position); 
-            openForDialogue = (pDist < interactRadius);
+            openForDialogue = (pDist < interactRadius && active);
             canvas.SetActive(openForDialogue);
         }
 
         if (openForDialogue) {
             player.activeSpeaker = this;
         }
+    }
+
+    public void SetActive(bool val) {
+        active = val;
     }
 
     public virtual void talkToPlayer()
