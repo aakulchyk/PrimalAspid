@@ -91,6 +91,7 @@ public class Game : MonoBehaviour
 
     public void LoadGame()
     {
+        //Time.timeScale = 1f;
         if (!File.Exists(Application.persistentDataPath + "/gamesave.save"))
         {
              Debug.Log("Cannot find a saved game");

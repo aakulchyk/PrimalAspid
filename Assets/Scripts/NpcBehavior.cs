@@ -169,4 +169,7 @@ public class NpcBehavior : MonoBehaviour
         Debug.Log("Dummy LoadInActualState");
     }
 
+    public virtual void onTalk()
+    {}
+
 }

@@ -55,6 +55,7 @@ public class RatFatherBehavior : NpcBehavior
                 if (baby) {
                     isTargetAlive = !baby.isDead;
                     if (isTargetAlive) {
+                        anim.SetBool("isSad", false);
                         baby.onFound();
                         interactable.currentTexts = happyTexts;
                         anim.SetTrigger("found");
@@ -69,5 +70,11 @@ public class RatFatherBehavior : NpcBehavior
             if (!sounds.isPlaying)
                 sounds.PlayOneShot(clip_sad_idle);
         }
+    }
+
+    public override void onTalk()
+    {
+        Debug.Log("Rat talk");
+        anim.SetTrigger("speak");
     }
 }

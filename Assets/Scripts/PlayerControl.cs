@@ -184,7 +184,19 @@ public class PlayerControl : MonoBehaviour
 
         if (Input.GetButtonDown("Interact")) {
             if (activeSpeaker && activeSpeaker.openForDialogue) {
+                
+                /*var speakerPosX = activeSpeaker.transform.parent.position.x;
+
+                if (transform.position.x - speakerPosX < 1f )
+                    transform.position = activeSpeaker.transform.parent.position + new Vector3(-4f, 0, 0);
+
+                if (!faceRight) {
+                    faceRight = true;
+                    flip();
+                }*/
+
                 activeSpeaker.talkToPlayer();
+
             } 
             else 
             if (activeSavePoint && activeSavePoint.canInteract) {
@@ -196,7 +208,7 @@ public class PlayerControl : MonoBehaviour
             AnticipateAttack();
         }
 
-        if (Input.GetButton("Flap")
+        if (Input.GetButton("Flap") 
                  && !_isHanging) {
 
             if (_turnStarted)
@@ -356,12 +368,6 @@ public class PlayerControl : MonoBehaviour
         //prevUpdateTime = now;
     }
 
-    IEnumerator GrabBodyAfterShortDelay(GrabbableBehavior grabbable, Rigidbody2D b, float delay) {
-        yield return new WaitForSeconds(delay);
-        b.constraints &= ~RigidbodyConstraints2D.FreezePosition;
-        grabBody(grabbable, b);
-    }
-
     public void AnticipateAttack() {
 
         if (_isDashing || _isHanging)
@@ -388,7 +394,11 @@ public class PlayerControl : MonoBehaviour
     }
 
 
-
+    IEnumerator GrabBodyAfterShortDelay(GrabbableBehavior grabbable, Rigidbody2D b, float delay) {
+        yield return new WaitForSeconds(delay);
+        b.constraints &= ~RigidbodyConstraints2D.FreezePosition;
+        grabBody(grabbable, b);
+    }
     public void grabBody(GrabbableBehavior grabbable, Rigidbody2D b) {
         grabbable.getCaptured();
         GetComponent<FixedJoint2D>().connectedBody = b;
@@ -475,6 +485,9 @@ public class PlayerControl : MonoBehaviour
         if (_jumpStarted || _flapStarted)
             return;
 
+        if (_attackStarted)
+            return;
+
         if (Time.time - lastFlapTime <= FLAP_MIN_TIMEOUT)
             return;
 
@@ -516,6 +529,13 @@ public class PlayerControl : MonoBehaviour
         if (_jumpStarted || _flapStarted)
             return;
 
+        if (_attackStarted)
+            RestoreAttack();
+
+        if (_turnStarted)
+            onTurnFinished();
+            
+
         if (Time.time - lastFlapTime <= FLAP_MIN_TIMEOUT)
             return;
 
@@ -549,13 +569,14 @@ public class PlayerControl : MonoBehaviour
         //if (isPulling || _isHanging) return;
 
         Vector3 v1 = new Vector3(0, 1, 0);
-        RaycastHit2D hit = Physics2D.Raycast(transform.position + v1, Vector2.down, 1.5f, groundLayer);
+        RaycastHit2D hit = Physics2D.Raycast(transform.position + v1, Vector2.down, 1.0f, groundLayer);
         
         bool gr = (hit.collider != null);
 
         if (gr != isGrounded) {
             anim.SetBool("IsGrounded", gr);
             if (gr) {
+                anim.SetTrigger("Land");
                 sounds.PlayOneShot(clip_land); // TODO jump sound
             }
         }
