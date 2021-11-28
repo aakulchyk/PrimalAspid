@@ -56,7 +56,9 @@ public class InteractableBehavior : MonoBehaviour
 
     public virtual void talkToPlayer()
     {
-        gameObject.GetComponentInParent<NpcBehavior>().onTalk();
+        var npc = gameObject.GetComponentInParent<NpcBehavior>();
+        if (npc)
+            npc.onTalk();
         game.SetPopupTexts(interactableName, currentTexts);
         game.OpenPopup();
     }

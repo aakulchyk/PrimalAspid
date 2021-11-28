@@ -75,13 +75,13 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: -1
-  m_Sprite: {fileID: 6852971944050652944, guid: 1d3981433a7bae244bde3ca37a2a63b9,
+  m_Sprite: {fileID: 3426998219009559647, guid: c50cb010ddef88a45bd39af5a43a1b76,
     type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_FlipX: 1
+  m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 3.74, y: 2.73}
+  m_Size: {x: 3.89, y: 3.02}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -215,6 +215,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isDead: 0
+  MAX_KNOCKBACK: 12
   collectiblePrefab: {fileID: 0}
   clip_hurt: {fileID: 0}
   clip_death: {fileID: 0}
@@ -223,6 +224,7 @@ MonoBehaviour:
   clip_sad_idle: {fileID: 8300000, guid: 9bc3565e1ca748f479934a5f45fbbf2e, type: 3}
   clip_success: {fileID: 8300000, guid: a3da74cad83cae04f801284ca1f26a02, type: 3}
   clip_cry: {fileID: 8300000, guid: 9bc3565e1ca748f479934a5f45fbbf2e, type: 3}
+  noticeRadius: 8
   interactRadius: 3
   target: {fileID: 0}
   initialTexts:

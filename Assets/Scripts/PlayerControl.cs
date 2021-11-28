@@ -373,7 +373,7 @@ public class PlayerControl : MonoBehaviour
         if (_isDashing || _isHanging)
             return;
         
-        Debug.Log("Attack");
+        //Debug.Log("Attack");
         if (_turnStarted)
             onTurnFinished();
 
@@ -658,12 +658,12 @@ public class PlayerControl : MonoBehaviour
 
 
         if (other.tag == "Hanger") {
-            Debug.Log("trigger hang enter");
+            //Debug.Log("trigger hang enter");
             nearestHanger = other.gameObject.transform;
         }
 
         if (other.tag == "Grabbable") {
-            Debug.Log("trigger GRAB enter");
+            //Debug.Log("trigger GRAB enter");
             activeGrabbable = other.gameObject.GetComponent<GrabbableBehavior>();
             if (activeGrabbable) {
                 Debug.Log("Now has active grabbable");
@@ -675,12 +675,12 @@ public class PlayerControl : MonoBehaviour
 
     void OnTriggerExit2D(Collider2D other) {
         if (other.tag == "Hanger") {
-            Debug.Log("trigger hang exit");
+            //Debug.Log("trigger hang exit");
             nearestHanger = null;
         }
 
         if (other.tag == "Grabbable") {
-            Debug.Log("trigger GRAB exit");
+            //Debug.Log("trigger GRAB exit");
             if (activeGrabbable) {
                 activeGrabbable.SetCanvasActive(false);
                 activeGrabbable = null;

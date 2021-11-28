@@ -1,0 +1,549 @@
+fileFormatVersion: 2
+guid: 68939ed9364277342933a9b7dee8a798
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -5778590093982927133
+    second: pc-grab
+  - first:
+      213: 1341951855039238538
+    second: PC_1
+  - first:
+      213: 1252354279565329153
+    second: pc-hang
+  - first:
+      213: 411557490847500162
+    second: PC_3
+  - first:
+      213: 6552657634297009707
+    second: pc-idle1
+  - first:
+      213: -6893851535811529201
+    second: pc-idle2
+  - first:
+      213: -3936000452674267285
+    second: PC_6
+  - first:
+      213: 7848044809928152401
+    second: pc-land
+  - first:
+      213: 8624034538222849326
+    second: PC_8
+  - first:
+      213: 7331319547816935788
+    second: pc-fly1
+  - first:
+      213: -2021819684137480787
+    second: pc-fly2
+  - first:
+      213: -2693641334832668538
+    second: pc-fly3
+  - first:
+      213: -6790096863748189182
+    second: pc-fly4
+  - first:
+      213: -3151661756732490034
+    second: pc-dash
+  - first:
+      213: 7062122416850078871
+    second: pc-turn
+  - first:
+      213: 3407269915240347163
+    second: pc-walk1
+  - first:
+      213: 2197832365587427427
+    second: pc-walk2
+  - first:
+      213: -6422742430305447530
+    second: pc-walk3
+  - first:
+      213: 4064949415367278797
+    second: pc-hit1
+  - first:
+      213: 8095792149405845320
+    second: pc-hit2
+  - first:
+      213: 2986401942560058283
+    second: pc-jump
+  externalObjects: {}
+  serializedVersion: 11
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: pc-grab
+      rect:
+        serializedVersion: 2
+        x: 1080
+        y: 1571
+        width: 431
+        height: 358
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3e67e810de25ecfa0800000000000000
+      internalID: -5778590093982927133
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: pc-hang
+      rect:
+        serializedVersion: 2
+        x: 1772
+        y: 1576
+        width: 169
+        height: 319
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1038e6ef491416110800000000000000
+      internalID: 1252354279565329153
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: pc-idle1
+      rect:
+        serializedVersion: 2
+        x: 129
+        y: 1550
+        width: 207
+        height: 319
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b265603a667bfea50800000000000000
+      internalID: 6552657634297009707
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: pc-idle2
+      rect:
+        serializedVersion: 2
+        x: 662
+        y: 1550
+        width: 201
+        height: 322
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f063ca9ad8e1450a0800000000000000
+      internalID: -6893851535811529201
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: pc-land
+      rect:
+        serializedVersion: 2
+        x: 2201
+        y: 1566
+        width: 356
+        height: 264
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1559d158c2bd9ec60800000000000000
+      internalID: 7848044809928152401
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC_8
+      rect:
+        serializedVersion: 2
+        x: 2541
+        y: 1761
+        width: 8
+        height: 10
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e2d097d68b9bea770800000000000000
+      internalID: 8624034538222849326
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: pc-fly1
+      rect:
+        serializedVersion: 2
+        x: 49
+        y: 1056
+        width: 459
+        height: 372
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c61818629441eb560800000000000000
+      internalID: 7331319547816935788
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: pc-fly2
+      rect:
+        serializedVersion: 2
+        x: 531
+        y: 1056
+        width: 542
+        height: 370
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: dadc71795bd01f3e0800000000000000
+      internalID: -2021819684137480787
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: pc-fly3
+      rect:
+        serializedVersion: 2
+        x: 1135
+        y: 1038
+        width: 409
+        height: 382
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6806dfc3a734e9ad0800000000000000
+      internalID: -2693641334832668538
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: pc-fly4
+      rect:
+        serializedVersion: 2
+        x: 1706
+        y: 1056
+        width: 340
+        height: 375
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2049bcdb0eab4c1a0800000000000000
+      internalID: -6790096863748189182
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: pc-dash
+      rect:
+        serializedVersion: 2
+        x: 37
+        y: 564
+        width: 408
+        height: 324
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: eceb6c9945c0344d0800000000000000
+      internalID: -3151661756732490034
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: pc-turn
+      rect:
+        serializedVersion: 2
+        x: 664
+        y: 559
+        width: 176
+        height: 330
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 79c0ca0ebe2b10260800000000000000
+      internalID: 7062122416850078871
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: pc-walk1
+      rect:
+        serializedVersion: 2
+        x: 1085
+        y: 550
+        width: 350
+        height: 297
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b16b6c77fed094f20800000000000000
+      internalID: 3407269915240347163
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: pc-walk2
+      rect:
+        serializedVersion: 2
+        x: 1661
+        y: 550
+        width: 272
+        height: 311
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 360f1b254e4408e10800000000000000
+      internalID: 2197832365587427427
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: pc-walk3
+      rect:
+        serializedVersion: 2
+        x: 36
+        y: 55
+        width: 323
+        height: 283
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 69190dde9c5ddd6a0800000000000000
+      internalID: -6422742430305447530
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: pc-hit1
+      rect:
+        serializedVersion: 2
+        x: 531
+        y: 51
+        width: 488
+        height: 247
+      alignment: 9
+      pivot: {x: 0.21, y: -0.00000021621766}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: dc006ecc4f9996830800000000000000
+      internalID: 4064949415367278797
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: pc-hit2
+      rect:
+        serializedVersion: 2
+        x: 1053
+        y: 51
+        width: 263
+        height: 278
+      alignment: 9
+      pivot: {x: 0.44, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8474bb801180a5070800000000000000
+      internalID: 8095792149405845320
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: pc-jump
+      rect:
+        serializedVersion: 2
+        x: 1640
+        y: 29
+        width: 402
+        height: 357
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bab24de7eb4d17920800000000000000
+      internalID: 2986401942560058283
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+  spritePackingTag: 
+  pSDRemoveMatte: 0
+  pSDShowRemoveMatteOption: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

@@ -75,6 +75,7 @@ public class FlyingEnemyBehavior : NpcBehavior
         float moveX = (isDead || !_chasingPlayer) ? 0f : GetVectorToPlayer().x * moveSpeed;
 
         if (_knockback > 0) {
+            Debug.Log("Fly frame of knockback");
             moveX = body.velocity.x;
             --_knockback;
         } else {
