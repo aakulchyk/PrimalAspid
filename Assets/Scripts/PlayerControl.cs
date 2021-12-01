@@ -24,7 +24,9 @@ public class PlayerControl : MonoBehaviour
     private bool _isDashing = false;
     private bool _isHanging = false;
 
-    private bool isGrounded = false;
+    private bool _isPlayingWalkSound = false;
+
+    private bool _isGrounded = false;
 
     protected AudioSource sounds;
     public AudioClip clip_hurt;
@@ -40,6 +42,8 @@ public class PlayerControl : MonoBehaviour
     public const int INITIAL_HP = 2;
     public const float FLAP_MIN_TIMEOUT = 0.4f;
 
+    public const float COYOTE_TIME_SEC = 0.15f;
+    private float coyoteTimeStarted;
 
     private System.DateTime startTime;
     private System.DateTime prevUpdateTime;
@@ -214,7 +218,8 @@ public class PlayerControl : MonoBehaviour
             if (_turnStarted)
                 onTurnFinished();
 
-            if (isGrounded) {
+            bool stillCoyoteTime = Time.time - coyoteTimeStarted < COYOTE_TIME_SEC;
+            if (_isGrounded || stillCoyoteTime) {
                 StartJump();
             } else {
                 startFlap();
@@ -267,7 +272,7 @@ public class PlayerControl : MonoBehaviour
             }
         }
 
-        float moveSpeedX = _turnStarted && isGrounded ? 0 : _maxSpeed*moveX;
+        float moveSpeedX = _turnStarted && _isGrounded ? 0 : _maxSpeed*moveX;
         if (_knockback > 0) {
             //Debug.Log("Knockback " + _knockback);
             moveSpeedX = body.velocity.x;
@@ -283,11 +288,17 @@ public class PlayerControl : MonoBehaviour
             if (move != _isMoving)
                 anim.SetBool("IsMoving", true);
             _isMoving = true;
-            if (isGrounded && !sounds.isPlaying)
-                sounds.PlayOneShot(clip_walk); // TODO jump sound
+            if (_isGrounded && !sounds.isPlaying) {
+                sounds.PlayOneShot(clip_walk);
+                _isPlayingWalkSound = true;
+            }
         } else {
-            if (move != _isMoving)
+            if (move != _isMoving) {
                 anim.SetBool("IsMoving", false);
+                // stop walking sounds
+                if (_isPlayingWalkSound && sounds.isPlaying)
+                    sounds.Stop();
+            }
             _isMoving = false;
         }
 
@@ -317,7 +328,7 @@ public class PlayerControl : MonoBehaviour
                 Debug.Log("try to grab body");
                 Rigidbody2D b = activeGrabbable.gameObject.GetComponentInParent<Rigidbody2D>();
                 if (b && !_cannotGrab) {
-                    if (isGrounded) {
+                    if (_isGrounded) {
                         throwByImpulse(new Vector2(0, 50), false);
                         b.constraints |= RigidbodyConstraints2D.FreezePosition;
                         StartCoroutine(GrabBodyAfterShortDelay(activeGrabbable, b, 0.1f));
@@ -349,7 +360,7 @@ public class PlayerControl : MonoBehaviour
         // var millis = diff.Milliseconds;
 
         var millis = 16.6f;
-        if ((isGrounded || _isHanging)) {
+        if ((_isGrounded || _isHanging)) {
             var delta = (0.002f * millis);
             if (PlayerStats.Stamina < 1 - delta)
                 PlayerStats.Stamina += delta;
@@ -385,6 +396,7 @@ public class PlayerControl : MonoBehaviour
 
     public void PerformAttack() {
         sounds.PlayOneShot(clip_swing);
+        _isPlayingWalkSound = false;
         if (_attack)
             _attack.Animate();
     }
@@ -573,14 +585,18 @@ public class PlayerControl : MonoBehaviour
         
         bool gr = (hit.collider != null);
 
-        if (gr != isGrounded) {
+        if (gr != _isGrounded) {
             anim.SetBool("IsGrounded", gr);
             if (gr) {
                 anim.SetTrigger("Land");
                 sounds.PlayOneShot(clip_land); // TODO jump sound
+                _isPlayingWalkSound = false;
+            } else {
+                // Coyote time
+                coyoteTimeStarted = Time.time;
             }
         }
-        isGrounded = gr;
+        _isGrounded = gr;
     }
 
     void OnCollisionEnter2D(Collision2D collision)
@@ -696,6 +712,7 @@ public class PlayerControl : MonoBehaviour
         
         if (--PlayerStats.HP < 0) {
             sounds.PlayOneShot(clip_death);
+            _isPlayingWalkSound = false;
             anim.SetBool("IsDying", true);
             isDead = true;
             body.velocity = Vector2.zero;
@@ -704,6 +721,7 @@ public class PlayerControl : MonoBehaviour
             if (sounds.isPlaying)
                 sounds.Stop();
             sounds.PlayOneShot(clip_hurt);
+            _isPlayingWalkSound = false;
             StartCoroutine(blinkInvulnerable());
         }
         

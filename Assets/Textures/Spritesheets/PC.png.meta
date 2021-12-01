@@ -7,7 +7,7 @@ TextureImporter:
     second: pc-grab
   - first:
       213: 1341951855039238538
-    second: PC_1
+    second: pc-turn-air
   - first:
       213: 1252354279565329153
     second: pc-hang
@@ -157,8 +157,8 @@ TextureImporter:
       name: pc-grab
       rect:
         serializedVersion: 2
-        x: 1080
-        y: 1571
+        x: 1084
+        y: 560
         width: 431
         height: 358
       alignment: 7
@@ -178,8 +178,8 @@ TextureImporter:
       name: pc-hang
       rect:
         serializedVersion: 2
-        x: 1772
-        y: 1576
+        x: 1774
+        y: 572
         width: 169
         height: 319
       alignment: 7
@@ -200,7 +200,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 129
-        y: 1550
+        y: 1560
         width: 207
         height: 319
       alignment: 7
@@ -220,8 +220,8 @@ TextureImporter:
       name: pc-idle2
       rect:
         serializedVersion: 2
-        x: 662
-        y: 1550
+        x: 663
+        y: 1560
         width: 201
         height: 322
       alignment: 7
@@ -241,8 +241,8 @@ TextureImporter:
       name: pc-land
       rect:
         serializedVersion: 2
-        x: 2201
-        y: 1566
+        x: 607
+        y: 562
         width: 356
         height: 264
       alignment: 7
@@ -283,10 +283,10 @@ TextureImporter:
       name: pc-fly1
       rect:
         serializedVersion: 2
-        x: 49
-        y: 1056
+        x: 40
+        y: 30
         width: 459
-        height: 372
+        height: 396
       alignment: 7
       pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -304,8 +304,8 @@ TextureImporter:
       name: pc-fly2
       rect:
         serializedVersion: 2
-        x: 531
-        y: 1056
+        x: 526
+        y: 30
         width: 542
         height: 370
       alignment: 7
@@ -325,8 +325,8 @@ TextureImporter:
       name: pc-fly3
       rect:
         serializedVersion: 2
-        x: 1135
-        y: 1038
+        x: 1131
+        y: 30
         width: 409
         height: 382
       alignment: 7
@@ -346,8 +346,8 @@ TextureImporter:
       name: pc-fly4
       rect:
         serializedVersion: 2
-        x: 1706
-        y: 1056
+        x: 1711
+        y: 40
         width: 340
         height: 375
       alignment: 7
@@ -367,8 +367,8 @@ TextureImporter:
       name: pc-dash
       rect:
         serializedVersion: 2
-        x: 37
-        y: 564
+        x: 2170
+        y: 1586
         width: 408
         height: 324
       alignment: 7
@@ -388,10 +388,10 @@ TextureImporter:
       name: pc-turn
       rect:
         serializedVersion: 2
-        x: 664
-        y: 559
+        x: 1199
+        y: 1560
         width: 176
-        height: 330
+        height: 344
       alignment: 7
       pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -409,8 +409,8 @@ TextureImporter:
       name: pc-walk1
       rect:
         serializedVersion: 2
-        x: 1085
-        y: 550
+        x: 1599
+        y: 1561
         width: 350
         height: 297
       alignment: 7
@@ -430,10 +430,10 @@ TextureImporter:
       name: pc-walk2
       rect:
         serializedVersion: 2
-        x: 1661
-        y: 550
+        x: 51
+        y: 1056
         width: 272
-        height: 311
+        height: 315
       alignment: 7
       pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -451,10 +451,10 @@ TextureImporter:
       name: pc-walk3
       rect:
         serializedVersion: 2
-        x: 36
-        y: 55
+        x: 542
+        y: 1063
         width: 323
-        height: 283
+        height: 294
       alignment: 7
       pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -472,8 +472,8 @@ TextureImporter:
       name: pc-hit1
       rect:
         serializedVersion: 2
-        x: 531
-        y: 51
+        x: 1065
+        y: 1061
         width: 488
         height: 247
       alignment: 9
@@ -493,8 +493,8 @@ TextureImporter:
       name: pc-hit2
       rect:
         serializedVersion: 2
-        x: 1053
-        y: 51
+        x: 1592
+        y: 1060
         width: 263
         height: 278
       alignment: 9
@@ -514,8 +514,8 @@ TextureImporter:
       name: pc-jump
       rect:
         serializedVersion: 2
-        x: 1640
-        y: 29
+        x: 44
+        y: 537
         width: 402
         height: 357
       alignment: 7
@@ -527,6 +527,27 @@ TextureImporter:
       bones: []
       spriteID: bab24de7eb4d17920800000000000000
       internalID: 2986401942560058283
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: pc-turn-air
+      rect:
+        serializedVersion: 2
+        x: 2127
+        y: 1050
+        width: 538
+        height: 356
+      alignment: 9
+      pivot: {x: 0.5, y: 0.1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a815a492a129f9210800000000000000
+      internalID: 1341951855039238538
       vertices: []
       indices: 
       edges: []
