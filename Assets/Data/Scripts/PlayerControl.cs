@@ -264,7 +264,6 @@ public class PlayerControl : MonoBehaviour
                 _turnStarted = true;
                 InterruptFlyOrJump();
                 anim.SetTrigger("TurnTrigger");
-                
             }
         }
 
@@ -304,25 +303,31 @@ public class PlayerControl : MonoBehaviour
                 startSideGrab();
                 return;
             }
-        }
 
-        if (Input.GetButton("Grab")) {
-            if (_isHangingOnWall || _isHanging) {
-                body.constraints |= RigidbodyConstraints2D.FreezePosition;
-            }
+            
+
             // TODO rethink mechanic
             if (activeGrabbable) {
                 Debug.Log("try to grab body");
                 Rigidbody2D b = activeGrabbable.gameObject.GetComponentInParent<Rigidbody2D>();
                 if (b && !_cannotGrab) {
                     if (_isGrounded) {
-                        throwByImpulse(new Vector2(0, 50), false);
-                        b.constraints |= RigidbodyConstraints2D.FreezePosition;
-                        StartCoroutine(GrabBodyAfterShortDelay(activeGrabbable, b, 0.1f));
+                        Debug.Log("throw");
+                        throwByImpulse(new Vector2(0, 2000), false);            
+                        //b.constraints |= RigidbodyConstraints2D.FreezePosition;
+                        StartCoroutine(GrabBodyAfterShortDelay(activeGrabbable, b, 0.15f));
                     } else {
+                        Debug.Log("NO throw");
                         grabBody(activeGrabbable, b);
                     }
                 }
+            }
+        }
+
+        if (Input.GetButton("Grab")) {
+            if (_isHangingOnWall || _isHanging) {
+                Debug.Log("freeze pos");
+                body.constraints |= RigidbodyConstraints2D.FreezePosition;
             }
         }
         else {
@@ -330,7 +335,7 @@ public class PlayerControl : MonoBehaviour
                 endHangOnWall();
 
             if (isPulling)
-                throwByImpulse(new Vector2 (0, 15), false);
+                throwByImpulse(new Vector2 (0, 1000), false);
             
             if (_isHanging)
                 endHangOnCeiling();
@@ -341,25 +346,24 @@ public class PlayerControl : MonoBehaviour
 
     void FixedUpdate()
     {
-        System.DateTime now = System.DateTime.UtcNow;
+        //System.DateTime now = System.DateTime.UtcNow;
         //System.TimeSpan diff = now-prevUpdateTime;
         // var millis = diff.Milliseconds;
         var millis = 16.6f;
         if ((_isGrounded || _isHanging || _isHangingOnWall)) {
-            var delta = (0.002f * millis);
-            if (PlayerStats.Stamina < 1 - delta)
-                PlayerStats.Stamina += delta;
-            else
-                PlayerStats.Stamina = 1f;
+            TryRestoreStamina(0.004f * millis);
         } else if (!isPulling) {
-            var delta = (0.00003f * millis);
-            if (PlayerStats.Stamina < 1 - delta)
-                PlayerStats.Stamina += delta;
-            else
-                PlayerStats.Stamina = 1f;
-
+            TryRestoreStamina(0.00003f * millis);
         }
         //prevUpdateTime = now;
+    }
+
+    private void TryRestoreStamina(float delta)
+    {   
+        if (PlayerStats.Stamina < 1 - delta)
+            PlayerStats.Stamina += delta;
+        else
+            PlayerStats.Stamina = 1f;
     }
 
     public void AnticipateAttack()
@@ -393,12 +397,13 @@ public class PlayerControl : MonoBehaviour
     IEnumerator GrabBodyAfterShortDelay(GrabbableBehavior grabbable, Rigidbody2D b, float delay)
     {
         yield return new WaitForSeconds(delay);
-        b.constraints &= ~RigidbodyConstraints2D.FreezePosition;
+        //b.constraints &= ~RigidbodyConstraints2D.FreezePosition;
         grabBody(grabbable, b);
     }
 
     public void grabBody(GrabbableBehavior grabbable, Rigidbody2D b)
     {
+        Debug.Log("grabBody");
         grabbable.getCaptured();
         GetComponent<FixedJoint2D>().connectedBody = b;
         float coeff = b.gameObject.transform.localScale.y;
@@ -551,22 +556,17 @@ public class PlayerControl : MonoBehaviour
         }
 
         PlayerStats.Stamina = potentialStamina;
-
         if (_turnStarted) {
             onTurnFinished();
         }
-        
         InterruptFlyOrJump();
-
         if (sounds.isPlaying)
             sounds.Stop();
         sounds.PlayOneShot(clip_dash);
         body.velocity = new Vector2(0, 10);
-        //body.drag = 0;
         body.gravityScale = 0;
         body.constraints |= RigidbodyConstraints2D.FreezePositionX;
 
-        Debug.Log("UpGrab " + body.velocity.y);
         anim.SetTrigger("Grab");
         _isUpwardGrabbing = true;
         grabCoyoteTimeStarted = Time.time;
@@ -575,10 +575,8 @@ public class PlayerControl : MonoBehaviour
     public void endUpwardGrab()
     {
         Debug.Log("End UpGrab ");
-        //body.drag = 2;
         body.gravityScale = 4.4f;
         body.constraints &= ~RigidbodyConstraints2D.FreezePositionX;
-        //body.velocity = new Vector2(body.velocity.x, 0);
         _isUpwardGrabbing = false;
     }
 
@@ -589,7 +587,6 @@ public class PlayerControl : MonoBehaviour
         if (sounds.isPlaying)
             sounds.Stop();    
         sounds.PlayOneShot(clip_clutch);
-
         anim.SetBool("IsHanging", true);
 
         //BoxCollider2D bc = nearestHanger.gameObject.GetComponent<BoxCollider2D>();
@@ -597,7 +594,6 @@ public class PlayerControl : MonoBehaviour
         //transform.position = nearestHanger.position + new Vector3(w/2, -pHeight*1.5f, 0);
         body.constraints |= RigidbodyConstraints2D.FreezePosition;
 
-        
         _isHanging = true;
     }
 
@@ -688,12 +684,14 @@ public class PlayerControl : MonoBehaviour
         body.AddForce(new Vector2(0f, force));
     }
 
-    void EndJump() {
+    void EndJump()
+    {
         _jumpStarted = false;
         anim.SetBool("IsJumping", false);
     }
 
-    void InterruptFlyOrJump() {
+    void InterruptFlyOrJump()
+    {
         if (_flapStarted)
             endFlap();
         if (_jumpStarted)
@@ -702,7 +700,6 @@ public class PlayerControl : MonoBehaviour
 
     void checkGrounded()
     {
-
         Vector3 v1 = new Vector3(0, 1, 0);
         RaycastHit2D hit = Physics2D.Raycast(transform.position + v1, Vector2.down, 1.0f, groundLayer);
         
@@ -748,15 +745,14 @@ public class PlayerControl : MonoBehaviour
             return;
 
         if (collider.tag == "Boulder") {
-            //Debug.Log("Relative Velocity " + collision.relativeVelocity.magnitude);
             if (collision.relativeVelocity.magnitude > 8) {
                 hurt(Vector2.zero);
             }
         }
 
-        if (collider.tag == "Spike")
-        {
-            hurt(Vector2.zero);
+        if (collider.tag == "Spike") {
+            hurt(new Vector2(0, 2500f));
+            TryRestoreStamina(0.1f);
         }
 
         if (collider.tag == "Enemy") {
@@ -766,26 +762,22 @@ public class PlayerControl : MonoBehaviour
         }
     }
 
-    void OnCollisionExit2D(Collision2D other) {
+    void OnCollisionExit2D(Collision2D other)
+    {
         Collider2D collider = other.collider;
         if (collider.gameObject.layer == LayerMask.NameToLayer("Wall")) {
             _touchingWall = null;
         }
 
         if (collider.tag == "Hanger") {
-            //Debug.Log("trigger hang exit");
             nearestHanger = null;
-        }
-        
+        }    
     }
 
-    void OnTriggerEnter2D(Collider2D other) {
+    void OnTriggerEnter2D(Collider2D other)
+    {
         if (other.tag == "LevelPortal") {
-
-            Debug.Log("WinWin");
-
             System.DateTime endTime = System.DateTime.UtcNow;
-
             PlayerStats.Time = endTime - startTime;
             SceneManager.LoadScene("WinScreen");
             return;
@@ -821,31 +813,18 @@ public class PlayerControl : MonoBehaviour
             game.OpenPopup();
         }
 
-
-        /*if (other.tag == "Hanger") {
-            //Debug.Log("trigger hang enter");
-            nearestHanger = other.gameObject.transform;
-        }*/
-
         if (other.tag == "Grabbable") {
-            //Debug.Log("trigger GRAB enter");
             activeGrabbable = other.gameObject.GetComponent<GrabbableBehavior>();
             if (activeGrabbable) {
                 Debug.Log("Now has active grabbable");
                 activeGrabbable.SetCanvasActive(true);
             }
-            //nearestGrabbableTransform - other.gameObject.
         }
     }
 
-    void OnTriggerExit2D(Collider2D other) {
-        /*if (other.tag == "Hanger") {
-            //Debug.Log("trigger hang exit");
-            nearestHanger = null;
-        }*/
-
+    void OnTriggerExit2D(Collider2D other)
+    {
         if (other.tag == "Grabbable") {
-            //Debug.Log("trigger GRAB exit");
             if (activeGrabbable) {
                 activeGrabbable.SetCanvasActive(false);
                 activeGrabbable = null;
@@ -853,8 +832,8 @@ public class PlayerControl : MonoBehaviour
         }
     }
 
-    void hurt(Vector2 force, Types.DamageType damageType = Types.DamageType.Spikes) {
-        
+    void hurt(Vector2 force, Types.DamageType damageType = Types.DamageType.Spikes)
+    {    
         if (isDead) return; // one cannot die twice...
 
         body.AddForce(force);
@@ -883,30 +862,31 @@ public class PlayerControl : MonoBehaviour
 
         if (_isDashing)
             endDash();
-
-        
     }
 
-    void dieAndRespawn() {
+    void dieAndRespawn()
+    {
         anim.SetBool("IsDying", false);
         PlayerStats.Deaths++;
         Debug.Log("Deaths: " + PlayerStats.Deaths);
         SceneManager.LoadScene("Level_2");
     }
 
-    IEnumerator RestartAfterDelay() {
+    IEnumerator RestartAfterDelay()
+    {
         yield return new WaitForSeconds(3);
         SceneManager.LoadScene("Level_2");
     }
 
-    public void LoseAndRespawn() {
+    public void LoseAndRespawn()
+    {
         PlayerStats.Losses++;
         Debug.Log("Losses: " + PlayerStats.Losses);
         StartCoroutine(RestartAfterDelay());
     }
 
-    public void onSaveGame() {
+    public void onSaveGame()
+    {
         PlayerStats.HP = INITIAL_HP;
     }
-
 }

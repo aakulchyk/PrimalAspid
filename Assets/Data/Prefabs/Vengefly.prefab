@@ -167,8 +167,8 @@ MonoBehaviour:
   clip_death: {fileID: 8300000, guid: 3603262efd8d41e4996baccdc1df2124, type: 3}
   _hp: 1
   invulnerable: 0
-  _followRadius: 20
-  moveSpeed: 3
+  _followRadius: 30
+  moveSpeed: 6
   clip_captured: {fileID: 8300000, guid: 0a4612bfd38f7fe408aa30f7268a6304, type: 3}
 --- !u!82 &4152528819531725613
 AudioSource:
