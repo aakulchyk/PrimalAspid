@@ -13,7 +13,7 @@ TextureImporter:
     second: pc-hang
   - first:
       213: 411557490847500162
-    second: PC_3
+    second: pc-side-grab
   - first:
       213: 6552657634297009707
     second: pc-idle1
@@ -22,7 +22,7 @@ TextureImporter:
     second: pc-idle2
   - first:
       213: -3936000452674267285
-    second: PC_6
+    second: pc-hang-wall
   - first:
       213: 7848044809928152401
     second: pc-land
@@ -548,6 +548,48 @@ TextureImporter:
       bones: []
       spriteID: a815a492a129f9210800000000000000
       internalID: 1341951855039238538
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: pc-side-grab
+      rect:
+        serializedVersion: 2
+        x: 2132
+        y: 531
+        width: 469
+        height: 411
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 287cd9e7b5526b500800000000000000
+      internalID: 411557490847500162
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: pc-hang-wall
+      rect:
+        serializedVersion: 2
+        x: 2265
+        y: 7
+        width: 251
+        height: 409
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b67d29e21748069c0800000000000000
+      internalID: -3936000452674267285
       vertices: []
       indices: 
       edges: []

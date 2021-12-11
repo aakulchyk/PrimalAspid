@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 4355245518238785963}
   - component: {fileID: 1747458727288945423}
   - component: {fileID: 4036112127574101617}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Block_Cave_Wall_1x5
   m_TagString: Obstacle
   m_Icon: {fileID: 0}
