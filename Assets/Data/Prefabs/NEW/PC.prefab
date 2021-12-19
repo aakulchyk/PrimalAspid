@@ -349,7 +349,7 @@ Rigidbody2D:
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
   m_Mass: 2
-  m_LinearDrag: 2
+  m_LinearDrag: 1
   m_AngularDrag: 0
   m_GravityScale: 4.4
   m_Material: {fileID: 6200000, guid: 2370ed07a48531e43ae3451c6fb4af8c, type: 2}
@@ -370,8 +370,8 @@ CapsuleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.09235275, y: 1.4442587}
-  m_Size: {x: 1.7845457, y: 2.7206044}
+  m_Offset: {x: 0.035181638, y: 1.3731673}
+  m_Size: {x: 1.235722, y: 2.611254}
   m_Direction: 0
 --- !u!58 &1764091121135835387
 CircleCollider2D:
@@ -516,8 +516,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   body: {fileID: 4312872856959091081}
-  _maxSpeed: 10
-  _flapForce: 2400
+  _maxSpeed: 15
+  _flapForce: 2500
   isPulling: 0
   clip_hurt: {fileID: 8300000, guid: f6058a91c42585c4588af8302b0ab577, type: 3}
   clip_death: {fileID: 8300000, guid: 6f654d8548ecaf644b8f707cf579527c, type: 3}
@@ -527,6 +527,7 @@ MonoBehaviour:
   clip_walk: {fileID: 8300000, guid: 2423b35d2f217ea4694b0f1cc943d4ee, type: 3}
   clip_dash: {fileID: 8300000, guid: 06a8777a41f94e44480e4effd49e3ba8, type: 3}
   clip_swing: {fileID: 8300000, guid: 041574ae82d18024a919b0a456a986f3, type: 3}
+  clip_clutch: {fileID: 8300000, guid: 987f48e226d118e47ad50cebb77466b0, type: 3}
   activeSpeaker: {fileID: 0}
   activeSavePoint: {fileID: 0}
   activeGrabbable: {fileID: 0}
