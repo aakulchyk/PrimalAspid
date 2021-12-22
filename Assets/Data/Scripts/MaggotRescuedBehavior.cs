@@ -50,7 +50,7 @@ public class MaggotRescuedBehavior : NpcBehavior
 
         // interact with player
         float distP = Vector2.Distance(playerTransform.position, transform.position);
-        if (distP < _followRadius && player.isPulling)
+        if (distP < _followRadius && player.IsPulling())
         {
             if (isFollowing == false) {
                 isFollowing = true;

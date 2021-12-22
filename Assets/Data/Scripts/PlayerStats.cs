@@ -19,6 +19,19 @@ public static class PlayerStats
 
     //
     private static bool showTutorial = true;
+
+
+    //
+    private static int max_flaps_enabled = 0;
+
+    private static int flaps_left = 0;
+
+    //
+    private static bool up_grab_enabled = false;
+    
+    //
+    private static bool side_grab_enabled = false;
+
     
 
     public static int Deaths 
@@ -140,6 +153,51 @@ public static class PlayerStats
         set 
         {
             showTutorial = value;
+        }
+    }
+
+    public static int MaxFlaps
+    {
+        get {
+            return max_flaps_enabled;
+        }
+        set {
+            max_flaps_enabled = value;
+        }
+    }
+
+    public static int FlapsLeft
+    {
+        get {
+            return flaps_left;
+        }
+        set {
+            flaps_left = value;
+        }
+    }
+
+
+    public static bool UpGrabEnabled
+    {
+        get 
+        {
+            return up_grab_enabled;
+        }
+        set 
+        {
+            up_grab_enabled = value;
+        }
+    }
+
+    public static bool SideGrabEnabled
+    {
+        get 
+        {
+            return side_grab_enabled;
+        }
+        set 
+        {
+            side_grab_enabled = value;
         }
     }
 

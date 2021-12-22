@@ -241,6 +241,7 @@ GameObject:
   - component: {fileID: 1764091121135835387}
   - component: {fileID: 2975966347848995812}
   - component: {fileID: 8621077584239811251}
+  - component: {fileID: 2252383774271831003}
   - component: {fileID: 5899165922634923255}
   m_Layer: 7
   m_Name: PC
@@ -503,6 +504,22 @@ FixedJoint2D:
   m_ConnectedAnchor: {x: 0, y: 0}
   m_DampingRatio: 0.1
   m_Frequency: 12
+--- !u!114 &2252383774271831003
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7437582820342829292}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bf263820326490c4695e8ceb2fe0b108, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  clip_clutch: {fileID: 8300000, guid: 987f48e226d118e47ad50cebb77466b0, type: 3}
+  clip_grab: {fileID: 8300000, guid: 06a8777a41f94e44480e4effd49e3ba8, type: 3}
+  _isPulling: 0
+  activeGrabbable: {fileID: 0}
 --- !u!114 &5899165922634923255
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -516,9 +533,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   body: {fileID: 4312872856959091081}
+  faceRight: 0
   _maxSpeed: 15
+  _gravityScale: 8
+  _mass: 2.5
+  _drag: 2
   _flapForce: 2500
-  isPulling: 0
   clip_hurt: {fileID: 8300000, guid: f6058a91c42585c4588af8302b0ab577, type: 3}
   clip_death: {fileID: 8300000, guid: 6f654d8548ecaf644b8f707cf579527c, type: 3}
   clip_flap: {fileID: 8300000, guid: 1d020eeb42ea90f4fa02bc3b31a5cc9d, type: 3}
@@ -527,10 +547,5 @@ MonoBehaviour:
   clip_walk: {fileID: 8300000, guid: 2423b35d2f217ea4694b0f1cc943d4ee, type: 3}
   clip_dash: {fileID: 8300000, guid: 06a8777a41f94e44480e4effd49e3ba8, type: 3}
   clip_swing: {fileID: 8300000, guid: 041574ae82d18024a919b0a456a986f3, type: 3}
-  clip_clutch: {fileID: 8300000, guid: 987f48e226d118e47ad50cebb77466b0, type: 3}
   activeSpeaker: {fileID: 0}
   activeSavePoint: {fileID: 0}
-  activeGrabbable: {fileID: 0}
-  groundLayer:
-    serializedVersion: 2
-    m_Bits: 8

@@ -3,9 +3,9 @@ using System.Collections;
 
 public class FollowCamera : MonoBehaviour {
 
-    public float interpVelocity;
-    public float minDistance;
-    public float followDistance;
+    //public float interpVelocity;
+    //public float minDistance;
+    //public float followDistance;
     public GameObject target;
     public Vector3 offset;
     public bool vertical;
@@ -18,10 +18,10 @@ public class FollowCamera : MonoBehaviour {
 
     // Use this for initialization
     void Start () {
-        if (target) {
+        /*if (target) {
             float posZ = transform.position.z;
             transform.position = new Vector3(target.transform.position.x, target.transform.position.y, posZ);
-        }
+        }*/
 
         targetPos = transform.position;
     }
@@ -37,7 +37,7 @@ public class FollowCamera : MonoBehaviour {
 
             Vector3 targetDirection = (target.transform.position - posNoZ);
 
-            interpVelocity = targetDirection.magnitude * 3.5f;
+            float interpVelocity = targetDirection.magnitude * 3.5f;
 
             targetPos = transform.position + (targetDirection.normalized * interpVelocity * Time.deltaTime); 
 
@@ -56,15 +56,12 @@ public class FollowCamera : MonoBehaviour {
             }*/
 
             // find lower border
-            RaycastHit2D hit = Physics2D.Raycast(targetPos, Vector2.down);
+            RaycastHit2D hit = Physics2D.Raycast(targetPos, Vector2.down, LayerMask.GetMask("Ground"));
 
             float bottomBorderY = bottomBorder.transform.position.y;
 
-            if (hit.collider != null)
-            {
-                if (hit.collider.tag == "Ground") {
-                    bottomBorderY = hit.collider.transform.position.y + 5.0f;
-                }
+            if (hit.collider != null) {
+                bottomBorderY = hit.collider.transform.position.y + 5.0f;
             }
 
             
@@ -72,7 +69,7 @@ public class FollowCamera : MonoBehaviour {
                 targetPos.y = oldY;
             }   
 
-            transform.position = Vector3.Lerp( transform.position, targetPos + offset, 0.5f);
+            transform.position = Vector3.Lerp( transform.position, targetPos + offset, 0.6f);
 
         }
     }

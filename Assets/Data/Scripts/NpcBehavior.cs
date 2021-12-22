@@ -76,7 +76,7 @@ public class NpcBehavior : MonoBehaviour
 
         if (isDead) return;
 
-        if (player.isPulling && player.GetComponent<FixedJoint2D>().connectedBody == GetComponent<Rigidbody2D>()) {
+        if (player.IsPulling() && player.GetComponent<FixedJoint2D>().connectedBody == GetComponent<Rigidbody2D>()) {
             player.releaseBody();
             player.throwByImpulse(new Vector2 (GetVectorToPlayer().x, GetVectorToPlayer().y*20), true);
             invulnerable = true;

@@ -80,7 +80,8 @@ public class KrabBehavior : NpcBehavior
 
     protected override void processCollision(Collision2D hit)
     {
-        if (hit.gameObject.CompareTag ("Obstacle") || hit.gameObject.CompareTag ("Ground")) {
+        Collider2D collider = hit.collider;
+        if (collider.gameObject.layer == LayerMask.NameToLayer("Ground")) {
             isGrounded = true;
             anim.SetBool("jump", false);
         }
