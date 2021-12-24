@@ -41,7 +41,6 @@ public class FollowCamera : MonoBehaviour {
 
             targetPos = transform.position + (targetDirection.normalized * interpVelocity * Time.deltaTime); 
 
-            
 
             if (targetPos.x < posNoZ.x && posNoZ.x - leftBorder.transform.position.x < 11f) {
                 targetPos.x = oldX;
@@ -56,18 +55,20 @@ public class FollowCamera : MonoBehaviour {
             }*/
 
             // find lower border
-            RaycastHit2D hit = Physics2D.Raycast(targetPos, Vector2.down, LayerMask.GetMask("Ground"));
+            RaycastHit2D hit = Physics2D.Raycast(posNoZ, Vector2.down, LayerMask.GetMask("Ground"));
 
             float bottomBorderY = bottomBorder.transform.position.y;
 
             if (hit.collider != null) {
-                bottomBorderY = hit.collider.transform.position.y + 5.0f;
+                bottomBorderY = hit.collider.transform.position.y;
+                //Debug.Log("Camera: stick to the ground: " + posNoZ.y + " " + bottomBorderY);
             }
 
             
-            if (targetPos.y < posNoZ.y && posNoZ.y - bottomBorderY < 6f) {
+            /*if (targetPos.y < posNoZ.y && posNoZ.y - bottomBorderY < 6f) {
+                Debug.Log("do no change");
                 targetPos.y = oldY;
-            }   
+            } */  
 
             transform.position = Vector3.Lerp( transform.position, targetPos + offset, 0.6f);
 

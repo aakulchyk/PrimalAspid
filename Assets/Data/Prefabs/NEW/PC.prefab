@@ -537,8 +537,8 @@ MonoBehaviour:
   _maxSpeed: 15
   _gravityScale: 8
   _mass: 2.5
-  _drag: 2
-  _flapForce: 2500
+  _drag: 2.5
+  _flapForce: 4600
   clip_hurt: {fileID: 8300000, guid: f6058a91c42585c4588af8302b0ab577, type: 3}
   clip_death: {fileID: 8300000, guid: 6f654d8548ecaf644b8f707cf579527c, type: 3}
   clip_flap: {fileID: 8300000, guid: 1d020eeb42ea90f4fa02bc3b31a5cc9d, type: 3}

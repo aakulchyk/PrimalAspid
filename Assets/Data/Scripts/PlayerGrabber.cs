@@ -18,7 +18,7 @@ public class PlayerGrabber : MonoBehaviour
     public AudioClip clip_clutch;
     public AudioClip clip_grab;
 
-    private bool _isHanging = false;
+    private bool _isHangingUpsideDown = false;
     private bool _isHangingOnWall = false;
     private bool _isSideGrabbing = false;
     private bool _isDownwardGrabbing = false;
@@ -27,7 +27,7 @@ public class PlayerGrabber : MonoBehaviour
     public bool _isPulling = false;
 
     private int _VerticalGrabVelocity = 20;
-    private int _HorizontalGrabVelocity = 20;
+    private int _HorizontalGrabVelocity = 25;
 
     private float grabCoyoteTimeStarted;
     
@@ -48,10 +48,20 @@ public class PlayerGrabber : MonoBehaviour
 
     public const float GRAB_STAMINA_COST = 0.25f;
 
+    // RB
     private bool grab_button_triggered = false;
     private bool grab_button_hold = false;
 
+    // RT
+    private bool dash_button_triggered = false;
+    private bool prev_dash = false;
+    private bool dash_hold = false;
+
+
     private int moveX=0, moveY=0;
+    private int prev_moveX = 0, prev_moveY = 0;
+
+    private float pWidth, pHeight;
 
     void Awake()
     {
@@ -65,6 +75,10 @@ public class PlayerGrabber : MonoBehaviour
     {
         if (!playerMainControl)
             Debug.LogError("ERROR: No PlayerControl!");
+
+        CapsuleCollider2D col = GetComponent<CapsuleCollider2D>();
+        pWidth = col.size.x;
+        pHeight = col.size.y;
     }
 
     void Update()
@@ -81,34 +95,64 @@ public class PlayerGrabber : MonoBehaviour
 
         grab_button_hold = Input.GetButton("Grab");
 
+
+        float d_axis = Input.GetAxisRaw("Dash");
+        dash_hold = (d_axis>0.8f || d_axis < -0.8f) || Input.GetKey(KeyCode.G);
+        if (!prev_dash && dash_hold) {
+            dash_button_triggered = true;
+        }
+
+        prev_dash = dash_hold;
+
     }
     void FixedUpdate()
     {
-        if (grab_button_triggered) {
-            grab_button_triggered = false;
-             if (moveX != 0) {
-                //StartCoroutine(shortInvulnerability());
-                startSideGrab();
-            } else 
-                if (moveY>0) {
-                 //StartCoroutine(shortInvulnerability());
-                 startUpwardGrab();
-            } else if (moveY<0) {
-                //StartCoroutine(shortInvulnerability());
-                startDownwardGrab();
-            }
+        bool direction_triggered = (prev_moveX==0 && prev_moveY==0) && (moveX!=0 || moveY!=0);
+        //if (grab_button_triggered || (grab_button_hold && direction_triggered)) {
+        if (dash_button_triggered || (dash_hold && direction_triggered)) {
+            //grab_button_triggered = false;
             
+            if (!IsHanging() && !_isPulling) {
+                if (moveX != 0) {
+                    //StartCoroutine(shortInvulnerability());
+                    startSideGrab();
+                } else if (moveY>0) {
+                    //StartCoroutine(shortInvulnerability());
+                    startUpwardGrab();
+                } else if (moveY<0) {
+                    //StartCoroutine(shortInvulnerability());
+                    startDownwardGrab();
+                }
+                dash_button_triggered = false;
+            }
 
             // TODO rethink mechanic
-            if (activeGrabbable && !_cannotGrab) {
+            if (!_isPulling && activeGrabbable && !_cannotGrab) {
                 /*if (_isGrounded) {
                     throwByImpulse(new Vector2(0, 2000), false);            
                     StartCoroutine(GrabBodyAfterShortDelay(activeGrabbable, 0.15f));
                 } else {*/
                     grabBody(activeGrabbable);
                 //}
+                dash_button_triggered = false;
             }
         }
+
+        if (dash_button_triggered) {
+            if (_isHangingOnWall)
+                endHangOnWall();
+
+            if (_isHangingUpsideDown)
+                endHangOnCeiling();
+
+            if (_isPulling)
+                releaseBody();
+
+            dash_button_triggered = false;
+        }
+
+
+        
 
         /*if (activeGrabbable && IsGrabbing()) {
             Debug.Log("Grab body?");
@@ -125,24 +169,28 @@ public class PlayerGrabber : MonoBehaviour
             }
         }*/
 
-        if (Input.GetButton("Grab")) {
+        //if (Input.GetButton("Grab")) {
+        //if (dash_hold) {
             if (IsHanging()) {
                 Debug.Log("freeze pos");
                 body.constraints |= RigidbodyConstraints2D.FreezePosition;
             }
-        }
-        else {
+        //}
+        /*else {
             if (_isHangingOnWall)
                 endHangOnWall();
 
-            /*if (_isPulling)
-                throwByImpulse(new Vector2 (0, 1000), false);*/
+            //if (_isPulling)
+            //    throwByImpulse(new Vector2 (0, 1000), false);
             
-            if (_isHanging)
+            if (_isHangingUpsideDown)
                 endHangOnCeiling();
 
             releaseBody();
-        }
+        }*/
+
+        prev_moveX = moveX;
+        prev_moveY = moveY;
     }
 
     public bool IsGrabbing()
@@ -152,12 +200,12 @@ public class PlayerGrabber : MonoBehaviour
 
     public bool IsHanging()
     {
-        return _isHanging || _isHangingOnWall;
+        return _isHangingUpsideDown || _isHangingOnWall;
     }
 
     public bool IsHangingOnCeiling()
     {
-        return _isHanging;
+        return _isHangingUpsideDown;
     }
     
     public bool IsHangingOnWall()
@@ -186,7 +234,7 @@ public class PlayerGrabber : MonoBehaviour
     {
         Collider2D collider = other.collider;
         if (collider.gameObject.layer == LayerMask.NameToLayer("StickyWall")) {
-            bool stillCoyoteTime = Input.GetButton("Grab") && Time.time - grabCoyoteTimeStarted < (GRAB_COYOTE_TIME_SEC);
+            bool stillCoyoteTime = Time.time - grabCoyoteTimeStarted < (GRAB_COYOTE_TIME_SEC);
             _touchingWall = collider;
             if (_isSideGrabbing || stillCoyoteTime)
                 startHangOnWall();
@@ -194,8 +242,8 @@ public class PlayerGrabber : MonoBehaviour
                 Debug.Log("Collided with Wall");
         }
 
-        if (collider.tag == "Hanger") {
-            bool stillCoyoteTime = Input.GetButton("Grab") && Time.time - grabCoyoteTimeStarted < (GRAB_COYOTE_TIME_SEC*2);
+        if (collider.gameObject.layer == LayerMask.NameToLayer("Hanger")) {
+            bool stillCoyoteTime = Time.time - grabCoyoteTimeStarted < (GRAB_COYOTE_TIME_SEC*2);
             nearestHanger = collider.gameObject.transform;
             if (_isUpwardGrabbing || stillCoyoteTime)
                 startHangOnCeiling();
@@ -211,7 +259,7 @@ public class PlayerGrabber : MonoBehaviour
             _touchingWall = null;
         }
 
-        if (collider.tag == "Hanger") {
+        if (collider.gameObject.layer == LayerMask.NameToLayer("Hanger")) {
             nearestHanger = null;
         } 
     }
@@ -317,6 +365,8 @@ public class PlayerGrabber : MonoBehaviour
         if (stillCooldownTime)
             return;
 
+        Physics2D.IgnoreLayerCollision(LayerMask.NameToLayer("PC"), LayerMask.NameToLayer("Hanger"), false);
+
         playerMainControl.FinishTurnIfStarted();
         playerMainControl.InterruptFlyOrJump();
         
@@ -341,6 +391,7 @@ public class PlayerGrabber : MonoBehaviour
         body.gravityScale = playerMainControl._gravityScale;
         body.constraints &= ~RigidbodyConstraints2D.FreezePositionX;
         _isUpwardGrabbing = false;
+        Physics2D.IgnoreLayerCollision(LayerMask.NameToLayer("PC"), LayerMask.NameToLayer("Hanger"), true);
     }
 
     public void startHangOnCeiling()
@@ -351,18 +402,19 @@ public class PlayerGrabber : MonoBehaviour
         sounds.PlayOneShot(clip_clutch);
         anim.SetBool("IsHanging", true);
 
-        //BoxCollider2D bc = nearestHanger.gameObject.GetComponent<BoxCollider2D>();
-        //float w = bc.size.x;
-        //transform.position = nearestHanger.position + new Vector3(w/2, -pHeight*1.5f, 0);
+        BoxCollider2D bc = nearestHanger.gameObject.GetComponent<BoxCollider2D>();
+        float w = bc.size.x;
+        transform.position = nearestHanger.position + new Vector3(0, -pHeight*1.5f, 0);
+        body.velocity = Vector2.zero;
         body.constraints |= RigidbodyConstraints2D.FreezePosition;
 
-        _isHanging = true;
+        _isHangingUpsideDown = true;
     }
 
     public void endHangOnCeiling()
     {
         anim.SetBool("IsHanging", false);
-        _isHanging = false;
+        _isHangingUpsideDown = false;
         body.constraints &= ~RigidbodyConstraints2D.FreezePosition;
     }
 
@@ -421,6 +473,7 @@ public class PlayerGrabber : MonoBehaviour
 
     public void releaseBody()
     {
+        Debug.Log("releaseBody");
         _isPulling = false;
 
         // activate ability again after grabbing
@@ -441,4 +494,27 @@ public class PlayerGrabber : MonoBehaviour
         GetComponent<FixedJoint2D>().enabled = false;
         //StartCoroutine(shortInabilityToGrab());
     }
+
+    public GrabbableBehavior TryGetCurrentGrabbable()
+    {
+        if (activeGrabbable)
+            return activeGrabbable;
+
+        Rigidbody2D b = GetComponent<FixedJoint2D>().connectedBody;
+
+        if (b) {
+            Transform t = b.transform.Find("Grabbable");
+            if (!t)
+                t = b.transform.parent.Find("Grabbable");
+            if (t)
+                return t.gameObject.GetComponent<GrabbableBehavior>();
+            else
+                Debug.LogError("ERROR: Cannot get current grabbable!");
+            
+        }
+        
+        return null;
+    }
 }
+
+

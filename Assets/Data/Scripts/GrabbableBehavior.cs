@@ -94,4 +94,12 @@ public class GrabbableBehavior : MonoBehaviour
             getReleasedCallback();
         captured = false;
     }
+
+    public bool isGrounded()
+    {
+        Debug.Log("Grounded?");
+        RaycastHit2D hit = Physics2D.Raycast(transform.position, Vector2.down, 1.0f, LayerMask.GetMask("Ground"));
+
+        return (hit.collider != null);
+    }
 }
