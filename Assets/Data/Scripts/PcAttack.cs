@@ -27,7 +27,7 @@ public class PcAttack : MonoBehaviour
             
             behavior.hurt(new Vector2(dir.x*40, dir.y*20f), Types.DamageType.PcHit);
 
-            GetComponentInParent<PlayerControl>().knockback(new Vector2(-dir.x*20f, -dir.y*20f));
+            GetComponentInParent<PlayerControl>().knockback(new Vector2(-dir.x*15f, -dir.y*8f));
         }
     }
 }

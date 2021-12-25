@@ -45,6 +45,8 @@ public class PlayerControl : MonoBehaviour
     public const float FLAP_STAMINA_COST = 0.3f;
 
     public const float COYOTE_TIME_SEC = 0.1f;
+
+    public const int MAX_KNOCKBACK = 4;
     private float jumpCoyoteTimeStarted;
 
     private System.DateTime startTime;
@@ -150,7 +152,7 @@ public class PlayerControl : MonoBehaviour
     }
 
     public void knockback(Vector2 force) {
-        _knockback = 8;
+        _knockback = MAX_KNOCKBACK;
         body.velocity = force;
     }
 
@@ -325,6 +327,9 @@ public class PlayerControl : MonoBehaviour
             anim.SetBool("IsFloating", floatPressed);
         } /*else 
             body.gravityScale = _gravityScale;*/
+        else if (_jumpStarted && !Input.GetButton("Flap")) {
+            body.velocity += Vector2.up * Physics2D.gravity.y * 6f * Time.deltaTime;
+        }
 
         // RESTORE FLAPS
         if ((_isGrounded || grabber.IsHanging())) {
@@ -380,6 +385,12 @@ public class PlayerControl : MonoBehaviour
         if (!_turnStarted)
             return;
         _turnStarted = false;
+        faceRight = !faceRight;
+        flip();
+    }
+
+    public void MakeInstantTurn()
+    {
         faceRight = !faceRight;
         flip();
     }
@@ -615,6 +626,18 @@ public class PlayerControl : MonoBehaviour
             other.gameObject.SetActive(false);
             game.OpenPopup();
         }
+
+        if (other.tag == "HiddenRoomVeil") {
+            HiddenRoomBehavior hrb = other.gameObject.GetComponent<HiddenRoomBehavior>();
+            hrb.MakeVisible(false);
+        }
+    }
+
+    void OnTriggerExit2D(Collider2D other) {
+        if (other.tag == "HiddenRoomVeil") {
+            HiddenRoomBehavior hrb = other.gameObject.GetComponent<HiddenRoomBehavior>();
+            hrb.MakeVisible(true);
+        }
     }
 
     void hurt(Vector2 force, Types.DamageType damageType = Types.DamageType.Spikes)
@@ -666,13 +689,13 @@ public class PlayerControl : MonoBehaviour
         anim.SetBool("IsDying", false);
         PlayerStats.Deaths++;
         Debug.Log("Deaths: " + PlayerStats.Deaths);
-        SceneManager.LoadScene("Level_2");
+        SceneManager.LoadScene("TestBlockScene");
     }
 
     IEnumerator RestartAfterDelay()
     {
         yield return new WaitForSeconds(3);
-        SceneManager.LoadScene("Level_2");
+        SceneManager.LoadScene("TestBlockScene");
     }
 
     public void LoseAndRespawn()

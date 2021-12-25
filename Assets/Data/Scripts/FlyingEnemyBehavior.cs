@@ -142,15 +142,5 @@ public class FlyingEnemyBehavior : NpcBehavior
        base.die();
        Destroy(this.gameObject, 0.6f);
    }    
-
-    public void flip()
-    {
-        Vector3 scale = transform.localScale;
-        transform.localScale = new Vector3(-1*scale.x, scale.y, scale.z);
-
-        if (grabbable) {
-            grabbable.FlipCanvas();
-        }
-    }
-    
+   
 }

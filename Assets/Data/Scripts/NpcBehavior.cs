@@ -172,4 +172,14 @@ public class NpcBehavior : MonoBehaviour
     public virtual void onTalk()
     {}
 
+    public void flip()
+    {
+        Vector3 scale = transform.localScale;
+        transform.localScale = new Vector3(-1*scale.x, scale.y, scale.z);
+
+        if (grabbable) {
+            grabbable.FlipCanvas();
+        }
+    }
+
 }
