@@ -142,16 +142,6 @@ public class MantisBehavior : NpcBehavior
 
     }
 
-
-    public void flip() {
-        Vector3 scale = transform.localScale;
-        transform.localScale = new Vector3(-1*scale.x, scale.y, scale.z);
-
-        if (grabbable) {
-            grabbable.FlipCanvas();
-        }
-    }
-
     public void shoot() {
         if (!shootAnticipate) return;
         

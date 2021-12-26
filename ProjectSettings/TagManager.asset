@@ -20,6 +20,8 @@ TagManager:
   - Hanger
   - Grabbable
   - RescuedOne
+  - InvisibleWall
+  - HiddenRoomVeil
   layers:
   - Default
   - TransparentFX

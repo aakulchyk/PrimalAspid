@@ -39,6 +39,8 @@ public class PlayerGrabber : MonoBehaviour
 
     private Transform nearestHanger = null;
     private Collider2D _touchingWall = null;
+    private bool _isWallOnRight;
+    private bool _doNotGrabRightNow_kostyl = false;
 
     public const float WALLJUMP_COYOTE_TIME_SEC = 0.1f;
 
@@ -139,8 +141,17 @@ public class PlayerGrabber : MonoBehaviour
         }
 
         if (dash_button_triggered) {
-            if (_isHangingOnWall)
+            if (_isHangingOnWall) {
                 endHangOnWall();
+                /*if (moveX!=0) {
+                    if ((_isWallOnRight && moveX < 0) || (!_isWallOnRight && moveX > 0)) {
+                        Debug.Log("StartSideGravb?");
+                        playerMainControl.MakeInstantTurn();
+                        startSideGrab();
+                        _doNotGrabRightNow_kostyl = true;
+                    }
+                }*/
+            }
 
             if (_isHangingUpsideDown)
                 endHangOnCeiling();
@@ -172,7 +183,7 @@ public class PlayerGrabber : MonoBehaviour
         //if (Input.GetButton("Grab")) {
         //if (dash_hold) {
             if (IsHanging()) {
-                Debug.Log("freeze pos");
+                //Debug.Log("freeze pos");
                 body.constraints |= RigidbodyConstraints2D.FreezePosition;
             }
         //}
@@ -236,10 +247,14 @@ public class PlayerGrabber : MonoBehaviour
         if (collider.gameObject.layer == LayerMask.NameToLayer("StickyWall")) {
             bool stillCoyoteTime = Time.time - grabCoyoteTimeStarted < (GRAB_COYOTE_TIME_SEC);
             _touchingWall = collider;
+            _isWallOnRight = _touchingWall.transform.position.x > transform.position.x;
+            Debug.Log("IsWallOnRight: " + _isWallOnRight);
+            
             if (_isSideGrabbing || stillCoyoteTime)
                 startHangOnWall();
             else
                 Debug.Log("Collided with Wall");
+            
         }
 
         if (collider.gameObject.layer == LayerMask.NameToLayer("Hanger")) {
@@ -315,8 +330,10 @@ public class PlayerGrabber : MonoBehaviour
         _isSideGrabbing = true;
         anim.SetTrigger("SideGrab");
 
-        if (_touchingWall)
+        if (_touchingWall && !_doNotGrabRightNow_kostyl)
             startHangOnWall();
+
+        _doNotGrabRightNow_kostyl = false;
 
         grabCooldownTimeStarted = Time.time;
     }
