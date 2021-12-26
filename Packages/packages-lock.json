@@ -128,6 +128,15 @@
       "dependencies": {},
       "url": "https://packages.unity.com"
     },
+    "com.unity.postprocessing": {
+      "version": "3.1.1",
+      "depth": 0,
+      "source": "registry",
+      "dependencies": {
+        "com.unity.modules.physics": "1.0.0"
+      },
+      "url": "https://packages.unity.com"
+    },
     "com.unity.render-pipelines.core": {
       "version": "10.7.0",
       "depth": 1,
@@ -139,26 +148,13 @@
       },
       "url": "https://packages.unity.com"
     },
-    "com.unity.render-pipelines.high-definition": {
-      "version": "10.7.0",
-      "depth": 0,
-      "source": "registry",
-      "dependencies": {
-        "com.unity.render-pipelines.core": "10.7.0",
-        "com.unity.shadergraph": "10.7.0",
-        "com.unity.visualeffectgraph": "10.7.0",
-        "com.unity.render-pipelines.high-definition-config": "10.7.0"
-      },
-      "url": "https://packages.unity.com"
-    },
     "com.unity.render-pipelines.high-definition-config": {
-      "version": "10.7.0",
-      "depth": 1,
-      "source": "registry",
+      "version": "file:../LocalPackages/com.unity.render-pipelines.high-definition-config",
+      "depth": 0,
+      "source": "local",
       "dependencies": {
         "com.unity.render-pipelines.core": "10.7.0"
-      },
-      "url": "https://packages.unity.com"
+      }
     },
     "com.unity.render-pipelines.universal": {
       "version": "10.7.0",
@@ -263,16 +259,6 @@
         "com.unity.modules.ui": "1.0.0",
         "com.unity.modules.imgui": "1.0.0"
       }
-    },
-    "com.unity.visualeffectgraph": {
-      "version": "10.7.0",
-      "depth": 1,
-      "source": "registry",
-      "dependencies": {
-        "com.unity.shadergraph": "10.7.0",
-        "com.unity.render-pipelines.core": "10.7.0"
-      },
-      "url": "https://packages.unity.com"
     },
     "com.unity.modules.ai": {
       "version": "1.0.0",
