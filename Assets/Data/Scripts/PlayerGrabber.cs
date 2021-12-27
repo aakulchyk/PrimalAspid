@@ -372,6 +372,7 @@ public class PlayerGrabber : MonoBehaviour
 
     public void startUpwardGrab()
     {
+
         /*float potentialStamina = PlayerStats.Stamina - GRAB_STAMINA_COST;
         if (potentialStamina < 0f) {
             return;
@@ -395,6 +396,7 @@ public class PlayerGrabber : MonoBehaviour
         body.gravityScale = 0;
         body.constraints |= RigidbodyConstraints2D.FreezePositionX;
 
+        Debug.Log("Whu Grab??");
         anim.SetTrigger("Grab");
         grabCoyoteTimeStarted = Time.time;
         grabCooldownTimeStarted = Time.time;
@@ -430,6 +432,7 @@ public class PlayerGrabber : MonoBehaviour
 
     public void endHangOnCeiling()
     {
+        dash_button_triggered = false;
         anim.SetBool("IsHanging", false);
         _isHangingUpsideDown = false;
         body.constraints &= ~RigidbodyConstraints2D.FreezePosition;

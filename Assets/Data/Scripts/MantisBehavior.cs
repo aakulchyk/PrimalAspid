@@ -65,14 +65,15 @@ public class MantisBehavior : NpcBehavior
             }
         }
 
+        Transform pt = Utils.GetPlayerTransform();
 
-        float distP = Vector2.Distance(playerTransform.position, transform.position);
+        float distP = Vector2.Distance(pt.position, transform.position);
         if (distP < _followRadius && !idle)
         {
-            if (playerTransform.position.x > transform.position.x && !faceRight) {
+            if (pt.position.x > transform.position.x && !faceRight) {
                 flip();
                 faceRight = true;
-            } else if (playerTransform.position.x < transform.position.x && faceRight) {
+            } else if (pt.position.x < transform.position.x && faceRight) {
                 flip();
                 faceRight = false;
             }
@@ -98,8 +99,8 @@ public class MantisBehavior : NpcBehavior
             if (!grabbable.captured) {
                 Vector2 moveVector;
 
-                if (checkAccessibility(playerTransform)) {
-                    Debug.DrawLine(transform.position, playerTransform.position, Color.green, 0.1f, false);    
+                if (checkAccessibility(pt)) {
+                    Debug.DrawLine(transform.position, pt.position, Color.green, 0.1f, false);    
                     moveVector = new Vector2 (GetVectorToPlayer().x * moveSpeed, GetVectorToPlayer().y * moveSpeed);
                 } else {
                     // find a waypoint closest to the player
@@ -109,7 +110,7 @@ public class MantisBehavior : NpcBehavior
                         if (!checkAccessibility(wp))
                             continue;
 
-                        float distPl = Vector2.Distance(playerTransform.position, wp.position);
+                        float distPl = Vector2.Distance(pt.position, wp.position);
                         if (distPl < minDist) {
                             minDist = distPl;
                             minDistWp = wp;
@@ -229,9 +230,11 @@ public class MantisBehavior : NpcBehavior
 
         Debug.Log("Mantis Hurt");
 
-        if (player.IsPulling() && player.GetComponent<FixedJoint2D>().connectedBody == GetComponent<Rigidbody2D>()) {
-            player.releaseBody();
-            player.throwByImpulse(new Vector2 (GetVectorToPlayer().x, GetVectorToPlayer().y*30), true);
+        PlayerControl pc = Utils.GetPlayer();
+
+        if (pc.IsPulling() && pc.GetComponent<FixedJoint2D>().connectedBody == GetComponent<Rigidbody2D>()) {
+            pc.releaseBody();
+            pc.throwByImpulse(new Vector2 (GetVectorToPlayer().x, GetVectorToPlayer().y*30), true);
         }
 
         knockback(force);

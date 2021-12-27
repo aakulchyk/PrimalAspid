@@ -5,7 +5,6 @@ using UnityEngine;
 public class SavePointBehavior : MonoBehaviour
 {
     private Game game;
-    private PlayerControl player;
     private GameObject canvas;
     private const float interactRadius = 2.5f;
 
@@ -14,9 +13,7 @@ public class SavePointBehavior : MonoBehaviour
     void Start()
     {
         game = (Game)FindObjectOfType(typeof(Game));
-        player = (PlayerControl)FindObjectOfType(typeof(PlayerControl));
         canvas = gameObject.transform.GetChild(0).gameObject;
-        
     }
 
     // Update is called once per frame
@@ -29,7 +26,7 @@ public class SavePointBehavior : MonoBehaviour
         canvas.SetActive(canInteract);
 
         if (canInteract) {
-            player.activeSavePoint = this;
+            Utils.GetPlayer().activeSavePoint = this;
         }
     }
 

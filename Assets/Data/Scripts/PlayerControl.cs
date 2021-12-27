@@ -27,7 +27,7 @@ public class PlayerControl : MonoBehaviour
     private bool _isDashing = false;
 
     private bool _isPlayingWalkSound = false;
-    private bool _isGrounded = false;
+    public bool _isGrounded = false;
 
     public AudioClip clip_hurt;
     public AudioClip clip_death;
@@ -38,9 +38,10 @@ public class PlayerControl : MonoBehaviour
 
     public AudioClip clip_dash;
     public AudioClip clip_swing;
+    public AudioClip clip_swing_crack;
 
     public const int INITIAL_HP = 2;
-    public const float FLAP_MIN_TIMEOUT = 0.4f;
+    public const float FLAP_MIN_TIMEOUT = 0.3f;
 
     public const float FLAP_STAMINA_COST = 0.3f;
 
@@ -64,8 +65,10 @@ public class PlayerControl : MonoBehaviour
 
     private bool _jumpStarted = false;
 
+    private bool _tailHitImpulse = false;
+
     
-    private Game game;
+    private Game game = null;
 
     public InteractableBehavior activeSpeaker;
     public SavePointBehavior activeSavePoint;
@@ -77,7 +80,7 @@ public class PlayerControl : MonoBehaviour
     private LayerMask groundLayerMask;
     private int playerLayer, enemyLayer, npcLayer;
 
-    private float pWidth, pHeight;
+    public float pWidth, pHeight;
 
 
     private int moveX, moveY;
@@ -100,6 +103,18 @@ public class PlayerControl : MonoBehaviour
         enemyLayer = LayerMask.NameToLayer("Enemy");
         npcLayer = LayerMask.NameToLayer("NPC");
     }
+
+    private Game GetGame()
+    {
+        if (game)
+            return game;
+
+        game = (Game)FindObjectOfType(typeof(Game));
+
+        return game;
+
+        
+    }
     // Start is called before the first frame update
     void Start()
     {
@@ -116,9 +131,9 @@ public class PlayerControl : MonoBehaviour
         if (!grabber)
             Debug.LogError("ERROR: PlayerGrabber not found!");
 
-        game = (Game)FindObjectOfType(typeof(Game));
-        game.LoadGame();
-        game.isGameInProgress = true;
+        
+        GetGame().LoadGame();
+        GetGame().isGameInProgress = true;
 
         PlayerStats.HP = INITIAL_HP;
         
@@ -178,8 +193,8 @@ public class PlayerControl : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (game.isPopupOpen && Input.anyKeyDown) {
-            game.ClosePopup();
+        if (GetGame().isPopupOpen && Input.anyKeyDown) {
+            GetGame().ClosePopup();
             return;
         }
 
@@ -342,6 +357,13 @@ public class PlayerControl : MonoBehaviour
             TryRestoreStamina(0.00006f * millis);
         }
 
+        if (_tailHitImpulse) {
+            _tailHitImpulse = false;
+            if (_isGrounded && moveX == 0) {
+                body.velocity += ((faceRight ? Vector2.right : Vector2.left) * 40f);
+            }
+        }
+
         dash_button_triggered = false;
     }
 
@@ -355,7 +377,7 @@ public class PlayerControl : MonoBehaviour
 
     public void AnticipateAttack()
     {
-        if (_isDashing || grabber.IsDoingSomething())
+        if (_attackStarted || _isDashing || grabber.IsDoingSomething())
             return;
         
         FinishTurnIfStarted();
@@ -363,14 +385,19 @@ public class PlayerControl : MonoBehaviour
                 
         _attackStarted = true;
         anim.SetTrigger("SwingAttack");
+        sounds.PlayOneShot(clip_swing);
     }
 
     public void PerformAttack()
     {
-        sounds.PlayOneShot(clip_swing);
         _isPlayingWalkSound = false;
         if (_attack)
             _attack.Animate();
+
+        if (_isGrounded)
+            sounds.PlayOneShot(clip_swing_crack);
+
+        _tailHitImpulse = true;
     }
 
     public void RestoreAttack()
@@ -434,16 +461,17 @@ public class PlayerControl : MonoBehaviour
 
     void startFlap()
     {
+        //Debug.Log("flap?");
         if (_jumpStarted || _flapStarted)
             return;
-
-        flap_button_triggered = false;
 
         if (PlayerStats.FlapsLeft < 1)
             return;
 
         if (_attackStarted)
             return;
+
+        flap_button_triggered = false;
 
         if (Time.time - lastFlapTime <= FLAP_MIN_TIMEOUT)
             return;
@@ -550,7 +578,7 @@ public class PlayerControl : MonoBehaviour
         if (gr != _isGrounded) {
             anim.SetBool("IsGrounded", gr);
             if (gr) {
-                downTime = Time.time - lastFlapTime;
+                //downTime = Time.time - lastFlapTime;
                 //Debug.Log("UpTime: " + upTime + ", DownTime: " + downTime);
                 anim.SetTrigger("Land");
                 sounds.PlayOneShot(clip_land);
@@ -622,9 +650,9 @@ public class PlayerControl : MonoBehaviour
 
         if (other.tag == "Text" && PlayerStats.ShowTutorial) { 
             Text text = other.gameObject.GetComponent<Text>();
-            game.SetPopupText("Tutorial", text.text);
+            GetGame().SetPopupText("Tutorial", text.text);
             other.gameObject.SetActive(false);
-            game.OpenPopup();
+            GetGame().OpenPopup();
         }
 
         if (other.tag == "HiddenRoomVeil") {
@@ -697,6 +725,8 @@ public class PlayerControl : MonoBehaviour
         yield return new WaitForSeconds(3);
         SceneManager.LoadScene("TestBlockScene");
     }
+
+
 
     public void LoseAndRespawn()
     {

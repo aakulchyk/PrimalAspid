@@ -6,20 +6,15 @@ public delegate void SimpleCallback();
 
 public class GrabbableBehavior : MonoBehaviour
 {
-    private Transform playerTransform;
-
-    protected PlayerControl player;
     private GameObject canvas = null;
     public bool captured = false;  
     private bool hasBodyParentFrame = false;
 
-    private SimpleCallback getCapturedCallback;
-    private SimpleCallback getReleasedCallback;
+    private SimpleCallback getCapturedCallback = null;
+    private SimpleCallback getReleasedCallback = null;
 
     void Start()
     {
-        playerTransform = GameObject.FindWithTag("Player").transform;
-
         Transform t = transform.Find("Canvas");
         if (t) {
             canvas = t.gameObject;
@@ -45,7 +40,7 @@ public class GrabbableBehavior : MonoBehaviour
     }
 
     protected bool CheckGrabability() {
-        Vector3 checkPosition = new Vector2(playerTransform.position.x, playerTransform.position.y-0.5f);
+        Vector3 checkPosition = new Vector2(Utils.GetPlayerTransform().position.x, Utils.GetPlayerTransform().position.y-0.5f);
         Collider2D col = gameObject.GetComponentInParent<Collider2D>();
 
         if (col) {

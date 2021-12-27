@@ -7,7 +7,6 @@ public class InteractableBehavior : MonoBehaviour
 {
     protected Game game;
 
-    protected PlayerControl player;
     private Transform playerTransform;
     private GameObject canvas = null;
 
@@ -25,7 +24,6 @@ public class InteractableBehavior : MonoBehaviour
     {
         game = (Game)FindObjectOfType(typeof(Game));
 
-        player = (PlayerControl)FindObjectOfType(typeof(PlayerControl));
         playerTransform = GameObject.FindWithTag("Player").transform;
 
         Transform t = transform.Find("Canvas");
@@ -46,7 +44,7 @@ public class InteractableBehavior : MonoBehaviour
         }
 
         if (openForDialogue) {
-            player.activeSpeaker = this;
+            Utils.GetPlayer().activeSpeaker = this;
         }
     }
 

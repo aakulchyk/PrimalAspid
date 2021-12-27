@@ -12,9 +12,7 @@ public class NpcBehavior : MonoBehaviour
    
     protected Animator anim;
     protected Rigidbody2D body;
-    protected PlayerControl player;
-    protected Transform playerTransform;
-
+    
     protected GrabbableBehavior grabbable = null;
     protected InteractableBehavior interactable = null;
 
@@ -37,8 +35,6 @@ public class NpcBehavior : MonoBehaviour
         game = (Game)FindObjectOfType(typeof(Game));
         anim = GetComponent<Animator>();
         body = GetComponent<Rigidbody2D> ();
-        player = (PlayerControl)FindObjectOfType(typeof(PlayerControl));
-        playerTransform = GameObject.FindWithTag("Player").transform;
 
         sounds =  GetComponent<AudioSource>();
 
@@ -76,9 +72,9 @@ public class NpcBehavior : MonoBehaviour
 
         if (isDead) return;
 
-        if (player.IsPulling() && player.GetComponent<FixedJoint2D>().connectedBody == GetComponent<Rigidbody2D>()) {
-            player.releaseBody();
-            player.throwByImpulse(new Vector2 (GetVectorToPlayer().x, GetVectorToPlayer().y*20), true);
+        if (Utils.GetPlayer().IsPulling() && Utils.GetPlayer().GetComponent<FixedJoint2D>().connectedBody == GetComponent<Rigidbody2D>()) {
+            Utils.GetPlayer().releaseBody();
+            Utils.GetPlayer().throwByImpulse(new Vector2 (GetVectorToPlayer().x, GetVectorToPlayer().y*20), true);
             invulnerable = true;
         }
 
@@ -124,11 +120,16 @@ public class NpcBehavior : MonoBehaviour
         go.transform.rotation = Quaternion.identity;
     }
 
+    protected Transform PlayerTransform()
+    {
+        return Utils.GetPlayerTransform();
+    }
+
         // Update is called once per frame
     protected Vector3 GetVectorToPlayer()
     {
         // get direction to player
-        Vector3 direction = playerTransform.position - transform.position;
+        Vector3 direction = Utils.GetPlayerTransform().position - transform.position;
         return direction.normalized;
     }
 

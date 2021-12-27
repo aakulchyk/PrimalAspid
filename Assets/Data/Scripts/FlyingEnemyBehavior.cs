@@ -14,6 +14,8 @@ public class FlyingEnemyBehavior : NpcBehavior
     public AudioClip clip_captured;
 
     private bool prev_captured = false;
+
+    private float moveX;
     
     void Start()
     {
@@ -69,18 +71,6 @@ public class FlyingEnemyBehavior : NpcBehavior
             return;
         }
 
-        float distP = Vector2.Distance(playerTransform.position, transform.position);
-        _chasingPlayer = _followRadius > distP  &&  checkAccessibility(playerTransform);
-
-        float moveX = (isDead || !_chasingPlayer) ? 0f : GetVectorToPlayer().x * moveSpeed;
-
-        if (_knockback > 0) {
-            Debug.Log("Fly frame of knockback");
-            moveX = body.velocity.x;
-            --_knockback;
-        } else {
-            anim.SetBool("chase", true);
-        }
 
         body.velocity = _chasingPlayer ? new Vector2( moveX, GetVectorToPlayer().y*moveSpeed ) : new Vector2(0, 0.86f);
     }
@@ -91,14 +81,29 @@ public class FlyingEnemyBehavior : NpcBehavior
             return;
         }
 
+        Transform pt = PlayerTransform();
+
+        //
+        float distP = Vector2.Distance(pt.position, transform.position);
+        _chasingPlayer = _followRadius > distP  &&  checkAccessibility(pt);
+
+        moveX = (isDead || !_chasingPlayer) ? 0f : GetVectorToPlayer().x * moveSpeed;
+
+        if (_knockback > 0) {
+            Debug.Log("Fly frame of knockback");
+            moveX = body.velocity.x;
+            --_knockback;
+        } else {
+            anim.SetBool("chase", true);
+        }
+
         // interact with player
 
         if (_chasingPlayer) {
-            anim.SetBool("hurt", false);
-            if (playerTransform.position.x > transform.position.x && !faceRight) {
+            if (pt.position.x > transform.position.x && !faceRight) {
                 flip();
                 faceRight = true;
-            } else if (playerTransform.position.x < transform.position.x && faceRight) {
+            } else if (pt.position.x < transform.position.x && faceRight) {
                 flip();
                 faceRight = false;
             }
@@ -117,7 +122,6 @@ public class FlyingEnemyBehavior : NpcBehavior
             } else {
 
                 if (!prev_captured) {
-                    anim.SetBool("hurt", true);
                     sounds.Stop();   
                 }
 

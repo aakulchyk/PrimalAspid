@@ -28,7 +28,7 @@ public class BabyRatBehavior : NpcBehavior
             return;
 
         // interact with player
-        float distP = Vector2.Distance(playerTransform.position, transform.position);
+        float distP = Vector2.Distance(PlayerTransform().position, transform.position);
 
         if (grabbable.captured != _pulled) {
             if (grabbable.captured) {
@@ -86,9 +86,7 @@ public class BabyRatBehavior : NpcBehavior
     public void onFound() {
         Debug.Log("Bady rat: on found");
         if (grabbable) {
-            
-            player.releaseBody();
-            
+            Utils.GetPlayer().releaseBody();
             grabbable.gameObject.SetActive(false);
         }
 

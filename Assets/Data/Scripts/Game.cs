@@ -22,17 +22,15 @@ public class Game : MonoBehaviour
     private string[] texts;
     private Queue<string> textQueue = new Queue<string>();
 
-    private PlayerControl player;
-
     private Save CreateSaveGameObject()
     {
         Save save = new Save();
         save.Initialize();
 
         // gather player data
-        player = (PlayerControl)FindObjectOfType(typeof(PlayerControl));
-        save.px = player.transform.position.x;
-        save.py = player.transform.position.y;
+        
+        save.px = Utils.GetPlayer().transform.position.x;
+        save.py = Utils.GetPlayer().transform.position.y;
         //save.hp =  PlayerStats.HP;
 
         save.deaths = PlayerStats.Deaths;
@@ -79,7 +77,7 @@ public class Game : MonoBehaviour
         Debug.Log("Save Game");
         Save save = CreateSaveGameObject();
 
-        player.onSaveGame();
+        Utils.GetPlayer().onSaveGame();
 
         BinaryFormatter bf = new BinaryFormatter();
         FileStream file = File.Create(Application.persistentDataPath + "/gamesave.save");
@@ -116,11 +114,10 @@ public class Game : MonoBehaviour
         PlayerStats.BloodBodies = save.bloodBodies;
 
         // player
-        PlayerControl player = (PlayerControl)FindObjectOfType(typeof(PlayerControl));
-        var pos = player.transform.position;
+        var pos = Utils.GetPlayer().transform.position;
         pos.x = save.px;
         pos.y = save.py;
-        player.transform.position = pos;
+        Utils.GetPlayer().transform.position = pos;
 
         // npcs waiting
         // maggots

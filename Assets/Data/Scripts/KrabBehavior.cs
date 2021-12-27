@@ -24,7 +24,8 @@ public class KrabBehavior : NpcBehavior
         lastJumpTime = Time.time;
     }
 
-    void FixedUpdate()
+ 
+    void Update()
     {
         if (Time.timeScale == 0) {
             return;
@@ -65,7 +66,7 @@ public class KrabBehavior : NpcBehavior
 
     bool IsPlayerInRange()
     {
-        float distP = Vector2.Distance(playerTransform.position, transform.position);
+        float distP = Vector2.Distance(PlayerTransform().position, transform.position);
         return distP < _followRadius;
     }
 

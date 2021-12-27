@@ -16,6 +16,8 @@ public class HedgehogBehavior : NpcBehavior
     private bool faceRight = false;
 
     public float _aggravateRadius;
+
+    private float _visibilityRadius = 50f;
     
 
     private float lastBristleTime;
@@ -41,12 +43,14 @@ public class HedgehogBehavior : NpcBehavior
         if (isDead)
             return;
 
-        if (!_isBristled && IsPlayerInRange()) {
+        bool pInRange = IsPlayerInRange();
+
+        if (!_isBristled && pInRange) {
             _isAnticipating = true;
             anim.SetBool("isBristled", true);
         }
 
-        if (_isBristled && !IsPlayerInRange()) {
+        if (_isBristled && !pInRange) {
             anim.SetBool("isBristled", false);
         }
             
@@ -76,15 +80,15 @@ public class HedgehogBehavior : NpcBehavior
         RaycastHit2D hit = Physics2D.Raycast(pos, Vector2.down, 0.3f, LayerMask.GetMask("Ground"));
         Debug.DrawLine(pos, pos + new Vector3(0, -0.3f, 0), Color.green, 0.02f, false);
         if (!hit.collider) {
-            if (IsPlayerInRange())
-                Debug.Log("flip 1");    
+            /*if (pInRange)
+                Debug.Log("flip 1");    */
             ChangeDirection();
         } else {
             RaycastHit2D hit1 = Physics2D.Raycast(pos, v1, 1f, LayerMask.GetMask("Ground") | LayerMask.GetMask("Wall"));
             Debug.DrawLine(pos, pos + v1, Color.yellow, 0.02f, false);
             if (hit1.collider) {
-                if (IsPlayerInRange())
-                    Debug.Log("flip 2");
+                /*if (pInRange)
+                    Debug.Log("flip 2");*/
                 ChangeDirection();
             }
         }
@@ -99,8 +103,14 @@ public class HedgehogBehavior : NpcBehavior
 
     bool IsPlayerInRange()
     {
-        float distP = Vector2.Distance(playerTransform.position, transform.position);
+        float distP = Vector2.Distance(Utils.GetPlayerTransform().position, transform.position);
         return distP < _aggravateRadius;
+    }
+
+    bool IsVisibleToPlayer()
+    {
+        float distP = Vector2.Distance(Utils.GetPlayerTransform().position, transform.position);
+        return distP < _visibilityRadius;
     }
 
     void PlayBristleSound()
