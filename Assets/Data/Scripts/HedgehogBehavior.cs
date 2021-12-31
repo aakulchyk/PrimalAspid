@@ -137,10 +137,8 @@ public class HedgehogBehavior : NpcBehavior
 
     public override void hurt(Vector2 force, Types.DamageType damageType = Types.DamageType.Spikes) {
         if (isDead) return;
-        
 
         if (damageType == Types.DamageType.Spikes) {
-            Debug.Log("Yozhiku pizdetz");
             _hp = -1;
         }
 

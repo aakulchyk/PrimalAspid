@@ -10,8 +10,7 @@ public class PrizeStaminaRestore : PrizeBehavior
         collected = true;
 
         // apply stats
-        //PlayerStats.BloodBodies++;
-        PlayerStats.Stamina = 1f;
+        PlayerStats.FullyRestoreStamina();
         //GetComponent<AudioSource>().volume = 1f;
         GetComponent<AudioSource>().PlayOneShot(clip_collect);
         GetComponent<Renderer>().enabled = false;

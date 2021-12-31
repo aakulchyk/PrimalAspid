@@ -8,7 +8,7 @@ public class NpcBehavior : MonoBehaviour
 
     public bool isDead = false;
 
-    public int MAX_KNOCKBACK = 12;
+    public int MAX_KNOCKBACK;
    
     protected Animator anim;
     protected Rigidbody2D body;

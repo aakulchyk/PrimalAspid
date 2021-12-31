@@ -12,12 +12,6 @@ public class PcAttack : MonoBehaviour
         player = GetComponentInParent<PlayerControl>();
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
     public void Animate() {
         if (!player)
             player = GetComponentInParent<PlayerControl>();
@@ -26,7 +20,7 @@ public class PcAttack : MonoBehaviour
         
         if (player._isGrounded) {
             GameObject go = Instantiate(dustFromWhipFxPrefab);
-            go.transform.position = transform.position + Vector3.down*player.pHeight;
+            go.transform.position = transform.position + Vector3.down*player.pHeight/1.7f;
             go.transform.rotation = Quaternion.identity;
             go.transform.localScale = new Vector3(1, 1, 1);
             
@@ -41,18 +35,9 @@ public class PcAttack : MonoBehaviour
     void OnTriggerEnter2D(Collider2D other) {
         if (other.tag=="Enemy") {
             NpcBehavior behavior = other.gameObject.GetComponent<NpcBehavior>();
-            Vector3 dir = (other.transform.position - transform.position).normalized;
-            
-            behavior.hurt(new Vector2(dir.x*40, dir.y*20f), Types.DamageType.PcHit);
-
-            player.knockback(new Vector2(-dir.x*15f, -dir.y*8f));
+            Vector3 dir = (other.transform.position - player.transform.position).normalized;
+            behavior.hurt(new Vector2(dir.x*40, 10), Types.DamageType.PcHit);
+            player.knockback(new Vector2(-dir.x*15f, 0));
         }
     }
-
-    /*IEnumerator DeleteFxAfterDelay(GameObject go)
-    {
-        yield return new WaitForSeconds(1);
-        Destroy(go, 2);
-        
-    }*/
 }

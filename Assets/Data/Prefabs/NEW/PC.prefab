@@ -132,6 +132,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 680777ca02e1b28489553007e3d86aea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  dustFromWhipFxPrefab: {fileID: 8825356606171694394, guid: 5da53f27b9ba08f46a59a502a00b43bc,
+    type: 3}
 --- !u!1 &5617100835212860755
 GameObject:
   m_ObjectHideFlags: 0
@@ -350,9 +352,9 @@ Rigidbody2D:
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
   m_Mass: 2
-  m_LinearDrag: 1
+  m_LinearDrag: 2
   m_AngularDrag: 0
-  m_GravityScale: 4.4
+  m_GravityScale: 8
   m_Material: {fileID: 6200000, guid: 2370ed07a48531e43ae3451c6fb4af8c, type: 2}
   m_Interpolate: 0
   m_SleepingMode: 1
@@ -539,6 +541,7 @@ MonoBehaviour:
   _mass: 2.5
   _drag: 2.5
   _flapForce: 4600
+  _isGrounded: 0
   clip_hurt: {fileID: 8300000, guid: f6058a91c42585c4588af8302b0ab577, type: 3}
   clip_death: {fileID: 8300000, guid: 6f654d8548ecaf644b8f707cf579527c, type: 3}
   clip_flap: {fileID: 8300000, guid: 1d020eeb42ea90f4fa02bc3b31a5cc9d, type: 3}
@@ -546,6 +549,9 @@ MonoBehaviour:
   clip_land: {fileID: 8300000, guid: 6f97acafcaf80ce4e9c52ae127d88c27, type: 3}
   clip_walk: {fileID: 8300000, guid: 2423b35d2f217ea4694b0f1cc943d4ee, type: 3}
   clip_dash: {fileID: 8300000, guid: 06a8777a41f94e44480e4effd49e3ba8, type: 3}
-  clip_swing: {fileID: 8300000, guid: 3e4e07526f6422042a0586f9c35e4495, type: 3}
+  clip_swing: {fileID: 8300000, guid: c213ed92702a468408b4d42a559d20aa, type: 3}
+  clip_swing_crack: {fileID: 8300000, guid: f1cb312caca406f4bae24914847135bf, type: 3}
   activeSpeaker: {fileID: 0}
   activeSavePoint: {fileID: 0}
+  pWidth: 0
+  pHeight: 0

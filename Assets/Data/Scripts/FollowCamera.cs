@@ -6,9 +6,8 @@ public class FollowCamera : MonoBehaviour {
     //public float interpVelocity;
     //public float minDistance;
     //public float followDistance;
-    public GameObject target;
+    public Transform target;
     public Vector3 offset;
-    public bool vertical;
     Vector3 targetPos;
 
     public GameObject leftBorder;
@@ -16,26 +15,17 @@ public class FollowCamera : MonoBehaviour {
     public GameObject bottomBorder;
     public GameObject topBorder;
 
-    // Use this for initialization
-    void Start () {
-        /*if (target) {
-            float posZ = transform.position.z;
-            transform.position = new Vector3(target.transform.position.x, target.transform.position.y, posZ);
-        }*/
-
-        targetPos = transform.position;
-    }
     
     // Update is called once per frame
     void FixedUpdate () {
         if (target)
         {
             Vector3 posNoZ = transform.position;
-            posNoZ.z = target.transform.position.z;
+            posNoZ.z = target.position.z;
             float oldX = posNoZ.x;
             float oldY = posNoZ.y;
 
-            Vector3 targetDirection = (target.transform.position - posNoZ);
+            Vector3 targetDirection = (target.position - posNoZ);
 
             float interpVelocity = targetDirection.magnitude * 3.5f;
 
@@ -50,28 +40,28 @@ public class FollowCamera : MonoBehaviour {
                 targetPos.x = oldX;
             }
 
-            /*if (targetPos.y > posNoZ.y && topBorder.transform.position.y - posNoZ.y < 11f) {
+            if (targetPos.y > posNoZ.y && topBorder.transform.position.y - posNoZ.y < 11f) {
                 targetPos.y = oldY;
-            }*/
-
-            // find lower border
-            RaycastHit2D hit = Physics2D.Raycast(posNoZ, Vector2.down, LayerMask.GetMask("Ground"));
-
-            float bottomBorderY = bottomBorder.transform.position.y;
-
-            if (hit.collider != null) {
-                bottomBorderY = hit.collider.transform.position.y;
-                //Debug.Log("Camera: stick to the ground: " + posNoZ.y + " " + bottomBorderY);
             }
 
+            // find lower border
+            //RaycastHit2D hit = Physics2D.Raycast(target, Vector2.down, LayerMask.GetMask("Ground"));
+            float bottomBorderY = bottomBorder.transform.position.y;
+
+            /*if (hit.collider != null) {
+                bottomBorderY = hit.collider.transform.position.y;
+                Debug.Log("Camera: stick to the ground: " + posNoZ.y + " " + bottomBorderY);
+            }*/
+
             
-            /*if (targetPos.y < posNoZ.y && posNoZ.y - bottomBorderY < 6f) {
-                Debug.Log("do no change");
+            if (targetPos.y < posNoZ.y && posNoZ.y - bottomBorderY < 8f) {
                 targetPos.y = oldY;
-            } */  
+            }
 
             transform.position = Vector3.Lerp( transform.position, targetPos + offset, 0.6f);
 
+        } else {
+            target = GameObject.FindWithTag("Player").transform;
         }
     }
 }

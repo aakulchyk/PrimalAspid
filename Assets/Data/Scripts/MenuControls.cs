@@ -1,7 +1,6 @@
 ﻿
 using UnityEngine;
 
-using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using System.IO;
 
@@ -11,13 +10,12 @@ public class MenuControls : MonoBehaviour
 
     public void StartPressed()
     {
-        File.Delete(Application.persistentDataPath + "/gamesave.save");
-        SceneManager.LoadScene("Level_2");
+        Game.SharedInstance.StartNewGame();
     }
 
     public void ContinuePressed()
     {
-         SceneManager.LoadScene("Level_2");
+         Game.SharedInstance.LoadGame();
     }
 
     public void ExitPressed()
@@ -37,7 +35,6 @@ public class MenuControls : MonoBehaviour
 
     public void TutorialPressed()
     {
-        Game game = (Game)FindObjectOfType(typeof(Game));
         PlayerStats.ShowTutorial = !PlayerStats.ShowTutorial;
 
         Text buttonText = GameObject.Find("TutorialButtonText").GetComponent<Text>();

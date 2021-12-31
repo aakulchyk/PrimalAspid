@@ -25,7 +25,7 @@ public class WinScreenMenu : MonoBehaviour
         PlayerStats.Deaths = 0;
         PlayerStats.Losses = 0;
         File.Delete(Application.persistentDataPath + "/gamesave.save");
-        SceneManager.LoadScene("Level_2");
+        Game.SharedInstance.StartNewGame();
     }
 
     public void ExitPressed()
