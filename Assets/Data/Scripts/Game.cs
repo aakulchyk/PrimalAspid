@@ -113,6 +113,7 @@ public class Game : MonoBehaviour
         SceneManager.LoadScene(defaultScene);
         isGameInProgress = true;
     }
+
     public void LoadGame()
     {
         //Time.timeScale = 1f;
@@ -134,7 +135,6 @@ public class Game : MonoBehaviour
 
         // assign loaded values
         //PlayerStats.HP = save.hp;
-
         PlayerStats.Deaths = save.deaths;
         PlayerStats.Losses = save.losses;
         PlayerStats.Time = save.time;

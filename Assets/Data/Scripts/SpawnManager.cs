@@ -29,14 +29,13 @@ public class SpawnManager : MonoBehaviour
     }
  
  
- 
     private void OnLevelWasLoaded(int level)
     {
         Debug.Log("SpawnManager - OnLevelWasLoaded " + level);
         if (level == 0) return;
 
         if (!SetPoint) {
-            Debug.Log("No set location - Will Spawn at Defualt");
+            Debug.Log("No set location - Will Spawn at Default");
             spawnAtStart();
         }
         else {
@@ -44,14 +43,13 @@ public class SpawnManager : MonoBehaviour
         }
     }
  
-  
    
     void spawnAtSetlocation()
     {
         Debug.Log("Done spwaning at set location");
         GameObject go = Instantiate(DefaultPlayer, spawnPoint, Quaternion.identity);
         FollowCamera cam = (FollowCamera)FindObjectOfType(typeof(FollowCamera));
-        cam.target = go.transform;
+        cam.SetTarget(go.transform);
         SetPoint = false;
     }
  
@@ -60,6 +58,6 @@ public class SpawnManager : MonoBehaviour
         defaultPoint = GameObject.Find("DefaultPoint").transform;
         GameObject go = Instantiate(DefaultPlayer, defaultPoint.position, defaultPoint.rotation);
         FollowCamera cam = (FollowCamera)FindObjectOfType(typeof(FollowCamera));
-        cam.target = go.transform;
+        cam.SetTarget(go.transform);
     }
 }
