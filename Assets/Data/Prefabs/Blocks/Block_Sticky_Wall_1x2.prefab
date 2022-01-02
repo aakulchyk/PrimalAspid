@@ -11,9 +11,9 @@ GameObject:
   - component: {fileID: 3462157863654021026}
   - component: {fileID: 7879590179078302561}
   - component: {fileID: 5707120105156201596}
-  m_Layer: 12
+  m_Layer: 11
   m_Name: Block_Sticky_Wall_1x2
-  m_TagString: Untagged
+  m_TagString: StickyWall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

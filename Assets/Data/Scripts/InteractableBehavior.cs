@@ -5,8 +5,7 @@ using UnityEngine;
 
 public class InteractableBehavior : MonoBehaviour
 {
-    protected Game game;
-
+    
     private Transform playerTransform;
     private GameObject canvas = null;
 
@@ -22,7 +21,7 @@ public class InteractableBehavior : MonoBehaviour
 
     void Start()
     {
-        game = (Game)FindObjectOfType(typeof(Game));
+
 
         playerTransform = GameObject.FindWithTag("Player").transform;
 
@@ -57,7 +56,7 @@ public class InteractableBehavior : MonoBehaviour
         var npc = gameObject.GetComponentInParent<NpcBehavior>();
         if (npc)
             npc.onTalk();
-        game.SetPopupTexts(interactableName, currentTexts);
-        game.OpenPopup();
+        Game.SharedInstance.SetPopupTexts(interactableName, currentTexts);
+        Game.SharedInstance.OpenPopup();
     }
 }

@@ -19,8 +19,7 @@ public class PlayerControl : MonoBehaviour
     public float _mass = 2.5f;
     public float _drag = 2f;
     public float _flapForce;
-    //private Time startTime;
-
+    
     private bool invulnerable;
 
     private bool _isMoving = false;
@@ -43,7 +42,9 @@ public class PlayerControl : MonoBehaviour
     public const int INITIAL_HP = 2;
     public const float FLAP_MIN_TIMEOUT = 0.3f;
 
-    public const float FLAP_STAMINA_COST = 0.3f;
+    public const int FLAP_STAMINA_COST = 5;
+
+    public const int DASH_STAMINA_COST = 5;
 
     public const float COYOTE_TIME_SEC = 0.1f;
 
@@ -82,7 +83,6 @@ public class PlayerControl : MonoBehaviour
 
     public float pWidth, pHeight;
 
-
     private int moveX, moveY;
     private int prev_moveX = 0, prev_moveY = 0;
 
@@ -106,18 +106,18 @@ public class PlayerControl : MonoBehaviour
 
     private Game GetGame()
     {
-        if (game)
-            return game;
-
-        game = (Game)FindObjectOfType(typeof(Game));
-
-        return game;
-
-        
+        return Game.SharedInstance;
     }
     // Start is called before the first frame update
     void Start()
     {
+        Debug.Log("LOAD");
+
+        if (PlayerStats.playerSpawnCoord != Vector2.zero) {
+            Debug.Log("Spawn PC at " + PlayerStats.playerSpawnCoord);
+            transform.position = PlayerStats.playerSpawnCoord;
+        }
+
         isDead = false;
         startTime = System.DateTime.UtcNow;
         lastFlapTime = Time.time;
@@ -131,9 +131,6 @@ public class PlayerControl : MonoBehaviour
         if (!grabber)
             Debug.LogError("ERROR: PlayerGrabber not found!");
 
-        
-        GetGame().LoadGame();
-        GetGame().isGameInProgress = true;
 
         PlayerStats.HP = INITIAL_HP;
         
@@ -233,7 +230,6 @@ public class PlayerControl : MonoBehaviour
             JumpRequestTime = Time.time;
         }
 
-
         // KeyCode.JoystickButton4 - LB
         // KeyCode.JoystickButton5 - RB
 
@@ -275,7 +271,7 @@ public class PlayerControl : MonoBehaviour
             }
         }
 
-        bool move = Math.Abs(body.velocity.x) > 0.1f;
+        bool move = moveX!=0;//Math.Abs(moveX) > 0.1f;
         if (move) {
             if (move != _isMoving)
                 anim.SetBool("IsMoving", true);
@@ -292,8 +288,6 @@ public class PlayerControl : MonoBehaviour
             }
             _isMoving = false;
         }
-
-        
     }
 
     void FixedUpdate()
@@ -325,7 +319,7 @@ public class PlayerControl : MonoBehaviour
         if (!grabber.IsDoingSomething())
             body.velocity = new Vector2 (moveSpeedX, body.velocity.y);
 
-
+        
         if (body.velocity.y<0f) {
             bool floatPressed = moveY > 0;
             if (!floatPressed) {
@@ -337,7 +331,6 @@ public class PlayerControl : MonoBehaviour
                 if (body.velocity.y < -10.0f)
                     body.velocity = new Vector2(body.velocity.x, -10.0f);
             }
-
             //Debug.Log("velocity: " + body.velocity);
             anim.SetBool("IsFloating", floatPressed);
         } /*else 
@@ -346,34 +339,24 @@ public class PlayerControl : MonoBehaviour
             body.velocity += Vector2.up * Physics2D.gravity.y * 6f * Time.deltaTime;
         }
 
+
+
         // RESTORE FLAPS
         if ((_isGrounded || grabber.IsHanging())) {
             PlayerStats.FlapsLeft = PlayerStats.MaxFlaps;
-        }
-
-        // RESTORE STAMINA
-        var millis = 16.6f;
-        if (!grabber.IsPulling()) {
-            TryRestoreStamina(0.00006f * millis);
+            PlayerStats.FullyRestoreStamina();
         }
 
         if (_tailHitImpulse) {
             _tailHitImpulse = false;
             if (_isGrounded && moveX == 0) {
-                body.velocity += ((faceRight ? Vector2.right : Vector2.left) * 40f);
+                body.velocity = ((faceRight ? Vector2.right : Vector2.left) * 50);
             }
         }
 
         dash_button_triggered = false;
     }
 
-    private void TryRestoreStamina(float delta)
-    {   
-        if (PlayerStats.Stamina < 1 - delta)
-            PlayerStats.Stamina += delta;
-        else
-            PlayerStats.Stamina = 1f;
-    }
 
     public void AnticipateAttack()
     {
@@ -427,8 +410,8 @@ public class PlayerControl : MonoBehaviour
         Physics2D.IgnoreLayerCollision(playerLayer, enemyLayer, true);
 
         StartCoroutine(shortInvulnerability());
-        float potentialStamina = PlayerStats.Stamina - 0.25f;
-        if (potentialStamina < 0f) {
+        int potentialStamina = PlayerStats.Stamina - DASH_STAMINA_COST;
+        if (potentialStamina < 0) {
             return;
         }
 
@@ -478,12 +461,12 @@ public class PlayerControl : MonoBehaviour
 
         lastFlapTime = Time.time;
         
-        /*float potentialStamina = PlayerStats.Stamina - FLAP_STAMINA_COST;
+        int potentialStamina = PlayerStats.Stamina - FLAP_STAMINA_COST;
 
-        if (potentialStamina < 0f) {
-            PlayerStats.Stamina = 0f;
+        if (potentialStamina < 0)
             return;
-        }*/
+
+        PlayerStats.Stamina = potentialStamina;
 
         if (grabber.IsHangingOnCeiling()) {
             grabber.endHangOnCeiling();   
@@ -493,7 +476,6 @@ public class PlayerControl : MonoBehaviour
         --PlayerStats.FlapsLeft;
 
         _flapStarted = true;
-        //PlayerStats.Stamina = potentialStamina;
 
         body.velocity = new Vector2(body.velocity.x, 0);
         //float magnitude = body.velocity.y > 0 ? body.velocity.y : 0; 
@@ -546,6 +528,7 @@ public class PlayerControl : MonoBehaviour
         if (sounds.isPlaying)
             sounds.Stop();
         sounds.PlayOneShot(clip_jump); // TODO jump sound
+
         anim.SetBool("IsJumping", true);
         
         body.velocity = new Vector2(body.velocity.x, 0);
@@ -606,7 +589,7 @@ public class PlayerControl : MonoBehaviour
 
         if (collider.tag == "Spike") {
             hurt(new Vector2(0, 2500f));
-            TryRestoreStamina(0.1f);
+            PlayerStats.PartlyRestoreStamina(5);
         }
 
         if (collider.tag == "Enemy") {
@@ -614,23 +597,37 @@ public class PlayerControl : MonoBehaviour
             if (!behavior.isDead)
                 hurt(new Vector2(0, 1000f));
         }
+
+        if (collider.tag == "DestroyablePlatform") {
+            DestroyablePlatform pl = collider.gameObject.GetComponent<DestroyablePlatform>();
+            if (pl && !pl.isCollapsing) {
+                pl.StartCoppapsing();
+            }
+        }
     }
 
     void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.tag == "LevelPortal") {
-            System.DateTime endTime = System.DateTime.UtcNow;
-            PlayerStats.Time = endTime - startTime;
-            SceneManager.LoadScene("WinScreen");
-            return;
-        }
-
         if (other.tag == "Lever") {
             LeverBehavior script = other.gameObject.GetComponent<LeverBehavior>();
             if (!script || script.toggled)
                 return;
             
             script.SwitchLever();
+        }
+
+        if (other.tag == "LevelPortal") {
+            /*System.DateTime endTime = System.DateTime.UtcNow;
+            PlayerStats.Time = endTime - startTime;
+            if (other.gameObject.GetComponent<LevelPortal>().backward)
+                PlayerStats.currentSceneIndex--;
+            else
+                PlayerStats.currentSceneIndex++;
+
+            PlayerStats.playerSpawnCoord = other.transform.Find("SpawnPoint").transform.position;
+            SceneManager.LoadScene(PlayerStats.CurrentScene());*/
+            other.gameObject.GetComponent<LevelPortal>().TransferToAnotherLevel(gameObject);
+            return;
         }
 
         if (other.tag == "Collectable") {
@@ -656,6 +653,7 @@ public class PlayerControl : MonoBehaviour
         }
 
         if (other.tag == "HiddenRoomVeil") {
+            Debug.Log("hrv");
             HiddenRoomBehavior hrb = other.gameObject.GetComponent<HiddenRoomBehavior>();
             hrb.MakeVisible(false);
         }
@@ -663,6 +661,7 @@ public class PlayerControl : MonoBehaviour
 
     void OnTriggerExit2D(Collider2D other) {
         if (other.tag == "HiddenRoomVeil") {
+            Debug.Log("hrv exit");
             HiddenRoomBehavior hrb = other.gameObject.GetComponent<HiddenRoomBehavior>();
             hrb.MakeVisible(true);
         }
@@ -691,9 +690,14 @@ public class PlayerControl : MonoBehaviour
         
         FinishTurnIfStarted();
         InterruptFlyOrJump();
-
+        if (_attackStarted)
+            RestoreAttack();
         if (_isDashing)
             endDash();
+        if (grabber.IsHangingOnWall())
+            grabber.endHangOnWall();   
+        if (grabber.IsHangingOnCeiling())
+            grabber.endHangOnCeiling();   
     }
 
     public void releaseBody()
@@ -717,13 +721,13 @@ public class PlayerControl : MonoBehaviour
         anim.SetBool("IsDying", false);
         PlayerStats.Deaths++;
         Debug.Log("Deaths: " + PlayerStats.Deaths);
-        SceneManager.LoadScene("TestBlockScene");
+        SceneManager.LoadScene(Game.currentScene);
     }
 
     IEnumerator RestartAfterDelay()
     {
         yield return new WaitForSeconds(3);
-        SceneManager.LoadScene("TestBlockScene");
+        SceneManager.LoadScene(Game.currentScene);
     }
 
 

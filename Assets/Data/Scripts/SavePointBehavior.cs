@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class SavePointBehavior : MonoBehaviour
 {
-    private Game game;
     private GameObject canvas;
     private const float interactRadius = 2.5f;
 
@@ -12,7 +11,6 @@ public class SavePointBehavior : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        game = (Game)FindObjectOfType(typeof(Game));
         canvas = gameObject.transform.GetChild(0).gameObject;
     }
 
@@ -31,6 +29,7 @@ public class SavePointBehavior : MonoBehaviour
     }
 
     public void SaveGame() {
+        Game game = Game.SharedInstance;
         canvas.SetActive(false);
         game.SaveGame();
         game.SetPopupText("Bonfire", "The Game is Succesfully Saved");

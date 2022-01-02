@@ -19,9 +19,10 @@ TagManager:
   - Boulder
   - Hanger
   - Grabbable
-  - RescuedOne
   - InvisibleWall
   - HiddenRoomVeil
+  - DestroyablePlatform
+  - StickyWall
   layers:
   - Default
   - TransparentFX

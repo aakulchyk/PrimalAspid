@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class FlyingEnemyBehavior : NpcBehavior
 {
-    public float _followRadius = 14f;
-    public float moveSpeed = 3f;
+    public float _followRadius;
+    public float moveSpeed;
 
     private bool _chasingPlayer = false;
  
@@ -15,7 +15,7 @@ public class FlyingEnemyBehavior : NpcBehavior
 
     private bool prev_captured = false;
 
-    private float moveX;
+    private float moveX, moveY;
     
     void Start()
     {
@@ -45,14 +45,13 @@ public class FlyingEnemyBehavior : NpcBehavior
             RaycastHit2D hit = Physics2D.Raycast(p, dir.normalized, distM);
 
             if (!hit.collider) {
-                Debug.DrawLine(p, ppos, Color.green, 0.02f, false);
+                Debug.DrawLine(p, ppos, Color.yellow, 0.02f, false);
                 continue;
             }
 
-            if (hit.collider.tag == "Player" || hit.collider == col) {
+            if (hit.collider.tag == "Player" || hit.collider.tag == "Enemy") {
                 Debug.DrawLine(p, ppos, Color.green, 0.02f, false);
                 continue;
-                
             } else {
                 Debug.DrawLine(p, ppos, Color.red, 0.02f, false);
                 accessible = false;
@@ -71,13 +70,20 @@ public class FlyingEnemyBehavior : NpcBehavior
             return;
         }
 
+        if (_knockback > 0) {
+            Debug.Log("Fly frame of knockback " + body.velocity.x);
+            moveX = body.velocity.x;
+            --_knockback;
+        } else {
+            anim.SetBool("chase", true);
+        }
 
-        body.velocity = _chasingPlayer ? new Vector2( moveX, GetVectorToPlayer().y*moveSpeed ) : new Vector2(0, 0.86f);
+        body.velocity = new Vector2( moveX, moveY + 0.86f);
     }
     
     void Update()
     {
-        if (isDead || Time.timeScale == 0) {
+        if (Time.timeScale == 0) {
             return;
         }
 
@@ -85,17 +91,13 @@ public class FlyingEnemyBehavior : NpcBehavior
 
         //
         float distP = Vector2.Distance(pt.position, transform.position);
-        _chasingPlayer = _followRadius > distP  &&  checkAccessibility(pt);
+        _chasingPlayer = _followRadius>distP  &&  checkAccessibility(pt) && !isDead;
 
-        moveX = (isDead || !_chasingPlayer) ? 0f : GetVectorToPlayer().x * moveSpeed;
+        moveX = _chasingPlayer ? GetVectorToPlayer().x*moveSpeed : 0.0f;
+        moveY = _chasingPlayer ? GetVectorToPlayer().y*moveSpeed : 0.0f;
 
-        if (_knockback > 0) {
-            Debug.Log("Fly frame of knockback");
-            moveX = body.velocity.x;
-            --_knockback;
-        } else {
-            anim.SetBool("chase", true);
-        }
+        
+        if (isDead) return;
 
         // interact with player
 

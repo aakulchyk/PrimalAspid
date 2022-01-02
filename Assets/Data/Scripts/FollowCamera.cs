@@ -1,4 +1,5 @@
 using UnityEngine;
+using System;
 using System.Collections;
 
 public class FollowCamera : MonoBehaviour {
@@ -6,9 +7,8 @@ public class FollowCamera : MonoBehaviour {
     //public float interpVelocity;
     //public float minDistance;
     //public float followDistance;
-    public GameObject target;
+    private Transform target;
     public Vector3 offset;
-    public bool vertical;
     Vector3 targetPos;
 
     public GameObject leftBorder;
@@ -16,62 +16,93 @@ public class FollowCamera : MonoBehaviour {
     public GameObject bottomBorder;
     public GameObject topBorder;
 
-    // Use this for initialization
-    void Start () {
-        /*if (target) {
-            float posZ = transform.position.z;
-            transform.position = new Vector3(target.transform.position.x, target.transform.position.y, posZ);
-        }*/
+    public Vector2 frustum;
 
-        targetPos = transform.position;
-    }
+    private bool justLoaded;
+
     
+    void Start()
+    {
+        frustum = FructumSizeAtDist(Math.Abs(transform.position.z));
+    }
+
+    /*private void OnLevelWasLoaded(int level)
+    {
+        justLoaded = true;
+    }*/
+
+    public void SetTarget(Transform val) {
+        target = val;
+        justLoaded = true;
+    }
     // Update is called once per frame
-    void FixedUpdate () {
+    void Update () {
         if (target)
         {
             Vector3 posNoZ = transform.position;
-            posNoZ.z = target.transform.position.z;
+            posNoZ.z = target.position.z;
             float oldX = posNoZ.x;
             float oldY = posNoZ.y;
 
-            Vector3 targetDirection = (target.transform.position - posNoZ);
+            Vector3 targetDirection = (target.position - posNoZ);
 
             float interpVelocity = targetDirection.magnitude * 3.5f;
 
             targetPos = transform.position + (targetDirection.normalized * interpVelocity * Time.deltaTime); 
 
-
-            if (targetPos.x < posNoZ.x && posNoZ.x - leftBorder.transform.position.x < 11f) {
-                targetPos.x = oldX;
+            if (targetPos.x - frustum.x/2 < leftBorder.transform.position.x) {
+                targetPos.x = leftBorder.transform.position.x + frustum.x/2;
             }
 
-            if (targetPos.x > posNoZ.x && rightBorder.transform.position.x - posNoZ.x < 11f) {
-                targetPos.x = oldX;
+            if (targetPos.x + frustum.x/2 > rightBorder.transform.position.x) {
+                targetPos.x = rightBorder.transform.position.x - frustum.x/2;
+            }
+            
+            if (targetPos.y + frustum.y/2 > topBorder.transform.position.y) {
+                targetPos.y = topBorder.transform.position.y - frustum.y/2;
+            }
+            
+            if (targetPos.y - frustum.y/2 < bottomBorder.transform.position.y) {
+                targetPos.y = bottomBorder.transform.position.y + frustum.y/2;
             }
 
-            /*if (targetPos.y > posNoZ.y && topBorder.transform.position.y - posNoZ.y < 11f) {
+            // find lower border
+            //RaycastHit2D hit = Physics2D.Raycast(target, Vector2.down, LayerMask.GetMask("Ground"));
+            float bottomBorderY = bottomBorder.transform.position.y;
+
+            /*if (hit.collider != null) {
+                bottomBorderY = hit.collider.transform.position.y;
+                Debug.Log("Camera: stick to the ground: " + posNoZ.y + " " + bottomBorderY);
+            }*/
+
+            
+            /*if (targetPos.y < posNoZ.y && posNoZ.y - bottomBorderY < 8f) {
                 targetPos.y = oldY;
             }*/
 
-            // find lower border
-            RaycastHit2D hit = Physics2D.Raycast(posNoZ, Vector2.down, LayerMask.GetMask("Ground"));
-
-            float bottomBorderY = bottomBorder.transform.position.y;
-
-            if (hit.collider != null) {
-                bottomBorderY = hit.collider.transform.position.y;
-                //Debug.Log("Camera: stick to the ground: " + posNoZ.y + " " + bottomBorderY);
+            if (!justLoaded) {
+                transform.position = Vector3.Lerp( transform.position, targetPos + offset, 0.6f);
+            } else {
+                Debug.Log("set pos");
+                transform.position = new Vector3(target.position.x + offset.x, target.position.y + offset.y, transform.position.z);
+                justLoaded = false;
             }
 
-            
-            /*if (targetPos.y < posNoZ.y && posNoZ.y - bottomBorderY < 6f) {
-                Debug.Log("do no change");
-                targetPos.y = oldY;
-            } */  
-
-            transform.position = Vector3.Lerp( transform.position, targetPos + offset, 0.6f);
-
+        } else {
+            target = GameObject.FindWithTag("Player").transform;
         }
     }
+
+
+
+    private Vector2 FructumSizeAtDist(float distance)
+    {
+        var frustumHeight = 2.0f * distance * Mathf.Tan(GetComponent<Camera>().fieldOfView * 0.5f * Mathf.Deg2Rad);
+        var frustumWidth = frustumHeight * GetComponent<Camera>().aspect;
+        return new Vector2(frustumWidth, frustumHeight);
+    }
+
+
 }
+
+

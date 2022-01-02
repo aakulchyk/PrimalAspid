@@ -48,7 +48,7 @@ public class PlayerGrabber : MonoBehaviour
 
     private bool _cannotGrab = false;
 
-    public const float GRAB_STAMINA_COST = 0.25f;
+    public const int GRAB_STAMINA_COST = 5;
 
     // RB
     private bool grab_button_triggered = false;
@@ -244,7 +244,7 @@ public class PlayerGrabber : MonoBehaviour
     void OnCollisionEnter2D(Collision2D other)
     {
         Collider2D collider = other.collider;
-        if (collider.gameObject.layer == LayerMask.NameToLayer("StickyWall")) {
+        if (collider.tag == "StickyWall" ) {
             bool stillCoyoteTime = Time.time - grabCoyoteTimeStarted < (GRAB_COYOTE_TIME_SEC);
             _touchingWall = collider;
             _isWallOnRight = _touchingWall.transform.position.x > transform.position.x;
@@ -254,7 +254,6 @@ public class PlayerGrabber : MonoBehaviour
                 startHangOnWall();
             else
                 Debug.Log("Collided with Wall");
-            
         }
 
         if (collider.gameObject.layer == LayerMask.NameToLayer("Hanger")) {
@@ -270,10 +269,9 @@ public class PlayerGrabber : MonoBehaviour
     void OnCollisionExit2D(Collision2D other)
     {
         Collider2D collider = other.collider;
-        if (collider.gameObject.layer == LayerMask.NameToLayer("StickyWall")) {
+        if (collider.tag == "StickyWall") {
             _touchingWall = null;
         }
-
         if (collider.gameObject.layer == LayerMask.NameToLayer("Hanger")) {
             nearestHanger = null;
         } 
@@ -306,16 +304,16 @@ public class PlayerGrabber : MonoBehaviour
 
     public void startSideGrab()
     {
-        /*float potentialStamina = PlayerStats.Stamina - GRAB_STAMINA_COST;
-        if (potentialStamina < 0f) {
-            return;
-        }*/
-
-        //PlayerStats.Stamina = potentialStamina;
-
         bool stillCooldownTime = Time.time - grabCooldownTimeStarted < GRAB_COOLDOWN_TIME_SEC;
         if (stillCooldownTime)
             return;
+
+        int potentialStamina = PlayerStats.Stamina - GRAB_STAMINA_COST;
+        if (potentialStamina < 0) {
+            return;
+        }
+
+        PlayerStats.Stamina = potentialStamina;
 
         playerMainControl.FinishTurnIfStarted();
         playerMainControl.InterruptFlyOrJump();
@@ -372,16 +370,15 @@ public class PlayerGrabber : MonoBehaviour
 
     public void startUpwardGrab()
     {
-
-        /*float potentialStamina = PlayerStats.Stamina - GRAB_STAMINA_COST;
-        if (potentialStamina < 0f) {
-            return;
-        }
-        PlayerStats.Stamina = potentialStamina;*/
-
         bool stillCooldownTime = Time.time - grabCooldownTimeStarted < GRAB_COOLDOWN_TIME_SEC;
         if (stillCooldownTime)
             return;
+
+        int potentialStamina = PlayerStats.Stamina - GRAB_STAMINA_COST;
+        if (potentialStamina < 0) {
+            return;
+        }
+        PlayerStats.Stamina = potentialStamina;
 
         Physics2D.IgnoreLayerCollision(LayerMask.NameToLayer("PC"), LayerMask.NameToLayer("Hanger"), false);
 
@@ -440,11 +437,16 @@ public class PlayerGrabber : MonoBehaviour
 
     public void startDownwardGrab()
     {
-        float potentialStamina = PlayerStats.Stamina - 0.25f;
-        if (potentialStamina < 0f) {
+        bool stillCooldownTime = Time.time - grabCooldownTimeStarted < GRAB_COOLDOWN_TIME_SEC;
+        if (stillCooldownTime)
+            return;
+
+        int potentialStamina = PlayerStats.Stamina - GRAB_STAMINA_COST;
+        if (potentialStamina < 0) {
             return;
         }
         PlayerStats.Stamina = potentialStamina;
+
         playerMainControl.FinishTurnIfStarted();
         playerMainControl.InterruptFlyOrJump();
         if (sounds.isPlaying) {

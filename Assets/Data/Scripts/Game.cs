@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 using System.Text;
 using System.IO;
@@ -10,17 +11,35 @@ using System.Runtime.Serialization.Formatters.Binary;
 
 public class Game : MonoBehaviour
 {
-    /*public Transform platform0;
-    public Transform platform1;
-    public Transform platform2;*/
+    public static Game SharedInstance { get; private set; }
 
     public GameObject popupWindow;
     public bool isPopupOpen = false;
 
     public bool isGameInProgress = false;
 
+
+    public static string defaultScene = "LD_Level_1_1";
+    public static string currentScene;
+
     private string[] texts;
     private Queue<string> textQueue = new Queue<string>();
+
+
+    private void Awake()
+    {
+        if (SharedInstance == null) {
+            SharedInstance = this;
+            DontDestroyOnLoad(gameObject);
+        }
+        else Destroy(gameObject);
+    }
+
+    private void OnLevelWasLoaded(int level)
+    {
+        currentScene = SceneManager.GetActiveScene().name;
+        Debug.Log("Game - OnLevelWasLoaded " + level + " " + currentScene);
+    }
 
     private Save CreateSaveGameObject()
     {
@@ -28,6 +47,8 @@ public class Game : MonoBehaviour
         save.Initialize();
 
         // gather player data
+
+        save.currentScene = currentScene;
         
         save.px = Utils.GetPlayer().transform.position.x;
         save.py = Utils.GetPlayer().transform.position.y;
@@ -73,7 +94,6 @@ public class Game : MonoBehaviour
 
     public void SaveGame()
     {
-        
         Debug.Log("Save Game");
         Save save = CreateSaveGameObject();
 
@@ -85,6 +105,13 @@ public class Game : MonoBehaviour
         file.Close();
 
         Debug.Log("Game Saved");
+    }
+
+    public void StartNewGame()
+    {
+        ClearGame();
+        SceneManager.LoadScene(defaultScene);
+        isGameInProgress = true;
     }
 
     public void LoadGame()
@@ -102,9 +129,12 @@ public class Game : MonoBehaviour
         Save save = (Save)bf.Deserialize(file);
         file.Close();
 
+        currentScene = save.currentScene;
+
+        SceneManager.LoadScene(currentScene);
+
         // assign loaded values
         //PlayerStats.HP = save.hp;
-
         PlayerStats.Deaths = save.deaths;
         PlayerStats.Losses = save.losses;
         PlayerStats.Time = save.time;
@@ -153,9 +183,9 @@ public class Game : MonoBehaviour
                 i++;
             }
         }
-        
 
         Debug.Log("Game Loaded");
+        isGameInProgress = true;
     }
 
     public void SetPopupText(string title, string text) {

@@ -1,5 +1,8 @@
 ﻿using System;
+using System.Collections;
+using System.Collections.Generic;
 
+using UnityEngine;
 
 public static class PlayerStats
 {
@@ -9,11 +12,13 @@ public static class PlayerStats
     private static int npc_saved = 0, npc_dead = 0;
 
 
-    //private static const int max_stamina = 100;
-    private static float stamina = 1f;
-    private static int hp = 0;
+
+
+    private static int max_stamina = 10;
+    private static int stamina = max_stamina;
     private static int max_hp = 2;
 
+    private static int hp = max_hp;
     private static int bloodBodies = 0;
 
 
@@ -32,7 +37,10 @@ public static class PlayerStats
     //
     private static bool side_grab_enabled = false;
 
-    
+       
+
+
+    public static Vector2 playerSpawnCoord = Vector2.zero;
 
     public static int Deaths 
     {
@@ -95,7 +103,7 @@ public static class PlayerStats
         }
     }
 
-    public static float Stamina 
+    public static int Stamina 
     {
         get 
         {
@@ -105,6 +113,27 @@ public static class PlayerStats
         {
             stamina = value;
         }
+    }
+
+    public static int MaxStamina
+    {
+        get 
+        {
+            return max_stamina;
+        }
+    }
+
+    public static void FullyRestoreStamina()
+    {
+        stamina = max_stamina;
+    }
+
+    public static void PartlyRestoreStamina(int delta)
+    {   
+        if (stamina+delta < max_stamina)
+            stamina += delta;
+        else
+            stamina = max_stamina;
     }
 
     public static int HP 
@@ -200,5 +229,4 @@ public static class PlayerStats
             side_grab_enabled = value;
         }
     }
-
 }

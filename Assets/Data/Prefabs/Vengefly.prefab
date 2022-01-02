@@ -5092,6 +5092,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Grabbable
       objectReference: {fileID: 0}
+    - target: {fileID: 5003086141688020949, guid: 2d125293840b87449ba754603c6b1221,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5994395420153392890, guid: 2d125293840b87449ba754603c6b1221,
         type: 3}
       propertyPath: m_Size.x

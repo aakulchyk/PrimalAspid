@@ -247,7 +247,7 @@ MonoBehaviour:
   clip_reflect: {fileID: 8300000, guid: 0be7166a9f46b52408f6d210cc374970, type: 3}
   clip_unbristle: {fileID: 8300000, guid: 9fe9198d109c2a24d9a7d4dd29a90542, type: 3}
   _moveSpeed: 3
-  _aggravateRadius: 10
+  _aggravateRadius: 8
 --- !u!61 &4213469579490470905
 BoxCollider2D:
   m_ObjectHideFlags: 0
