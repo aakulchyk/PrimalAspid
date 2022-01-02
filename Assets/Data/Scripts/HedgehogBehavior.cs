@@ -103,13 +103,20 @@ public class HedgehogBehavior : NpcBehavior
 
     bool IsPlayerInRange()
     {
-        float distP = Vector2.Distance(Utils.GetPlayerTransform().position, transform.position);
+        Transform pt = Utils.GetPlayerTransform();
+        if (pt == null)
+            return false;
+
+        float distP = Vector2.Distance(pt.position, transform.position);
         return distP < _aggravateRadius;
     }
 
     bool IsVisibleToPlayer()
     {
-        float distP = Vector2.Distance(Utils.GetPlayerTransform().position, transform.position);
+        Transform pt = Utils.GetPlayerTransform();
+        if (pt == null)
+            return false;
+        float distP = Vector2.Distance(pt.position, transform.position);
         return distP < _visibilityRadius;
     }
 

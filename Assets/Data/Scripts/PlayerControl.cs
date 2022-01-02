@@ -76,7 +76,8 @@ public class PlayerControl : MonoBehaviour
 
     protected PcAttack _attack;
     private PlayerGrabber grabber;
-    private bool _attackStarted = false;
+    public bool _attackStarted = false;
+    private bool _attackActivePhase = false;
 
     private LayerMask groundLayerMask;
     private int playerLayer, enemyLayer, npcLayer;
@@ -206,8 +207,8 @@ public class PlayerControl : MonoBehaviour
         if (Time.timeScale == 0)
             return;
 
-        if (_isDashing || grabber.IsGrabbing())
-            return;
+        // if (_isDashing || grabber.IsGrabbing())
+        //     return;
 
         checkGrounded();
 
@@ -302,6 +303,11 @@ public class PlayerControl : MonoBehaviour
             --_knockback;
         }
 
+        if (_isDashing || grabber.IsGrabbing()) {
+            body.drag = _drag;
+            return;
+        }
+
         if (flap_button_triggered && !grabber.IsGrabbing()) {
             FinishTurnIfStarted();
             bool stillCoyoteTime = Time.time - jumpCoyoteTimeStarted < COYOTE_TIME_SEC;
@@ -321,7 +327,9 @@ public class PlayerControl : MonoBehaviour
 
         
         if (body.velocity.y<0f) {
-            bool floatPressed = moveY > 0;
+            float f_axis = Input.GetAxisRaw("Float");
+            bool floatPressed = (f_axis>0.5f || f_axis < -0.5f) || Input.GetKey(KeyCode.UpArrow) || Input.GetKey(KeyCode.W);
+            //bool floatPressed = Input.GetButton("Float");//moveY > 0;
             if (!floatPressed) {
                 //body.gravityScale = _gravityScale;
                 if (body.velocity.y > -35f)
@@ -336,8 +344,11 @@ public class PlayerControl : MonoBehaviour
         } /*else 
             body.gravityScale = _gravityScale;*/
         else if (_jumpStarted && !Input.GetButton("Flap")) {
-            body.velocity += Vector2.up * Physics2D.gravity.y * 6f * Time.deltaTime;
+            body.velocity += Vector2.up * Physics2D.gravity.y * 8f * Time.deltaTime;
         }
+
+        
+        body.drag = _attackActivePhase ? _drag * 20 : _drag;
 
 
 
@@ -351,6 +362,8 @@ public class PlayerControl : MonoBehaviour
             _tailHitImpulse = false;
             if (_isGrounded && moveX == 0) {
                 body.velocity = ((faceRight ? Vector2.right : Vector2.left) * 50);
+            } else if (!_isGrounded && moveX != 0) {
+                body.velocity = Vector2.zero;
             }
         }
 
@@ -371,6 +384,11 @@ public class PlayerControl : MonoBehaviour
         sounds.PlayOneShot(clip_swing);
     }
 
+    public void OnAnticipationFinished()
+    {
+        _attackActivePhase = true;
+    }
+
     public void PerformAttack()
     {
         _isPlayingWalkSound = false;
@@ -380,12 +398,14 @@ public class PlayerControl : MonoBehaviour
         if (_isGrounded)
             sounds.PlayOneShot(clip_swing_crack);
 
+        
         _tailHitImpulse = true;
     }
 
     public void RestoreAttack()
     {
         _attackStarted = false;
+        _attackActivePhase = false;
     }
 
     

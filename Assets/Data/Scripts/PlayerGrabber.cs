@@ -113,8 +113,10 @@ public class PlayerGrabber : MonoBehaviour
         //if (grab_button_triggered || (grab_button_hold && direction_triggered)) {
         if (dash_button_triggered || (dash_hold && direction_triggered)) {
             //grab_button_triggered = false;
+
+            //if ()
             
-            if (!IsHanging() && !_isPulling) {
+            if (!IsHanging() && !_isPulling && !playerMainControl._attackStarted) {
                 if (moveX != 0) {
                     //StartCoroutine(shortInvulnerability());
                     startSideGrab();
