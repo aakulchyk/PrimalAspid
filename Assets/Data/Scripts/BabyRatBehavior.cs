@@ -27,8 +27,12 @@ public class BabyRatBehavior : NpcBehavior
         if (isDead || Time.timeScale == 0 || _gone)
             return;
 
+        Transform pt = PlayerTransform();
+
+        if (pt == null)
+            return;
         // interact with player
-        float distP = Vector2.Distance(PlayerTransform().position, transform.position);
+        float distP = Vector2.Distance(pt.position, transform.position);
 
         if (grabbable.captured != _pulled) {
             if (grabbable.captured) {

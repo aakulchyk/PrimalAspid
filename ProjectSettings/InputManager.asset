@@ -405,3 +405,19 @@ InputManager:
     type: 0
     axis: 5
     joyNum: 16
+  - serializedVersion: 3
+    m_Name: Float
+    descriptiveName: 
+    descriptiveNegativeName: 
+    negativeButton: 
+    positiveButton: up
+    altNegativeButton: 
+    altPositiveButton: 
+    gravity: 10
+    dead: 0.1
+    sensitivity: 10
+    snap: 0
+    invert: 0
+    type: 2
+    axis: 8
+    joyNum: 0

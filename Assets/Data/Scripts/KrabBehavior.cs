@@ -57,8 +57,8 @@ public class KrabBehavior : NpcBehavior
         if (hit.collider != null) {
             if (hit.collider.tag == "Player") {
                 if (Time.time - lastJumpTime > 0.5f) {
-                    jump();
                     lastJumpTime = Time.time;
+                    jump();
                 }
             }
         }
@@ -66,7 +66,11 @@ public class KrabBehavior : NpcBehavior
 
     bool IsPlayerInRange()
     {
-        float distP = Vector2.Distance(PlayerTransform().position, transform.position);
+        Transform pt = Utils.GetPlayerTransform();
+        if (pt == null)
+            return false;
+
+        float distP = Vector2.Distance(pt.position, transform.position);
         return distP < _followRadius;
     }
 

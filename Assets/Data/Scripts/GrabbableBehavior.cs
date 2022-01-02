@@ -40,7 +40,11 @@ public class GrabbableBehavior : MonoBehaviour
     }
 
     protected bool CheckGrabability() {
-        Vector3 checkPosition = new Vector2(Utils.GetPlayerTransform().position.x, Utils.GetPlayerTransform().position.y-0.5f);
+        Transform pt = Utils.GetPlayerTransform();
+        if (pt == null)
+            return false;
+
+        Vector3 checkPosition = new Vector2(pt.position.x, pt.position.y-0.5f);
         Collider2D col = gameObject.GetComponentInParent<Collider2D>();
 
         if (col) {

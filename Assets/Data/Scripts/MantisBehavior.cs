@@ -66,6 +66,8 @@ public class MantisBehavior : NpcBehavior
         }
 
         Transform pt = Utils.GetPlayerTransform();
+        if (pt == null)
+            return;
 
         float distP = Vector2.Distance(pt.position, transform.position);
         if (distP < _followRadius && !idle)

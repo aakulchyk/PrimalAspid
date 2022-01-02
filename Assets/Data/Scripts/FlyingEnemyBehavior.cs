@@ -89,6 +89,9 @@ public class FlyingEnemyBehavior : NpcBehavior
 
         Transform pt = PlayerTransform();
 
+        if (pt == null)
+            return;
+
         //
         float distP = Vector2.Distance(pt.position, transform.position);
         _chasingPlayer = _followRadius>distP  &&  checkAccessibility(pt) && !isDead;
@@ -144,7 +147,6 @@ public class FlyingEnemyBehavior : NpcBehavior
     }
    protected override void die()
    {
-       //anim.SetTrigger("die");
        base.die();
        Destroy(this.gameObject, 0.6f);
    }    

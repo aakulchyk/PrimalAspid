@@ -25,7 +25,10 @@ public static class Utils
         if (_playerTransform)
             return _playerTransform;
         
-        _playerTransform = GameObject.FindWithTag("Player").transform;
+        GameObject player = GameObject.FindWithTag("Player"); 
+        if (!player)
+            return null;
+        _playerTransform = player.transform;
         if (!_playerTransform) 
             _playerTransform = GetPlayer().gameObject.transform;
 
