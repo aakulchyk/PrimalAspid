@@ -2,6 +2,9 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
+using System.Collections;
+using System.Collections.Generic;
+
 using System;
 using System.Text;
 using System.Collections;
@@ -26,6 +29,7 @@ public class PlayerControl : MonoBehaviour
     private bool _isDashing = false;
 
     private bool _isPlayingWalkSound = false;
+    private bool _isPlayingFloatSound = false;
     public bool _isGrounded = false;
 
     public AudioClip clip_hurt;
@@ -38,6 +42,7 @@ public class PlayerControl : MonoBehaviour
     public AudioClip clip_dash;
     public AudioClip clip_swing;
     public AudioClip clip_swing_crack;
+    public AudioClip clip_float;
 
     public const int INITIAL_HP = 2;
     public const float FLAP_MIN_TIMEOUT = 0.3f;
@@ -67,6 +72,8 @@ public class PlayerControl : MonoBehaviour
     private bool _jumpStarted = false;
 
     private bool _tailHitImpulse = false;
+
+    private bool _prevInvulnerable = false;
 
     
     private Game game = null;
@@ -289,6 +296,20 @@ public class PlayerControl : MonoBehaviour
             }
             _isMoving = false;
         }
+
+        if (_prevInvulnerable != invulnerable) {
+            _prevInvulnerable = invulnerable;
+
+            if (!invulnerable) {
+                //List<Collider2D> results;
+                Collider2D[] results = new Collider2D[8];
+                Physics2D.OverlapCollider(GetComponent<CapsuleCollider2D>(), new ContactFilter2D(), results);
+
+                foreach(var collider in results) {
+                    ProcessCollisionWithCollider(collider, 0);
+                }
+            }
+        }
     }
 
     void FixedUpdate()
@@ -311,6 +332,11 @@ public class PlayerControl : MonoBehaviour
         if (flap_button_triggered && !grabber.IsGrabbing()) {
             FinishTurnIfStarted();
             bool stillCoyoteTime = Time.time - jumpCoyoteTimeStarted < COYOTE_TIME_SEC;
+
+            if (grabber.IsHanging() && moveY<0) {
+                JumpOffHanger();
+            }
+            else
             if (_isGrounded || grabber.IsWallJumpPossible() || grabber.IsHangingOnCeiling() || stillCoyoteTime ||
                 (grabber.IsPulling() && grabber.TryGetCurrentGrabbable().isGrounded())) {
                 StartJump();
@@ -328,7 +354,7 @@ public class PlayerControl : MonoBehaviour
         
         if (body.velocity.y<0f) {
             float f_axis = Input.GetAxisRaw("Float");
-            bool floatPressed = (f_axis>0.5f || f_axis < -0.5f) || Input.GetKey(KeyCode.UpArrow) || Input.GetKey(KeyCode.W);
+            bool floatPressed = (f_axis>0.5f || f_axis < -0.5f) || Input.GetKey(KeyCode.LeftShift) || Input.GetKey(KeyCode.RightShift);
             //bool floatPressed = Input.GetButton("Float");//moveY > 0;
             if (!floatPressed) {
                 //body.gravityScale = _gravityScale;
@@ -336,11 +362,19 @@ public class PlayerControl : MonoBehaviour
                     body.velocity += Vector2.up * Physics2D.gravity.y * 2.5f * Time.deltaTime;
             } else {
                 //body.gravityScale = _gravityScale / 2.5f;
-                if (body.velocity.y < -10.0f)
-                    body.velocity = new Vector2(body.velocity.x, -10.0f);
+                if (body.velocity.y < -8.5f) 
+                    body.velocity = new Vector2(body.velocity.x, -8.5f);
+                _isPlayingFloatSound = true;
+                if (!sounds.isPlaying)
+                    sounds.PlayOneShot(clip_float);
             }
             //Debug.Log("velocity: " + body.velocity);
             anim.SetBool("IsFloating", floatPressed);
+
+            if (!floatPressed && _isPlayingFloatSound && sounds.isPlaying) {
+                _isPlayingFloatSound = false;
+                sounds.Stop();
+            }
         } /*else 
             body.gravityScale = _gravityScale;*/
         else if (_jumpStarted && !Input.GetButton("Flap")) {
@@ -516,6 +550,20 @@ public class PlayerControl : MonoBehaviour
         _flapStarted = false;
     }
 
+    void JumpOffHanger()
+    {
+        flap_button_triggered = false;
+        if (grabber.IsHangingOnWall()) {
+            grabber.endHangOnWall();   
+        }       
+
+        if (grabber.IsHangingOnCeiling()) {
+            grabber.endHangOnCeiling();   
+        }
+
+        sounds.PlayOneShot(clip_jump);
+    }
+
     void StartJump()
     {
         if (_jumpStarted || _flapStarted)
@@ -584,6 +632,9 @@ public class PlayerControl : MonoBehaviour
                 //downTime = Time.time - lastFlapTime;
                 //Debug.Log("UpTime: " + upTime + ", DownTime: " + downTime);
                 anim.SetTrigger("Land");
+
+                if (sounds.isPlaying)
+                    sounds.Stop();
                 sounds.PlayOneShot(clip_land);
                 _isPlayingWalkSound = false;
             } else {
@@ -596,19 +647,21 @@ public class PlayerControl : MonoBehaviour
 
     void OnCollisionEnter2D(Collision2D collision)
     {
-        Collider2D collider = collision.collider;
+        ProcessCollisionWithCollider(collision.collider, collision.relativeVelocity.magnitude);
+    }
 
+    private void ProcessCollisionWithCollider(Collider2D collider, float magnitude) {
         if (invulnerable == true)
             return;
 
         if (collider.tag == "Boulder") {
-            if (collision.relativeVelocity.magnitude > 8) {
+            if (magnitude > 8) {
                 hurt(Vector2.zero);
             }
         }
 
         if (collider.tag == "Spike") {
-            hurt(new Vector2(0, 2500f));
+            hurt(new Vector2(0, 3000f));
             PlayerStats.PartlyRestoreStamina(5);
         }
 

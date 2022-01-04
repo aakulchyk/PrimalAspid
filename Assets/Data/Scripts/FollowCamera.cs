@@ -89,7 +89,8 @@ public class FollowCamera : MonoBehaviour {
             }
 
         } else {
-            target = GameObject.FindWithTag("Player").transform;
+            target = Utils.GetPlayerTransform();
+            
         }
     }
 

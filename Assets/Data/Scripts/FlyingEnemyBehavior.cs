@@ -58,9 +58,7 @@ public class FlyingEnemyBehavior : NpcBehavior
             }
         }
         
-        
         return accessible;
-        
     }
 
     // Update is called once per frame
@@ -71,7 +69,6 @@ public class FlyingEnemyBehavior : NpcBehavior
         }
 
         if (_knockback > 0) {
-            Debug.Log("Fly frame of knockback " + body.velocity.x);
             moveX = body.velocity.x;
             --_knockback;
         } else {
@@ -92,18 +89,15 @@ public class FlyingEnemyBehavior : NpcBehavior
         if (pt == null)
             return;
 
-        //
         float distP = Vector2.Distance(pt.position, transform.position);
         _chasingPlayer = _followRadius>distP  &&  checkAccessibility(pt) && !isDead;
 
         moveX = _chasingPlayer ? GetVectorToPlayer().x*moveSpeed : 0.0f;
         moveY = _chasingPlayer ? GetVectorToPlayer().y*moveSpeed : 0.0f;
 
-        
         if (isDead) return;
 
         // interact with player
-
         if (_chasingPlayer) {
             if (pt.position.x > transform.position.x && !faceRight) {
                 flip();
@@ -123,7 +117,6 @@ public class FlyingEnemyBehavior : NpcBehavior
                     sounds.Stop();
                     sounds.Play();
                 }
-
             } else {
 
                 if (!prev_captured) {
