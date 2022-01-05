@@ -160,10 +160,10 @@ TextureImporter:
       name: PC-tailhit_4
       rect:
         serializedVersion: 2
-        x: 1126
+        x: 1064
         y: 1050
-        width: 465
-        height: 325
+        width: 523
+        height: 344
       alignment: 9
       pivot: {x: 0.17, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -223,12 +223,12 @@ TextureImporter:
       name: PC-tailhit_5
       rect:
         serializedVersion: 2
-        x: 1093
-        y: 541
-        width: 498
-        height: 300
+        x: 1025
+        y: 535
+        width: 571
+        height: 346
       alignment: 9
-      pivot: {x: 0.2, y: 0}
+      pivot: {x: 0.15, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -267,10 +267,10 @@ TextureImporter:
         serializedVersion: 2
         x: 5
         y: 34
-        width: 346
-        height: 303
+        width: 534
+        height: 307
       alignment: 9
-      pivot: {x: 0.3, y: 0}
+      pivot: {x: 0.2, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []

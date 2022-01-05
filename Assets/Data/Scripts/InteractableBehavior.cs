@@ -6,7 +6,6 @@ using UnityEngine;
 public class InteractableBehavior : MonoBehaviour
 {
     
-    private Transform playerTransform;
     private GameObject canvas = null;
 
     public float interactRadius = 3f;
@@ -21,10 +20,6 @@ public class InteractableBehavior : MonoBehaviour
 
     void Start()
     {
-
-
-        playerTransform = GameObject.FindWithTag("Player").transform;
-
         Transform t = transform.Find("Canvas");
         if (t) {
             canvas = t.gameObject;
@@ -37,7 +32,7 @@ public class InteractableBehavior : MonoBehaviour
     void Update()
     {
         if (canvas) {
-            float pDist = Vector2.Distance(playerTransform.position, transform.position); 
+            float pDist = Vector2.Distance(Utils.GetPlayerTransform().position, transform.position); 
             openForDialogue = (pDist < interactRadius && active);
             canvas.SetActive(openForDialogue);
         }

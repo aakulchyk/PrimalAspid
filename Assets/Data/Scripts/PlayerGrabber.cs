@@ -36,6 +36,7 @@ public class PlayerGrabber : MonoBehaviour
     private float grabCooldownTimeStarted;
 
     private float wallJumpCoyoteTimeStarted;
+    private float hangerJumpCoyoteTimeStarted;
 
     private Transform nearestHanger = null;
     private Collider2D _touchingWall = null;
@@ -58,7 +59,6 @@ public class PlayerGrabber : MonoBehaviour
     private bool dash_button_triggered = false;
     private bool prev_dash = false;
     private bool dash_hold = false;
-
 
     private int moveX=0, moveY=0;
     private int prev_moveX = 0, prev_moveY = 0;
@@ -97,7 +97,6 @@ public class PlayerGrabber : MonoBehaviour
 
         grab_button_hold = Input.GetButton("Grab");
 
-
         float d_axis = Input.GetAxisRaw("Dash");
         dash_hold = (d_axis>0.8f || d_axis < -0.8f) || Input.GetKey(KeyCode.G);
         if (!prev_dash && dash_hold) {
@@ -105,26 +104,21 @@ public class PlayerGrabber : MonoBehaviour
         }
 
         prev_dash = dash_hold;
-
     }
+
     void FixedUpdate()
     {
         bool direction_triggered = (prev_moveX==0 && prev_moveY==0) && (moveX!=0 || moveY!=0);
         //if (grab_button_triggered || (grab_button_hold && direction_triggered)) {
         if (dash_button_triggered || (dash_hold && direction_triggered)) {
             //grab_button_triggered = false;
-
-            //if ()
-            
+            // gran dash            
             if (!IsHanging() && !_isPulling && !playerMainControl._attackStarted) {
-                if (moveX != 0) {
-                    //StartCoroutine(shortInvulnerability());
+                if (moveX != 0 && PlayerStats.SideGrabEnabled) {
                     startSideGrab();
-                } else if (moveY>0) {
-                    //StartCoroutine(shortInvulnerability());
+                } else if (moveY>0 && PlayerStats.UpGrabEnabled) {
                     startUpwardGrab();
                 } else if (moveY<0) {
-                    //StartCoroutine(shortInvulnerability());
                     startDownwardGrab();
                 }
                 dash_button_triggered = false;
@@ -142,29 +136,37 @@ public class PlayerGrabber : MonoBehaviour
             }
         }
 
-        if (dash_button_triggered) {
-            if (_isHangingOnWall) {
-                endHangOnWall();
-                /*if (moveX!=0) {
-                    if ((_isWallOnRight && moveX < 0) || (!_isWallOnRight && moveX > 0)) {
-                        Debug.Log("StartSideGravb?");
-                        playerMainControl.MakeInstantTurn();
-                        startSideGrab();
-                        _doNotGrabRightNow_kostyl = true;
-                    }
-                }*/
-            }
+        // if (dash_button_triggered) {
+        //     if (_isHangingOnWall) {
+        //         endHangOnWall();
+        //         /*if (moveX!=0) {
+        //             if ((_isWallOnRight && moveX < 0) || (!_isWallOnRight && moveX > 0)) {
+        //                 Debug.Log("StartSideGrab?");
+        //                 playerMainControl.MakeInstantTurn();
+        //                 startSideGrab();
+        //                 _doNotGrabRightNow_kostyl = true;
+        //             }
+        //         }*/
+        //     }
 
-            if (_isHangingUpsideDown)
-                endHangOnCeiling();
+        //     if (_isHangingUpsideDown)
+        //         endHangOnCeiling();
 
-            if (_isPulling)
-                releaseBody();
+        //     if (_isPulling)
+        //         releaseBody();
 
-            dash_button_triggered = false;
+        //     dash_button_triggered = false;
+        // }
+
+        bool stillCoyoteTime = Time.time - hangerJumpCoyoteTimeStarted < GRAB_COYOTE_TIME_SEC;
+
+        bool NotHangingConditions = playerMainControl._attackStarted || stillCoyoteTime;    
+        Physics2D.IgnoreLayerCollision(LayerMask.NameToLayer("PC"), LayerMask.NameToLayer("Hanger"), moveY <= 0 || NotHangingConditions);
+
+        if (moveY > 0 && nearestHanger) {
+            Debug.Log("Start hang on ceiling");
+            startHangOnCeiling();
         }
-
-
         
 
         /*if (activeGrabbable && IsGrabbing()) {
@@ -185,7 +187,6 @@ public class PlayerGrabber : MonoBehaviour
         //if (Input.GetButton("Grab")) {
         //if (dash_hold) {
             if (IsHanging()) {
-                //Debug.Log("freeze pos");
                 body.constraints |= RigidbodyConstraints2D.FreezePosition;
             }
         //}
@@ -254,11 +255,14 @@ public class PlayerGrabber : MonoBehaviour
             
             if (_isSideGrabbing || stillCoyoteTime)
                 startHangOnWall();
+            else if ((_isWallOnRight && moveX > 0) || (!_isWallOnRight && moveX < 0))
+                startHangOnWall();
             else
                 Debug.Log("Collided with Wall");
         }
 
         if (collider.gameObject.layer == LayerMask.NameToLayer("Hanger")) {
+            Debug.Log("nearestHanger ON");
             bool stillCoyoteTime = Time.time - grabCoyoteTimeStarted < (GRAB_COYOTE_TIME_SEC*2);
             nearestHanger = collider.gameObject.transform;
             if (_isUpwardGrabbing || stillCoyoteTime)
@@ -275,6 +279,7 @@ public class PlayerGrabber : MonoBehaviour
             _touchingWall = null;
         }
         if (collider.gameObject.layer == LayerMask.NameToLayer("Hanger")) {
+            Debug.Log("nearestHanger OFF");
             nearestHanger = null;
         } 
     }
@@ -351,6 +356,7 @@ public class PlayerGrabber : MonoBehaviour
     public void startHangOnWall()
     {
         Debug.Log("Start Hang");
+        playerMainControl.FinishTurnIfStarted();
         playerMainControl.InterruptFlyOrJump();
         _isSideGrabbing = false;
         _isHangingOnWall = true;
@@ -414,9 +420,12 @@ public class PlayerGrabber : MonoBehaviour
 
     public void startHangOnCeiling()
     {
-        endUpwardGrab();
+        playerMainControl.InterruptFlyOrJump();
+        if (_isUpwardGrabbing)
+            endUpwardGrab();
+        
         if (sounds.isPlaying)
-            sounds.Stop();    
+            sounds.Stop();
         sounds.PlayOneShot(clip_clutch);
         anim.SetBool("IsHanging", true);
 
@@ -435,6 +444,7 @@ public class PlayerGrabber : MonoBehaviour
         anim.SetBool("IsHanging", false);
         _isHangingUpsideDown = false;
         body.constraints &= ~RigidbodyConstraints2D.FreezePosition;
+        hangerJumpCoyoteTimeStarted = Time.time;
     }
 
     public void startDownwardGrab()
