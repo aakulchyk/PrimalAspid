@@ -65,6 +65,8 @@ public class PlayerGrabber : MonoBehaviour
 
     private float pWidth, pHeight;
 
+    private Transform _attachedTo = null;
+
     void Awake()
     {
         body = GetComponent<Rigidbody2D>();
@@ -186,9 +188,9 @@ public class PlayerGrabber : MonoBehaviour
 
         //if (Input.GetButton("Grab")) {
         //if (dash_hold) {
-            if (IsHanging()) {
+            /*if (IsHanging()) {
                 body.constraints |= RigidbodyConstraints2D.FreezePosition;
-            }
+            }*/
         //}
         /*else {
             if (_isHangingOnWall)
@@ -356,22 +358,40 @@ public class PlayerGrabber : MonoBehaviour
     public void startHangOnWall()
     {
         Debug.Log("Start Hang");
+        
+
+        var wall = _touchingWall.gameObject.GetComponent<StickyWallBehavior>();
+        if (wall == null)
+            return;
+
+        wall.AttachBody(this.gameObject, _isWallOnRight);
+        //body.velocity = Vector2.zero;
+        _isHangingOnWall = true;    
+        _attachedTo = _touchingWall.transform;
+
         playerMainControl.FinishTurnIfStarted();
         playerMainControl.InterruptFlyOrJump();
         _isSideGrabbing = false;
-        _isHangingOnWall = true;
+        
         if (sounds.isPlaying)
             sounds.Stop();
         sounds.PlayOneShot(clip_clutch);
         anim.SetBool("IsHangingOnWall", true);
         body.velocity = Vector2.zero;
+
     }
 
     public void endHangOnWall()
     {
         Debug.Log("End Hang");
+
+        var wall = _attachedTo.gameObject.GetComponent<StickyWallBehavior>();
+
+        if (wall) {
+            wall.DetachBody();
+        }
+
         _isHangingOnWall = false;
-        body.constraints &= ~RigidbodyConstraints2D.FreezePosition;
         anim.SetBool("IsHangingOnWall", false);
         wallJumpCoyoteTimeStarted = Time.time;
     }
@@ -429,13 +449,24 @@ public class PlayerGrabber : MonoBehaviour
         sounds.PlayOneShot(clip_clutch);
         anim.SetBool("IsHanging", true);
 
-        BoxCollider2D bc = nearestHanger.gameObject.GetComponent<BoxCollider2D>();
-        float w = bc.size.x;
-        transform.position = nearestHanger.position + new Vector3(0, -pHeight*1.5f, 0);
-        body.velocity = Vector2.zero;
-        body.constraints |= RigidbodyConstraints2D.FreezePosition;
+        var hanger = nearestHanger.gameObject.GetComponent<HangerBehavior>();
 
-        _isHangingUpsideDown = true;
+        if (hanger) {
+            hanger.AttachBody(this.gameObject);
+            body.velocity = Vector2.zero;
+            _isHangingUpsideDown = true;
+            _attachedTo = nearestHanger;
+        }
+
+
+        var destroyable = nearestHanger.gameObject.GetComponent<DestroyablePlatform>();
+
+        if (destroyable) {
+            Debug.Log("Destroyable");
+            if (!destroyable.isCollapsing) {
+                destroyable.StartCollapsing();
+            }
+        }
     }
 
     public void endHangOnCeiling()
@@ -443,8 +474,13 @@ public class PlayerGrabber : MonoBehaviour
         dash_button_triggered = false;
         anim.SetBool("IsHanging", false);
         _isHangingUpsideDown = false;
-        body.constraints &= ~RigidbodyConstraints2D.FreezePosition;
+
         hangerJumpCoyoteTimeStarted = Time.time;
+
+        var hanger = _attachedTo.gameObject.GetComponent<HangerBehavior>();
+        if (hanger) {
+            hanger.DetachBody();
+        }
     }
 
     public void startDownwardGrab()

@@ -13,12 +13,11 @@ public class DestroyablePlatform : MonoBehaviour
     public AudioClip clip_rumble;
     public AudioClip clip_crack;
 
-    public void StartCoppapsing()
+    public void StartCollapsing()
     {
         isCollapsing = true;
         GetComponent<AudioSource>().enabled = true;
-        //sounds.Play();
-        StartCoroutine(CollapseAfterDelay(0.8f));
+        StartCoroutine(CollapseAfterDelay(1));
     }
 
     IEnumerator CollapseAfterDelay(float sec) {
@@ -30,6 +29,12 @@ public class DestroyablePlatform : MonoBehaviour
     }
 
     public void OnCollapsed() {
+        var joint = GetComponent<FixedJoint2D>();
+        if (joint) {
+            if (joint.connectedBody) {
+                Utils.GetPlayerGrabber().endHangOnCeiling();
+            }
+        }
         Destroy(this.gameObject, 0.01f);
     }
 

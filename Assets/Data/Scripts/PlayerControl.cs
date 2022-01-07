@@ -87,7 +87,7 @@ public class PlayerControl : MonoBehaviour
     private bool _attackActivePhase = false;
 
     private LayerMask groundLayerMask;
-    private int playerLayer, enemyLayer, npcLayer;
+    private int playerLayer, enemyLayer, npcLayer, ignoreRaycastLayer;
 
     public float pWidth, pHeight;
 
@@ -104,12 +104,16 @@ public class PlayerControl : MonoBehaviour
     private bool dash_button_triggered = false;
     private bool prev_dash = false;
 
+    private bool _isOnPlatform = false;
+    private Rigidbody2D platformBody = null;
+
     void Awake()
     {
         groundLayerMask = LayerMask.GetMask("Ground");
         playerLayer = LayerMask.NameToLayer("PC");
         enemyLayer = LayerMask.NameToLayer("Enemy");
         npcLayer = LayerMask.NameToLayer("NPC");
+        ignoreRaycastLayer = LayerMask.NameToLayer("Ignore Raycast");
     }
 
     private Game GetGame()
@@ -154,6 +158,7 @@ public class PlayerControl : MonoBehaviour
 
         Physics2D.IgnoreLayerCollision(playerLayer, npcLayer, true);
         Physics2D.IgnoreLayerCollision(playerLayer, LayerMask.NameToLayer("Hanger"), true);
+        Physics2D.IgnoreLayerCollision(playerLayer, ignoreRaycastLayer, true);
 
         body.gravityScale = _gravityScale;
         body.mass = _mass;
@@ -352,6 +357,10 @@ public class PlayerControl : MonoBehaviour
             body.velocity = new Vector2 (moveSpeedX, body.velocity.y);
 
         
+        if (_isGrounded && platformBody) {
+            body.velocity += new Vector2(platformBody.velocity.x, 0);
+        }
+
         if (body.velocity.y<0f) {
             float f_axis = Input.GetAxisRaw("Float");
             bool floatPressed = (f_axis>0.5f || f_axis < -0.5f) || Input.GetKey(KeyCode.LeftShift) || Input.GetKey(KeyCode.RightShift);
@@ -621,7 +630,7 @@ public class PlayerControl : MonoBehaviour
     void checkGrounded()
     {
         Vector3 v1 = new Vector3(0, 1, 0);
-        RaycastHit2D hit = Physics2D.Raycast(transform.position + Vector3.up, Vector2.down, 1.0f, groundLayerMask);
+        RaycastHit2D hit = Physics2D.Raycast(transform.position + Vector3.up, Vector2.down, 1.3f, groundLayerMask);
 
         
         bool gr = (hit.collider != null);
@@ -651,8 +660,15 @@ public class PlayerControl : MonoBehaviour
     }
 
     private void ProcessCollisionWithCollider(Collider2D collider, float magnitude) {
-        if (invulnerable == true)
+        if (collider == null || invulnerable == true)
             return;
+
+
+        if (collider.tag == "Ground" || collider.tag == "StickyWall") {
+            //collider.gameObject.transform.SetParent(transform, true);
+            transform.SetParent(collider.gameObject.transform, true);
+            platformBody = collider.gameObject.GetComponent<Rigidbody2D>();
+        }
 
         if (collider.tag == "Boulder") {
             if (magnitude > 8) {
@@ -674,8 +690,16 @@ public class PlayerControl : MonoBehaviour
         if (collider.tag == "DestroyablePlatform") {
             DestroyablePlatform pl = collider.gameObject.GetComponent<DestroyablePlatform>();
             if (pl && !pl.isCollapsing) {
-                pl.StartCoppapsing();
+                pl.StartCollapsing();
             }
+        }
+    }
+
+    void OnCollisionExit2d(Collision2D collision)
+    {
+        if (collision.collider.tag == "Ground" || collision.collider.tag == "StickyWall") {
+            transform.parent = null;
+            platformBody = null;
         }
     }
 

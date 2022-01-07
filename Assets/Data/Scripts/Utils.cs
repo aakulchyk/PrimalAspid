@@ -4,6 +4,7 @@ using UnityEngine;
 public static class Utils
 {
     private static PlayerControl _player = null;
+    private static PlayerGrabber _playerGrabber = null;
     private static Transform _playerTransform = null;
 
     public static PlayerControl GetPlayer()
@@ -19,6 +20,21 @@ public static class Utils
 
         return _player;
     }
+
+    public static PlayerGrabber GetPlayerGrabber()
+    {
+        if (_playerGrabber)
+            return _playerGrabber;
+
+        _playerGrabber = (PlayerGrabber)GameObject.FindObjectOfType(typeof(PlayerGrabber));
+
+        if (!_playerGrabber) {
+            Debug.LogError("Error! Cannot find PlayerGrabber !!!");
+        }
+
+        return _playerGrabber;
+    }
+
 
     public static Transform GetPlayerTransform()
     {

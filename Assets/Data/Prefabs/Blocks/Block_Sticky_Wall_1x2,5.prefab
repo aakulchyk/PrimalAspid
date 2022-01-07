@@ -11,6 +11,9 @@ GameObject:
   - component: {fileID: 6348542613760241330}
   - component: {fileID: 7554805201324289398}
   - component: {fileID: 4056962999187586463}
+  - component: {fileID: 2757101265885031228}
+  - component: {fileID: 1883049816795748230}
+  - component: {fileID: 116142624012311854}
   m_Layer: 11
   m_Name: Block_Sticky_Wall_1x2,5
   m_TagString: StickyWall
@@ -109,3 +112,54 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 5.12, y: 12.803125}
   m_EdgeRadius: 0
+--- !u!50 &2757101265885031228
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4056279680523759166}
+  m_BodyType: 1
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 3
+--- !u!255 &1883049816795748230
+FixedJoint2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4056279680523759166}
+  m_Enabled: 0
+  serializedVersion: 4
+  m_EnableCollision: 0
+  m_ConnectedRigidBody: {fileID: 0}
+  m_BreakForce: Infinity
+  m_BreakTorque: Infinity
+  m_AutoConfigureConnectedAnchor: 0
+  m_Anchor: {x: 0, y: 0}
+  m_ConnectedAnchor: {x: 0, y: 0}
+  m_DampingRatio: 0
+  m_Frequency: 0
+--- !u!114 &116142624012311854
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4056279680523759166}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c4d28c6302435594e91ef9929d20df61, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
