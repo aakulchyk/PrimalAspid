@@ -27,6 +27,7 @@ public class NpcBehavior : MonoBehaviour
 
     public bool invulnerable = false;
 
+    [SerializeField]
     protected int _knockback = 0;
 
         
@@ -118,6 +119,15 @@ public class NpcBehavior : MonoBehaviour
 
         go.transform.position = gameObject.transform.position + new Vector3(0,1,0);
         go.transform.rotation = Quaternion.identity;
+    }
+
+    public bool CheckGrounded()
+    {
+        Vector3 pos = transform.position;
+        RaycastHit2D hit = Physics2D.Raycast(pos + Vector3.up, Vector3.down, 1.1f, LayerMask.GetMask("Ground"));
+        Debug.DrawLine(pos+Vector3.up, pos+Vector3.down*1.1f, Color.black, 0.02f, false);
+
+        return hit.collider != null;
     }
 
     protected Transform PlayerTransform()

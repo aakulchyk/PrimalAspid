@@ -23,6 +23,7 @@ TagManager:
   - HiddenRoomVeil
   - DestroyablePlatform
   - StickyWall
+  - MovingPlatform
   layers:
   - Default
   - TransparentFX
