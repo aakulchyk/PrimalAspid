@@ -70,8 +70,8 @@ public class HedgehogBehavior : NpcBehavior
         if (_knockback>0)
             return;
 
-        if (Math.Abs(moveX) > 0.01f && ! GetComponent<AudioSource>().isPlaying) {
-                GetComponent<AudioSource>().PlayOneShot(clip_crawl);
+        if (Math.Abs(moveX) > 0.01f && !sounds.isPlaying) {
+               sounds.PlayOneShot(clip_crawl);
         }
 
         // check ground ahead
@@ -122,12 +122,12 @@ public class HedgehogBehavior : NpcBehavior
 
     void PlayBristleSound()
     {
-        GetComponent<AudioSource>().PlayOneShot(clip_bristle);
+       sounds.PlayOneShot(clip_bristle);
     }
 
     void PlayUnbristleSound()
     {
-        GetComponent<AudioSource>().PlayOneShot(clip_unbristle);
+       sounds.PlayOneShot(clip_unbristle);
     }
 
     void onAnticipationFinished()

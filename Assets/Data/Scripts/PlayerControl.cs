@@ -107,6 +107,8 @@ public class PlayerControl : MonoBehaviour
     private bool _isOnPlatform = false;
     private Rigidbody2D platformBody = null;
 
+    private Transform thisTransform = null;
+
     void Awake()
     {
         groundLayerMask = LayerMask.GetMask("Ground");
@@ -125,9 +127,11 @@ public class PlayerControl : MonoBehaviour
     {
         Debug.Log("LOAD");
 
+        thisTransform = this.transform;
+
         if (PlayerStats.playerSpawnCoord != Vector2.zero) {
             Debug.Log("Spawn PC at " + PlayerStats.playerSpawnCoord);
-            transform.position = PlayerStats.playerSpawnCoord;
+            thisTransform.position = PlayerStats.playerSpawnCoord;
         }
 
         isDead = false;
@@ -164,7 +168,7 @@ public class PlayerControl : MonoBehaviour
         body.mass = _mass;
         body.drag = _drag;
 
-        Transform t = transform.Find("HitBox");
+        Transform t = thisTransform.Find("HitBox");
         if (t) {
             _attack = t.gameObject.GetComponent<PcAttack>();
         }
@@ -501,8 +505,8 @@ public class PlayerControl : MonoBehaviour
 
     void flip()
     {
-        Vector3 scale = transform.localScale;
-        transform.localScale = new Vector3(-1*scale.x, scale.y, scale.z);
+        Vector3 scale = thisTransform.localScale;
+        thisTransform.localScale = new Vector3(-1*scale.x, scale.y, scale.z);
     }
 
     void startFlap()
@@ -630,7 +634,7 @@ public class PlayerControl : MonoBehaviour
     void checkGrounded()
     {
         Vector3 v1 = new Vector3(0, 1, 0);
-        RaycastHit2D hit = Physics2D.Raycast(transform.position + Vector3.up, Vector2.down, 1.3f, groundLayerMask);
+        RaycastHit2D hit = Physics2D.Raycast(thisTransform.position + Vector3.up, Vector2.down, 1.3f, groundLayerMask);
 
         
         bool gr = (hit.collider != null);
@@ -638,8 +642,6 @@ public class PlayerControl : MonoBehaviour
         if (gr != _isGrounded) {
             anim.SetBool("IsGrounded", gr);
             if (gr) {
-                //downTime = Time.time - lastFlapTime;
-                //Debug.Log("UpTime: " + upTime + ", DownTime: " + downTime);
                 anim.SetTrigger("Land");
 
                 if (sounds.isPlaying)
@@ -666,7 +668,7 @@ public class PlayerControl : MonoBehaviour
 
         if (collider.tag == "Ground" || collider.tag == "StickyWall") {
             //collider.gameObject.transform.SetParent(transform, true);
-            transform.SetParent(collider.gameObject.transform, true);
+            thisTransform.SetParent(collider.gameObject.transform, true);
             platformBody = collider.gameObject.GetComponent<Rigidbody2D>();
         }
 
@@ -698,7 +700,7 @@ public class PlayerControl : MonoBehaviour
     void OnCollisionExit2d(Collision2D collision)
     {
         if (collision.collider.tag == "Ground" || collision.collider.tag == "StickyWall") {
-            transform.parent = null;
+            thisTransform.parent = null;
             platformBody = null;
         }
     }
