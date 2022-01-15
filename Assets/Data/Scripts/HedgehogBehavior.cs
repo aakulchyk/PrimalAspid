@@ -122,12 +122,14 @@ public class HedgehogBehavior : NpcBehavior
 
     void PlayBristleSound()
     {
-       sounds.PlayOneShot(clip_bristle);
+        if (!isDead)
+            sounds.PlayOneShot(clip_bristle);
     }
 
     void PlayUnbristleSound()
     {
-       sounds.PlayOneShot(clip_unbristle);
+       if (!isDead)
+            sounds.PlayOneShot(clip_unbristle);
     }
 
     void onAnticipationFinished()
@@ -155,17 +157,14 @@ public class HedgehogBehavior : NpcBehavior
                 sounds.PlayOneShot(clip_reflect);
             } else {
                 base.hurt(force, damageType);
-                //sounds.PlayOneShot(clip_hurt);
-                knockback(force);
             }
         }
-
-        
     }
    protected override void die()
    {
+        sounds.pitch = 1;
+        sounds.volume = 0.8f;
         base.die();
-        //GetComponent<ParticleSystem>().Play();
         Destroy(this.gameObject, 1f);
    }
 }

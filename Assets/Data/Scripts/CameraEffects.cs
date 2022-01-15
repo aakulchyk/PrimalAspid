@@ -36,10 +36,11 @@ public class CameraEffects : MonoBehaviour
         multiChannelPerlin.m_FrequencyGain += (0 - multiChannelPerlin.m_FrequencyGain) * Time.deltaTime * (10 - shakeLength);
     }
 
-    public void Shake(float shake, float length)
+    public void Shake(float amplitude, float shake, float length)
     {
         Debug.Log("Shake");
         shakeLength = length;
+        multiChannelPerlin.m_AmplitudeGain = amplitude;
         multiChannelPerlin.m_FrequencyGain = shake;
     }
     

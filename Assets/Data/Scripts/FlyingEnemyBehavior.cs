@@ -20,6 +20,7 @@ public class FlyingEnemyBehavior : NpcBehavior
     void Start()
     {
         BaseInit();
+        Physics2D.IgnoreLayerCollision(LayerMask.NameToLayer("Enemy"), LayerMask.NameToLayer("Hanger"), true);
     }
 
     protected override bool checkAccessibility(Transform wp)
@@ -137,6 +138,8 @@ public class FlyingEnemyBehavior : NpcBehavior
     public override void hurt(Vector2 force, Types.DamageType damageType = Types.DamageType.Spikes) {
         base.hurt(force, damageType);
     }
+
+
    protected override void die()
    {
        base.die();

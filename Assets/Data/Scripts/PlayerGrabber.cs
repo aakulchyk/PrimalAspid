@@ -110,8 +110,24 @@ public class PlayerGrabber : MonoBehaviour
 
     void FixedUpdate()
     {
+        if (dash_button_triggered) {
+            if (!_isPulling && activeGrabbable && !_cannotGrab) {
+                /*if (_isGrounded) {
+                    throwByImpulse(new Vector2(0, 2000), false);            
+                    StartCoroutine(GrabBodyAfterShortDelay(activeGrabbable, 0.15f));
+                } else {*/
+                    grabBody(activeGrabbable);
+                //}
+                dash_button_triggered = false;
+            } else if (_isPulling)
+                releaseBody();
+        }
+
+
         bool direction_triggered = (prev_moveX==0 && prev_moveY==0) && (moveX!=0 || moveY!=0);
         //if (grab_button_triggered || (grab_button_hold && direction_triggered)) {
+
+
         if (dash_button_triggered || (dash_hold && direction_triggered)) {
             //grab_button_triggered = false;
             // gran dash            
@@ -125,18 +141,9 @@ public class PlayerGrabber : MonoBehaviour
                 }
                 dash_button_triggered = false;
             }
-
-            // TODO rethink mechanic
-            if (!_isPulling && activeGrabbable && !_cannotGrab) {
-                /*if (_isGrounded) {
-                    throwByImpulse(new Vector2(0, 2000), false);            
-                    StartCoroutine(GrabBodyAfterShortDelay(activeGrabbable, 0.15f));
-                } else {*/
-                    grabBody(activeGrabbable);
-                //}
-                dash_button_triggered = false;
-            }
         }
+
+        
 
         // if (dash_button_triggered) {
         //     if (_isHangingOnWall) {

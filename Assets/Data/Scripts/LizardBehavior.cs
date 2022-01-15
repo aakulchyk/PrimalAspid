@@ -47,7 +47,12 @@ public class LizardBehavior : NpcBehavior
         if (isDead)
             return;
 
+        bool oldGr = isGrounded;
         isGrounded = CheckGrounded();
+
+        if (oldGr != isGrounded )
+            onGroundedChanged();
+
         bool pInRange = IsPlayerInRange();
 
         if (!_isDashing && !_isAnticipating && pInRange && isGrounded && _knockback<=0) {
@@ -56,8 +61,7 @@ public class LizardBehavior : NpcBehavior
             anim.SetBool("isDashing", true);
         }
 
-        bool isNotAbleToMove = isDead || _isAnticipating;
-        float moveX = isNotAbleToMove ? 0f : faceRight ? _moveSpeed : -_moveSpeed;
+        float moveX = _isAnticipating ? 0f : faceRight ? _moveSpeed : -_moveSpeed;
 
         if (_knockback > 0) {
             moveX = body.velocity.x;
@@ -144,28 +148,38 @@ public class LizardBehavior : NpcBehavior
         body.velocity = new Vector2(faceRight ? 50 : -50, 12);
     }
 
+    void onGroundedChanged()
+    {
+        if (isGrounded) {
+            _isDashing = false;
+            anim.SetBool("isDashing", false);
+        }
+    }
+
     protected override void processCollision(Collision2D hit)
     {
-        Collider2D collider = hit.collider;
+    /*    Collider2D collider = hit.collider;
         if (collider.gameObject.layer == LayerMask.NameToLayer("Ground")) {
             _isDashing = false;
             anim.SetBool("isDashing", false);
         }
-
+*/
         base.processCollision(hit);
     }
 
     
     public override void hurt(Vector2 force, Types.DamageType damageType = Types.DamageType.Spikes) {
         if (isDead) return;
-        GetComponent<ParticleSystem>().Play();
+
+        _isAnticipating = false;
+        anim.SetBool("isDashing", false);
+        
         if (damageType == Types.DamageType.Spikes) {
             _hp = -1;
         }
 
         base.hurt(force, damageType);
-        knockback(force);
-        }
+    }
    protected override void die()
    {
         base.die();

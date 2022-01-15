@@ -30,7 +30,8 @@ public class NpcBehavior : MonoBehaviour
     [SerializeField]
     protected int _knockback = 0;
 
-    [SerializeField] private ParticleSystem damageParticles;
+    [SerializeField] protected ParticleSystem damageParticles;
+    [SerializeField] protected GameObject deathParticles;
 
         
     protected void BaseInit()
@@ -75,24 +76,23 @@ public class NpcBehavior : MonoBehaviour
 
         if (isDead) return;
 
-        if (damageParticles) {
-            //damageParticles.Simulate(0);
-            damageParticles.Emit(10);
-        }
-
         if (Utils.GetPlayer().IsPulling() && Utils.GetPlayer().GetComponent<FixedJoint2D>().connectedBody == GetComponent<Rigidbody2D>()) {
             Utils.GetPlayer().releaseBody();
             Utils.GetPlayer().throwByImpulse(new Vector2 (GetVectorToPlayer().x, GetVectorToPlayer().y*20), true);
             invulnerable = true;
         }
 
-        Debug.Log("NPC Hurt");
-        knockback(force);
+        //Debug.Log("NPC Hurt");
         if (--_hp < 0 && !isDead) {
             die();
         } else {
             anim.SetBool("hurt", true);
+            knockback(force);
             sounds.PlayOneShot(clip_hurt);
+        }
+
+        if (damageParticles) {
+            damageParticles.Emit(10);
         }
     }
 
@@ -107,6 +107,12 @@ public class NpcBehavior : MonoBehaviour
         sounds.PlayOneShot(clip_death);
         isDead = true;
         anim.SetTrigger("die");
+
+        if (deathParticles) {
+            deathParticles.SetActive(true);
+            deathParticles.transform.parent = transform.parent;
+            //deathParticles.Emit(1);
+        }
 
         if (collectiblePrefab) {
             StartCoroutine(dropCollectible());
