@@ -30,6 +30,8 @@ public class NpcBehavior : MonoBehaviour
     [SerializeField]
     protected int _knockback = 0;
 
+    [SerializeField] private ParticleSystem damageParticles;
+
         
     protected void BaseInit()
     {
@@ -72,6 +74,11 @@ public class NpcBehavior : MonoBehaviour
     public virtual void hurt(Vector2 force, Types.DamageType damageType = Types.DamageType.Spikes) {
 
         if (isDead) return;
+
+        if (damageParticles) {
+            //damageParticles.Simulate(0);
+            damageParticles.Emit(10);
+        }
 
         if (Utils.GetPlayer().IsPulling() && Utils.GetPlayer().GetComponent<FixedJoint2D>().connectedBody == GetComponent<Rigidbody2D>()) {
             Utils.GetPlayer().releaseBody();

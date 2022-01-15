@@ -18,8 +18,8 @@ public class PlayerGrabber : MonoBehaviour
     public AudioClip clip_clutch;
     public AudioClip clip_grab;
 
-    private bool _isHangingUpsideDown = false;
-    private bool _isHangingOnWall = false;
+    [SerializeField] private bool _isHangingUpsideDown = false;
+    [SerializeField] private bool _isHangingOnWall = false;
     private bool _isSideGrabbing = false;
     private bool _isDownwardGrabbing = false;
     private bool _isUpwardGrabbing = false;
@@ -65,7 +65,7 @@ public class PlayerGrabber : MonoBehaviour
 
     private float pWidth, pHeight;
 
-    private Transform _attachedTo = null;
+    [SerializeField] private Transform _attachedTo = null;
 
     void Awake()
     {

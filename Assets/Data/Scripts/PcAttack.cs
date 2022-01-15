@@ -28,8 +28,16 @@ public class PcAttack : MonoBehaviour
                 go.GetComponent<SpriteRenderer>().flipX = true;
             }
             go.GetComponent<Animator>().SetTrigger("hit");
-            Destroy(go, 2f);
+            Destroy(go, 1.5f);
+
+            
         }
+    }
+
+    public void ShakeCam()
+    {
+        if (player._isGrounded)
+            player.cameraEffects.Shake(400, 0.2f);
     }
 
     void OnTriggerEnter2D(Collider2D other) {
@@ -37,6 +45,7 @@ public class PcAttack : MonoBehaviour
             NpcBehavior behavior = other.gameObject.GetComponent<NpcBehavior>();
             Vector3 dir = (other.transform.position - player.transform.position).normalized;
             behavior.hurt(new Vector2(dir.x*60, 10), Types.DamageType.PcHit);
+            player.cameraEffects.Shake(1000, 0.4f);
             player.knockback(new Vector2(-dir.x*15f, 0));
         }
     }

@@ -135,8 +135,6 @@ public class FlyingEnemyBehavior : NpcBehavior
     }
 
     public override void hurt(Vector2 force, Types.DamageType damageType = Types.DamageType.Spikes) {
-        GetComponent<ParticleSystem>().Simulate(0);
-        GetComponent<ParticleSystem>().Play();
         base.hurt(force, damageType);
     }
    protected override void die()
