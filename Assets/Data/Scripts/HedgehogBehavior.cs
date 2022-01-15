@@ -154,19 +154,13 @@ public class HedgehogBehavior : NpcBehavior
             if (_isBristled) {
                 sounds.PlayOneShot(clip_reflect);
             } else {
-                sounds.PlayOneShot(clip_hurt);
+                base.hurt(force, damageType);
+                //sounds.PlayOneShot(clip_hurt);
                 knockback(force);
             }
-            return;
         }
 
-        if (_hp < 0 && !isDead) {
-            Debug.Log("Yozhik DIE!!!");
-            die();
-        } else {
-            anim.SetBool("hurt", true);
-            sounds.PlayOneShot(clip_hurt);
-        }
+        
     }
    protected override void die()
    {

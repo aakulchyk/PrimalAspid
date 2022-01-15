@@ -21,6 +21,7 @@ public class DestroyablePlatform : MonoBehaviour
     }
 
     IEnumerator CollapseAfterDelay(float sec) {
+        Utils.GetPlayer().cameraEffects.Shake(100, 1);
         GetComponent<Animator>().SetTrigger("rumble");
         yield return new WaitForSeconds(sec);
         GetComponent<AudioSource>().Stop();
@@ -29,6 +30,7 @@ public class DestroyablePlatform : MonoBehaviour
     }
 
     public void OnCollapsed() {
+        Utils.GetPlayer().cameraEffects.Shake(1000, 0.3f);
         var joint = GetComponent<FixedJoint2D>();
         if (joint) {
             if (joint.connectedBody) {

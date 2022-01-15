@@ -11,27 +11,25 @@ using System.Collections;
 
 public class PlayerControl : MonoBehaviour
 {
+    [Header ("Reference")]
     public Rigidbody2D body;
     private Animator anim;
     private Renderer _renderer;
 
     protected AudioSource sounds;
-    public bool faceRight;
-    public float _maxSpeed;
-    public float _gravityScale = 8f;
-    public float _mass = 2.5f;
-    public float _drag = 2f;
-    public float _flapForce;
+    private Game game = null;
+    public InteractableBehavior activeSpeaker;
+    public SavePointBehavior activeSavePoint;
+    protected PcAttack _attack;
+    private PlayerGrabber grabber;
+    private Rigidbody2D platformBody = null;
+    private Transform thisTransform = null;
+    public CameraEffects cameraEffects = null;
+    [SerializeField] private ParticleSystem jumpParticles;
+    [SerializeField] private ParticleSystem landParticles;
+    [SerializeField] private ParticleSystem stepParticles;
     
-    private bool invulnerable;
-
-    private bool _isMoving = false;
-    private bool _isDashing = false;
-
-    private bool _isPlayingWalkSound = false;
-    private bool _isPlayingFloatSound = false;
-    public bool _isGrounded = false;
-
+    [Header ("Sounds")]
     public AudioClip clip_hurt;
     public AudioClip clip_death;
     public AudioClip clip_flap;
@@ -44,18 +42,35 @@ public class PlayerControl : MonoBehaviour
     public AudioClip clip_swing_crack;
     public AudioClip clip_float;
 
+    [Header ("Constants")]
     public const int INITIAL_HP = 2;
     public const float FLAP_MIN_TIMEOUT = 0.3f;
-
     public const int FLAP_STAMINA_COST = 5;
-
     public const int DASH_STAMINA_COST = 5;
-
     public const float COYOTE_TIME_SEC = 0.1f;
-
     public const int MAX_KNOCKBACK = 4;
-    private float jumpCoyoteTimeStarted;
 
+
+    [Header ("State")]
+    
+
+    public bool faceRight;
+    public float _maxSpeed;
+    public float _gravityScale = 8f;
+    public float _mass = 2.5f;
+    public float _drag = 2f;
+    public float _flapForce;
+    
+    [Header ("Private")]
+    private float jumpCoyoteTimeStarted;
+    private bool invulnerable;
+
+    private bool _isMoving = false;
+    [SerializeField] private bool _isDashing = false;
+
+    private bool _isPlayingWalkSound = false;
+    private bool _isPlayingFloatSound = false;
+    public bool _isGrounded = false;
     private System.DateTime startTime;
     private System.DateTime prevUpdateTime;
 
@@ -76,13 +91,6 @@ public class PlayerControl : MonoBehaviour
     private bool _prevInvulnerable = false;
 
     
-    private Game game = null;
-
-    public InteractableBehavior activeSpeaker;
-    public SavePointBehavior activeSavePoint;
-
-    protected PcAttack _attack;
-    private PlayerGrabber grabber;
     public bool _attackStarted = false;
     private bool _attackActivePhase = false;
 
@@ -105,9 +113,7 @@ public class PlayerControl : MonoBehaviour
     private bool prev_dash = false;
 
     private bool _isOnPlatform = false;
-    private Rigidbody2D platformBody = null;
 
-    private Transform thisTransform = null;
 
     void Awake()
     {
@@ -122,6 +128,7 @@ public class PlayerControl : MonoBehaviour
     {
         return Game.SharedInstance;
     }
+
     // Start is called before the first frame update
     void Start()
     {
@@ -294,14 +301,14 @@ public class PlayerControl : MonoBehaviour
                 anim.SetBool("IsMoving", true);
             _isMoving = true;
             if (_isGrounded && !sounds.isPlaying) {
-                sounds.PlayOneShot(clip_walk);
-                _isPlayingWalkSound = true;
+                //sounds.PlayOneShot(clip_walk);
+                //_isPlayingWalkSound = true;
             }
         } else {
             if (move != _isMoving) {
                 anim.SetBool("IsMoving", false);
-                if (_isPlayingWalkSound && sounds.isPlaying)
-                    sounds.Stop();
+                //if (_isPlayingWalkSound && sounds.isPlaying)
+                //    sounds.Stop();
             }
             _isMoving = false;
         }
@@ -428,6 +435,7 @@ public class PlayerControl : MonoBehaviour
                 
         _attackStarted = true;
         anim.SetTrigger("SwingAttack");
+        sounds.pitch = 1;
         sounds.PlayOneShot(clip_swing);
     }
 
@@ -442,10 +450,10 @@ public class PlayerControl : MonoBehaviour
         if (_attack)
             _attack.Animate();
 
-        if (_isGrounded)
+        if (_isGrounded) {
             sounds.PlayOneShot(clip_swing_crack);
+        }
 
-        
         _tailHitImpulse = true;
     }
 
@@ -538,7 +546,11 @@ public class PlayerControl : MonoBehaviour
         if (grabber.IsHangingOnCeiling()) {
             grabber.endHangOnCeiling();   
             // TODO/TBD: Will wall hanging affect jump direction?
-        }       
+        }
+        if (grabber.IsHangingOnCeiling()) {
+            grabber.endHangOnCeiling();   
+            // TODO/TBD: Will wall hanging affect jump direction?
+        } 
 
         --PlayerStats.FlapsLeft;
 
@@ -608,12 +620,37 @@ public class PlayerControl : MonoBehaviour
         float force = _flapForce * 1.5f;
         if (sounds.isPlaying)
             sounds.Stop();
-        sounds.PlayOneShot(clip_jump); // TODO jump sound
+
+        JumpEffect();
 
         anim.SetBool("IsJumping", true);
         
         body.velocity = new Vector2(body.velocity.x, 0);
         body.AddForce(new Vector2(xImpulse, force));
+    }
+
+    public void JumpEffect()
+    {
+        jumpParticles.Emit(1);
+        //sounds.pitch = (UnityEngine.Random.Range(0.6f, 1f));
+        sounds.PlayOneShot(clip_jump);
+    }
+
+    public void LandEffect()
+    {
+        if (sounds.isPlaying)
+            sounds.Stop();
+        sounds.PlayOneShot(clip_land);
+        landParticles.Emit(10);
+        //sounds.pitch = (UnityEngine.Random.Range(0.6f, 1f));
+        //sounds.PlayOneShot(clip_jump);
+    }
+
+    public void WalkEffect()
+    {
+        stepParticles.Emit(10);
+        sounds.pitch = (UnityEngine.Random.Range(0.6f, 1f));
+        sounds.PlayOneShot(clip_walk);
     }
 
     void EndJump()
@@ -643,10 +680,7 @@ public class PlayerControl : MonoBehaviour
             anim.SetBool("IsGrounded", gr);
             if (gr) {
                 anim.SetTrigger("Land");
-
-                if (sounds.isPlaying)
-                    sounds.Stop();
-                sounds.PlayOneShot(clip_land);
+                LandEffect();
                 _isPlayingWalkSound = false;
             } else {
                 // Coyote time
@@ -771,6 +805,7 @@ public class PlayerControl : MonoBehaviour
         if (isDead) return; // one cannot die twice...
 
         body.AddForce(force);
+        cameraEffects.Shake(1000, 1f);
         
         if (--PlayerStats.HP < 0) {
             sounds.PlayOneShot(clip_death);
@@ -795,8 +830,8 @@ public class PlayerControl : MonoBehaviour
             endDash();
         if (grabber.IsHangingOnWall())
             grabber.endHangOnWall();   
-        if (grabber.IsHangingOnCeiling())
-            grabber.endHangOnCeiling();   
+        if (grabber.IsHangingOnWall())
+            grabber.endHangOnWall();
     }
 
     public void releaseBody()

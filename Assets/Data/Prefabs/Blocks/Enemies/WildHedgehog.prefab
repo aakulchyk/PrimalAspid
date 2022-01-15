@@ -32,7 +32,8 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 39.92, y: -46.76, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
+  m_Children:
+  - {fileID: 5380818411059489612}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -237,11 +238,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isDead: 0
   MAX_KNOCKBACK: 4
-  collectiblePrefab: {fileID: 0}
+  collectiblePrefab: {fileID: 5314788777006985090, guid: cebeb26d5d10a494c9022a590111b634,
+    type: 3}
   clip_hurt: {fileID: 8300000, guid: 8a57fb381212b08498b7220e6caeff5f, type: 3}
   clip_death: {fileID: 8300000, guid: 3603262efd8d41e4996baccdc1df2124, type: 3}
   _hp: 1
   invulnerable: 0
+  _knockback: 0
+  damageParticles: {fileID: 908970534440541097}
   clip_crawl: {fileID: 8300000, guid: 7736d332be472e7408d88f9a11b600d7, type: 3}
   clip_bristle: {fileID: 8300000, guid: f7503083c7614784ba315aa47a4d0254, type: 3}
   clip_reflect: {fileID: 8300000, guid: 0be7166a9f46b52408f6d210cc374970, type: 3}
@@ -274,3 +278,84 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 3.5310345, y: 2.5448277}
   m_EdgeRadius: 0
+--- !u!1001 &5649693766832752525
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 3351650774940135290}
+    m_Modifications:
+    - target: {fileID: 345439452838702273, guid: da38a9e19261d0f45b23da1e84a9e3d2,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 345439452838702273, guid: da38a9e19261d0f45b23da1e84a9e3d2,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 345439452838702273, guid: da38a9e19261d0f45b23da1e84a9e3d2,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 345439452838702273, guid: da38a9e19261d0f45b23da1e84a9e3d2,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 345439452838702273, guid: da38a9e19261d0f45b23da1e84a9e3d2,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 345439452838702273, guid: da38a9e19261d0f45b23da1e84a9e3d2,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 345439452838702273, guid: da38a9e19261d0f45b23da1e84a9e3d2,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 345439452838702273, guid: da38a9e19261d0f45b23da1e84a9e3d2,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 345439452838702273, guid: da38a9e19261d0f45b23da1e84a9e3d2,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 345439452838702273, guid: da38a9e19261d0f45b23da1e84a9e3d2,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 345439452838702273, guid: da38a9e19261d0f45b23da1e84a9e3d2,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7966684335705090371, guid: da38a9e19261d0f45b23da1e84a9e3d2,
+        type: 3}
+      propertyPath: m_Name
+      value: BloodParticles
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: da38a9e19261d0f45b23da1e84a9e3d2, type: 3}
+--- !u!4 &5380818411059489612 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 345439452838702273, guid: da38a9e19261d0f45b23da1e84a9e3d2,
+    type: 3}
+  m_PrefabInstance: {fileID: 5649693766832752525}
+  m_PrefabAsset: {fileID: 0}
+--- !u!198 &908970534440541097 stripped
+ParticleSystem:
+  m_CorrespondingSourceObject: {fileID: 4826435408473496612, guid: da38a9e19261d0f45b23da1e84a9e3d2,
+    type: 3}
+  m_PrefabInstance: {fileID: 5649693766832752525}
+  m_PrefabAsset: {fileID: 0}

@@ -22,20 +22,20 @@ AnimationClip:
     - time: 0
       value: {fileID: 3407269915240347163, guid: 68939ed9364277342933a9b7dee8a798,
         type: 3}
-    - time: 0.14285715
+    - time: 0.16666667
       value: {fileID: 2197832365587427427, guid: 68939ed9364277342933a9b7dee8a798,
         type: 3}
-    - time: 0.2857143
+    - time: 0.33333334
       value: {fileID: -6422742430305447530, guid: 68939ed9364277342933a9b7dee8a798,
         type: 3}
-    - time: 0.42857143
+    - time: 0.5
       value: {fileID: 2197832365587427427, guid: 68939ed9364277342933a9b7dee8a798,
         type: 3}
     attribute: m_Sprite
     path: 
     classID: 212
     script: {fileID: 0}
-  m_SampleRate: 7
+  m_SampleRate: 6
   m_WrapMode: 0
   m_Bounds:
     m_Center: {x: 0, y: 0, z: 0}
@@ -59,7 +59,7 @@ AnimationClip:
     m_AdditiveReferencePoseClip: {fileID: 0}
     m_AdditiveReferencePoseTime: 0
     m_StartTime: 0
-    m_StopTime: 0.5714286
+    m_StopTime: 0.6666667
     m_OrientationOffsetY: 0
     m_Level: 0
     m_CycleOffset: 0
@@ -78,4 +78,18 @@ AnimationClip:
   m_EulerEditorCurves: []
   m_HasGenericRootTransform: 0
   m_HasMotionFloatCurves: 0
-  m_Events: []
+  m_Events:
+  - time: 0
+    functionName: WalkEffect
+    data: 
+    objectReferenceParameter: {fileID: 0}
+    floatParameter: 0
+    intParameter: 0
+    messageOptions: 0
+  - time: 0.33333334
+    functionName: WalkEffect
+    data: 
+    objectReferenceParameter: {fileID: 0}
+    floatParameter: 0
+    intParameter: 0
+    messageOptions: 0

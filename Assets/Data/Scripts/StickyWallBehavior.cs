@@ -23,7 +23,7 @@ public class StickyWallBehavior : MonoBehaviour
             float coeff = go.transform.localScale.y;
             //joint.anchor = fromLeft ? Vector2.left : Vector2.right * 5;//  fromLeft ? -5 : 5;
 
-            float y = go.transform.position.y - transform.position.y;
+            float y = (go.transform.position.y - transform.position.y) / transform.localScale.y;
             joint.anchor = new Vector2( fromLeft ? -5 : 5, y);
             joint.connectedAnchor = new Vector2(0f, (fromLeft ? +1f : -1f) / coeff);
             joint.enabled = true;
