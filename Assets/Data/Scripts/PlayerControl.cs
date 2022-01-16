@@ -335,6 +335,10 @@ public class PlayerControl : MonoBehaviour
                 }
             }
         }
+
+        float look_axis = Input.GetAxisRaw("Vertical Look");
+        Debug.Log("Axis: " + look_axis);
+        cameraEffects.SetOffset(new Vector3(0, look_axis*10, 0)); 
     }
 
     void FixedUpdate()
