@@ -10,7 +10,8 @@ public class CameraEffects : MonoBehaviour
     public Vector3 cameraWorldSize;
     public CinemachineFramingTransposer cinemachineFramingTransposer;
     [SerializeField] private CinemachineBasicMultiChannelPerlin multiChannelPerlin;
-    private float screenYDefault;
+    private float screenXDefault, screenYDefault;
+    private Vector3 trackedObjectOffsetDefault;
     private float screenYTalking;
     [Range(0, 10)]
     [System.NonSerialized] public float shakeLength = 10;
@@ -20,7 +21,10 @@ public class CameraEffects : MonoBehaviour
     {
         //Ensures we can shake the camera using Cinemachine. Don't really worry too much about this weird stuff. It's just Cinemachine's variables.
         cinemachineFramingTransposer = virtualCamera.GetCinemachineComponent<CinemachineFramingTransposer>();
-        screenYDefault = cinemachineFramingTransposer.m_ScreenX;
+        screenXDefault = cinemachineFramingTransposer.m_ScreenX;
+        screenYDefault = cinemachineFramingTransposer.m_ScreenY;
+
+        trackedObjectOffsetDefault = cinemachineFramingTransposer.m_TrackedObjectOffset;
         
         //Inform the player what CameraEffect it should be controlling, no matter what scene we are on.
         Utils.GetPlayer().cameraEffects = this;
@@ -36,11 +40,17 @@ public class CameraEffects : MonoBehaviour
         multiChannelPerlin.m_FrequencyGain += (0 - multiChannelPerlin.m_FrequencyGain) * Time.deltaTime * (10 - shakeLength);
     }
 
-    public void Shake(float shake, float length)
+    public void Shake(float amplitude, float shake, float length)
     {
         Debug.Log("Shake");
         shakeLength = length;
+        multiChannelPerlin.m_AmplitudeGain = amplitude;
         multiChannelPerlin.m_FrequencyGain = shake;
+    }
+
+    public void SetOffset(Vector3 offset)
+    {
+        cinemachineFramingTransposer.m_TrackedObjectOffset = trackedObjectOffsetDefault - offset;
     }
     
 }

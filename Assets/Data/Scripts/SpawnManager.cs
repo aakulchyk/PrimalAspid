@@ -48,8 +48,8 @@ public class SpawnManager : MonoBehaviour
     {
         Debug.Log("Done spwaning at set location");
         GameObject go = Instantiate(DefaultPlayer, spawnPoint, Quaternion.identity);
-        FollowCamera cam = (FollowCamera)FindObjectOfType(typeof(FollowCamera));
-        cam.SetTarget(go.transform);
+        //FollowCamera cam = (FollowCamera)FindObjectOfType(typeof(FollowCamera));
+        //cam.SetTarget(go.transform);
         SetPoint = false;
     }
  
@@ -57,7 +57,7 @@ public class SpawnManager : MonoBehaviour
     {
         defaultPoint = GameObject.Find("DefaultPoint").transform;
         GameObject go = Instantiate(DefaultPlayer, defaultPoint.position, defaultPoint.rotation);
-        FollowCamera cam = (FollowCamera)FindObjectOfType(typeof(FollowCamera));
-        cam.SetTarget(go.transform);
+        //FollowCamera cam = (FollowCamera)FindObjectOfType(typeof(FollowCamera));
+        //cam.SetTarget(go.transform);
     }
 }

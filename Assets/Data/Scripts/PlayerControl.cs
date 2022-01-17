@@ -28,6 +28,7 @@ public class PlayerControl : MonoBehaviour
     [SerializeField] private ParticleSystem jumpParticles;
     [SerializeField] private ParticleSystem landParticles;
     [SerializeField] private ParticleSystem stepParticles;
+    [SerializeField] private ParticleSystem jumpTrailParticles;
     
     [Header ("Sounds")]
     public AudioClip clip_hurt;
@@ -179,6 +180,8 @@ public class PlayerControl : MonoBehaviour
         if (t) {
             _attack = t.gameObject.GetComponent<PcAttack>();
         }
+
+        jumpTrailParticles.Stop();
     }
 
     public void throwByImpulse(Vector2 vector, bool enemy = true) {
@@ -202,6 +205,12 @@ public class PlayerControl : MonoBehaviour
             yield return new WaitForSeconds(0.15F);
         }
         invulnerable = false;
+    }
+
+    IEnumerator ShowJumpTrail() {
+        jumpTrailParticles.Play();
+        yield return new WaitForSeconds(0.2F);
+        jumpTrailParticles.Stop();
     }
 
     IEnumerator shortInvulnerability() {
@@ -326,6 +335,10 @@ public class PlayerControl : MonoBehaviour
                 }
             }
         }
+
+        float look_axis = Input.GetAxisRaw("Vertical Look");
+        Debug.Log("Axis: " + look_axis);
+        cameraEffects.SetOffset(new Vector3(0, look_axis*10, 0)); 
     }
 
     void FixedUpdate()
@@ -451,6 +464,7 @@ public class PlayerControl : MonoBehaviour
             _attack.Animate();
 
         if (_isGrounded) {
+            sounds.pitch = 1;
             sounds.PlayOneShot(clip_swing_crack);
         }
 
@@ -563,6 +577,7 @@ public class PlayerControl : MonoBehaviour
 
         if (sounds.isPlaying)
             sounds.Stop();
+        sounds.pitch = 1;
         sounds.PlayOneShot(clip_flap);
         
         anim.SetBool("IsFlapping", true);
@@ -586,7 +601,9 @@ public class PlayerControl : MonoBehaviour
             grabber.endHangOnCeiling();   
         }
 
+    // TODO
         sounds.PlayOneShot(clip_jump);
+        StartCoroutine(ShowJumpTrail());
     }
 
     void StartJump()
@@ -604,7 +621,6 @@ public class PlayerControl : MonoBehaviour
         float xImpulse = 0f;
         if (grabber.IsHangingOnWall()) {
             grabber.endHangOnWall();   
-            // TODO/TBD: Will wall hanging affect jump direction?
         }       
 
         if (grabber.IsHangingOnCeiling()) {
@@ -631,19 +647,24 @@ public class PlayerControl : MonoBehaviour
 
     public void JumpEffect()
     {
-        jumpParticles.Emit(1);
+        if (_isGrounded)
+            jumpParticles.Emit(1);
         //sounds.pitch = (UnityEngine.Random.Range(0.6f, 1f));
+        sounds.pitch = 1;
         sounds.PlayOneShot(clip_jump);
+
+        //jumpTrailParticles.Play();
+        StartCoroutine(ShowJumpTrail());
     }
 
     public void LandEffect()
     {
         if (sounds.isPlaying)
             sounds.Stop();
+        sounds.pitch = (UnityEngine.Random.Range(0.85f, 1f));
         sounds.PlayOneShot(clip_land);
+        //jumpTrailParticles.Stop();
         landParticles.Emit(10);
-        //sounds.pitch = (UnityEngine.Random.Range(0.6f, 1f));
-        //sounds.PlayOneShot(clip_jump);
     }
 
     public void WalkEffect()
@@ -658,6 +679,7 @@ public class PlayerControl : MonoBehaviour
         upTime = Time.time - lastFlapTime;
         _jumpStarted = false;
         anim.SetBool("IsJumping", false);
+        jumpTrailParticles.Stop();
     }
 
     public void InterruptFlyOrJump()
@@ -805,7 +827,7 @@ public class PlayerControl : MonoBehaviour
         if (isDead) return; // one cannot die twice...
 
         body.AddForce(force);
-        cameraEffects.Shake(1000, 1f);
+        cameraEffects.Shake(0.6f, 1000, 1f);
         
         if (--PlayerStats.HP < 0) {
             sounds.PlayOneShot(clip_death);

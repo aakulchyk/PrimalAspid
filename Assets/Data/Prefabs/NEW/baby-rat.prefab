@@ -150,7 +150,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: RB | Grab
+  m_Text: RT | Grab
 --- !u!1 &4164921052686112813
 GameObject:
   m_ObjectHideFlags: 0
@@ -412,6 +412,9 @@ MonoBehaviour:
   clip_death: {fileID: 8300000, guid: 3603262efd8d41e4996baccdc1df2124, type: 3}
   _hp: 0
   invulnerable: 0
+  _knockback: 0
+  damageParticles: {fileID: 0}
+  deathParticles: {fileID: 0}
   targetSibling: {fileID: 0}
   clip_sad_idle: {fileID: 8300000, guid: 66be47170b713cd43bb497b710df368f, type: 3}
   clip_follow_start: {fileID: 8300000, guid: 980e9818edd3a8b449ded9046dd774a8, type: 3}

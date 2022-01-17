@@ -19,6 +19,7 @@ public class BabyRatBehavior : NpcBehavior
     void Start()
     {
         BaseInit();
+        Physics2D.IgnoreLayerCollision(LayerMask.NameToLayer("NPC"), LayerMask.NameToLayer("Hanger"), true);
     }
 
     // Update is called once per frame
