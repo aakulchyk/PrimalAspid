@@ -32,7 +32,7 @@ public class PlayerGrabber : MonoBehaviour
     private float grabCoyoteTimeStarted;
     
     public const float GRAB_COOLDOWN_TIME_SEC = 0.75f;
-    public const float GRAB_COYOTE_TIME_SEC = 0.2f;
+    public const float GRAB_COYOTE_TIME_SEC = 0.3f;
     private float grabCooldownTimeStarted;
 
     private float wallJumpCoyoteTimeStarted;

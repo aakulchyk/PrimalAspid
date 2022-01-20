@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PrizeStaminaRestore : PrizeBehavior
+public class PrizeStaminaRestore : Collectable
 {
     public override void GetCollected() {
         if (collected) return;

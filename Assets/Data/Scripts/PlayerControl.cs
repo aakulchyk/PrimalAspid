@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using UnityEngine.VFX;
 
 using System.Collections;
 using System.Collections.Generic;
@@ -29,6 +30,8 @@ public class PlayerControl : MonoBehaviour
     [SerializeField] private ParticleSystem landParticles;
     [SerializeField] private ParticleSystem stepParticles;
     [SerializeField] private ParticleSystem jumpTrailParticles;
+
+    [SerializeField] private GameObject flapTrail;
     
     [Header ("Sounds")]
     public AudioClip clip_hurt;
@@ -213,6 +216,12 @@ public class PlayerControl : MonoBehaviour
         jumpTrailParticles.Stop();
     }
 
+    IEnumerator ShowFlapTrail() {
+        flapTrail.SetActive(true);
+        yield return new WaitForSeconds(1F);
+        flapTrail.SetActive(false);
+    }
+
     IEnumerator shortInvulnerability() {
         invulnerable = true;
         yield return new WaitForSeconds(0.3F);
@@ -337,7 +346,7 @@ public class PlayerControl : MonoBehaviour
         }
 
         float look_axis = Input.GetAxisRaw("Vertical Look");
-        Debug.Log("Axis: " + look_axis);
+        //Debug.Log("Axis: " + look_axis);
         cameraEffects.SetOffset(new Vector3(0, look_axis*10, 0)); 
     }
 
@@ -582,6 +591,9 @@ public class PlayerControl : MonoBehaviour
         
         anim.SetBool("IsFlapping", true);
         body.AddForce(new Vector2(0f, force));
+
+        StartCoroutine(ShowJumpTrail());
+       //StartCoroutine(ShowFlapTrail());
     }
 
     public void endFlap()
@@ -611,6 +623,9 @@ public class PlayerControl : MonoBehaviour
         if (_jumpStarted || _flapStarted)
             return;
 
+        GameObject fx = GameObject.Find("PF_VFXgraph_Hit01");
+        fx.GetComponent<VisualEffect>().Play();
+
         flap_button_triggered = false;
 
         if (_attackStarted)
@@ -631,6 +646,8 @@ public class PlayerControl : MonoBehaviour
             return;
 
         lastFlapTime = Time.time;
+
+        Physics2D.IgnoreLayerCollision(LayerMask.NameToLayer("PC"), LayerMask.NameToLayer("Hanger"), true);
 
         _jumpStarted = true;
         float force = _flapForce * 1.5f;
@@ -665,6 +682,9 @@ public class PlayerControl : MonoBehaviour
         sounds.PlayOneShot(clip_land);
         //jumpTrailParticles.Stop();
         landParticles.Emit(10);
+
+        GameObject fx = GameObject.Find("PF_VFXgraph_Hit01");
+        fx.GetComponent<VisualEffect>().Stop();
     }
 
     public void WalkEffect()
@@ -786,7 +806,7 @@ public class PlayerControl : MonoBehaviour
         }
 
         if (other.tag == "Collectable") {
-            other.gameObject.GetComponent<PrizeBehavior>().GetCollected();
+            other.gameObject.GetComponent<Collectable>().GetCollected();
         }
 
         if (other.tag == "BossFightTrigger") {

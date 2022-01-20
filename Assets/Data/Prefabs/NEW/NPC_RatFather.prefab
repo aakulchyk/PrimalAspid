@@ -54,7 +54,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -221,6 +221,9 @@ MonoBehaviour:
   clip_death: {fileID: 0}
   _hp: 1
   invulnerable: 0
+  _knockback: 0
+  damageParticles: {fileID: 0}
+  deathParticles: {fileID: 0}
   clip_sad_idle: {fileID: 8300000, guid: 9bc3565e1ca748f479934a5f45fbbf2e, type: 3}
   clip_success: {fileID: 8300000, guid: a3da74cad83cae04f801284ca1f26a02, type: 3}
   clip_cry: {fileID: 8300000, guid: 9bc3565e1ca748f479934a5f45fbbf2e, type: 3}

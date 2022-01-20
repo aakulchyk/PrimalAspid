@@ -361,13 +361,33 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1956408374390101892, guid: 666fd4a92e86df244ba69b67b49029b0,
         type: 3}
+      propertyPath: simulationSpeed
+      value: 1.6
+      objectReference: {fileID: 0}
+    - target: {fileID: 1956408374390101892, guid: 666fd4a92e86df244ba69b67b49029b0,
+        type: 3}
+      propertyPath: ShapeModule.angle
+      value: 30
+      objectReference: {fileID: 0}
+    - target: {fileID: 1956408374390101892, guid: 666fd4a92e86df244ba69b67b49029b0,
+        type: 3}
       propertyPath: InitialModule.startSize.scalar
-      value: 1
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1956408374390101892, guid: 666fd4a92e86df244ba69b67b49029b0,
+        type: 3}
+      propertyPath: InitialModule.startSpeed.scalar
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 1956408374390101892, guid: 666fd4a92e86df244ba69b67b49029b0,
         type: 3}
       propertyPath: InitialModule.startSize.minScalar
-      value: 0.5
+      value: 0.8
+      objectReference: {fileID: 0}
+    - target: {fileID: 1956408374390101892, guid: 666fd4a92e86df244ba69b67b49029b0,
+        type: 3}
+      propertyPath: InitialModule.gravityModifier.scalar
+      value: 0.8
       objectReference: {fileID: 0}
     - target: {fileID: 3956244089826859959, guid: 666fd4a92e86df244ba69b67b49029b0,
         type: 3}
@@ -428,6 +448,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: DeathParticles
+      objectReference: {fileID: 0}
+    - target: {fileID: 9155371729403300254, guid: 666fd4a92e86df244ba69b67b49029b0,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 666fd4a92e86df244ba69b67b49029b0, type: 3}

@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PrizeBloodBody : PrizeBehavior
+public class PrizeBloodBody : Collectable
 {
     public AudioClip clip_accum;
     public override void GetCollected() {
@@ -23,7 +23,7 @@ public class PrizeBloodBody : PrizeBehavior
         } else {
             GetComponent<AudioSource>().PlayOneShot(clip_collect);
         }
-        GetComponent<Renderer>().enabled = false;
+        renderer.enabled = false;
         Destroy(this.gameObject, 1f);
 
         
