@@ -623,8 +623,8 @@ public class PlayerControl : MonoBehaviour
         if (_jumpStarted || _flapStarted)
             return;
 
-        GameObject fx = GameObject.Find("PF_VFXgraph_Hit01");
-        fx.GetComponent<VisualEffect>().Play();
+        //GameObject fx = GameObject.Find("PF_VFXgraph_Hit01");
+        //fx.GetComponent<VisualEffect>().Play();
 
         flap_button_triggered = false;
 
@@ -682,9 +682,6 @@ public class PlayerControl : MonoBehaviour
         sounds.PlayOneShot(clip_land);
         //jumpTrailParticles.Stop();
         landParticles.Emit(10);
-
-        GameObject fx = GameObject.Find("PF_VFXgraph_Hit01");
-        fx.GetComponent<VisualEffect>().Stop();
     }
 
     public void WalkEffect()
@@ -827,24 +824,25 @@ public class PlayerControl : MonoBehaviour
             GetGame().OpenPopup();
         }
 
-        if (other.tag == "HiddenRoomVeil") {
+        /*if (other.tag == "HiddenRoomVeil") {
             Debug.Log("hrv");
             HiddenRoomBehavior hrb = other.gameObject.GetComponent<HiddenRoomBehavior>();
             hrb.MakeVisible(false);
-        }
+        }*/
     }
 
     void OnTriggerExit2D(Collider2D other) {
-        if (other.tag == "HiddenRoomVeil") {
+        /*if (other.tag == "HiddenRoomVeil") {
             Debug.Log("hrv exit");
             HiddenRoomBehavior hrb = other.gameObject.GetComponent<HiddenRoomBehavior>();
             hrb.MakeVisible(true);
-        }
+        }*/
     }
 
-    void hurt(Vector2 force, Types.DamageType damageType = Types.DamageType.Spikes)
+    public void hurt(Vector2 force, Types.DamageType damageType = Types.DamageType.Spikes)
     {    
         if (isDead) return; // one cannot die twice...
+        if (invulnerable) return; // one cannot die twice...
 
         body.AddForce(force);
         cameraEffects.Shake(0.6f, 1000, 1f);
@@ -859,6 +857,9 @@ public class PlayerControl : MonoBehaviour
             anim.SetTrigger("Hurt");
             if (sounds.isPlaying)
                 sounds.Stop();
+            Debug.Log("play hurt sound");
+            sounds.pitch = 1;
+            sounds.volume = 1;
             sounds.PlayOneShot(clip_hurt);
             _isPlayingWalkSound = false;
             StartCoroutine(blinkInvulnerable());

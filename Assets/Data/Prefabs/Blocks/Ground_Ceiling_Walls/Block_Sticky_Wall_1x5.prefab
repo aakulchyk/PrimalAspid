@@ -14,7 +14,8 @@ GameObject:
   - component: {fileID: 6099266794652382192}
   - component: {fileID: 8719462563532133625}
   - component: {fileID: 7833189831692529081}
-  m_Layer: 11
+  - component: {fileID: -4828117370630822322}
+  m_Layer: 3
   m_Name: Block_Sticky_Wall_1x5
   m_TagString: StickyWall
   m_Icon: {fileID: 0}
@@ -163,3 +164,29 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c4d28c6302435594e91ef9929d20df61, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &-4828117370630822322
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5452656396696958578}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7db70e0ea77f5ac47a8f4565a9406397, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_ShadowGroup: 0
+  m_HasRenderer: 1
+  m_UseRendererSilhouette: 1
+  m_CastsShadows: 1
+  m_SelfShadows: 0
+  m_ApplyToSortingLayers: 9f2e0fed85b0b0d033fb2099cf9195a31509c98c55f1a3119919fc4bb5fff82f51de0708b5ec2bb337697e3cc969319000000000951f8a690984f0a49175a49dc9ac2c50
+  m_ShapePath:
+  - {x: -2.550415, y: -0.011856079, z: 0}
+  - {x: 2.5792542, y: -0.0259552, z: 0}
+  - {x: 2.5699463, y: 25.595566, z: 0}
+  - {x: -2.5601196, y: 25.599564, z: 0}
+  m_ShapePathHash: -1666275627
+  m_Mesh: {fileID: 0}
+  m_InstanceId: 253766

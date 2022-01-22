@@ -73,7 +73,9 @@ public class Breakable : MonoBehaviour
 
         GetComponent<AudioSource>().Stop();
         GetComponent<AudioSource>().PlayOneShot(clip_destroy);
-        pointLight.SetActive(false);
+        
+        if (pointLight)
+            pointLight.SetActive(false);
 
         /*if (instantiator != null)
         {
@@ -83,7 +85,7 @@ public class Breakable : MonoBehaviour
         //Destroy me, or set my sprite to the brokenSprite
         if (destroyAfterDeath)
         {
-            Destroy(gameObject, 2);
+            Destroy(gameObject, 1);
         }
         else
         {

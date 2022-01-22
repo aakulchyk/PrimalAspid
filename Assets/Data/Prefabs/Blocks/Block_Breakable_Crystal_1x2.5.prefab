@@ -25,7 +25,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2034300626400201941}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 9.860001, z: 0}
+  m_LocalPosition: {x: 0, y: 2, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 3875902981986794484}
@@ -95,9 +95,9 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2735538643614003177}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -138.31, y: -54.7, z: 0}
-  m_LocalScale: {x: 0.5, y: 0.2, z: 1}
+  m_LocalScale: {x: 0.5, y: 0.4, z: 1}
   m_Children:
   - {fileID: 12294313128885538}
   - {fileID: 3331075261227390689}
@@ -115,10 +115,10 @@ GameObject:
   m_Component:
   - component: {fileID: 3331075261227390689}
   - component: {fileID: 1462021894894811387}
-  - component: {fileID: 4723032642847798912}
   - component: {fileID: 6511338586910782685}
   - component: {fileID: 1659982689606443291}
   - component: {fileID: 4114415051848709540}
+  - component: {fileID: 8687747410361860158}
   m_Layer: 3
   m_Name: Graphics
   m_TagString: Breakable
@@ -180,8 +180,8 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: f72cdf2124643344b8e309c8a1fcdf02, type: 3}
-  m_Color: {r: 0.37169808, g: 0.3936463, b: 1, a: 1}
+  m_Sprite: {fileID: 21300000, guid: 53903a190eac6ba488c2a41f4bfc1ca5, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -191,32 +191,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!61 &4723032642847798912
-BoxCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6415315783321770917}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 6200000, guid: 9d372f6eaebce144cabc6e1ca6d0f4cc, type: 2}
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 5.125, y: 25.6}
-    newSize: {x: 2.05, y: 10.24}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 5.125, y: 25.6}
-  m_EdgeRadius: 0
 --- !u!95 &6511338586910782685
 Animator:
   serializedVersion: 3
@@ -251,10 +225,9 @@ MonoBehaviour:
   brokenSprite: {fileID: 0}
   deathParticles: {fileID: 5314986988606025483}
   pointLight: {fileID: 2034300626400201941}
-  collider: {fileID: 6415315783321770917}
   animator: {fileID: 6511338586910782685}
   destroyAfterDeath: 1
-  health: 4
+  health: 3
   clip_hit: {fileID: 8300000, guid: ac7d5513afcc8e446ab4e4307ebf17bf, type: 3}
   clip_destroy: {fileID: 8300000, guid: cbb27cfc77ad9ff498d5bc8c66c0d99f, type: 3}
 --- !u!82 &4114415051848709540
@@ -353,6 +326,32 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!61 &8687747410361860158
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6415315783321770917}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 6200000, guid: 9d372f6eaebce144cabc6e1ca6d0f4cc, type: 2}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 5.12, y: 10.24}
+    newSize: {x: 2.05, y: 10.24}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 5.12, y: 10.24}
+  m_EdgeRadius: 0
 --- !u!1001 &3948753715469723285
 PrefabInstance:
   m_ObjectHideFlags: 0

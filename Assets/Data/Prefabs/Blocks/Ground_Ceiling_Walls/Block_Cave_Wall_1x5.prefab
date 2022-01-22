@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &8317002718087343818
+--- !u!1 &3192942615766529462
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,37 +8,38 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 4025663104836026767}
-  - component: {fileID: 8722753872365758523}
-  - component: {fileID: 5667149388078078901}
-  m_Layer: 0
-  m_Name: Block_Cave_Ceiling_5x1
+  - component: {fileID: 4355245518238785963}
+  - component: {fileID: 1747458727288945423}
+  - component: {fileID: 4036112127574101617}
+  - component: {fileID: -2286068513517329259}
+  m_Layer: 11
+  m_Name: Block_Cave_Wall_1x5
   m_TagString: Obstacle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &4025663104836026767
+--- !u!4 &4355245518238785963
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8317002718087343818}
+  m_GameObject: {fileID: 3192942615766529462}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 66.14, y: 118.93, z: 0}
+  m_LocalPosition: {x: 76.69738, y: 115.65682, z: 0}
   m_LocalScale: {x: 0.5, y: 0.5, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!212 &8722753872365758523
+--- !u!212 &1747458727288945423
 SpriteRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8317002718087343818}
+  m_GameObject: {fileID: 3192942615766529462}
   m_Enabled: 1
   m_CastShadows: 0
   m_ReceiveShadows: 0
@@ -72,24 +73,24 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 1e011cc63409d5243adc1c46309e18ce, type: 3}
+  m_Sprite: {fileID: 21300000, guid: f72cdf2124643344b8e309c8a1fcdf02, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 51.2, y: 10.25}
+  m_Size: {x: 2.05, y: 10.24}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!61 &5667149388078078901
+--- !u!61 &4036112127574101617
 BoxCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8317002718087343818}
+  m_GameObject: {fileID: 3192942615766529462}
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 6200000, guid: 9d372f6eaebce144cabc6e1ca6d0f4cc, type: 2}
@@ -100,12 +101,38 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 25.6, y: 5.125}
-    newSize: {x: 51.2, y: 10.25}
+    oldSize: {x: 5.125, y: 25.6}
+    newSize: {x: 2.05, y: 10.24}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 25.6, y: 5.125}
+  m_Size: {x: 5.125, y: 25.6}
   m_EdgeRadius: 0
+--- !u!114 &-2286068513517329259
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3192942615766529462}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7db70e0ea77f5ac47a8f4565a9406397, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_ShadowGroup: 0
+  m_HasRenderer: 1
+  m_UseRendererSilhouette: 1
+  m_CastsShadows: 1
+  m_SelfShadows: 0
+  m_ApplyToSortingLayers: 9f2e0fed85b0b0d033fb2099cf9195a31509c98c55f1a3119919fc4bb5fff82f51de0708b5ec2bb337697e3cc969319000000000951f8a690984f0a49175a49dc9ac2c50
+  m_ShapePath:
+  - {x: -2.55484, y: -12.808929, z: 0}
+  - {x: 2.574829, y: -12.823029, z: 0}
+  - {x: 2.5655212, y: 12.798492, z: 0}
+  - {x: -2.5645447, y: 12.80249, z: 0}
+  m_ShapePathHash: -1011177195
+  m_Mesh: {fileID: 0}
+  m_InstanceId: 44474

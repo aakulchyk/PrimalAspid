@@ -46,6 +46,7 @@ GameObject:
   - component: {fileID: 5073201996397056388}
   - component: {fileID: 806769758305961026}
   - component: {fileID: 2675735302859297021}
+  - component: {fileID: 1403475096235808414}
   m_Layer: 3
   m_Name: Graphics
   m_TagString: Breakable
@@ -177,9 +178,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   brokenSprite: {fileID: 0}
   deathParticles: {fileID: 6195239110127356498}
+  pointLight: {fileID: 0}
   animator: {fileID: 5073201996397056388}
   destroyAfterDeath: 1
-  health: 4
+  health: 3
   clip_hit: {fileID: 8300000, guid: ac7d5513afcc8e446ab4e4307ebf17bf, type: 3}
   clip_destroy: {fileID: 8300000, guid: cbb27cfc77ad9ff498d5bc8c66c0d99f, type: 3}
 --- !u!82 &2675735302859297021
@@ -278,6 +280,32 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &1403475096235808414
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4989018699924586236}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7db70e0ea77f5ac47a8f4565a9406397, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_ShadowGroup: 0
+  m_HasRenderer: 1
+  m_UseRendererSilhouette: 1
+  m_CastsShadows: 1
+  m_SelfShadows: 0
+  m_ApplyToSortingLayers: 9f2e0fed85b0b0d033fb2099cf9195a31509c98c55f1a3119919fc4bb5fff82f51de0708b5ec2bb337697e3cc969319000000000951f8a690984f0a49175a49dc9ac2c50
+  m_ShapePath:
+  - {x: -2.5582123, y: -12.805801, z: 0}
+  - {x: 2.5645294, y: -12.809235, z: 0}
+  - {x: 2.5778656, y: 12.798904, z: 0}
+  - {x: -2.5585327, y: 12.810196, z: 0}
+  m_ShapePathHash: 977679893
+  m_Mesh: {fileID: 0}
+  m_InstanceId: 657080
 --- !u!1001 &3096087516323988428
 PrefabInstance:
   m_ObjectHideFlags: 0

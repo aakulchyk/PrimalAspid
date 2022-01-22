@@ -19636,6 +19636,7 @@ GameObject:
   - component: {fileID: 8621077584239811251}
   - component: {fileID: 2252383774271831003}
   - component: {fileID: 5899165922634923255}
+  - component: {fileID: 6063507384940889875}
   m_Layer: 7
   m_Name: PC
   m_TagString: Player
@@ -19963,3 +19964,32 @@ MonoBehaviour:
   _attackStarted: 0
   pWidth: 0
   pHeight: 0
+--- !u!114 &6063507384940889875
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7437582820342829292}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7db70e0ea77f5ac47a8f4565a9406397, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_ShadowGroup: 0
+  m_HasRenderer: 1
+  m_UseRendererSilhouette: 1
+  m_CastsShadows: 1
+  m_SelfShadows: 0
+  m_ApplyToSortingLayers: 9f2e0fed85b0b0d033fb2099cf9195a31509c98c55f1a3119919fc4bb5fff82f51de0708b5ec2bb337697e3cc969319000000000951f8a690984f0a49175a49dc9ac2c50
+  m_ShapePath:
+  - {x: -0.8944565, y: 0.0625608, z: 0}
+  - {x: 1.0352203, y: -0.00000047683716, z: 0}
+  - {x: 0.7491431, y: 1.7299814, z: 0}
+  - {x: 1.0039397, y: 2.8771923, z: 0}
+  - {x: -0.28448308, y: 2.9553943, z: 0}
+  - {x: -0.28312063, y: 2.0271482, z: 0}
+  - {x: -0.79925203, y: 1.3546127, z: 0}
+  m_ShapePathHash: -1126395471
+  m_Mesh: {fileID: 0}
+  m_InstanceId: -15762
