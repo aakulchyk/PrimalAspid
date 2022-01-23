@@ -42,7 +42,7 @@ public class CameraEffects : MonoBehaviour
 
     public void Shake(float amplitude, float shake, float length)
     {
-        Debug.Log("Shake");
+        //Debug.Log("Shake");
         shakeLength = length;
         multiChannelPerlin.m_AmplitudeGain = amplitude;
         multiChannelPerlin.m_FrequencyGain = shake;

@@ -8,6 +8,7 @@ public class DestroyablePlatform : MonoBehaviour
     private Animator anim;
     private Renderer _renderer;
     //private BoxCollider2D col = GetComponent<BoxCollider2D>();
+    [SerializeField] private GameObject deathParticles;
 
     public bool isCollapsing = false;
     public AudioClip clip_rumble;
@@ -37,6 +38,8 @@ public class DestroyablePlatform : MonoBehaviour
                 Utils.GetPlayerGrabber().endHangOnCeiling();
             }
         }
+        deathParticles.SetActive(true);
+        deathParticles.transform.parent = null;
         Destroy(this.gameObject, 0.01f);
     }
 

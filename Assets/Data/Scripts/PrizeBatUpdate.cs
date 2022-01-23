@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PrizeBatUpdate : PrizeBehavior
+public class PrizeBatUpdate : Collectable
 {
     public override void GetCollected() {
         if (collected) return;
@@ -12,9 +12,11 @@ public class PrizeBatUpdate : PrizeBehavior
         // apply stats
         PlayerStats.MaxFlaps+=2;
         GetComponent<AudioSource>().PlayOneShot(clip_collect);
-        GetComponent<Renderer>().enabled = false;
+        renderer.enabled = false;
         Destroy(this.gameObject, 1f);
 
         Game.SharedInstance.SetPopupText("Got upgrade", "You can now flap in the air by pressing \"A\" button / SPACE key");
+
+        
     }
 }

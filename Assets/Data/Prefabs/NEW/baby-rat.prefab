@@ -166,6 +166,7 @@ GameObject:
   - component: {fileID: 4164921052686112801}
   - component: {fileID: 4164921052686112804}
   - component: {fileID: 4164921052686112806}
+  - component: {fileID: 267185895461889054}
   m_Layer: 6
   m_Name: baby-rat
   m_TagString: Untagged
@@ -208,7 +209,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -424,6 +425,36 @@ MonoBehaviour:
   - I'm happy to see daddy again!
   - Is my brother sleeping?
   - And where is my mom?
+--- !u!114 &267185895461889054
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4164921052686112813}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7db70e0ea77f5ac47a8f4565a9406397, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_ShadowGroup: 0
+  m_HasRenderer: 1
+  m_UseRendererSilhouette: 1
+  m_CastsShadows: 1
+  m_SelfShadows: 0
+  m_ApplyToSortingLayers: 9f2e0fed85b0b0d033fb2099cf9195a31509c98c55f1a3119919fc4bb5fff82f51de0708b5ec2bb337697e3cc969319000000000951f8a690984f0a49175a49dc9ac2c50
+  m_ShapePath:
+  - {x: -0.42295456, y: 0.047114078, z: 0}
+  - {x: 0.44028068, y: 0.058892507, z: 0}
+  - {x: 0.40133187, y: 0.9786262, z: 0}
+  - {x: 0.8018016, y: 1.178861, z: 0}
+  - {x: 0.35783103, y: 1.6056306, z: 0}
+  - {x: -0.3169478, y: 1.570295, z: 0}
+  - {x: -0.67051345, y: 1.2259752, z: 0}
+  - {x: -0.2582653, y: 0.94329065, z: 0}
+  m_ShapePathHash: -445668243
+  m_Mesh: {fileID: 0}
+  m_InstanceId: 43656
 --- !u!1 &4164921052835938851
 GameObject:
   m_ObjectHideFlags: 0

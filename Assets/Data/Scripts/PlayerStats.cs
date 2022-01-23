@@ -21,6 +21,8 @@ public static class PlayerStats
     private static int hp = max_hp;
     private static int bloodBodies = 0;
 
+    private static int coins = 0;
+
 
     //
     private static bool showTutorial = true;

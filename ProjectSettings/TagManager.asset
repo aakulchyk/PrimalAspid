@@ -24,6 +24,8 @@ TagManager:
   - DestroyablePlatform
   - StickyWall
   - MovingPlatform
+  - Breakable
+  - Abyss
   layers:
   - Default
   - TransparentFX
@@ -58,6 +60,24 @@ TagManager:
   - 
   - 
   m_SortingLayers:
+  - name: Layer10
+    uniqueID: 3977195167
+    locked: 0
+  - name: Layer9
+    uniqueID: 3501240453
+    locked: 0
+  - name: Layer8
+    uniqueID: 2569075507
+    locked: 0
+  - name: Layer7
+    uniqueID: 2744488399
+    locked: 0
+  - name: Layer6
+    uniqueID: 2361985301
+    locked: 0
+  - name: Layer5
+    uniqueID: 295956821
+    locked: 0
   - name: Layer4
     uniqueID: 1274812825
     locked: 0

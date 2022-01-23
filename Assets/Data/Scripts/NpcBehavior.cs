@@ -82,13 +82,13 @@ public class NpcBehavior : MonoBehaviour
             invulnerable = true;
         }
 
+        sounds.PlayOneShot(clip_hurt);
         //Debug.Log("NPC Hurt");
         if (--_hp < 0 && !isDead) {
             die();
         } else {
             anim.SetBool("hurt", true);
             knockback(force);
-            sounds.PlayOneShot(clip_hurt);
         }
 
         if (damageParticles) {
@@ -103,7 +103,6 @@ public class NpcBehavior : MonoBehaviour
 
     protected virtual void die() {
         Debug.Log("NPC die");
-        sounds.Stop();
         sounds.PlayOneShot(clip_death);
         isDead = true;
         anim.SetTrigger("die");
@@ -130,7 +129,7 @@ public class NpcBehavior : MonoBehaviour
         yield return new WaitForSeconds(0.4F);
         GameObject go = Instantiate(collectiblePrefab);
 
-        go.transform.position = gameObject.transform.position + new Vector3(0,1,0);
+        go.transform.position = gameObject.transform.position + Vector3.up*2;
         go.transform.rotation = Quaternion.identity;
     }
 

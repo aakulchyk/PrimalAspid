@@ -32,7 +32,7 @@ public class PlayerGrabber : MonoBehaviour
     private float grabCoyoteTimeStarted;
     
     public const float GRAB_COOLDOWN_TIME_SEC = 0.75f;
-    public const float GRAB_COYOTE_TIME_SEC = 0.2f;
+    public const float GRAB_COYOTE_TIME_SEC = 0.3f;
     private float grabCooldownTimeStarted;
 
     private float wallJumpCoyoteTimeStarted;
@@ -260,14 +260,14 @@ public class PlayerGrabber : MonoBehaviour
             bool stillCoyoteTime = Time.time - grabCoyoteTimeStarted < (GRAB_COYOTE_TIME_SEC);
             _touchingWall = collider;
             _isWallOnRight = _touchingWall.transform.position.x > transform.position.x;
-            Debug.Log("IsWallOnRight: " + _isWallOnRight);
+            //Debug.Log("IsWallOnRight: " + _isWallOnRight);
             
             if (_isSideGrabbing || stillCoyoteTime)
                 startHangOnWall();
             else if ((_isWallOnRight && moveX > 0) || (!_isWallOnRight && moveX < 0))
                 startHangOnWall();
-            else
-                Debug.Log("Collided with Wall");
+            //else
+            //    Debug.Log("Collided with Wall");
         }
 
         if (collider.gameObject.layer == LayerMask.NameToLayer("Hanger")) {
@@ -276,8 +276,8 @@ public class PlayerGrabber : MonoBehaviour
             nearestHanger = collider.gameObject.transform;
             if (_isUpwardGrabbing || stillCoyoteTime)
                 startHangOnCeiling();
-            else
-                Debug.Log("Collided with CEILING");
+            //else
+            //    Debug.Log("Collided with CEILING");
         }
     }
 
@@ -311,8 +311,8 @@ public class PlayerGrabber : MonoBehaviour
     {
         if (other.tag == "Grabbable") {
             if (activeGrabbable) {
-                Debug.Log("NO MORE active grabbable");
-            activeGrabbable.SetCanvasActive(false);
+                //Debug.Log("NO MORE active grabbable");
+                activeGrabbable.SetCanvasActive(false);
                 activeGrabbable = null;
             }
         }
@@ -364,8 +364,7 @@ public class PlayerGrabber : MonoBehaviour
 
     public void startHangOnWall()
     {
-        Debug.Log("Start Hang");
-        
+        //Debug.Log("Start Hang");
 
         var wall = _touchingWall.gameObject.GetComponent<StickyWallBehavior>();
         if (wall == null)
@@ -390,7 +389,7 @@ public class PlayerGrabber : MonoBehaviour
 
     public void endHangOnWall()
     {
-        Debug.Log("End Hang");
+        //Debug.Log("End Hang");
 
         var wall = _attachedTo.gameObject.GetComponent<StickyWallBehavior>();
 

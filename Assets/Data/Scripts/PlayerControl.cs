@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using UnityEngine.VFX;
 
 using System.Collections;
 using System.Collections.Generic;
@@ -29,6 +30,8 @@ public class PlayerControl : MonoBehaviour
     [SerializeField] private ParticleSystem landParticles;
     [SerializeField] private ParticleSystem stepParticles;
     [SerializeField] private ParticleSystem jumpTrailParticles;
+
+    [SerializeField] private GameObject flapTrail;
     
     [Header ("Sounds")]
     public AudioClip clip_hurt;
@@ -133,7 +136,6 @@ public class PlayerControl : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        Debug.Log("LOAD");
 
         thisTransform = this.transform;
 
@@ -185,7 +187,6 @@ public class PlayerControl : MonoBehaviour
     }
 
     public void throwByImpulse(Vector2 vector, bool enemy = true) {
-        Debug.Log("Throw player back " + vector);
         StartCoroutine(shortInvulnerability());
         body.AddForce(vector);
     }
@@ -211,6 +212,12 @@ public class PlayerControl : MonoBehaviour
         jumpTrailParticles.Play();
         yield return new WaitForSeconds(0.2F);
         jumpTrailParticles.Stop();
+    }
+
+    IEnumerator ShowFlapTrail() {
+        flapTrail.SetActive(true);
+        yield return new WaitForSeconds(1F);
+        flapTrail.SetActive(false);
     }
 
     IEnumerator shortInvulnerability() {
@@ -337,7 +344,6 @@ public class PlayerControl : MonoBehaviour
         }
 
         float look_axis = Input.GetAxisRaw("Vertical Look");
-        Debug.Log("Axis: " + look_axis);
         cameraEffects.SetOffset(new Vector3(0, look_axis*10, 0)); 
     }
 
@@ -401,7 +407,6 @@ public class PlayerControl : MonoBehaviour
                 if (!sounds.isPlaying)
                     sounds.PlayOneShot(clip_float);
             }
-            //Debug.Log("velocity: " + body.velocity);
             anim.SetBool("IsFloating", floatPressed);
 
             if (!floatPressed && _isPlayingFloatSound && sounds.isPlaying) {
@@ -533,7 +538,6 @@ public class PlayerControl : MonoBehaviour
 
     void startFlap()
     {
-        //Debug.Log("flap?");
         if (_jumpStarted || _flapStarted)
             return;
 
@@ -582,6 +586,9 @@ public class PlayerControl : MonoBehaviour
         
         anim.SetBool("IsFlapping", true);
         body.AddForce(new Vector2(0f, force));
+
+        StartCoroutine(ShowJumpTrail());
+       //StartCoroutine(ShowFlapTrail());
     }
 
     public void endFlap()
@@ -611,6 +618,9 @@ public class PlayerControl : MonoBehaviour
         if (_jumpStarted || _flapStarted)
             return;
 
+        //GameObject fx = GameObject.Find("PF_VFXgraph_Hit01");
+        //fx.GetComponent<VisualEffect>().Play();
+
         flap_button_triggered = false;
 
         if (_attackStarted)
@@ -631,6 +641,8 @@ public class PlayerControl : MonoBehaviour
             return;
 
         lastFlapTime = Time.time;
+
+        Physics2D.IgnoreLayerCollision(LayerMask.NameToLayer("PC"), LayerMask.NameToLayer("Hanger"), true);
 
         _jumpStarted = true;
         float force = _flapForce * 1.5f;
@@ -786,7 +798,7 @@ public class PlayerControl : MonoBehaviour
         }
 
         if (other.tag == "Collectable") {
-            other.gameObject.GetComponent<PrizeBehavior>().GetCollected();
+            other.gameObject.GetComponent<Collectable>().GetCollected();
         }
 
         if (other.tag == "BossFightTrigger") {
@@ -807,24 +819,15 @@ public class PlayerControl : MonoBehaviour
             GetGame().OpenPopup();
         }
 
-        if (other.tag == "HiddenRoomVeil") {
-            Debug.Log("hrv");
-            HiddenRoomBehavior hrb = other.gameObject.GetComponent<HiddenRoomBehavior>();
-            hrb.MakeVisible(false);
-        }
     }
 
     void OnTriggerExit2D(Collider2D other) {
-        if (other.tag == "HiddenRoomVeil") {
-            Debug.Log("hrv exit");
-            HiddenRoomBehavior hrb = other.gameObject.GetComponent<HiddenRoomBehavior>();
-            hrb.MakeVisible(true);
-        }
     }
 
-    void hurt(Vector2 force, Types.DamageType damageType = Types.DamageType.Spikes)
+    public void hurt(Vector2 force, Types.DamageType damageType = Types.DamageType.Spikes)
     {    
         if (isDead) return; // one cannot die twice...
+        if (invulnerable) return;
 
         body.AddForce(force);
         cameraEffects.Shake(0.6f, 1000, 1f);
@@ -839,6 +842,8 @@ public class PlayerControl : MonoBehaviour
             anim.SetTrigger("Hurt");
             if (sounds.isPlaying)
                 sounds.Stop();
+            sounds.pitch = 1;
+            sounds.volume = 1;
             sounds.PlayOneShot(clip_hurt);
             _isPlayingWalkSound = false;
             StartCoroutine(blinkInvulnerable());

@@ -1,0 +1,555 @@
+fileFormatVersion: 2
+guid: b955fd11c27cd3b48acbed71f631d1a1
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 2607383638010741168
+    second: RatWarrior_0
+  - first:
+      213: 4694403715880170883
+    second: RatWarrior_1
+  - first:
+      213: -9088003606777392405
+    second: RatWarrior_
+  - first:
+      213: -4324043473972362917
+    second: RatWarrior_2
+  - first:
+      213: -4042641362533390905
+    second: RatWarrior_5
+  - first:
+      213: -7882228776918542482
+    second: RatWarrior_13
+  - first:
+      213: -5646895733186760476
+    second: RatWarrior_14
+  - first:
+      213: -4769741912767356547
+    second: RatWarrior_15
+  - first:
+      213: -2240109335163632484
+    second: RatWarrior_18
+  - first:
+      213: -5725889634138622598
+    second: RatWarrior_20
+  - first:
+      213: -5766893261746788353
+    second: RatWarrior_21
+  - first:
+      213: -379832449965853987
+    second: Spear
+  - first:
+      213: -655015226696509417
+    second: RatWarrior_23
+  - first:
+      213: -2680386880903994388
+    second: RatWarrior_24
+  - first:
+      213: -3298102935862558631
+    second: RatWarrior_3
+  - first:
+      213: 6601145675230262744
+    second: RatWarrior_26
+  - first:
+      213: -8061098185322535911
+    second: RatWarrior_6
+  - first:
+      213: -8989795984098153614
+    second: RatWarrior_4
+  - first:
+      213: 4145458400909949950
+    second: RatWarrior_29
+  - first:
+      213: -8630485002732191110
+    second: RatWarrior_30
+  - first:
+      213: -1840615297635093427
+    second: RatWarrior_31
+  - first:
+      213: -8397685720144890625
+    second: RatWarrior_32
+  - first:
+      213: 4584990635193504381
+    second: RatWarrior_33
+  - first:
+      213: -3377237247294944833
+    second: RatWarrior_34
+  - first:
+      213: 6556273515744809749
+    second: RatWarrior_35
+  - first:
+      213: 751669458496888903
+    second: RatWarrior_36
+  - first:
+      213: -2754234413926706904
+    second: RatWarrior_37
+  - first:
+      213: 5855975781356328019
+    second: RatWarrior_38
+  - first:
+      213: -3013585440039221598
+    second: RatWarrior_39
+  - first:
+      213: -6105518135283072087
+    second: RatWarrior_40
+  externalObjects: {}
+  serializedVersion: 11
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: RatWarrior_0
+      rect:
+        serializedVersion: 2
+        x: 2699
+        y: 1960
+        width: 4
+        height: 4
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0b1cbc0ba994f2420800000000000000
+      internalID: 2607383638010741168
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: RatWarrior_1
+      rect:
+        serializedVersion: 2
+        x: 1474
+        y: 1882
+        width: 5
+        height: 4
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 385bf4dbe4fd52140800000000000000
+      internalID: 4694403715880170883
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: RatWarrior_
+      rect:
+        serializedVersion: 2
+        x: 526
+        y: 1410
+        width: 475
+        height: 446
+      alignment: 9
+      pivot: {x: 0.45, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: be29094bedce0e180800000000000000
+      internalID: -9088003606777392405
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: RatWarrior_2
+      rect:
+        serializedVersion: 2
+        x: 1686
+        y: 1410
+        width: 504
+        height: 356
+      alignment: 9
+      pivot: {x: 0.27, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b510884ce59edf3c0800000000000000
+      internalID: -4324043473972362917
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: RatWarrior_5
+      rect:
+        serializedVersion: 2
+        x: 2689
+        y: 1405
+        width: 312
+        height: 228
+      alignment: 9
+      pivot: {x: 0.79, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7c565ef7917a5e7c0800000000000000
+      internalID: -4042641362533390905
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: RatWarrior_13
+      rect:
+        serializedVersion: 2
+        x: 1835
+        y: 1404
+        width: 6
+        height: 6
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e67986170b2bc9290800000000000000
+      internalID: -7882228776918542482
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: RatWarrior_14
+      rect:
+        serializedVersion: 2
+        x: 2905
+        y: 1402
+        width: 5
+        height: 5
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4e0fbbbcf3232a1b0800000000000000
+      internalID: -5646895733186760476
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: RatWarrior_15
+      rect:
+        serializedVersion: 2
+        x: 2847
+        y: 1397
+        width: 4
+        height: 5
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d71a53360097ecdb0800000000000000
+      internalID: -4769741912767356547
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: RatWarrior_20
+      rect:
+        serializedVersion: 2
+        x: 2078
+        y: 1251
+        width: 4
+        height: 4
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a75731ef6bd8980b0800000000000000
+      internalID: -5725889634138622598
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: RatWarrior_21
+      rect:
+        serializedVersion: 2
+        x: 3224
+        y: 1249
+        width: 5
+        height: 4
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ff72dfbf121e7ffa0800000000000000
+      internalID: -5766893261746788353
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Spear
+      rect:
+        serializedVersion: 2
+        x: 483
+        y: 1134
+        width: 477
+        height: 76
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: dd27e9136609abaf0800000000000000
+      internalID: -379832449965853987
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: RatWarrior_3
+      rect:
+        serializedVersion: 2
+        x: 226
+        y: 409
+        width: 565
+        height: 338
+      alignment: 9
+      pivot: {x: 0.91, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9504d3b9ad8ca32d0800000000000000
+      internalID: -3298102935862558631
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: RatWarrior_26
+      rect:
+        serializedVersion: 2
+        x: 1638
+        y: 686
+        width: 7
+        height: 4
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8d5b4ba640bfb9b50800000000000000
+      internalID: 6601145675230262744
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: RatWarrior_6
+      rect:
+        serializedVersion: 2
+        x: 2503
+        y: 408
+        width: 478
+        height: 279
+      alignment: 9
+      pivot: {x: 0.9, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 914ed44f8e9312090800000000000000
+      internalID: -8061098185322535911
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: RatWarrior_4
+      rect:
+        serializedVersion: 2
+        x: 1526
+        y: 412
+        width: 415
+        height: 271
+      alignment: 9
+      pivot: {x: 0.72, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 27ba894be24dd3380800000000000000
+      internalID: -8989795984098153614
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: RatWarrior_31
+      rect:
+        serializedVersion: 2
+        x: 2990
+        y: 447
+        width: 5
+        height: 6
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d447f488322d476e0800000000000000
+      internalID: -1840615297635093427
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: RatWarrior_37
+      rect:
+        serializedVersion: 2
+        x: 3222
+        y: 249
+        width: 4
+        height: 4
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8211eb1a46ef6c9d0800000000000000
+      internalID: -2754234413926706904
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+  spritePackingTag: 
+  pSDRemoveMatte: 0
+  pSDShowRemoveMatteOption: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

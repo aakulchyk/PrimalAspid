@@ -47,6 +47,12 @@ public class PcAttack : MonoBehaviour
             behavior.hurt(new Vector2(dir.x*60, 10), Types.DamageType.PcHit);
             player.cameraEffects.Shake(0.3f, 1000, 0.4f);
             player.knockback(new Vector2(-dir.x*15f, 0));
+        } else if (other.tag=="Breakable") {
+            Breakable breakable = other.gameObject.GetComponent<Breakable>();
+            breakable.hurt(1);
+            player.cameraEffects.Shake(0.3f, 1000, 0.4f);
+            Vector3 dir = (other.transform.position - player.transform.position).normalized;
+            player.knockback(new Vector2(-dir.x*20f, 0));
         }
     }
 }
