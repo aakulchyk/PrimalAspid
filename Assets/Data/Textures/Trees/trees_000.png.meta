@@ -96,6 +96,7 @@ TextureImporter:
   streamingMipmaps: 0
   streamingMipmapsPriority: 0
   vTOnly: 0
+  ignoreMasterTextureLimit: 0
   grayScaleToAlpha: 0
   generateCubemap: 6
   cubemapConvolution: 0
@@ -104,9 +105,9 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: -1
-    aniso: -1
-    mipBias: -100
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
     wrapU: 1
     wrapV: 1
     wrapW: 1
@@ -655,6 +656,30 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
+    nameFileIdTable:
+      trees_000_12: -107620039431466855
+      trees_000_3: 6939375389700225104
+      trees_000_4: -7318181847500963017
+      trees_000_2: 6543409524993188174
+      trees_000_19: 3409201709698935019
+      trees_000_11: 8346821538179791094
+      trees_000_7: -1672294444033515844
+      trees_000_17: 3075981608128256700
+      trees_000_16: 4599250624022796735
+      trees_000_6: 3566804923511048467
+      trees_000_8: 8894082742177655274
+      trees_000_20: -924348445998770490
+      trees_000_13: 3532932536562311594
+      trees_000_21: 4917692253654938241
+      trees_000_23: -1988807091340896281
+      trees_000_18: -3901441287065417878
+      trees_000_1: -2425677902266398294
+      trees_000_22: 3431088752722596837
+      trees_000_14: -7206968034321001483
+      trees_000_10: -1989597539914807508
+      trees_000_15: 1112749872848421722
+      trees_000_9: -9054653121261300761
+      trees_000_5: -8812374973524993111
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

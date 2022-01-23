@@ -179,6 +179,8 @@ TextureImporter:
   isReadable: 0
   streamingMipmaps: 0
   streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMasterTextureLimit: 0
   grayScaleToAlpha: 0
   generateCubemap: 6
   cubemapConvolution: 0
@@ -187,9 +189,9 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: -1
-    aniso: -1
-    mipBias: -100
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
     wrapU: 1
     wrapV: 1
     wrapW: 1
@@ -210,9 +212,12 @@ TextureImporter:
   textureType: 8
   textureShape: 1
   singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
   maxTextureSizeSet: 0
   compressionQualitySet: 0
   textureFormatSet: 0
+  ignorePngGamma: 0
   applyGammaDecoding: 0
   platformSettings:
   - serializedVersion: 3
@@ -1344,6 +1349,59 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
+    nameFileIdTable:
+      deepnest_34: 3860035924388549445
+      deepnest_46: -7753037995364607354
+      deepnest_17: -6805501676694398453
+      deepnest_19: -6602187704428737307
+      deepnest_43: 3019736134202601746
+      deepnest_40: 365923952475541614
+      deepnest_42: -6054573907294176732
+      deepnest_9: -3183383791552707749
+      deepnest_11: 2396711802589619335
+      deepnest_16: 7925145142867687606
+      deepnest_6: -8680108801719434893
+      deepnest_50: 6199480507681794697
+      deepnest_5: -8674269581717084170
+      deepnest_4: 5199241466268727745
+      deepnest_15: -7131694056737607825
+      deepnest_51: -5908605886037933156
+      deepnest_7: -8584200861858068918
+      deepnest_32: -6715357816123685942
+      deepnest_10: 1227327520324005498
+      deepnest_29: 3507961677569031639
+      deepnest_26: -3348084608208792688
+      deepnest_1: 8608355297347233127
+      deepnest_2: -635571989999211720
+      deepnest_13: -3138970088237748999
+      deepnest_12: 6450237115290958136
+      deepnest_44: -6391877718233055459
+      deepnest_0: 4634541721593740903
+      deepnest_14: 241569412249373163
+      deepnest_49: -3362813273341208164
+      deepnest_39: -1636271511783347224
+      deepnest_22: -4738071239429490713
+      deepnest_48: 7027772329298761516
+      deepnest_18: 3273058361978017298
+      deepnest_31: -3329527058542855158
+      deepnest_24: -163414387312782189
+      deepnest_45: -3517453055643975499
+      deepnest_21: -4266878218369016598
+      deepnest_8: -7430277170663854497
+      deepnest_23: -3549687725027817956
+      deepnest_3: 5985066634409521422
+      deepnest_25: 5419694173071760130
+      deepnest_28: 3113093320769746956
+      deepnest_35: -4375442136633052718
+      deepnest_30: 7826108724129439016
+      deepnest_27: -3355892602620017589
+      deepnest_38: -3796054168508513725
+      deepnest_47: -8261694004959903610
+      deepnest_41: 3047165566833171206
+      deepnest_36: -5564125806867245275
+      deepnest_33: 2305798015933550535
+      deepnest_20: 4081044408154496610
+      deepnest_37: 6035819506187938285
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0
