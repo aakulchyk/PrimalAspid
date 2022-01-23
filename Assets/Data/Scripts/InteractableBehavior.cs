@@ -32,7 +32,11 @@ public class InteractableBehavior : MonoBehaviour
     void Update()
     {
         if (canvas) {
-            float pDist = Vector2.Distance(Utils.GetPlayerTransform().position, transform.position); 
+            var pTransform = Utils.GetPlayerTransform();
+
+            if (pTransform == null)
+                return;
+            float pDist = Vector2.Distance(pTransform.position, transform.position); 
             openForDialogue = (pDist < interactRadius && active);
             canvas.SetActive(openForDialogue);
         }

@@ -136,7 +136,6 @@ public class PlayerControl : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        Debug.Log("LOAD");
 
         thisTransform = this.transform;
 
@@ -188,7 +187,6 @@ public class PlayerControl : MonoBehaviour
     }
 
     public void throwByImpulse(Vector2 vector, bool enemy = true) {
-        Debug.Log("Throw player back " + vector);
         StartCoroutine(shortInvulnerability());
         body.AddForce(vector);
     }
@@ -346,7 +344,6 @@ public class PlayerControl : MonoBehaviour
         }
 
         float look_axis = Input.GetAxisRaw("Vertical Look");
-        //Debug.Log("Axis: " + look_axis);
         cameraEffects.SetOffset(new Vector3(0, look_axis*10, 0)); 
     }
 
@@ -410,7 +407,6 @@ public class PlayerControl : MonoBehaviour
                 if (!sounds.isPlaying)
                     sounds.PlayOneShot(clip_float);
             }
-            //Debug.Log("velocity: " + body.velocity);
             anim.SetBool("IsFloating", floatPressed);
 
             if (!floatPressed && _isPlayingFloatSound && sounds.isPlaying) {
@@ -542,7 +538,6 @@ public class PlayerControl : MonoBehaviour
 
     void startFlap()
     {
-        //Debug.Log("flap?");
         if (_jumpStarted || _flapStarted)
             return;
 
@@ -824,25 +819,15 @@ public class PlayerControl : MonoBehaviour
             GetGame().OpenPopup();
         }
 
-        /*if (other.tag == "HiddenRoomVeil") {
-            Debug.Log("hrv");
-            HiddenRoomBehavior hrb = other.gameObject.GetComponent<HiddenRoomBehavior>();
-            hrb.MakeVisible(false);
-        }*/
     }
 
     void OnTriggerExit2D(Collider2D other) {
-        /*if (other.tag == "HiddenRoomVeil") {
-            Debug.Log("hrv exit");
-            HiddenRoomBehavior hrb = other.gameObject.GetComponent<HiddenRoomBehavior>();
-            hrb.MakeVisible(true);
-        }*/
     }
 
     public void hurt(Vector2 force, Types.DamageType damageType = Types.DamageType.Spikes)
     {    
         if (isDead) return; // one cannot die twice...
-        if (invulnerable) return; // one cannot die twice...
+        if (invulnerable) return;
 
         body.AddForce(force);
         cameraEffects.Shake(0.6f, 1000, 1f);
@@ -857,7 +842,6 @@ public class PlayerControl : MonoBehaviour
             anim.SetTrigger("Hurt");
             if (sounds.isPlaying)
                 sounds.Stop();
-            Debug.Log("play hurt sound");
             sounds.pitch = 1;
             sounds.volume = 1;
             sounds.PlayOneShot(clip_hurt);
