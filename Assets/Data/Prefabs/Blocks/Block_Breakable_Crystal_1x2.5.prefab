@@ -227,7 +227,7 @@ MonoBehaviour:
   pointLight: {fileID: 2034300626400201941}
   animator: {fileID: 6511338586910782685}
   destroyAfterDeath: 1
-  health: 3
+  health: 2
   clip_hit: {fileID: 8300000, guid: ac7d5513afcc8e446ab4e4307ebf17bf, type: 3}
   clip_destroy: {fileID: 8300000, guid: cbb27cfc77ad9ff498d5bc8c66c0d99f, type: 3}
 --- !u!82 &4114415051848709540
@@ -382,17 +382,17 @@ PrefabInstance:
     - target: {fileID: 1956408374390101892, guid: 666fd4a92e86df244ba69b67b49029b0,
         type: 3}
       propertyPath: InitialModule.startColor.maxColor.b
-      value: 0.14117648
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1956408374390101892, guid: 666fd4a92e86df244ba69b67b49029b0,
         type: 3}
       propertyPath: InitialModule.startColor.maxColor.g
-      value: 0.40000004
+      value: 0.011764707
       objectReference: {fileID: 0}
     - target: {fileID: 1956408374390101892, guid: 666fd4a92e86df244ba69b67b49029b0,
         type: 3}
       propertyPath: InitialModule.startColor.maxColor.r
-      value: 0.8588236
+      value: 0.8352942
       objectReference: {fileID: 0}
     - target: {fileID: 1956408374390101892, guid: 666fd4a92e86df244ba69b67b49029b0,
         type: 3}
