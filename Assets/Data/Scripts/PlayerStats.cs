@@ -12,8 +12,6 @@ public static class PlayerStats
     private static int npc_saved = 0, npc_dead = 0;
 
 
-
-
     private static int max_stamina = 10;
     private static int stamina = max_stamina;
     private static int max_hp = 2;
@@ -30,7 +28,6 @@ public static class PlayerStats
 
     //
     private static int max_flaps_enabled = 0;
-
     private static int flaps_left = 0;
 
     //
@@ -38,11 +35,6 @@ public static class PlayerStats
     
     //
     private static bool side_grab_enabled = false;
-
-       
-
-
-    public static Vector2 playerSpawnCoord = Vector2.zero;
 
     public static int Deaths 
     {

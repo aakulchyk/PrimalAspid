@@ -22,16 +22,4 @@ public class LevelPortal : MonoBehaviour
         SpawnManager.SharedInstance.SetSpawn(spawnPoint.position);
         SceneManager.LoadScene(sceneToLoad);
     }
-
-    private void OnTriggerEnter(Collider other)
-    {
-        /*Debug.Log("Portal Trigger ?");
-        if (other.CompareTag("Player"))
-        {
-            Destroy(other.gameObject);
-            SpawnManager.SharedInstance.SetSpawn(spawnPoint.position);
-            SceneManager.LoadScene(sceneToLoad);
-        }*/
-    }
-    
 }

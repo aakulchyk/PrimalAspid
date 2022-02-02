@@ -47,12 +47,10 @@ public class Game : MonoBehaviour
         save.Initialize();
 
         // gather player data
-
         save.currentScene = currentScene;
         
         save.px = Utils.GetPlayer().transform.position.x;
         save.py = Utils.GetPlayer().transform.position.y;
-        //save.hp =  PlayerStats.HP;
 
         save.deaths = PlayerStats.Deaths;
         save.losses = PlayerStats.Losses;
@@ -63,24 +61,20 @@ public class Game : MonoBehaviour
         save.bloodBodies = PlayerStats.BloodBodies;
 
         // npc
-        var npcs = FindObjectsOfType<RatFatherBehavior>();  
-        foreach (var npc in npcs) {
-            save.maggotFound.Add(npc.waitSuccess);
+        var npcObjs = GameObject.FindGameObjectsWithTag("FriendlyNPC");
+        foreach (var obj in npcObjs) {
+            Debug.Log("npc: " + obj.name);
+            
+            save.npcx.Add(obj.transform.position.x);
+            save.npcy.Add(obj.transform.position.y);
+            var npc = obj.GetComponent<NpcBehavior>();
+            save.npcState.Add(npc.isDead ? 0 : 1); // TODO: extend
         }
 
-        // maggots
-        var maggots = FindObjectsOfType<BabyRatBehavior>();  
-        foreach (var maggot in maggots) {
-
-            Debug.Log("maggot: " + maggot.gameObject.name);
-            save.maggotx.Add(maggot.transform.position.x);
-            save.maggoty.Add(maggot.transform.position.y);
-            save.maggotDead.Add(maggot.isDead);
-        }
 
         // platform
 
-        // popups
+        // dynamic objects
 
 
         return save;
@@ -131,10 +125,9 @@ public class Game : MonoBehaviour
 
         currentScene = save.currentScene;
 
-        SceneManager.LoadScene(currentScene);
-
+        // load player data
         // assign loaded values
-        //PlayerStats.HP = save.hp;
+        //PlayerStats.playerSpawnCoord = new Vector2(save.px, save.py);
         PlayerStats.Deaths = save.deaths;
         PlayerStats.Losses = save.losses;
         PlayerStats.Time = save.time;
@@ -143,46 +136,33 @@ public class Game : MonoBehaviour
 
         PlayerStats.BloodBodies = save.bloodBodies;
 
-        // player
-        var pos = Utils.GetPlayer().transform.position;
-        pos.x = save.px;
-        pos.y = save.py;
-        Utils.GetPlayer().transform.position = pos;
+        // load scene
+        SpawnManager.SharedInstance.SetSpawn(new Vector2(save.px, save.py));
+        SceneManager.LoadScene(currentScene);
 
-        // npcs waiting
-        // maggots
+
+        // load npcs
         {
             int i=0;
-            var npcs = FindObjectsOfType<RatFatherBehavior>();  
-            foreach (var npc in npcs)
+            var npcObjs = GameObject.FindGameObjectsWithTag("FriendlyNPC");
+            foreach (var obj in npcObjs)
             {
-                if (save.maggotFound==null || i >= save.maggotFound.Capacity)
+                if (save.npcState==null || i >= save.npcState.Capacity)
                     break;
-                npc.waitSuccess = save.maggotFound[i];
+
+                var npc = obj.GetComponent<NpcBehavior>();
+                npc.isDead = save.npcState[i]==0;
+                var mpos = npc.transform.position;
+                mpos.x = save.npcx[i];
+                mpos.y = save.npcy[i];
+                npc.transform.position = mpos;
+
                 npc.LoadInActualState();
                 i++;
             }
         }
 
-
-        // load maggots
-        {
-            int i=0;
-            var maggots = FindObjectsOfType<BabyRatBehavior>();  
-            foreach (var maggot in maggots)
-            {
-                if (save.maggotDead==null || i >= save.maggotDead.Capacity)
-                    break;
-                maggot.isDead = save.maggotDead[i];
-                var mpos = maggot.transform.position;
-                mpos.x = save.maggotx[i];
-                mpos.y = save.maggoty[i];
-                maggot.transform.position = mpos;
-
-                maggot.LoadInActualState();
-                i++;
-            }
-        }
+        // TODO: dynamic objects
 
         Debug.Log("Game Loaded");
         isGameInProgress = true;

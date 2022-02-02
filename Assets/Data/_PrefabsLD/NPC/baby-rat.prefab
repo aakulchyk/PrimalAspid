@@ -169,7 +169,7 @@ GameObject:
   - component: {fileID: 267185895461889054}
   m_Layer: 6
   m_Name: baby-rat
-  m_TagString: Untagged
+  m_TagString: FriendlyNPC
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -454,7 +454,7 @@ MonoBehaviour:
   - {x: -0.2582653, y: 0.94329065, z: 0}
   m_ShapePathHash: -445668243
   m_Mesh: {fileID: 0}
-  m_InstanceId: 43656
+  m_InstanceId: 198278
 --- !u!1 &4164921052835938851
 GameObject:
   m_ObjectHideFlags: 0

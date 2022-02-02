@@ -19,31 +19,23 @@ public class Save
     public int npc_saved, npc_dead;
 
     
-    public List<float> maggotx;
-    public List<float> maggoty;
+    public List<float> npcx;
+    public List<float> npcy;
 
-    public List<bool> maggotFound;
-    public List<bool> maggotDead;
+    public List<int> npcState;
 
 
     public List<bool> platformOpened;
 
 
-    public List<bool> popupsShown;
-
-
     public void Initialize()
     {
-        maggotx = new List<float>();
-        maggoty = new List<float>();
+        npcx = new List<float>();
+        npcy = new List<float>();
 
-        maggotFound = new List<bool>();
-        maggotDead = new List<bool>();
+        npcState = new List<int>();
 
         platformOpened = new List<bool>();
-
-        popupsShown = new List<bool>();
-
     }
     
 }

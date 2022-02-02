@@ -139,11 +139,6 @@ public class PlayerControl : MonoBehaviour
 
         thisTransform = this.transform;
 
-        if (PlayerStats.playerSpawnCoord != Vector2.zero) {
-            Debug.Log("Spawn PC at " + PlayerStats.playerSpawnCoord);
-            thisTransform.position = PlayerStats.playerSpawnCoord;
-        }
-
         isDead = false;
         startTime = System.DateTime.UtcNow;
         lastFlapTime = Time.time;
@@ -784,15 +779,6 @@ public class PlayerControl : MonoBehaviour
         }
 
         if (other.tag == "LevelPortal") {
-            /*System.DateTime endTime = System.DateTime.UtcNow;
-            PlayerStats.Time = endTime - startTime;
-            if (other.gameObject.GetComponent<LevelPortal>().backward)
-                PlayerStats.currentSceneIndex--;
-            else
-                PlayerStats.currentSceneIndex++;
-
-            PlayerStats.playerSpawnCoord = other.transform.Find("SpawnPoint").transform.position;
-            SceneManager.LoadScene(PlayerStats.CurrentScene());*/
             other.gameObject.GetComponent<LevelPortal>().TransferToAnotherLevel(gameObject);
             return;
         }
@@ -882,7 +868,7 @@ public class PlayerControl : MonoBehaviour
         anim.SetBool("IsDying", false);
         PlayerStats.Deaths++;
         Debug.Log("Deaths: " + PlayerStats.Deaths);
-        SceneManager.LoadScene(Game.currentScene);
+        Game.SharedInstance.LoadGame();
     }
 
     IEnumerator RestartAfterDelay()
