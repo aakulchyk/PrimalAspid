@@ -23,7 +23,8 @@ public class NpcBehavior : MonoBehaviour
 
     public AudioClip clip_hurt;
     public AudioClip clip_death;
-    public int _hp = 1;
+    [SerializeField] protected int INITIAL_HP;
+    protected int _hp;
 
     public bool invulnerable = false;
 
@@ -51,6 +52,8 @@ public class NpcBehavior : MonoBehaviour
         if (t) {
             interactable = t.gameObject.GetComponent<InteractableBehavior>();
         }
+
+        _hp = INITIAL_HP;
     }
 
     void OnCollisionEnter2D(Collision2D collision) {
@@ -87,7 +90,7 @@ public class NpcBehavior : MonoBehaviour
         if (--_hp < 0 && !isDead) {
             die();
         } else {
-            anim.SetBool("hurt", true);
+            anim.SetTrigger("hurt");
             knockback(force);
         }
 
@@ -110,7 +113,6 @@ public class NpcBehavior : MonoBehaviour
         if (deathParticles) {
             deathParticles.SetActive(true);
             deathParticles.transform.parent = transform.parent;
-            //deathParticles.Emit(1);
         }
 
         if (collectiblePrefab) {

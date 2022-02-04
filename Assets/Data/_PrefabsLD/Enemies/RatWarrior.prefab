@@ -174,7 +174,7 @@ MonoBehaviour:
   collectiblePrefab: {fileID: 0}
   clip_hurt: {fileID: 8300000, guid: 8a57fb381212b08498b7220e6caeff5f, type: 3}
   clip_death: {fileID: 8300000, guid: 3603262efd8d41e4996baccdc1df2124, type: 3}
-  _hp: 3
+  INITIAL_HP: 3
   invulnerable: 0
   _knockback: 0
   damageParticles: {fileID: 6884934128245511305}

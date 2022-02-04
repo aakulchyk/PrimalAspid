@@ -96,23 +96,17 @@ public class KrabBehavior : NpcBehavior
 
     public override void hurt(Vector2 force, Types.DamageType damageType = Types.DamageType.Spikes) {
         if (isDead) return;
-        knockback(force);
+        
 
         if (damageType == Types.DamageType.Spikes) {
             _hp = -1;
         }
 
-        if (_hp < 0 && !isDead) {
-            die();
-        } else {
-            anim.SetBool("hurt", true);
-            sounds.PlayOneShot(clip_hurt);
-        }
+        base.hurt(force, damageType);
     }
    protected override void die()
    {
         base.die();
-        GetComponent<ParticleSystem>().Play();
         Destroy(this.gameObject, 5f);
    }
 }

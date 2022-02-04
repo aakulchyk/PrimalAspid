@@ -10,7 +10,7 @@ public class PrizeBatUpdate : Collectable
         collected = true;
 
         // apply stats
-        PlayerStats.MaxFlaps+=2;
+        PlayerStats.MaxFlaps+=100;
         GetComponent<AudioSource>().PlayOneShot(clip_collect);
         renderer.enabled = false;
         Destroy(this.gameObject, 1f);
