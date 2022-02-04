@@ -114,6 +114,7 @@ public class Game : MonoBehaviour
         if (!File.Exists(Application.persistentDataPath + "/gamesave.save"))
         {
              Debug.Log("Cannot find a saved game");
+             StartNewGame();
              return;
         }
             

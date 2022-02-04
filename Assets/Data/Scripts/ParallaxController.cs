@@ -11,11 +11,11 @@ public class ParallaxController : MonoBehaviour
     private Vector2 oldCameraPosition;
     List<ParallaxLayer> parallaxLayers = new List<ParallaxLayer>();
 
-    Camera cam;
+    public Camera cam;
 
     void Start()
     {
-        cam = Camera.main;
+        //cam = Camera.main;
         onCameraMove += MoveLayer;
         FindLayers();
         oldCameraPosition.x = cam.transform.position.x;
