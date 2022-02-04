@@ -1307,7 +1307,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 15dff1b6d40f46948bdcd53dc7758ad1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  staminaBar: {fileID: 0}
+  staminaBar: {fileID: 6337355649105699650}
 --- !u!222 &8059273564811125675
 CanvasRenderer:
   m_ObjectHideFlags: 0

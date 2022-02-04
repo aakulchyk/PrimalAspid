@@ -31,7 +31,6 @@ public class StatusBar : MonoBehaviour
 
         bbCount = GameObject.Find("bbCount");
 
-        staminaBar = GameObject.Find("Slider").GetComponent<Slider>();
         staminaBar.maxValue = PlayerStats.MaxStamina;
     }
 
