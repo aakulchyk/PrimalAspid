@@ -173,6 +173,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: CollectableGraphic
       objectReference: {fileID: 0}
+    - target: {fileID: 2560855731179857120, guid: f4ee275d57c94504d87e43e25cced227,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6801512613701837600, guid: f4ee275d57c94504d87e43e25cced227,
         type: 3}
       propertyPath: m_RootOrder

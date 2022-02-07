@@ -15,6 +15,7 @@ public class Breakable : MonoBehaviour
     [SerializeField] private Animator animator;
     [SerializeField] private bool destroyAfterDeath = true; //If false, a broken sprite will appear instead of complete destruction
     public int health;
+    public bool destroyed = false;
   //  [SerializeField] private Instantiator instantiator;
     [SerializeField] private AudioClip clip_hit;
     [SerializeField] private AudioClip clip_destroy;
@@ -22,12 +23,19 @@ public class Breakable : MonoBehaviour
     //[SerializeField] private RecoveryCounter recoveryCounter;
     //[SerializeField] private bool requireDownAttack;
     private SpriteRenderer spriteRenderer;
+    private BoxCollider2D collider;
 
     // Use this for initialization
     void Start()
     {
         //recoveryCounter = GetComponent<RecoveryCounter>();
         spriteRenderer = gameObject.GetComponent<SpriteRenderer>();
+        collider = GetComponent<BoxCollider2D>();
+
+        if (destroyed) {
+            collider.enabled = false;
+            spriteRenderer.enabled = false;
+        }
     }
 
     public void hurt(int hitPower)
@@ -64,7 +72,7 @@ public class Breakable : MonoBehaviour
         Time.timeScale = 1;
 
         GetComponent<BoxCollider2D>().enabled = false;
-        GetComponent<SpriteRenderer>().enabled = false;
+        spriteRenderer.enabled = false;
         animator.SetTrigger("die");
 
         //Activate deathParticles & unparent from this so they aren't destroyed!
@@ -85,7 +93,7 @@ public class Breakable : MonoBehaviour
         //Destroy me, or set my sprite to the brokenSprite
         if (destroyAfterDeath)
         {
-            Destroy(gameObject, 1);
+            //Destroy(gameObject, 1);
         }
         else
         {

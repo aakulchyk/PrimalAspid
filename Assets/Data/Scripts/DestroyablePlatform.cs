@@ -38,8 +38,11 @@ public class DestroyablePlatform : MonoBehaviour
                 Utils.GetPlayerGrabber().endHangOnCeiling();
             }
         }
-        deathParticles.SetActive(true);
-        deathParticles.transform.parent = null;
+        if (deathParticles) {
+            deathParticles.SetActive(true);
+            deathParticles.transform.parent = null;
+        }
+        
         Destroy(this.gameObject, 0.01f);
     }
 

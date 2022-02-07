@@ -17,6 +17,10 @@ public class CameraEffects : MonoBehaviour
     [System.NonSerialized] public float shakeLength = 10;
     [SerializeField] private CinemachineVirtualCamera virtualCamera;
 
+
+    private Vector3 hardOffset;
+    private Vector3 playerOffset;
+
     void Start()
     {
         //Ensures we can shake the camera using Cinemachine. Don't really worry too much about this weird stuff. It's just Cinemachine's variables.
@@ -48,9 +52,16 @@ public class CameraEffects : MonoBehaviour
         multiChannelPerlin.m_FrequencyGain = shake;
     }
 
-    public void SetOffset(Vector3 offset)
+    public void SetHardOffset(Vector3 offset)
     {
-        cinemachineFramingTransposer.m_TrackedObjectOffset = trackedObjectOffsetDefault - offset;
+        hardOffset = offset;
+        cinemachineFramingTransposer.m_TrackedObjectOffset = trackedObjectOffsetDefault - hardOffset - playerOffset;
+    }
+
+    public void SetPlayerOffset(Vector3 offset)
+    {
+        playerOffset = offset;
+        cinemachineFramingTransposer.m_TrackedObjectOffset = trackedObjectOffsetDefault - hardOffset - playerOffset;
     }
     
 }

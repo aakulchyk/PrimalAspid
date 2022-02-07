@@ -167,14 +167,14 @@ public class MantisBehavior : NpcBehavior
     public override void getCaptured()
     {
         anim.SetBool("shooting", false);
-        anim.SetBool("hurt", true);
+        anim.SetBool("captured", true);
         
         shootAnticipate = false;
     }
 
     public override void getReleased()
     {
-        anim.SetBool("hurt", false);
+        anim.SetBool("captured", false);
     }
 
     protected override bool checkAccessibility(Transform wp)

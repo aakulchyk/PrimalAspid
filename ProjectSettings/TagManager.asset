@@ -26,6 +26,7 @@ TagManager:
   - MovingPlatform
   - Breakable
   - Abyss
+  - FriendlyNPC
   layers:
   - Default
   - TransparentFX

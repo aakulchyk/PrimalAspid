@@ -12,9 +12,9 @@ public class StatusBar : MonoBehaviour
     GameObject popup;
 
     GameObject bbCount;
-    void Start() {
-        bar = transform.Find("Bar");
 
+    [SerializeField] private Slider staminaBar;
+    void Start() {
         //hpBar = new GameObject[] {GameObject.Find("HP1"), GameObject.Find("HP2"), GameObject.Find("HP3")};
         hpBar2 = new GameObject[] {
             GameObject.Find("HP2.1"),
@@ -30,12 +30,15 @@ public class StatusBar : MonoBehaviour
         popup = GameObject.Find("PopUp");
 
         bbCount = GameObject.Find("bbCount");
+
+        staminaBar.maxValue = PlayerStats.MaxStamina;
     }
 
 
     void Update() {
         float staminaScale = (float)PlayerStats.Stamina / (float)PlayerStats.MaxStamina;
-        bar.localScale = new Vector3(staminaScale * 400, 40);
+        //bar.localScale = new Vector3(staminaScale * 400, 40);
+        staminaBar.value = PlayerStats.Stamina;
 
         for (int i=0; i<PlayerStats.MAX_HP; i++) {
             hpBar2[i].GetComponent<Image>().color = PlayerStats.HP > i

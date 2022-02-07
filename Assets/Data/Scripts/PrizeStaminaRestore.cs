@@ -11,9 +11,9 @@ public class PrizeStaminaRestore : Collectable
 
         // apply stats
         PlayerStats.FullyRestoreStamina();
-        //GetComponent<AudioSource>().volume = 1f;
+        GetComponent<AudioSource>().volume = 1f;
         GetComponent<AudioSource>().PlayOneShot(clip_collect);
-        GetComponent<Renderer>().enabled = false;
+        renderer.enabled = false;
         Destroy(this.gameObject, 1f);
     }
 }

@@ -63,7 +63,8 @@ public class PlayerControl : MonoBehaviour
     public float _gravityScale = 8f;
     public float _mass = 2.5f;
     public float _drag = 2f;
-    public float _flapForce;
+    [SerializeField] private float _flapForce;
+    [SerializeField] private float _jumpForce;
     
     [Header ("Private")]
     private float jumpCoyoteTimeStarted;
@@ -339,7 +340,7 @@ public class PlayerControl : MonoBehaviour
         }
 
         float look_axis = Input.GetAxisRaw("Vertical Look");
-        cameraEffects.SetOffset(new Vector3(0, look_axis*10, 0)); 
+        cameraEffects.SetPlayerOffset(new Vector3(0, look_axis*10, 0)); 
     }
 
     void FixedUpdate()
@@ -572,7 +573,6 @@ public class PlayerControl : MonoBehaviour
         body.velocity = new Vector2(body.velocity.x, 0);
         //float magnitude = body.velocity.y > 0 ? body.velocity.y : 0; 
         //float force = magnitude < 4f ? _flapForce : _flapForce / magnitude;
-        float force = _flapForce;
 
         if (sounds.isPlaying)
             sounds.Stop();
@@ -580,7 +580,7 @@ public class PlayerControl : MonoBehaviour
         sounds.PlayOneShot(clip_flap);
         
         anim.SetBool("IsFlapping", true);
-        body.AddForce(new Vector2(0f, force));
+        body.AddForce(new Vector2(0f, _flapForce));
 
         StartCoroutine(ShowJumpTrail());
        //StartCoroutine(ShowFlapTrail());
@@ -640,7 +640,7 @@ public class PlayerControl : MonoBehaviour
         Physics2D.IgnoreLayerCollision(LayerMask.NameToLayer("PC"), LayerMask.NameToLayer("Hanger"), true);
 
         _jumpStarted = true;
-        float force = _flapForce * 1.5f;
+        
         if (sounds.isPlaying)
             sounds.Stop();
 
@@ -649,7 +649,7 @@ public class PlayerControl : MonoBehaviour
         anim.SetBool("IsJumping", true);
         
         body.velocity = new Vector2(body.velocity.x, 0);
-        body.AddForce(new Vector2(xImpulse, force));
+        body.AddForce(new Vector2(xImpulse, _jumpForce));
     }
 
     public void JumpEffect()

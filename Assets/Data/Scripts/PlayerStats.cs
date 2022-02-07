@@ -119,6 +119,7 @@ public static class PlayerStats
 
     public static void FullyRestoreStamina()
     {
+        //Debug.Log("Stamina = " + stamina);
         stamina = max_stamina;
     }
 
