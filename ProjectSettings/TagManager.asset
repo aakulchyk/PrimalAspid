@@ -27,6 +27,7 @@ TagManager:
   - Breakable
   - Abyss
   - FriendlyNPC
+  - EffectorArea
   layers:
   - Default
   - TransparentFX

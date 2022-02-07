@@ -17,7 +17,11 @@ public class SavePointBehavior : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Transform playerTransform = GameObject.FindWithTag("Player").transform;
+        Transform playerTransform = Utils.GetPlayerTransform();
+
+        if (!playerTransform)
+            return;
+            
         float pDist = Vector2.Distance(playerTransform.position, transform.position);
 
         canInteract = (pDist < interactRadius);

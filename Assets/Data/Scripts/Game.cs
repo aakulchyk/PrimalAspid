@@ -19,7 +19,7 @@ public class Game : MonoBehaviour
     public bool isGameInProgress = false;
 
 
-    public static string defaultScene = "LD_Level_1_1";
+    public static string defaultScene = "LD_Level_1_0";
     public static string currentScene;
 
     private string[] texts;
