@@ -54,4 +54,10 @@ public static class Utils
         return _playerTransform;
 
     }
+
+    public static Vector3 AngleToVector(float angle)
+    {
+        Quaternion myRotation = Quaternion.AngleAxis(angle, Vector3.forward);
+        return myRotation * Vector3.right;
+    }
 }

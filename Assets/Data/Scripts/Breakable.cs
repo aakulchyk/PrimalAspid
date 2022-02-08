@@ -20,10 +20,16 @@ public class Breakable : MonoBehaviour
     [SerializeField] private AudioClip clip_hit;
     [SerializeField] private AudioClip clip_destroy;
     private bool recovered;
+
+    [SerializeField] private Rigidbody2D rigidBody;
     //[SerializeField] private RecoveryCounter recoveryCounter;
     //[SerializeField] private bool requireDownAttack;
     private SpriteRenderer spriteRenderer;
     private BoxCollider2D collider;
+
+    [SerializeField] private GameObject attachedObject;
+
+
 
     // Use this for initialization
     void Start()
@@ -35,6 +41,15 @@ public class Breakable : MonoBehaviour
         if (destroyed) {
             collider.enabled = false;
             spriteRenderer.enabled = false;
+        }
+    }
+
+    void OnCollisionEnter2D(Collision2D collision) {
+        Collider2D collider = collision.collider;
+        if (collider.tag == "Boulder") {
+            if (collision.relativeVelocity.magnitude > 6) {
+                Die();
+            }
         }
     }
 
@@ -61,10 +76,13 @@ public class Breakable : MonoBehaviour
                 Die();
             } else {
                 GetComponent<AudioSource>().PlayOneShot(clip_hit);
-                animator.SetTrigger("hurt");
+                if (animator)
+                    animator.SetTrigger("hurt");
             }
         }
     }
+
+
 
     public void Die()
     {
@@ -72,8 +90,22 @@ public class Breakable : MonoBehaviour
         Time.timeScale = 1;
 
         GetComponent<BoxCollider2D>().enabled = false;
+
+        if (rigidBody)
+            rigidBody.simulated = false;
+
+        if (attachedObject) {
+            var joint = attachedObject.GetComponent<HingeJoint2D>();
+            if (joint) {
+                //joint.connectedBody = null;
+                joint.breakForce = 0;
+            }
+        }
+
         spriteRenderer.enabled = false;
-        animator.SetTrigger("die");
+
+        if (animator)
+            animator.SetTrigger("die");
 
         //Activate deathParticles & unparent from this so they aren't destroyed!
         deathParticles.SetActive(true);
@@ -93,7 +125,7 @@ public class Breakable : MonoBehaviour
         //Destroy me, or set my sprite to the brokenSprite
         if (destroyAfterDeath)
         {
-            //Destroy(gameObject, 1);
+            Destroy(gameObject, 1f);
         }
         else
         {

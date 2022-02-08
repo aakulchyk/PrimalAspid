@@ -88,6 +88,7 @@ public class PlayerControl : MonoBehaviour
 
     private bool _turnStarted = false;
     private bool _flapStarted = false;
+    private bool _floatStarted = false;
 
     private bool _jumpStarted = false;
 
@@ -116,9 +117,6 @@ public class PlayerControl : MonoBehaviour
 
     private bool dash_button_triggered = false;
     private bool prev_dash = false;
-
-    private bool _isOnPlatform = false;
-
 
     void Awake()
     {
@@ -273,6 +271,11 @@ public class PlayerControl : MonoBehaviour
         bool dash_pressed = (d_axis>0.8f || d_axis < -0.8f) || Input.GetKey(KeyCode.G);
         if (!prev_dash && dash_pressed) {
             dash_button_triggered = true;
+            prev_dash = true;
+        }
+
+        if (!dash_pressed && prev_dash) {
+            prev_dash = false;
         }
 
         float treshold = 0.01f;
@@ -387,16 +390,16 @@ public class PlayerControl : MonoBehaviour
             body.velocity += new Vector2(platformBody.velocity.x, 0);
         }
 
-        if (body.velocity.y<0f) {
+        if (!_jumpStarted && !_isGrounded/*body.velocity.y<0f*/ && !grabber.IsHanging()) {
             float f_axis = Input.GetAxisRaw("Float");
             bool floatPressed = (f_axis>0.5f || f_axis < -0.5f) || Input.GetKey(KeyCode.LeftShift) || Input.GetKey(KeyCode.RightShift);
             //bool floatPressed = Input.GetButton("Float");//moveY > 0;
             if (!floatPressed) {
-                //body.gravityScale = _gravityScale;
+                _floatStarted = false;
                 if (body.velocity.y > -35f)
                     body.velocity += Vector2.up * Physics2D.gravity.y * 2.5f * Time.deltaTime;
             } else {
-                //body.gravityScale = _gravityScale / 2.5f;
+                _floatStarted = true;
                 if (body.velocity.y < -8.5f) 
                     body.velocity = new Vector2(body.velocity.x, -8.5f);
                 _isPlayingFloatSound = true;
@@ -415,10 +418,7 @@ public class PlayerControl : MonoBehaviour
             body.velocity += Vector2.up * Physics2D.gravity.y * 8f * Time.deltaTime;
         }
 
-        
         body.drag = _attackActivePhase ? _drag * 20 : _drag;
-
-
 
         // RESTORE FLAPS
         if ((_isGrounded || grabber.IsHanging())) {
@@ -435,7 +435,10 @@ public class PlayerControl : MonoBehaviour
             }
         }
 
-        dash_button_triggered = false;
+        if (dash_button_triggered) {
+            //startDash();
+            dash_button_triggered = false;
+        }
     }
 
 
@@ -497,6 +500,9 @@ public class PlayerControl : MonoBehaviour
 
     public void startDash()
     {
+        if (grabber.IsHanging())
+            return;
+
         Physics2D.IgnoreLayerCollision(playerLayer, enemyLayer, true);
 
         StartCoroutine(shortInvulnerability());
@@ -513,13 +519,17 @@ public class PlayerControl : MonoBehaviour
         if (sounds.isPlaying)
             sounds.Stop();
         sounds.PlayOneShot(clip_dash);
-        body.velocity = new Vector2(faceRight ? 80 : -80, 10);
+        body.velocity = new Vector2(faceRight ? 70 : -70, 10);
 
         Debug.Log("Dash " + body.velocity.x);
         _isDashing = true;
         anim.SetTrigger("Dash");
     }
 
+    public bool IsDashing()
+    {
+        return _isDashing;
+    }
     public void endDash()
     {
         Physics2D.IgnoreLayerCollision(playerLayer, enemyLayer, false);
@@ -590,6 +600,11 @@ public class PlayerControl : MonoBehaviour
     {
         anim.SetBool("IsFlapping", false);
         _flapStarted = false;
+    }
+
+    public bool WingsOpen()
+    {
+        return _flapStarted || _floatStarted;
     }
 
     void JumpOffHanger()
@@ -695,6 +710,7 @@ public class PlayerControl : MonoBehaviour
             endFlap();
         if (_jumpStarted)
             EndJump();
+        _floatStarted = false;
     }
 
     void checkGrounded()
@@ -711,6 +727,7 @@ public class PlayerControl : MonoBehaviour
                 anim.SetTrigger("Land");
                 LandEffect();
                 _isPlayingWalkSound = false;
+                _floatStarted = false;
             } else {
                 // Coyote time
                 jumpCoyoteTimeStarted = Time.time;
