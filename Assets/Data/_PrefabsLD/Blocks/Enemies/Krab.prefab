@@ -126,7 +126,7 @@ MonoBehaviour:
   MAX_KNOCKBACK: 12
   collectiblePrefab: {fileID: 5314788777006985090, guid: cebeb26d5d10a494c9022a590111b634,
     type: 3}
-  clip_hurt: {fileID: 8300000, guid: f7503083c7614784ba315aa47a4d0254, type: 3}
+  clip_hurt: {fileID: 8300000, guid: 8a57fb381212b08498b7220e6caeff5f, type: 3}
   clip_death: {fileID: 8300000, guid: 3603262efd8d41e4996baccdc1df2124, type: 3}
   INITIAL_HP: 4
   invulnerable: 0
