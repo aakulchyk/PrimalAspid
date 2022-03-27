@@ -92,6 +92,7 @@ public class NpcBehavior : MonoBehaviour
         } else {
             anim.SetTrigger("hurt");
             knockback(force);
+            StartCoroutine(Utils.FreezeFrameEffect());
         }
 
         if (damageParticles) {
@@ -118,6 +119,8 @@ public class NpcBehavior : MonoBehaviour
         if (collectiblePrefab) {
             StartCoroutine(dropCollectible());
         }
+
+        StartCoroutine(Utils.FreezeFrameEffect(.01f));
 
         if (grabbable)
             grabbable.gameObject.SetActive(false);

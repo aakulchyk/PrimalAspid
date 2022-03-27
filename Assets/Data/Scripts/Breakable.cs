@@ -67,7 +67,7 @@ public class Breakable : MonoBehaviour
             //Ensure the player can't hit the box multiple times in one hit
             //recoveryCounter.counter = 0;
 
-            //StartCoroutine(NewPlayer.Instance.FreezeFrameEffect());
+            StartCoroutine(Utils.FreezeFrameEffect());
 
             health--;
             

@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using UnityEngine;
 
 public static class Utils
@@ -59,5 +60,12 @@ public static class Utils
     {
         Quaternion myRotation = Quaternion.AngleAxis(angle, Vector3.forward);
         return myRotation * Vector3.right;
+    }
+
+    public static IEnumerator FreezeFrameEffect(float length = .007f)
+    {
+        Time.timeScale = .1f;
+        yield return new WaitForSeconds(length);
+        Time.timeScale = 1f;
     }
 }
