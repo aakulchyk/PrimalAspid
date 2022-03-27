@@ -222,14 +222,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cef3c567ede37014abbd19de9b16e372, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  brokenSprite: {fileID: 0}
+  brokenSprite: {fileID: 21300000, guid: e949469762f11ab47b17bd102f0837ea, type: 3}
   deathParticles: {fileID: 5314986988606025483}
   pointLight: {fileID: 2034300626400201941}
+  CollectableDropPrefab: {fileID: 4647406678988659686, guid: 90aac0a86b5b3c54696cab9b61284049,
+    type: 3}
   animator: {fileID: 6511338586910782685}
   destroyAfterDeath: 1
   health: 2
+  destroyed: 0
   clip_hit: {fileID: 8300000, guid: ac7d5513afcc8e446ab4e4307ebf17bf, type: 3}
   clip_destroy: {fileID: 8300000, guid: cbb27cfc77ad9ff498d5bc8c66c0d99f, type: 3}
+  rigidBody: {fileID: 0}
+  attachedObject: {fileID: 0}
 --- !u!82 &4114415051848709540
 AudioSource:
   m_ObjectHideFlags: 0

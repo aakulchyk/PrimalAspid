@@ -11,7 +11,8 @@ public class StatusBar : MonoBehaviour
     GameObject[] hpBar2;
     GameObject popup;
 
-    GameObject bbCount;
+    [SerializeField] private GameObject moneyCount;
+    [SerializeField] private GameObject bbCount;
 
     [SerializeField] private Slider staminaBar;
     void Start() {
@@ -29,8 +30,6 @@ public class StatusBar : MonoBehaviour
         }
         popup = GameObject.Find("PopUp");
 
-        bbCount = GameObject.Find("bbCount");
-
         staminaBar.maxValue = PlayerStats.MaxStamina;
     }
 
@@ -47,6 +46,7 @@ public class StatusBar : MonoBehaviour
         }
 
         bbCount.GetComponent<Text>().text = PlayerStats.BloodBodies.ToString();
+        moneyCount.GetComponent<Text>().text = PlayerStats.Coins.ToString();
     }
 
     public void onPopupClose() {

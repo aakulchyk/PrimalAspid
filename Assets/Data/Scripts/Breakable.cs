@@ -12,6 +12,8 @@ public class Breakable : MonoBehaviour
     [SerializeField] private GameObject deathParticles;
     [SerializeField] private GameObject pointLight;
 
+    [SerializeField] private GameObject CollectableDropPrefab;
+
     [SerializeField] private Animator animator;
     [SerializeField] private bool destroyAfterDeath = true; //If false, a broken sprite will appear instead of complete destruction
     public int health;
@@ -117,6 +119,10 @@ public class Breakable : MonoBehaviour
         if (pointLight)
             pointLight.SetActive(false);
 
+        if (CollectableDropPrefab) {
+            StartCoroutine(dropCollectable());
+        }
+
         /*if (instantiator != null)
         {
             instantiator.InstantiateObjects();
@@ -131,5 +137,13 @@ public class Breakable : MonoBehaviour
         {
             spriteRenderer.sprite = brokenSprite;
         }
+    }
+
+    IEnumerator dropCollectable() {
+        yield return new WaitForSeconds(0.2F);
+        GameObject go = Instantiate(CollectableDropPrefab);
+
+        go.transform.position = gameObject.transform.position + Vector3.up;
+        go.transform.rotation = Quaternion.identity;
     }
 }

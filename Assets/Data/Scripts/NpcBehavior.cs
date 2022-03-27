@@ -85,14 +85,15 @@ public class NpcBehavior : MonoBehaviour
             invulnerable = true;
         }
 
+        StartCoroutine(Utils.FreezeFrameEffect());
         sounds.PlayOneShot(clip_hurt);
+        anim.SetTrigger("hurt");
+        
         //Debug.Log("NPC Hurt");
         if (--_hp < 0 && !isDead) {
             die();
         } else {
-            anim.SetTrigger("hurt");
             knockback(force);
-            StartCoroutine(Utils.FreezeFrameEffect());
         }
 
         if (damageParticles) {
@@ -107,8 +108,16 @@ public class NpcBehavior : MonoBehaviour
 
     protected virtual void die() {
         Debug.Log("NPC die");
+        StartCoroutine(DieNow());
+    }
+
+    IEnumerator DieNow() {
+        yield return new WaitForSeconds(0.07F);
         sounds.PlayOneShot(clip_death);
         isDead = true;
+        
+        //body.isKinematic = true;
+        //body.velocity = Vector2.zero;
         anim.SetTrigger("die");
 
         if (deathParticles) {

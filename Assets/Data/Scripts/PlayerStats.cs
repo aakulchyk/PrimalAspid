@@ -167,6 +167,18 @@ public static class PlayerStats
         }
     }
 
+    public static int Coins 
+    {
+        get 
+        {
+            return coins;
+        }
+        set 
+        {
+            coins = value;
+        }
+    }
+
 
     public static bool ShowTutorial 
     {

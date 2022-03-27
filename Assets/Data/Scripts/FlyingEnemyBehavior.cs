@@ -21,7 +21,7 @@ public class FlyingEnemyBehavior : NpcBehavior
     {
         BaseInit();
         Physics2D.IgnoreLayerCollision(LayerMask.NameToLayer("Enemy"), LayerMask.NameToLayer("Hanger"), true);
-        Physics2D.IgnoreLayerCollision(LayerMask.NameToLayer("Enemy"), LayerMask.NameToLayer("Ignore Raycast"), true);
+        Physics2D.IgnoreLayerCollision(LayerMask.NameToLayer("Enemy"), LayerMask.NameToLayer("Background"), true);
     }
 
     protected override bool checkAccessibility(Transform wp)

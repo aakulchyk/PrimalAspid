@@ -2,20 +2,24 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PrizeBatUpdate : Collectable
+public class Coins : Collectable
 {
+    [SerializeField] private int value;
+
     public override void GetCollected() {
         if (collected) return;
 
         collected = true;
 
         // apply stats
-        PlayerStats.MaxFlaps+=100;
-        GetComponent<AudioSource>().PlayOneShot(clip_collect);
-        renderer.enabled = false;
-        Destroy(this.gameObject, 1f);
+        PlayerStats.Coins += value;
+        
+        Debug.Log("Collect coins. new capital =" + PlayerStats.Coins);
 
-        Game.SharedInstance.SetPopupText("Got upgrade", "You can now flap in the air by pressing \"A\" button / SPACE key");
-        Game.SharedInstance.OpenPopup();
+        GetComponent<AudioSource>().PlayOneShot(clip_collect);
+        
+        renderer.enabled = false;
+        
+        Destroy(this.gameObject, 1f);
     }
 }
