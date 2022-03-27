@@ -23,6 +23,7 @@ public class CameraEffects : MonoBehaviour
 
     void Start()
     {
+        Debug.Log("Camera start");
         //Ensures we can shake the camera using Cinemachine. Don't really worry too much about this weird stuff. It's just Cinemachine's variables.
         cinemachineFramingTransposer = virtualCamera.GetCinemachineComponent<CinemachineFramingTransposer>();
         screenXDefault = cinemachineFramingTransposer.m_ScreenX;
@@ -63,5 +64,10 @@ public class CameraEffects : MonoBehaviour
         playerOffset = offset;
         cinemachineFramingTransposer.m_TrackedObjectOffset = trackedObjectOffsetDefault - hardOffset - playerOffset;
     }
-    
+
+    public void SetConfiner(Collider2D confiner)
+    {
+        GetComponent<CinemachineConfiner>().m_BoundingShape2D = confiner;
+    }
+   
 }

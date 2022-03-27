@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 42795655996721552}
   m_Layer: 7
   m_Name: HitBox
-  m_TagString: Player
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -19993,4 +19993,4 @@ MonoBehaviour:
   - {x: -0.79925203, y: 1.3546127, z: 0}
   m_ShapePathHash: -1126395471
   m_Mesh: {fileID: 0}
-  m_InstanceId: -1666
+  m_InstanceId: 466210

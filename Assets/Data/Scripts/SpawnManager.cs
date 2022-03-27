@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Cinemachine;
 
 using UnityEngine;
 
@@ -7,7 +8,11 @@ using UnityEngine;
 public class SpawnManager : MonoBehaviour
 {
     public static SpawnManager SharedInstance { get; private set; }
+    
+    public GameObject CinemachineCameras;
+
     public GameObject DefaultPlayer;
+
     private Transform defaultPoint;
     private Vector3 spawnPoint;
     private bool SetPoint;
@@ -41,6 +46,8 @@ public class SpawnManager : MonoBehaviour
         else {
             spawnAtSetlocation();
         }
+
+        GameObject go = Instantiate(CinemachineCameras, Vector3.zero, Quaternion.identity);
     }
  
    

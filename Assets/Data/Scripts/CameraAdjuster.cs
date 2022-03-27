@@ -7,8 +7,12 @@ public class CameraAdjuster : MonoBehaviour
     public Vector3 camOffset;
     public CameraEffects cameraEffects = null;
 
-
     void OnTriggerStay2D(Collider2D other) {
+
+        if (cameraEffects == null) {
+            cameraEffects = Utils.GetPlayer().cameraEffects;
+        }
+
         if (other.tag == "Player") {
             cameraEffects.SetHardOffset(camOffset);
         }

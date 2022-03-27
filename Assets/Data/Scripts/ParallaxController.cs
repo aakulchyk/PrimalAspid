@@ -24,6 +24,11 @@ public class ParallaxController : MonoBehaviour
 
     private void FixedUpdate()
     {
+        if (cam == null) {
+            cam = Game.SharedInstance.mainCamera;
+            return;
+        }
+
         if (cam.transform.position.x != oldCameraPosition.x || (cam.transform.position.y) != oldCameraPosition.y)
         {
             if (onCameraMove != null)

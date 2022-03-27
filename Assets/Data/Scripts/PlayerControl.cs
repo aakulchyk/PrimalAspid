@@ -166,7 +166,7 @@ public class PlayerControl : MonoBehaviour
 
         Physics2D.IgnoreLayerCollision(playerLayer, npcLayer, true);
         Physics2D.IgnoreLayerCollision(playerLayer, LayerMask.NameToLayer("Hanger"), true);
-        Physics2D.IgnoreLayerCollision(playerLayer, ignoreRaycastLayer, true);
+        Physics2D.IgnoreLayerCollision(playerLayer, LayerMask.NameToLayer("Background"), true);
 
         body.gravityScale = _gravityScale;
         body.mass = _mass;
@@ -342,8 +342,8 @@ public class PlayerControl : MonoBehaviour
             }
         }
 
-        float look_axis = Input.GetAxisRaw("Vertical Look");
-        cameraEffects.SetPlayerOffset(new Vector3(0, look_axis*10, 0)); 
+        float look_axis = Input.GetAxis("Vertical Look");
+        cameraEffects.SetPlayerOffset(new Vector3(0, look_axis * 10, 0));
     }
 
     void FixedUpdate()
