@@ -150,8 +150,8 @@ public class NpcBehavior : MonoBehaviour
     public bool CheckGrounded()
     {
         Vector3 pos = transform.position;
-        RaycastHit2D hit = Physics2D.Raycast(pos + Vector3.up, Vector3.down, 1.1f, LayerMask.GetMask("Ground"));
-        Debug.DrawLine(pos+Vector3.up, pos+Vector3.down*1.1f, Color.black, 0.02f, false);
+        RaycastHit2D hit = Physics2D.Raycast(pos + Vector3.up, Vector3.down, 1.2f, LayerMask.GetMask("Ground"));
+        Debug.DrawLine(pos+Vector3.up, pos+Vector3.down*1.2f, Color.black, 0.02f, false);
 
         return hit.collider != null;
     }

@@ -31,7 +31,16 @@ public class KrabBehavior : NpcBehavior
             return;
         }
 
-        bool isNotAbleToMove = isDead || !IsPlayerInRange() || !isGrounded;
+        if (isDead)
+            return;
+
+        bool oldGr = isGrounded;
+        isGrounded = CheckGrounded();
+
+        if (oldGr != isGrounded )
+            onGroundedChanged();
+
+        bool isNotAbleToMove = isDead || !IsPlayerInRange() || !CheckGrounded();
 
         float moveX = isNotAbleToMove ? 0f : GetVectorToPlayer().x > 0 ? _moveSpeed : -_moveSpeed;
 
@@ -64,6 +73,14 @@ public class KrabBehavior : NpcBehavior
         }
     }
 
+    void onGroundedChanged()
+    {
+        if (isGrounded) {
+            //_isDashing = false;
+            anim.SetBool("jump", false);
+        }
+    }
+
     bool IsPlayerInRange()
     {
         Transform pt = Utils.GetPlayerTransform();
@@ -78,7 +95,7 @@ public class KrabBehavior : NpcBehavior
     {
         anim.SetBool("jump", true);
         body.AddForce(new Vector2(0f, _jumpForce));
-        isGrounded = false;
+        //isGrounded = false;
         GetComponent<AudioSource>().Stop();
         GetComponent<AudioSource>().PlayOneShot(clip_jump);
     }
@@ -87,7 +104,7 @@ public class KrabBehavior : NpcBehavior
     {
         Collider2D collider = hit.collider;
         if (collider.gameObject.layer == LayerMask.NameToLayer("Ground")) {
-            isGrounded = true;
+            //isGrounded = true;
             anim.SetBool("jump", false);
         }
 

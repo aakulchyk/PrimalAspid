@@ -5,26 +5,26 @@ using System.Collections.Generic;
 public class DoorLeverBehavior : LeverBehavior
 {
     public bool closing = false;
+
+    [SerializeField] private Collider2D tempCameraViewPort;
     IEnumerator OpenDoorAfterDelay(float time)
     {
         yield return new WaitForSeconds(time);
         
-        Animator anim = target.GetComponent<Animator>();
-        if (anim) 
-        {
-            anim.SetTrigger(closing ? "Closed" : "Opened");
-            yield return new WaitForSeconds(0.5f);
-
-            AudioSource au = target.GetComponent<AudioSource>();
-
-            if (au) 
-                au.enabled = true;
-
-            yield return new WaitForSeconds(5f);
-            au.enabled = false;
+        var water = target.GetComponent<Water>();
+        if (water) {
+            water.SetCameraFocusAndReflux(tempCameraViewPort);
         } else {
-            Debug.Log("Door: animation not found");
+            // OUTDATED!
+            Animator anim = target.GetComponent<Animator>();
+            if (anim) {
+                anim.SetTrigger(closing ? "Closed" : "Opened");
+                yield return new WaitForSeconds(5f);
+            } else {
+                Debug.Log("Door: animation not found");
+            }
         }
+
     }
 
 

@@ -69,5 +69,10 @@ public class CameraEffects : MonoBehaviour
     {
         GetComponent<CinemachineConfiner>().m_BoundingShape2D = confiner;
     }
+
+    public Collider2D CurrentConfiner()
+    {
+        return GetComponent<CinemachineConfiner>().m_BoundingShape2D;
+    }
    
 }
