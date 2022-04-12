@@ -19,7 +19,7 @@ public class PlayerControl : MonoBehaviour
 
     protected AudioSource sounds;
     private Game game = null;
-    public InteractableBehavior activeSpeaker;
+    public InteractableBehavior activeInteractor;
     public SavePointBehavior activeSavePoint;
     protected PcAttack _attack;
     private PlayerGrabber grabber;
@@ -99,6 +99,8 @@ public class PlayerControl : MonoBehaviour
     
     public bool _attackStarted = false;
     private bool _attackActivePhase = false;
+
+    private bool _controlEnabled = true;
 
     private LayerMask groundLayerMask;
     private int playerLayer, enemyLayer, npcLayer, ignoreRaycastLayer;
@@ -240,14 +242,17 @@ public class PlayerControl : MonoBehaviour
         if (Time.timeScale == 0)
             return;
 
+        if (!_controlEnabled)
+            return;
+
         // if (_isDashing || grabber.IsGrabbing())
         //     return;
 
         checkGrounded();
 
         if (Input.GetButtonDown("Interact")) {
-            if (activeSpeaker && activeSpeaker.openForDialogue) {
-                activeSpeaker.talkToPlayer();
+            if (activeInteractor && activeInteractor.openForInteraction) {
+                activeInteractor.Interact();
             } 
             else 
             if (activeSavePoint && activeSavePoint.canInteract) {
@@ -787,13 +792,13 @@ public class PlayerControl : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.tag == "Lever") {
+        /*if (other.tag == "Lever") {
             LeverBehavior script = other.gameObject.GetComponent<LeverBehavior>();
             if (!script || script.toggled)
                 return;
             
             script.SwitchLever();
-        }
+        }*/
 
         if (other.tag == "LevelPortal") {
             other.gameObject.GetComponent<LevelPortal>().TransferToAnotherLevel(gameObject);
@@ -906,5 +911,11 @@ public class PlayerControl : MonoBehaviour
     public void onSaveGame()
     {
         PlayerStats.HP = INITIAL_HP;
+    }
+
+    public void EnableControl(bool val)
+    {
+        body.velocity = Vector3.zero;
+        _controlEnabled = val;
     }
 }

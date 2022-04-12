@@ -13,23 +13,38 @@ public class DoorLeverBehavior : LeverBehavior
         
         var water = target.GetComponent<Water>();
         if (water) {
-            water.SetCameraFocusAndReflux(tempCameraViewPort);
-        } else {
-            // OUTDATED!
-            Animator anim = target.GetComponent<Animator>();
-            if (anim) {
-                anim.SetTrigger(closing ? "Closed" : "Opened");
-                yield return new WaitForSeconds(5f);
-            } else {
-                Debug.Log("Door: animation not found");
-            }
+            water.SetCameraFocusAndReflux();
         }
 
+        var door = target.GetComponent<Door>();
+        if (door) {
+            door.Open();
+        }
     }
-
 
     public override void switchSpecificTarget()
     {
         StartCoroutine(OpenDoorAfterDelay(0.5f));
+        StartCoroutine(SetTemporaryCameraFocus());
+        StartCoroutine(TemporaryDisablePlayerControl());
+    }
+
+    IEnumerator SetTemporaryCameraFocus()
+    {
+        yield return new WaitForSeconds(0.5f);
+        // save old camera bounds
+        CameraEffects cameraEffects = Utils.GetPlayer().cameraEffects;
+        var oldConfiner = cameraEffects.CurrentConfiner();
+        // temporary put camera focus on target
+        cameraEffects.SetConfiner(tempCameraViewPort);
+        yield return new WaitForSeconds(5f);
+        cameraEffects.SetConfiner(oldConfiner);
+    }
+
+    IEnumerator TemporaryDisablePlayerControl()
+    {
+        Utils.GetPlayer().EnableControl(false);
+        yield return new WaitForSeconds(5f);
+        Utils.GetPlayer().EnableControl(true);
     }
 }

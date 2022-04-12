@@ -48,6 +48,8 @@ public class SpawnManager : MonoBehaviour
         }
 
         GameObject go = Instantiate(CinemachineCameras, Vector3.zero, Quaternion.identity);
+
+        StartCoroutine(SetCamBoundaries());
     }
  
    
@@ -62,5 +64,12 @@ public class SpawnManager : MonoBehaviour
     {
         defaultPoint = GameObject.Find("DefaultPoint").transform;
         GameObject go = Instantiate(DefaultPlayer, defaultPoint.position, defaultPoint.rotation);
+    }
+
+    IEnumerator SetCamBoundaries()
+    {
+        yield return new WaitForSeconds(1.0F);
+        var confiner = GameObject.Find("CameraBoundaries").GetComponent<Collider2D>();
+        Utils.GetPlayer().cameraEffects.SetConfiner(confiner);
     }
 }

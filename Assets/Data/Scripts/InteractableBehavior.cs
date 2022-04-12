@@ -9,13 +9,15 @@ public class InteractableBehavior : MonoBehaviour
     private GameObject canvas = null;
 
     public float interactRadius = 3f;
-    public bool openForDialogue = false;
+    public bool openForInteraction = false;
     
     public bool active = true;
     public string interactableName;
     public string[] initialTexts;
 
     public string[] currentTexts = {"...",};
+
+    [SerializeField] private LeverBehavior lever;
     
 
     void Start()
@@ -37,12 +39,12 @@ public class InteractableBehavior : MonoBehaviour
             if (pTransform == null)
                 return;
             float pDist = Vector2.Distance(pTransform.position, transform.position); 
-            openForDialogue = (pDist < interactRadius && active);
-            canvas.SetActive(openForDialogue);
+            openForInteraction = (pDist < interactRadius && active);
+            canvas.SetActive(openForInteraction);
         }
 
-        if (openForDialogue) {
-            Utils.GetPlayer().activeSpeaker = this;
+        if (openForInteraction) {
+            Utils.GetPlayer().activeInteractor = this;
         }
     }
 
@@ -50,12 +52,17 @@ public class InteractableBehavior : MonoBehaviour
         active = val;
     }
 
-    public virtual void talkToPlayer()
+    public virtual void Interact()
     {
         var npc = gameObject.GetComponentInParent<NpcBehavior>();
-        if (npc)
+        if (npc) {
             npc.onTalk();
-        Game.SharedInstance.SetPopupTexts(interactableName, currentTexts);
-        Game.SharedInstance.OpenPopup();
+            Game.SharedInstance.SetPopupTexts(interactableName, currentTexts);
+            Game.SharedInstance.OpenPopup();
+        }
+
+        if (lever) {
+            lever.SwitchLever();
+        }
     }
 }

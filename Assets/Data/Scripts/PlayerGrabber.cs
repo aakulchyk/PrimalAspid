@@ -551,8 +551,8 @@ public class PlayerGrabber : MonoBehaviour
         _isPulling = true;
 
         // deactivate ability to speak while grabbing
-        if (playerMainControl.activeSpeaker)
-            playerMainControl.activeSpeaker.SetActive(false);
+        if (playerMainControl.activeInteractor)
+            playerMainControl.activeInteractor.SetActive(false);
     }
 
     public void releaseBody()
@@ -561,8 +561,8 @@ public class PlayerGrabber : MonoBehaviour
         _isPulling = false;
 
         // activate ability again after grabbing
-        if (playerMainControl.activeSpeaker)
-            playerMainControl.activeSpeaker.SetActive(true);
+        if (playerMainControl.activeInteractor)
+            playerMainControl.activeInteractor.SetActive(true);
 
         Rigidbody2D b = GetComponent<FixedJoint2D>().connectedBody;
 

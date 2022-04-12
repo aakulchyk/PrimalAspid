@@ -207,7 +207,8 @@ public class NpcBehavior : MonoBehaviour
     }
 
     public virtual void onTalk()
-    {}
+    {
+    }
 
     public void flip()
     {

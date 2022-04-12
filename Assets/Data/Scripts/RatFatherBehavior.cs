@@ -74,6 +74,7 @@ public class RatFatherBehavior : NpcBehavior
 
     public override void onTalk()
     {
+        base.onTalk();
         Debug.Log("Rat talk");
         anim.SetTrigger("speak");
     }
