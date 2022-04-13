@@ -127,7 +127,6 @@ public class PlayerGrabber : MonoBehaviour
         bool direction_triggered = (prev_moveX==0 && prev_moveY==0) && (moveX!=0 || moveY!=0);
         //if (grab_button_triggered || (grab_button_hold && direction_triggered)) {
 
-
         /*if (dash_button_triggered || (dash_hold && direction_triggered)) {
             //grab_button_triggered = false;
             // gran dash            
@@ -175,6 +174,10 @@ public class PlayerGrabber : MonoBehaviour
         if (moveY > 0 && nearestHanger) {
             Debug.Log("Start hang on ceiling");
             startHangOnCeiling();
+        }
+
+        if (moveY != 0 && _isHangingOnWall) {
+            MoveOnWall(0.3f * moveY);
         }
         
 
@@ -389,6 +392,18 @@ public class PlayerGrabber : MonoBehaviour
         anim.SetBool("IsHangingOnWall", true);
         body.velocity = Vector2.zero;
 
+    }
+
+    public void MoveOnWall(float moveY)
+    {
+        if (_attachedTo == null)
+            return;
+
+        var wall = _attachedTo.gameObject.GetComponent<StickyWallBehavior>();
+        if (wall == null)
+            return;
+
+        wall.MoveBody(moveY);
     }
 
     public void endHangOnWall()

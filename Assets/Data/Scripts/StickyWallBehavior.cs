@@ -32,6 +32,22 @@ public class StickyWallBehavior : MonoBehaviour
         }
     }
 
+    public void MoveBody(float moveY)
+    {
+        var joint = GetComponent<FixedJoint2D>();
+
+        Debug.Log("Joint: " + joint.anchor.y + " size: " + GetComponent<Collider2D>().bounds.size.y);
+
+        float anchor = joint.anchor.y * transform.localScale.y;
+        if (moveY < 0 && (anchor + moveY) < -2)
+            return;
+
+        if (moveY > 0 && (anchor + moveY) > GetComponent<Collider2D>().bounds.size.y - 3)
+            return;
+        
+        joint.anchor += new Vector2(0, moveY);
+    }
+
     public void DetachBody()
     {
         var joint = GetComponent<FixedJoint2D>();
