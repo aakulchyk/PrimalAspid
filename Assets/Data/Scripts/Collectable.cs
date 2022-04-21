@@ -15,9 +15,9 @@ public class Collectable : MonoBehaviour
         collected = true;
 
         // apply stats
-        PlayerStats.MAX_HP++;
-        PlayerStats.HP++;
-        Debug.Log("Collect item. new HP=" + PlayerStats.HP + "/" + PlayerStats.MAX_HP);
+        //PlayerStats.MAX_HP++;
+        //PlayerStats.HP++;
+        Debug.Log("Collect item. ");
 
         GetComponent<AudioSource>().volume = 1f;
         GetComponent<AudioSource>().PlayOneShot(clip_collect);

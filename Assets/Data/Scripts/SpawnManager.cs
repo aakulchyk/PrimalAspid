@@ -69,7 +69,7 @@ public class SpawnManager : MonoBehaviour
     IEnumerator SetCamBoundaries()
     {
         yield return new WaitForSeconds(1.0F);
-        var confiner = GameObject.Find("CameraBoundaries").GetComponent<Collider2D>();
+        var confiner = GameObject.Find("MainLevelBoundaries").GetComponent<Collider2D>();
         Utils.GetPlayer().cameraEffects.SetConfiner(confiner);
     }
 }

@@ -636,6 +636,7 @@ public class PlayerControl : MonoBehaviour
         //GameObject fx = GameObject.Find("PF_VFXgraph_Hit01");
         //fx.GetComponent<VisualEffect>().Play();
 
+        float jumpForceCoefficient = 1.0f;
         flap_button_triggered = false;
 
         if (_attackStarted)
@@ -645,10 +646,12 @@ public class PlayerControl : MonoBehaviour
 
         float xImpulse = 0f;
         if (grabber.IsHangingOnWall()) {
+            jumpForceCoefficient = 0.9f;
             grabber.endHangOnWall();   
         }       
 
         if (grabber.IsHangingOnCeiling()) {
+            jumpForceCoefficient = 0.8f;
             grabber.endHangOnCeiling();   
         }
 
@@ -669,7 +672,7 @@ public class PlayerControl : MonoBehaviour
         anim.SetBool("IsJumping", true);
         
         body.velocity = new Vector2(body.velocity.x, 0);
-        body.AddForce(new Vector2(xImpulse, _jumpForce));
+        body.AddForce(new Vector2(xImpulse, _jumpForce * jumpForceCoefficient));
     }
 
     public void JumpEffect()
