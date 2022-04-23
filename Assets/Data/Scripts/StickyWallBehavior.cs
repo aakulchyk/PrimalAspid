@@ -36,7 +36,7 @@ public class StickyWallBehavior : MonoBehaviour
     {
         var joint = GetComponent<FixedJoint2D>();
 
-        Debug.Log("Joint: " + joint.anchor.y + " size: " + GetComponent<Collider2D>().bounds.size.y);
+        //Debug.Log("Joint: " + joint.anchor.y + " size: " + GetComponent<Collider2D>().bounds.size.y);
 
         float anchor = joint.anchor.y * transform.localScale.y;
         if (moveY < 0 && (anchor + moveY) < -2)

@@ -158,7 +158,9 @@ public class PlayerControl : MonoBehaviour
         
         faceRight = true;
         
-        StartCoroutine(blinkInvulnerable());
+        //StartCoroutine(blinkInvulnerable());
+        //_isGrounded = true;
+        checkGrounded(true);
 
         CapsuleCollider2D col = GetComponent<CapsuleCollider2D>();
         pWidth = col.size.x;
@@ -651,7 +653,7 @@ public class PlayerControl : MonoBehaviour
         }       
 
         if (grabber.IsHangingOnCeiling()) {
-            jumpForceCoefficient = 0.8f;
+            jumpForceCoefficient = 0.85f;
             grabber.endHangOnCeiling();   
         }
 
@@ -721,7 +723,7 @@ public class PlayerControl : MonoBehaviour
         _floatStarted = false;
     }
 
-    void checkGrounded()
+    void checkGrounded(bool onStart = false)
     {
         Vector3 v1 = new Vector3(0, 1, 0);
         RaycastHit2D hit = Physics2D.Raycast(thisTransform.position + Vector3.up, Vector2.down, 1.3f, groundLayerMask);
@@ -733,7 +735,8 @@ public class PlayerControl : MonoBehaviour
             anim.SetBool("IsGrounded", gr);
             if (gr) {
                 anim.SetTrigger("Land");
-                LandEffect();
+                if (!onStart)
+                    LandEffect();
                 _isPlayingWalkSound = false;
                 _floatStarted = false;
             } else {

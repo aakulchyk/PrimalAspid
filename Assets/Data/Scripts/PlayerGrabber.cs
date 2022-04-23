@@ -274,7 +274,7 @@ public class PlayerGrabber : MonoBehaviour
         }
 
         if (collider.gameObject.layer == LayerMask.NameToLayer("Hanger")) {
-            Debug.Log("nearestHanger ON");
+            //Debug.Log("nearestHanger ON");
             bool stillCoyoteTime = Time.time - grabCoyoteTimeStarted < (GRAB_COYOTE_TIME_SEC*2);
             nearestHanger = collider.gameObject.transform;
             if (_isUpwardGrabbing || stillCoyoteTime)
@@ -291,7 +291,7 @@ public class PlayerGrabber : MonoBehaviour
             _touchingWall = null;
         }
         if (collider.gameObject.layer == LayerMask.NameToLayer("Hanger")) {
-            Debug.Log("nearestHanger OFF");
+            //Debug.Log("nearestHanger OFF");
             nearestHanger = null;
         } 
     }

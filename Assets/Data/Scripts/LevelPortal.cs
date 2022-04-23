@@ -16,22 +16,29 @@ public class LevelPortal : MonoBehaviour
     void Start()
     {
         spawnPoint = this.gameObject.transform.GetChild(0); 
-        Debug.Log("Level" + sceneToLoad + " Spawn point set");
     }
 
     public void TransferToAnotherLevel(GameObject player)
     {
-        if (triggered) return;
-
+        if (triggered)
+            return;
         triggered = true;
+        //Game.SharedInstance.DarkenScreen();
+        
         Destroy(player);
         Debug.Log("Spawning at point: " + spawnPoint.position);
         SpawnManager.SharedInstance.SetSpawn(spawnPoint.position);
+
+        //var currSceneIndex = SceneManager.GetActiveScene().buildIndex;
+        
         StartCoroutine(LoadNextLevelAsync());
+        //StartCoroutine(UnloadCurrentLevelAsync(currSceneIndex));
     }
 
     IEnumerator LoadNextLevelAsync()
     {
+        yield return Game.SharedInstance.SetScreenAlphaAsync(0f, 1f, 0.6f);
+        //  LoadSceneMode.Additive
         AsyncOperation asyncLoad = SceneManager.LoadSceneAsync(sceneToLoad);
 
         // Wait until the asynchronous scene fully loads
@@ -39,5 +46,13 @@ public class LevelPortal : MonoBehaviour
         {
             yield return null;
         }
+    }
+
+
+    IEnumerator UnloadCurrentLevelAsync(int index)
+    {
+        // unload current scene after the new one is loaded
+        yield return new WaitForSeconds(0.5F);
+        SceneManager.LoadSceneAsync(index);
     }
 }

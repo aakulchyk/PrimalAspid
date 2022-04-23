@@ -14,10 +14,12 @@ public class Game : MonoBehaviour
     public static Game SharedInstance { get; private set; }
 
     public GameObject popupWindow;
+
+    [SerializeField] private Image blackScreen;
     public bool isPopupOpen = false;
 
     public bool isGameInProgress = false;
-    public static string defaultScene = "LD_Level_1_0";
+    public static string defaultScene = "LD_Level_1_3_2";
     public static string currentScene;
 
     public Camera mainCamera;
@@ -39,6 +41,7 @@ public class Game : MonoBehaviour
     {
         currentScene = SceneManager.GetActiveScene().name;
         Debug.Log("Game - OnLevelWasLoaded " + level + " " + currentScene);
+        LightenScreenAsync();
     }
 
     private Save CreateSaveGameObject()
@@ -211,6 +214,66 @@ public class Game : MonoBehaviour
             popupWindow.SetActive(false);
             Time.timeScale = 1;
             isPopupOpen = false;
+        }
+    }
+
+    public void DarkenScreenAsync()
+    {
+        StartCoroutine(SetScreenAlphaAsync(0f, 1f, 0.5f));
+    }
+
+    public void LightenScreenAsync()
+    {
+        StartCoroutine(SetScreenAlphaAsync(1f, 0f, 0.5f));
+    }
+
+    public IEnumerator SetScreenAlphaAsync(float alphaBegin, float alphaEnd, float time) {
+        float alpha = alphaBegin;
+
+        if (alphaBegin < alphaEnd) {
+            while (alpha < alphaEnd) {
+                yield return null;
+                alpha += 0.025f;
+                blackScreen.color = new Color(0f, 0f, 0f, alpha);
+            }
+        } else {
+            yield return new WaitForSeconds(0.4f);
+            while (alpha > alphaEnd) {
+                yield return null;
+                alpha -= 0.025f;
+                blackScreen.color = new Color(0f, 0f, 0f, alpha);
+            }
+        }
+    }
+
+
+    public void DarkenScreen()
+    {
+        SetScreenAlpha(0f, 1f, 0.5f);
+    }
+
+    public void LightenScreen()
+    {
+        SetScreenAlpha(1f, 0f, 0.1f);
+    }
+
+    IEnumerator waiter() {
+        yield return null;
+    }
+    private void SetScreenAlpha(float alphaBegin, float alphaEnd, float time) {
+        float alpha = alphaBegin;
+
+        if (alphaBegin < alphaEnd) {
+            while (alpha < alphaEnd) {
+                StartCoroutine(waiter());
+                alpha += 0.01f;
+                blackScreen.color = new Color(0f, 0f, 0f, alpha);
+            }
+        } else {
+            while (alpha > alphaEnd) {
+                alpha -= 0.01f;
+                blackScreen.color = new Color(0f, 0f, 0f, alpha);
+            }
         }
     }
 }

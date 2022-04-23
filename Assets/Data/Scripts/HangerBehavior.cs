@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class HangerBehavior : MonoBehaviour
 {
+    public bool IsBodyAttached = false;
     public void AttachBody(GameObject go)
     {
         BoxCollider2D bc = GetComponent<BoxCollider2D>();
@@ -22,6 +23,7 @@ public class HangerBehavior : MonoBehaviour
             float coeff = go.transform.localScale.y;
             joint.connectedAnchor = new Vector2(0f, +1f / coeff);
             joint.enabled = true;
+            IsBodyAttached = true;
         } else {
             Debug.LogError("Hanger: Joint Not Found!");
         }
@@ -33,6 +35,12 @@ public class HangerBehavior : MonoBehaviour
         if (joint) {
             joint.connectedBody = null;
             joint.enabled = false;
+            IsBodyAttached = false;
         }
+    }
+
+    public Transform hangerTransform() 
+    {
+        return transform;
     }
 }
