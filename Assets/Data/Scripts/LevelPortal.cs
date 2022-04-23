@@ -27,6 +27,17 @@ public class LevelPortal : MonoBehaviour
         Destroy(player);
         Debug.Log("Spawning at point: " + spawnPoint.position);
         SpawnManager.SharedInstance.SetSpawn(spawnPoint.position);
-        SceneManager.LoadScene(sceneToLoad);
+        StartCoroutine(LoadNextLevelAsync());
+    }
+
+    IEnumerator LoadNextLevelAsync()
+    {
+        AsyncOperation asyncLoad = SceneManager.LoadSceneAsync(sceneToLoad);
+
+        // Wait until the asynchronous scene fully loads
+        while (!asyncLoad.isDone)
+        {
+            yield return null;
+        }
     }
 }
