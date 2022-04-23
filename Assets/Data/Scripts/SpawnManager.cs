@@ -55,7 +55,7 @@ public class SpawnManager : MonoBehaviour
    
     void spawnAtSetlocation()
     {
-        Debug.Log("Done spwaning at set location");
+        Debug.Log("Done spawning at set location");
         GameObject go = Instantiate(DefaultPlayer, spawnPoint, Quaternion.identity);
         SetPoint = false;
     }

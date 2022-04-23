@@ -137,7 +137,7 @@ MonoBehaviour:
   clip_jump: {fileID: 8300000, guid: 041574ae82d18024a919b0a456a986f3, type: 3}
   _followRadius: 20
   _moveSpeed: 2
-  _jumpForce: 2000
+  _jumpForce: 1800
 --- !u!50 &544185562659053996
 Rigidbody2D:
   serializedVersion: 4

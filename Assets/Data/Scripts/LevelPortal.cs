@@ -11,14 +11,21 @@ public class LevelPortal : MonoBehaviour
 
     private Transform spawnPoint;
 
+    private bool triggered = false;
+
     void Start()
     {
         spawnPoint = this.gameObject.transform.GetChild(0); 
+        Debug.Log("Level" + sceneToLoad + " Spawn point set");
     }
 
     public void TransferToAnotherLevel(GameObject player)
     {
+        if (triggered) return;
+
+        triggered = true;
         Destroy(player);
+        Debug.Log("Spawning at point: " + spawnPoint.position);
         SpawnManager.SharedInstance.SetSpawn(spawnPoint.position);
         SceneManager.LoadScene(sceneToLoad);
     }
