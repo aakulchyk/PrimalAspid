@@ -12,6 +12,8 @@ public class TwoConnectedChainHangers : MonoBehaviour
 
     [SerializeField] private Transform highestPos;
     [SerializeField] private Transform lowestPos;
+
+    [SerializeField] private AudioClip clip_movement;
     // Start is called before the first frame update
 
     private float _chainHeight;
@@ -29,22 +31,28 @@ public class TwoConnectedChainHangers : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        bool playSound = false;
         if (leftHanger.IsBodyAttached) {
             if (leftHanger.hangerTransform().position.y > lowestPos.position.y) {
+                playSound = true;
                 float newYL = leftChain.position.y - 0.005f;//Mathf.Lerp(leftChain.position.y,  _chainHeight + lowestPos.position.y,  0.001f);
                 float newYR = rightChain.position.y + 0.005f;//Mathf.Lerp(rightChain.position.y, _chainHeight + highestPos.position.y, 0.001f);
                 leftChain.position  = new Vector3(leftChain.position.x,  newYL, 0);
                 rightChain.position = new Vector3(rightChain.position.x, newYR, 0);
             }
-        }
-
+        } else
         if (rightHanger.IsBodyAttached) {
             if (rightHanger.hangerTransform().position.y > lowestPos.position.y) {
+                playSound = true;
                 float newYL = leftChain.position.y + 0.005f;//Mathf.Lerp(leftChain.position.y,  _chainHeight + highestPos.position.y, 0.001f);
                 float newYR = rightChain.position.y - 0.005f;//Mathf.Lerp(rightChain.position.y, _chainHeight + lowestPos.position.y,  0.001f);
                 leftChain.position  = new Vector3(leftChain.position.x,  newYL, 0);
                 rightChain.position = new Vector3(rightChain.position.x, newYR, 0);
             }
         }
+        
+        GetComponent<AudioSource>().enabled = playSound;
+        
+
     }
 }

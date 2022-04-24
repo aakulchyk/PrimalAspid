@@ -19,7 +19,7 @@ public class Game : MonoBehaviour
     public bool isPopupOpen = false;
 
     public bool isGameInProgress = false;
-    public static string defaultScene = "LD_Level_1_3_2";
+    [SerializeField] private string defaultScene = "LD_Level_1_3_2";
     public static string currentScene;
 
     public Camera mainCamera;

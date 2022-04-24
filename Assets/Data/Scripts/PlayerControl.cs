@@ -406,12 +406,15 @@ public class PlayerControl : MonoBehaviour
                 if (body.velocity.y > -35f)
                     body.velocity += Vector2.up * Physics2D.gravity.y * 2.5f * Time.deltaTime;
             } else {
-                _floatStarted = true;
-                if (body.velocity.y < -8.5f) 
+                
+                if (body.velocity.y < -8.5f) {
+                    _floatStarted = true;
                     body.velocity = new Vector2(body.velocity.x, -8.5f);
-                _isPlayingFloatSound = true;
-                if (!sounds.isPlaying)
-                    sounds.PlayOneShot(clip_float);
+                    _isPlayingFloatSound = true;
+                    if (!sounds.isPlaying)
+                        sounds.PlayOneShot(clip_float);
+                }
+                
             }
             anim.SetBool("IsFloating", floatPressed);
 
@@ -653,7 +656,7 @@ public class PlayerControl : MonoBehaviour
         }       
 
         if (grabber.IsHangingOnCeiling()) {
-            jumpForceCoefficient = 0.85f;
+            jumpForceCoefficient = 0.9f;
             grabber.endHangOnCeiling();   
         }
 
