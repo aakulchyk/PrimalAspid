@@ -316,7 +316,7 @@ PrefabInstance:
     - target: {fileID: 6348542613760241330, guid: ec47f2ed5c6e5894c90e0f47c861d1a2,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -13.300003
+      value: -16.93
       objectReference: {fileID: 0}
     - target: {fileID: 6348542613760241330, guid: ec47f2ed5c6e5894c90e0f47c861d1a2,
         type: 3}
@@ -361,7 +361,7 @@ PrefabInstance:
     - target: {fileID: 7154848366345650545, guid: ec47f2ed5c6e5894c90e0f47c861d1a2,
         type: 3}
       propertyPath: m_InstanceId
-      value: -19860
+      value: -255414
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ec47f2ed5c6e5894c90e0f47c861d1a2, type: 3}
@@ -392,7 +392,7 @@ HingeJoint2D:
   m_BreakTorque: Infinity
   m_AutoConfigureConnectedAnchor: 1
   m_Anchor: {x: 0, y: 12.92}
-  m_ConnectedAnchor: {x: 0.96057373, y: 1.9661843}
+  m_ConnectedAnchor: {x: 0.9606807, y: -0.8911722}
   m_UseMotor: 0
   m_Motor:
     m_MotorSpeed: 0

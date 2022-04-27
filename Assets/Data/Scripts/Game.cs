@@ -19,7 +19,7 @@ public class Game : MonoBehaviour
     public bool isPopupOpen = false;
 
     public bool isGameInProgress = false;
-    [SerializeField] private string defaultScene = "LD_Level_1_3_2";
+    [SerializeField] private string defaultScene = "LD_Level_1_0";
     public static string currentScene;
 
     public Camera mainCamera;
@@ -27,12 +27,16 @@ public class Game : MonoBehaviour
     private string[] texts;
     private Queue<string> textQueue = new Queue<string>();
 
+    public const int INITIAL_HP = 2;
+    public const int INITIAL_STAMINA = 10;
+
 
     private void Awake()
     {
         if (SharedInstance == null) {
             SharedInstance = this;
             DontDestroyOnLoad(gameObject);
+            blackScreen.enabled = true;
         }
         else Destroy(gameObject);
     }
@@ -58,9 +62,10 @@ public class Game : MonoBehaviour
         save.deaths = PlayerStats.Deaths;
         save.losses = PlayerStats.Losses;
         save.time = PlayerStats.Time;
-        save.npc_saved = PlayerStats.NpcsSavedAlive;
-        save.npc_dead = PlayerStats.NpcsLostDead;
+        //save.npc_saved = PlayerStats.NpcsSavedAlive;
+        //save.npc_dead = PlayerStats.NpcsLostDead;
 
+        save.coins = PlayerStats.Coins;
         save.bloodBodies = PlayerStats.BloodBodies;
 
         // npc
@@ -86,6 +91,7 @@ public class Game : MonoBehaviour
     public void ClearGame()
     {
         File.Delete(Application.persistentDataPath + "/gamesave.save");
+        PlayerPrefs.DeleteAll();
         Debug.Log("Game Deleted");
     }
 
@@ -94,7 +100,10 @@ public class Game : MonoBehaviour
         Debug.Log("Save Game");
         Save save = CreateSaveGameObject();
 
-        Utils.GetPlayer().onSaveGame();
+        // restore player HP to maximum
+
+        PlayerStats.FullyRestoreHP();
+        //Utils.GetPlayer().onSaveGame();
 
         BinaryFormatter bf = new BinaryFormatter();
         FileStream file = File.Create(Application.persistentDataPath + "/gamesave.save");
@@ -109,13 +118,16 @@ public class Game : MonoBehaviour
         ClearGame();
         SceneManager.LoadScene(defaultScene);
         isGameInProgress = true;
+        PlayerStats.MAX_HP = INITIAL_HP;
+        PlayerStats.MaxStamina = INITIAL_STAMINA;
+        PlayerStats.FullyRestoreHP();
+        PlayerStats.FullyRestoreStamina();
     }
 
     public void LoadGame()
     {
         //Time.timeScale = 1f;
-        if (!File.Exists(Application.persistentDataPath + "/gamesave.save"))
-        {
+        if (!File.Exists(Application.persistentDataPath + "/gamesave.save")) {
              Debug.Log("Cannot find a saved game");
              StartNewGame();
              return;
@@ -135,15 +147,15 @@ public class Game : MonoBehaviour
         PlayerStats.Deaths = save.deaths;
         PlayerStats.Losses = save.losses;
         PlayerStats.Time = save.time;
-        PlayerStats.NpcsSavedAlive = save.npc_saved;
-        PlayerStats.NpcsLostDead = save.npc_dead;
+        //PlayerStats.NpcsSavedAlive = save.npc_saved;
+        //PlayerStats.NpcsLostDead = save.npc_dead;
 
         PlayerStats.BloodBodies = save.bloodBodies;
+        PlayerStats.Coins = save.coins;
 
         // load scene
         SpawnManager.SharedInstance.SetSpawn(new Vector2(save.px, save.py));
         SceneManager.LoadScene(currentScene);
-
 
         // load npcs
         {
@@ -170,6 +182,8 @@ public class Game : MonoBehaviour
 
         Debug.Log("Game Loaded");
         isGameInProgress = true;
+        PlayerStats.MAX_HP = INITIAL_HP;
+        PlayerStats.FullyRestoreHP();
     }
 
     public void SetPopupText(string title, string text) {
@@ -217,13 +231,11 @@ public class Game : MonoBehaviour
         }
     }
 
-    public void DarkenScreenAsync()
-    {
+    public void DarkenScreenAsync() {
         StartCoroutine(SetScreenAlphaAsync(0f, 1f, 0.5f));
     }
 
-    public void LightenScreenAsync()
-    {
+    public void LightenScreenAsync() {
         StartCoroutine(SetScreenAlphaAsync(1f, 0f, 0.5f));
     }
 
@@ -247,13 +259,11 @@ public class Game : MonoBehaviour
     }
 
 
-    public void DarkenScreen()
-    {
+    public void DarkenScreen() {
         SetScreenAlpha(0f, 1f, 0.5f);
     }
 
-    public void LightenScreen()
-    {
+    public void LightenScreen() {
         SetScreenAlpha(1f, 0f, 0.1f);
     }
 

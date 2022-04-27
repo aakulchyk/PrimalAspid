@@ -24,7 +24,7 @@ public class DoorLeverBehavior : LeverBehavior
 
     public override void switchSpecificTarget()
     {
-        StartCoroutine(OpenDoorAfterDelay(0.5f));
+        StartCoroutine(OpenDoorAfterDelay(0.2f));
         StartCoroutine(SetTemporaryCameraFocus());
         StartCoroutine(TemporaryDisablePlayerControl());
     }

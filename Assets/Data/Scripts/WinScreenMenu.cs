@@ -13,7 +13,7 @@ public class WinScreenMenu : MonoBehaviour
 
     void Start()
     {
-        saveScoreText.text = "Maggot cubs saved: " + PlayerStats.NpcsSavedAlive + "/3";
+        //saveScoreText.text = "Maggot cubs saved: " + PlayerStats.NpcsSavedAlive + "/3";
         timeText.text = "Time: " + PlayerStats.Time.ToString();
         deathsText.text = "You died " + PlayerStats.Deaths + " times";
         lossesText.text = "Maggot died " + PlayerStats.Losses + " times";

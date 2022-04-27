@@ -47,7 +47,6 @@ public class PlayerControl : MonoBehaviour
     public AudioClip clip_float;
 
     [Header ("Constants")]
-    public const int INITIAL_HP = 2;
     public const float FLAP_MIN_TIMEOUT = 0.3f;
     public const int FLAP_STAMINA_COST = 5;
     public const int DASH_STAMINA_COST = 5;
@@ -153,9 +152,6 @@ public class PlayerControl : MonoBehaviour
         if (!grabber)
             Debug.LogError("ERROR: PlayerGrabber not found!");
 
-
-        PlayerStats.HP = INITIAL_HP;
-        
         faceRight = true;
         
         //StartCoroutine(blinkInvulnerable());
@@ -244,8 +240,10 @@ public class PlayerControl : MonoBehaviour
         if (Time.timeScale == 0)
             return;
 
-        if (!_controlEnabled)
+        if (!_controlEnabled) {
+            anim.SetBool("IsMoving", false);
             return;
+        }
 
         // if (_isDashing || grabber.IsGrabbing())
         //     return;
@@ -322,15 +320,9 @@ public class PlayerControl : MonoBehaviour
             if (move != _isMoving)
                 anim.SetBool("IsMoving", true);
             _isMoving = true;
-            if (_isGrounded && !sounds.isPlaying) {
-                //sounds.PlayOneShot(clip_walk);
-                //_isPlayingWalkSound = true;
-            }
         } else {
             if (move != _isMoving) {
                 anim.SetBool("IsMoving", false);
-                //if (_isPlayingWalkSound && sounds.isPlaying)
-                //    sounds.Stop();
             }
             _isMoving = false;
         }
@@ -355,6 +347,10 @@ public class PlayerControl : MonoBehaviour
 
     void FixedUpdate()
     {
+        if (!_controlEnabled) {
+            body.velocity = new Vector2 (0, body.velocity.y);
+            return;
+        }
         // reset jump/flap request after some time
         if (flap_button_triggered && Time.time - JumpRequestTime > COYOTE_TIME_SEC*2)
             flap_button_triggered = false;
@@ -919,7 +915,7 @@ public class PlayerControl : MonoBehaviour
 
     public void onSaveGame()
     {
-        PlayerStats.HP = INITIAL_HP;
+        //PlayerStats.HP = INITIAL_HP;
     }
 
     public void EnableControl(bool val)

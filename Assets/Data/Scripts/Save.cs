@@ -13,7 +13,7 @@ public class Save
     public int deaths, losses;
 
     public string currentScene;
-
+    public int coins;
     public int bloodBodies;
     public System.TimeSpan time;
     public int npc_saved, npc_dead;

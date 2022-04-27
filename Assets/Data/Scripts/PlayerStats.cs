@@ -6,234 +6,51 @@ using UnityEngine;
 
 public static class PlayerStats
 {
-    private static int deaths = 0, losses = 0;
-    private static System.TimeSpan time;
+    public static int Deaths { get; set; }
 
-    private static int npc_saved = 0, npc_dead = 0;
-
-
-    private static int max_stamina = 10;
-    private static int stamina = max_stamina;
-    private static int max_hp = 2;
-
-    private static int hp = max_hp;
-    private static int bloodBodies = 0;
-
-    private static int coins = 0;
+    public static int Losses { get; set; }
 
 
-    //
-    private static bool showTutorial = true;
+    public static System.TimeSpan Time { get; set; }
 
+    public static int Stamina { get; set; }
 
-    //
-    private static int max_flaps_enabled = 0;
-    private static int flaps_left = 0;
-
-    //
-    private static bool up_grab_enabled = false;
-    
-    //
-    private static bool side_grab_enabled = false;
-
-    public static int Deaths 
-    {
-        get 
-        {
-            return deaths;
-        }
-        set 
-        {
-            deaths = value;
-        }
-    }
-
-    public static int Losses 
-    {
-        get 
-        {
-            return losses;
-        }
-        set 
-        {
-            losses = value;
-        }
-    }
-
-    public static int NpcsSavedAlive 
-    {
-        get 
-        {
-            return npc_saved;
-        }
-        set 
-        {
-            npc_saved = value;
-        }
-    }
-
-    public static int NpcsLostDead 
-    {
-        get 
-        {
-            return npc_dead;
-        }
-        set 
-        {
-            npc_dead = value;
-        }
-    }
-
-
-    public static System.TimeSpan Time 
-    {
-        get 
-        {
-            return time;
-        }
-        set 
-        {
-            time = value;
-        }
-    }
-
-    public static int Stamina 
-    {
-        get 
-        {
-            return stamina;
-        }
-        set 
-        {
-            stamina = value;
-        }
-    }
-
-    public static int MaxStamina
-    {
-        get 
-        {
-            return max_stamina;
-        }
-    }
+    public static int MaxStamina { get; set; }
 
     public static void FullyRestoreStamina()
     {
-        //Debug.Log("Stamina = " + stamina);
-        stamina = max_stamina;
+        Stamina = MaxStamina;
     }
 
     public static void PartlyRestoreStamina(int delta)
     {   
-        if (stamina+delta < max_stamina)
-            stamina += delta;
+        if (Stamina+delta < MaxStamina)
+            Stamina += delta;
         else
-            stamina = max_stamina;
+            Stamina = MaxStamina;
     }
 
-    public static int HP 
+    public static int HP { get; set; }
+
+    public static int MAX_HP { get; set; }
+
+    public static void FullyRestoreHP()
     {
-        get 
-        {
-            return hp;
-        }
-        set 
-        {
-            hp = value;
-        }
+        HP = MAX_HP;
     }
 
-    public static int MAX_HP 
-    {
-        get 
-        {
-            return max_hp;
-        }
-        set 
-        {
-            max_hp = value;
-        }
-    }
+    public static int BloodBodies { get; set; }
 
-    public static int BloodBodies 
-    {
-        get 
-        {
-            return bloodBodies;
-        }
-        set 
-        {
-            bloodBodies = value;
-        }
-    }
-
-    public static int Coins 
-    {
-        get 
-        {
-            return coins;
-        }
-        set 
-        {
-            coins = value;
-        }
-    }
+    public static int Coins { get; set; }
 
 
-    public static bool ShowTutorial 
-    {
-        get 
-        {
-            return showTutorial;
-        }
-        set 
-        {
-            showTutorial = value;
-        }
-    }
+    public static bool ShowTutorial { get; set; }
 
-    public static int MaxFlaps
-    {
-        get {
-            return max_flaps_enabled;
-        }
-        set {
-            max_flaps_enabled = value;
-        }
-    }
+    public static int MaxFlaps { get; set; }
 
-    public static int FlapsLeft
-    {
-        get {
-            return flaps_left;
-        }
-        set {
-            flaps_left = value;
-        }
-    }
+    public static int FlapsLeft { get; set; }
 
+    public static bool UpGrabEnabled { get; set; }
 
-    public static bool UpGrabEnabled
-    {
-        get 
-        {
-            return up_grab_enabled;
-        }
-        set 
-        {
-            up_grab_enabled = value;
-        }
-    }
-
-    public static bool SideGrabEnabled
-    {
-        get 
-        {
-            return side_grab_enabled;
-        }
-        set 
-        {
-            side_grab_enabled = value;
-        }
-    }
+    public static bool SideGrabEnabled { get; set; }
 }

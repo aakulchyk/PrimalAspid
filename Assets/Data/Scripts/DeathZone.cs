@@ -31,8 +31,9 @@ public class DeathZone : MonoBehaviour
             var pos = spawnPoint[0].position;
             //pos.x = save.px;
             //pos.y = save.py;
-            Utils.GetPlayer().transform.position = new Vector3(pos.x, pos.y, pos.z);
             Utils.GetPlayer().hurt(Vector2.zero, Types.DamageType.DeathZone);
+            Game.SharedInstance.DarkenScreen();
+            Utils.GetPlayer().transform.position = new Vector3(pos.x, pos.y, pos.z);
             fallCooldown = true;
             StartCoroutine(restoreFallCooldownShortly());
         }
@@ -42,5 +43,6 @@ public class DeathZone : MonoBehaviour
     {
         yield return new WaitForSeconds(0.5F);
         fallCooldown = false;
+        Game.SharedInstance.LightenScreenAsync();
     }
 }

@@ -126,7 +126,7 @@ public class NpcBehavior : MonoBehaviour
         }
 
         if (collectiblePrefab) {
-            StartCoroutine(dropCollectible());
+            StartCoroutine(dropCollectable());
         }
 
         StartCoroutine(Utils.FreezeFrameEffect(.01f));
@@ -139,7 +139,7 @@ public class NpcBehavior : MonoBehaviour
     }
 
 
-    IEnumerator dropCollectible() {
+    IEnumerator dropCollectable() {
         yield return new WaitForSeconds(0.4F);
         GameObject go = Instantiate(collectiblePrefab);
 

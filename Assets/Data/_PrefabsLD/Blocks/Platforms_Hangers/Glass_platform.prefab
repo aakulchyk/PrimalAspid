@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 1282389530119815708}
   m_Layer: 3
   m_Name: Glass_platform
-  m_TagString: Untagged
+  m_TagString: Platform
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

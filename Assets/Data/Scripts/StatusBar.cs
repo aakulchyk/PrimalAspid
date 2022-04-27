@@ -16,7 +16,6 @@ public class StatusBar : MonoBehaviour
 
     [SerializeField] private Slider staminaBar;
     void Start() {
-        //hpBar = new GameObject[] {GameObject.Find("HP1"), GameObject.Find("HP2"), GameObject.Find("HP3")};
         hpBar2 = new GameObject[] {
             GameObject.Find("HP2.1"),
             GameObject.Find("HP2.2"),
@@ -30,11 +29,12 @@ public class StatusBar : MonoBehaviour
         }
         popup = GameObject.Find("PopUp");
 
-        staminaBar.maxValue = PlayerStats.MaxStamina;
+        
     }
 
 
     void Update() {
+        staminaBar.maxValue = PlayerStats.MaxStamina;
         float staminaScale = (float)PlayerStats.Stamina / (float)PlayerStats.MaxStamina;
         //bar.localScale = new Vector3(staminaScale * 400, 40);
         staminaBar.value = PlayerStats.Stamina;
