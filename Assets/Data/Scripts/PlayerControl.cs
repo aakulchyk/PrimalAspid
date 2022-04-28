@@ -726,7 +726,6 @@ public class PlayerControl : MonoBehaviour
     {
         Vector3 v1 = new Vector3(0, 1, 0);
         RaycastHit2D hit = Physics2D.Raycast(thisTransform.position + Vector3.up, Vector2.down, 1.3f, groundLayerMask);
-
         
         bool gr = (hit.collider != null);
 
@@ -745,6 +744,8 @@ public class PlayerControl : MonoBehaviour
         }
         _isGrounded = gr;
     }
+
+    public bool IsGrounded() { return _isGrounded; }
 
     void OnCollisionEnter2D(Collision2D collision)
     {

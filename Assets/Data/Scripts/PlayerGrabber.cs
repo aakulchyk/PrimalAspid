@@ -112,15 +112,18 @@ public class PlayerGrabber : MonoBehaviour
     {
         if (grab_button_triggered) {
             if (!_isPulling && activeGrabbable && !_cannotGrab) {
-                /*if (_isGrounded) {
-                    throwByImpulse(new Vector2(0, 2000), false);            
+                if (playerMainControl.IsGrounded()) {
+                    playerMainControl.throwByImpulse(new Vector2(0, 3000), false);            
                     StartCoroutine(GrabBodyAfterShortDelay(activeGrabbable, 0.15f));
-                } else {*/
+                } else {
                     grabBody(activeGrabbable);
-                //}
+                }
                 grab_button_triggered = false;
-            } else if (_isPulling)
-                releaseBody();
+            }
+        }
+
+        if (!grab_button_hold && _isPulling) {
+            releaseBody();
         }
 
 
