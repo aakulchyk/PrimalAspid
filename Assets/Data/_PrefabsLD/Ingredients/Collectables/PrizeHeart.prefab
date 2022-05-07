@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 1119065653168000974}
   - component: {fileID: 1119065653168000972}
   - component: {fileID: 1119065653168000975}
-  - component: {fileID: 1119065653168000973}
+  - component: {fileID: 1274228776355106167}
   m_Layer: 0
   m_Name: PrizeHeart
   m_TagString: Collectable
@@ -173,7 +173,7 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!114 &1119065653168000973
+--- !u!114 &1274228776355106167
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -182,10 +182,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 1119065653168000968}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 750ac1001704a734e8b1efa97d6b0ebe, type: 3}
+  m_Script: {fileID: 11500000, guid: 52cdcc71878e26547a2b514b8828f5df, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  clip_collect: {fileID: 8300000, guid: f530f87314519d5478d67cd3cc2adac1, type: 3}
+  clip_collect: {fileID: 8300000, guid: 6dd5b29a7a56307448beee013da2b42f, type: 3}
   renderer: {fileID: 623653160883283178}
 --- !u!1001 &4369286932751999528
 PrefabInstance:

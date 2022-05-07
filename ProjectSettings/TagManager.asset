@@ -28,6 +28,10 @@ TagManager:
   - Abyss
   - FriendlyNPC
   - EffectorArea
+  - Platform
+  - Impactable
+  - ChainHolder
+  - Trigger
   layers:
   - Default
   - TransparentFX
@@ -44,8 +48,8 @@ TagManager:
   - StickyWall
   - Hanger
   - Background
-  - 
-  - 
+  - EnemyProjectile
+  - PlayerProjectile
   - 
   - 
   - 

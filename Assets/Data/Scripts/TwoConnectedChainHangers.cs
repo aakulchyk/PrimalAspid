@@ -16,6 +16,8 @@ public class TwoConnectedChainHangers : MonoBehaviour
     [SerializeField] private AudioClip clip_movement;
     // Start is called before the first frame update
 
+    [SerializeField] private float MovementSpeed;
+
     private float _chainHeight;
     void Start()
     {
@@ -29,14 +31,14 @@ public class TwoConnectedChainHangers : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
         bool playSound = false;
         if (leftHanger.IsBodyAttached) {
             if (leftHanger.hangerTransform().position.y > lowestPos.position.y) {
                 playSound = true;
-                float newYL = leftChain.position.y - 0.005f;//Mathf.Lerp(leftChain.position.y,  _chainHeight + lowestPos.position.y,  0.001f);
-                float newYR = rightChain.position.y + 0.005f;//Mathf.Lerp(rightChain.position.y, _chainHeight + highestPos.position.y, 0.001f);
+                float newYL = leftChain.position.y - MovementSpeed;//Mathf.Lerp(leftChain.position.y,  _chainHeight + lowestPos.position.y,  0.001f);
+                float newYR = rightChain.position.y + MovementSpeed;//Mathf.Lerp(rightChain.position.y, _chainHeight + highestPos.position.y, 0.001f);
                 leftChain.position  = new Vector3(leftChain.position.x,  newYL, 0);
                 rightChain.position = new Vector3(rightChain.position.x, newYR, 0);
             }
@@ -44,8 +46,8 @@ public class TwoConnectedChainHangers : MonoBehaviour
         if (rightHanger.IsBodyAttached) {
             if (rightHanger.hangerTransform().position.y > lowestPos.position.y) {
                 playSound = true;
-                float newYL = leftChain.position.y + 0.005f;//Mathf.Lerp(leftChain.position.y,  _chainHeight + highestPos.position.y, 0.001f);
-                float newYR = rightChain.position.y - 0.005f;//Mathf.Lerp(rightChain.position.y, _chainHeight + lowestPos.position.y,  0.001f);
+                float newYL = leftChain.position.y + MovementSpeed;//Mathf.Lerp(leftChain.position.y,  _chainHeight + highestPos.position.y, 0.001f);
+                float newYR = rightChain.position.y - MovementSpeed;//Mathf.Lerp(rightChain.position.y, _chainHeight + lowestPos.position.y,  0.001f);
                 leftChain.position  = new Vector3(leftChain.position.x,  newYL, 0);
                 rightChain.position = new Vector3(rightChain.position.x, newYR, 0);
             }

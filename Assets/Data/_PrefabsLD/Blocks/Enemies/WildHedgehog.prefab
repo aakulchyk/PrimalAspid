@@ -318,7 +318,6 @@ MonoBehaviour:
   clip_death: {fileID: 8300000, guid: 3603262efd8d41e4996baccdc1df2124, type: 3}
   INITIAL_HP: 1
   invulnerable: 0
-  _knockback: 0
   damageParticles: {fileID: 908970534440541097}
   deathParticles: {fileID: 8556151328478948833}
   clip_crawl: {fileID: 8300000, guid: 7736d332be472e7408d88f9a11b600d7, type: 3}
@@ -326,7 +325,7 @@ MonoBehaviour:
   clip_reflect: {fileID: 8300000, guid: 0be7166a9f46b52408f6d210cc374970, type: 3}
   clip_unbristle: {fileID: 8300000, guid: 9fe9198d109c2a24d9a7d4dd29a90542, type: 3}
   _moveSpeed: 3
-  _aggravateRadius: 8
+  _aggravateRadius: 10
 --- !u!70 &3602543128710580185
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
@@ -340,8 +339,8 @@ CapsuleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.0044967914, y: 0.8140534}
-  m_Size: {x: 3.1086395, y: 1.6281254}
+  m_Offset: {x: 0.02405441, y: 0.82220256}
+  m_Size: {x: 2.9913068, y: 1.6444279}
   m_Direction: 1
 --- !u!1001 &699153440890528895
 PrefabInstance:

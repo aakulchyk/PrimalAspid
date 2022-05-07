@@ -55,6 +55,7 @@ MonoBehaviour:
   highestPos: {fileID: 6630738122137264358}
   lowestPos: {fileID: 6630738122090226034}
   clip_movement: {fileID: 0}
+  MovementSpeed: 0.015
 --- !u!82 &6064833657036533323
 AudioSource:
   m_ObjectHideFlags: 0

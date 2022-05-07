@@ -167,6 +167,7 @@ public class PlayerControl : MonoBehaviour
         Physics2D.IgnoreLayerCollision(playerLayer, npcLayer, true);
         Physics2D.IgnoreLayerCollision(playerLayer, LayerMask.NameToLayer("Hanger"), true);
         Physics2D.IgnoreLayerCollision(playerLayer, LayerMask.NameToLayer("Background"), true);
+        Physics2D.IgnoreLayerCollision(playerLayer, LayerMask.NameToLayer("PlayerProjectile"), true);
 
         body.gravityScale = _gravityScale;
         body.mass = _mass;
@@ -782,8 +783,11 @@ public class PlayerControl : MonoBehaviour
 
         if (collider.tag == "DestroyablePlatform") {
             DestroyablePlatform pl = collider.gameObject.GetComponent<DestroyablePlatform>();
-            if (pl && !pl.isCollapsing) {
-                pl.StartCollapsing();
+            if (pl && !pl.isShaking) {
+                if (pl.needsExtraEffort)
+                    pl.JustShake();
+                else
+                    pl.StartCollapsing();
             }
         }
     }
@@ -811,9 +815,15 @@ public class PlayerControl : MonoBehaviour
             return;
         }
 
-        if (other.tag == "Collectable") {
+        if (other.tag == "Collectable") 
+        {
             other.gameObject.GetComponent<Collectable>().GetCollected();
         }
+
+        if (other.tag == "Trigger") {
+            other.gameObject.GetComponent<DoorTrigger>().GetTriggered();
+        }
+        
 
         if (other.tag == "BossFightTrigger") {
             MantisBehavior boss = (MantisBehavior)FindObjectOfType(typeof(MantisBehavior));
@@ -847,7 +857,9 @@ public class PlayerControl : MonoBehaviour
         cameraEffects.Shake(0.6f, 1000, 1f);
         
         if (--PlayerStats.HP < 0) {
+            sounds.volume = 0.5f;
             sounds.PlayOneShot(clip_death);
+            //sounds.volume = 1;
             _isPlayingWalkSound = false;
             anim.SetBool("IsDying", true);
             isDead = true;
@@ -857,8 +869,9 @@ public class PlayerControl : MonoBehaviour
             if (sounds.isPlaying)
                 sounds.Stop();
             sounds.pitch = 1;
-            sounds.volume = 1;
+            sounds.volume = 0.5f;
             sounds.PlayOneShot(clip_hurt);
+            //sounds.volume = 1;
             _isPlayingWalkSound = false;
             StartCoroutine(blinkInvulnerable());
         }

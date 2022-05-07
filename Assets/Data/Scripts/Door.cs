@@ -11,15 +11,19 @@ public class Door : MonoBehaviour
 
     private bool opened = false;
 
+    public bool InitiallyOpened = false;
+
     private string _keyName;
+
+    
 
 
     public void Awake()
     {
         _keyName = SceneManager.GetActiveScene().name + transform.parent.gameObject.name;
-        if (PlayerPrefs.GetInt(_keyName) == 1)
-            SetOpened();
-        //opened = true;
+        if (PlayerPrefs.GetInt(_keyName) == 1 || InitiallyOpened)
+            SetOpened(true);
+
     }
 
     public void Open()
@@ -30,10 +34,18 @@ public class Door : MonoBehaviour
         StartCoroutine(OpenCoroutine());
     }
 
-    private void SetOpened()
+    public void Close()
     {
-        GetComponent<Animator>().SetBool("opened", true);
-        opened = true;
+        Debug.Log("Door close");
+        GetComponent<AudioSource>().PlayOneShot(clip_close);
+        PlayerPrefs.SetInt(_keyName, 0);
+        SetOpened(false);
+    }
+
+    private void SetOpened(bool val)
+    {
+        GetComponent<Animator>().SetBool("opened", val);
+        opened = val;
     }
 
     IEnumerator OpenCoroutine()

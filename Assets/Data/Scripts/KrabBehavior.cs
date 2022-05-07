@@ -3,20 +3,28 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class KrabBehavior : NpcBehavior
+public class KrabBehavior : CrawlerBehavior
 {
-    public AudioClip clip_crawl;
     public AudioClip clip_jump;
 
-    public  float _followRadius = 7f;
-    public float _moveSpeed = 1.5f;
     public float _jumpForce = 1600f;
-
 
     private bool isGrounded = true;
 
+    enum KStates {
+        Crawling,
+        AnticipatingJump,
+        Jumping,
+        Grounding,
+        GettingHit,
+        KnockingBack,
+        Dying,
+        Dead
+    }
+    private KStates state;
+
     private float lastJumpTime;
-    
+
     // Start is called before the first frame update
     void Start()
     {
@@ -25,51 +33,50 @@ public class KrabBehavior : NpcBehavior
     }
 
  
-    void Update()
+    void FixedUpdate()
     {
         if (Time.timeScale == 0) {
             return;
         }
 
-        if (isDead)
-            return;
-
-        bool oldGr = isGrounded;
         isGrounded = CheckGrounded();
 
-        if (oldGr != isGrounded )
-            onGroundedChanged();
-
-        bool isNotAbleToMove = isDead || !IsPlayerInRange() || !CheckGrounded();
-
-        float moveX = isNotAbleToMove ? 0f : GetVectorToPlayer().x > 0 ? _moveSpeed : -_moveSpeed;
-
-        if (_knockback > 0) {
-            moveX = body.velocity.x;
-            --_knockback;
-        }
-            
-        // move left/right
-        body.velocity = new Vector2( moveX, body.velocity.y );
-
-        if (isNotAbleToMove)
-            return;
-
-        if (Math.Abs(moveX) > 0.01f && ! GetComponent<AudioSource>().isPlaying) {
-                GetComponent<AudioSource>().PlayOneShot(clip_crawl);
-        }
-
-        // jump
-        // Cast a ray straight up.
-        RaycastHit2D hit = Physics2D.Raycast(transform.position, Vector2.up);
-        // If it hits something...
-        if (hit.collider != null) {
-            if (hit.collider.tag == "Player") {
-                if (Time.time - lastJumpTime > 0.5f) {
-                    lastJumpTime = Time.time;
-                    jump();
+        switch (state) {
+            case KStates.Crawling: {
+                Crawl();
+                if (IsPlayerAbove() && IsJumpCooldownEnded()) {
+                    state = KStates.AnticipatingJump;
                 }
+                break;
             }
+            case KStates.AnticipatingJump:
+                Debug.Log("Jump");
+                lastJumpTime = Time.time;
+                jump();
+                state = KStates.Jumping;
+                break;
+            case KStates.Jumping:
+                body.velocity = new Vector2(0, body.velocity.y);
+                if (Time.time - lastJumpTime > 0.2f && isGrounded) {
+                    state = KStates.Grounding;
+                }
+                break;
+            case KStates.Grounding:
+                Debug.Log("Ground");
+                anim.SetBool("jump", false);
+                state = KStates.Crawling;
+                break;
+            case KStates.GettingHit:
+                // TODO: sound, animation, etc...
+                state = KStates.KnockingBack;
+                break;
+            case KStates.KnockingBack:
+                if (--_knockback <= 0)
+                    state = KStates.Crawling;
+                break;
+
+            case KStates.Dead:
+                return;
         }
     }
 
@@ -81,14 +88,23 @@ public class KrabBehavior : NpcBehavior
         }
     }
 
-    bool IsPlayerInRange()
+    bool IsPlayerAbove()
     {
-        Transform pt = Utils.GetPlayerTransform();
-        if (pt == null)
-            return false;
+        // jump
+        // Cast a ray straight up.
+        RaycastHit2D hit = Physics2D.Raycast(transform.position, Vector2.up);
+        // If it hits something...
+        if (hit.collider != null) {
+            if (hit.collider.tag == "Player")
+                return true;
+        }
 
-        float distP = Vector2.Distance(pt.position, transform.position);
-        return distP < _followRadius;
+        return false;
+    }
+
+    bool IsJumpCooldownEnded()
+    {
+        return Time.time - lastJumpTime > 0.5f;
     }
 
     private void jump()
@@ -112,18 +128,11 @@ public class KrabBehavior : NpcBehavior
     }
 
     public override void hurt(Vector2 force, Types.DamageType damageType = Types.DamageType.Spikes) {
-        if (isDead) return;
-        
-
-        if (damageType == Types.DamageType.Spikes) {
-            _hp = -1;
-        }
-
         base.hurt(force, damageType);
+        state = KStates.GettingHit;
     }
    protected override void die()
    {
         base.die();
-        Destroy(this.gameObject, 5f);
    }
 }

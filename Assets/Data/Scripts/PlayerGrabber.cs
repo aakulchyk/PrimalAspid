@@ -180,7 +180,7 @@ public class PlayerGrabber : MonoBehaviour
         }
 
         if (moveY != 0 && _isHangingOnWall) {
-            MoveOnWall(0.3f * moveY);
+            MoveOnWall(0.2f * moveY);
         }
         
 
@@ -495,7 +495,7 @@ public class PlayerGrabber : MonoBehaviour
 
         if (destroyable) {
             Debug.Log("Destroyable");
-            if (!destroyable.isCollapsing) {
+            if (!destroyable.isShaking) {
                 destroyable.StartCollapsing();
             }
         }

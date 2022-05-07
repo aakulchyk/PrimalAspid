@@ -36,6 +36,7 @@ public class Game : MonoBehaviour
         if (SharedInstance == null) {
             SharedInstance = this;
             DontDestroyOnLoad(gameObject);
+            blackScreen.GetComponent<RectTransform>().sizeDelta = new Vector2(Screen.width, Screen.height);
             blackScreen.enabled = true;
         }
         else Destroy(gameObject);

@@ -229,7 +229,7 @@ MonoBehaviour:
     type: 3}
   animator: {fileID: 6511338586910782685}
   destroyAfterDeath: 1
-  health: 2
+  health: 1
   destroyed: 0
   clip_hit: {fileID: 8300000, guid: ac7d5513afcc8e446ab4e4307ebf17bf, type: 3}
   clip_destroy: {fileID: 8300000, guid: cbb27cfc77ad9ff498d5bc8c66c0d99f, type: 3}

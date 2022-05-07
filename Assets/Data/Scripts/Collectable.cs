@@ -15,8 +15,6 @@ public class Collectable : MonoBehaviour
         collected = true;
 
         // apply stats
-        //PlayerStats.MAX_HP++;
-        //PlayerStats.HP++;
         Debug.Log("Collect item. ");
 
         GetComponent<AudioSource>().volume = 1f;

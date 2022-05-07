@@ -18,8 +18,23 @@ EditorBuildSettings:
     path: Assets/Data/Levels/Level_1_2/LD_Level_1_2.unity
     guid: 6705fd23a3e721a46bc91146cfa9adf1
   - enabled: 1
-    path: Assets/Data/Levels/Level_1_3/LD_Level_1_3.unity
-    guid: d02b49bb4c95545478438e0a705eb138
+    path: Assets/Data/Levels/Level_1_3/LD_Level_1_3_1.unity
+    guid: d459d6eac2a999e408c0b675160fcf52
+  - enabled: 1
+    path: Assets/Data/Levels/Level_1_3/LD_Level_1_3_2.unity
+    guid: 590b15ef712df7740aeaf316142d3682
+  - enabled: 1
+    path: Assets/Data/Levels/Level_1_3/LD_Level_1_3_3.unity
+    guid: e7de7543851fbba409acf5c5d61273a1
+  - enabled: 1
+    path: Assets/Data/Levels/Level_1_4/LD_Level_1_4.unity
+    guid: f9ee902e39157be41a86130e911650ad
+  - enabled: 1
+    path: Assets/Scenes/Gym/Gym_Alex/Gym_Alex _Wind.unity
+    guid: b45dc47a8a74b0a4ca2b85ac5d85089b
+  - enabled: 1
+    path: Assets/Scenes/Gym/Gym_Alex/Gym_Alex.unity
+    guid: 19d0ce65ec0c3294fa1f92c03e7389a4
   m_configObjects:
     com.unity.xr.management.loader_settings: {fileID: 11400000, guid: abe599f0fa6862b42abd90eb02bbd8eb,
       type: 2}

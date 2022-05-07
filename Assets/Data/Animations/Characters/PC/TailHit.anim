@@ -22,35 +22,32 @@ AnimationClip:
     - time: 0
       value: {fileID: -6239037727998546823, guid: 4d0d4e84a3c52f34295cee16cb7daa71,
         type: 3}
-    - time: 0.035714287
+    - time: 0.033333335
       value: {fileID: -6870066231389708566, guid: 5ec4fe78f38a69a438edd4f034bd54a7,
         type: 3}
-    - time: 0.10714286
-      value: {fileID: 7062122416850078871, guid: 68939ed9364277342933a9b7dee8a798,
-        type: 3}
-    - time: 0.14285715
+    - time: 0.1
       value: {fileID: 7670887178672655480, guid: 4d0d4e84a3c52f34295cee16cb7daa71,
         type: 3}
-    - time: 0.21428572
+    - time: 0.16666667
       value: {fileID: -608153979275756661, guid: 4d0d4e84a3c52f34295cee16cb7daa71,
         type: 3}
-    - time: 0.2857143
+    - time: 0.23333333
       value: {fileID: -376493165877089372, guid: 4d0d4e84a3c52f34295cee16cb7daa71,
         type: 3}
-    - time: 0.32142857
+    - time: 0.26666668
       value: {fileID: 7283698124979200368, guid: 4d0d4e84a3c52f34295cee16cb7daa71,
         type: 3}
-    - time: 0.39285713
+    - time: 0.33333334
       value: {fileID: 6004476319895327187, guid: 4d0d4e84a3c52f34295cee16cb7daa71,
         type: 3}
-    - time: 0.5
+    - time: 0.43333334
       value: {fileID: -6893851535811529201, guid: 68939ed9364277342933a9b7dee8a798,
         type: 3}
     attribute: m_Sprite
     path: 
     classID: 212
     script: {fileID: 0}
-  m_SampleRate: 28
+  m_SampleRate: 30
   m_WrapMode: 0
   m_Bounds:
     m_Center: {x: 0, y: 0, z: 0}
@@ -67,7 +64,6 @@ AnimationClip:
     pptrCurveMapping:
     - {fileID: -6239037727998546823, guid: 4d0d4e84a3c52f34295cee16cb7daa71, type: 3}
     - {fileID: -6870066231389708566, guid: 5ec4fe78f38a69a438edd4f034bd54a7, type: 3}
-    - {fileID: 7062122416850078871, guid: 68939ed9364277342933a9b7dee8a798, type: 3}
     - {fileID: 7670887178672655480, guid: 4d0d4e84a3c52f34295cee16cb7daa71, type: 3}
     - {fileID: -608153979275756661, guid: 4d0d4e84a3c52f34295cee16cb7daa71, type: 3}
     - {fileID: -376493165877089372, guid: 4d0d4e84a3c52f34295cee16cb7daa71, type: 3}
@@ -79,7 +75,7 @@ AnimationClip:
     m_AdditiveReferencePoseClip: {fileID: 0}
     m_AdditiveReferencePoseTime: 0
     m_StartTime: 0
-    m_StopTime: 0.53571427
+    m_StopTime: 0.46666667
     m_OrientationOffsetY: 0
     m_Level: 0
     m_CycleOffset: 0
@@ -99,14 +95,14 @@ AnimationClip:
   m_HasGenericRootTransform: 0
   m_HasMotionFloatCurves: 0
   m_Events:
-  - time: 0.25
+  - time: 0.2
     functionName: PerformAttack
     data: 
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0
     intParameter: 0
     messageOptions: 0
-  - time: 0.42857143
+  - time: 0.36666667
     functionName: RestoreAttack
     data: 
     objectReferenceParameter: {fileID: 0}

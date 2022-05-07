@@ -130,13 +130,12 @@ MonoBehaviour:
   clip_death: {fileID: 8300000, guid: 3603262efd8d41e4996baccdc1df2124, type: 3}
   INITIAL_HP: 4
   invulnerable: 0
-  _knockback: 0
   damageParticles: {fileID: 0}
   deathParticles: {fileID: 0}
   clip_crawl: {fileID: 8300000, guid: 83dcfb28d387bc940bb4093bb3724b01, type: 3}
-  clip_jump: {fileID: 8300000, guid: 041574ae82d18024a919b0a456a986f3, type: 3}
-  _followRadius: 20
   _moveSpeed: 2
+  _aggravateRadius: 0
+  clip_jump: {fileID: 8300000, guid: 041574ae82d18024a919b0a456a986f3, type: 3}
   _jumpForce: 1800
 --- !u!50 &544185562659053996
 Rigidbody2D:
@@ -268,8 +267,8 @@ CapsuleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.012909353, y: -0.06454682}
-  m_Size: {x: 1.5067254, y: 1.558363}
+  m_Offset: {x: 0.012909353, y: 0.56056756}
+  m_Size: {x: 1.5067254, y: 1.5067254}
   m_Direction: 0
 --- !u!1 &2952253108942724391
 GameObject:
@@ -378,17 +377,17 @@ PrefabInstance:
     - target: {fileID: 1956408374390101892, guid: 666fd4a92e86df244ba69b67b49029b0,
         type: 3}
       propertyPath: InitialModule.startColor.maxColor.b
-      value: 0.9450981
+      value: 0.24705884
       objectReference: {fileID: 0}
     - target: {fileID: 1956408374390101892, guid: 666fd4a92e86df244ba69b67b49029b0,
         type: 3}
       propertyPath: InitialModule.startColor.maxColor.g
-      value: 0.058823533
+      value: 0.21568629
       objectReference: {fileID: 0}
     - target: {fileID: 1956408374390101892, guid: 666fd4a92e86df244ba69b67b49029b0,
         type: 3}
       propertyPath: InitialModule.startColor.maxColor.r
-      value: 0.8980393
+      value: 0.3019608
       objectReference: {fileID: 0}
     - target: {fileID: 1956408374390101892, guid: 666fd4a92e86df244ba69b67b49029b0,
         type: 3}

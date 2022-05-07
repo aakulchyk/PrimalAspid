@@ -28,7 +28,6 @@ public class NpcBehavior : MonoBehaviour
 
     public bool invulnerable = false;
 
-    [SerializeField]
     protected int _knockback = 0;
 
     [SerializeField] protected ParticleSystem damageParticles;
@@ -85,7 +84,6 @@ public class NpcBehavior : MonoBehaviour
             invulnerable = true;
         }
 
-        StartCoroutine(Utils.FreezeFrameEffect());
         sounds.PlayOneShot(clip_hurt);
         anim.SetTrigger("hurt");
         

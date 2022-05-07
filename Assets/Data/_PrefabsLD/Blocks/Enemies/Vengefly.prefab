@@ -145,9 +145,9 @@ CircleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.21572495, y: -0.21572542}
+  m_Offset: {x: -0.1441161, y: -0.2293652}
   serializedVersion: 2
-  m_Radius: 0.510365
+  m_Radius: 0.28189912
 --- !u!114 &4152528819531725584
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -168,7 +168,6 @@ MonoBehaviour:
   clip_death: {fileID: 8300000, guid: 3603262efd8d41e4996baccdc1df2124, type: 3}
   INITIAL_HP: 2
   invulnerable: 0
-  _knockback: 0
   damageParticles: {fileID: 1398088920209108084}
   deathParticles: {fileID: 8354577481271344299}
   _followRadius: 30

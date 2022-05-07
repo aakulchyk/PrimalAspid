@@ -54,6 +54,18 @@ public class PcAttack : MonoBehaviour
             player.cameraEffects.Shake(0.3f, 1000, 0.4f);
             Vector3 dir = (other.transform.position - player.transform.position).normalized;
             player.knockback(new Vector2(-dir.x*20f, 0));
-        }
+        } else if (other.tag == "Impactable") {
+            Impactable impactable = other.gameObject.GetComponent<Impactable>();
+            Vector3 dir = (other.transform.position - player.transform.position).normalized;
+            impactable.GetImpact(new Vector2(dir.x*5, 0), Types.DamageType.PcHit);
+            player.cameraEffects.Shake(0.3f, 1000, 0.4f);
+            player.knockback(new Vector2(-dir.x*10f, 0));
+        } else if (other.tag == "Spike") { // TODO: another tag
+            MantisProjectile projectile = other.gameObject.GetComponent<MantisProjectile>();
+            if (projectile) {
+                projectile.Die();
+                player.cameraEffects.Shake(0.3f, 1000, 0.4f);
+            }
+        }   
     }
 }

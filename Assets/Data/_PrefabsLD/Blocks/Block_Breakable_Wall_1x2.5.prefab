@@ -179,9 +179,10 @@ MonoBehaviour:
   brokenSprite: {fileID: 0}
   deathParticles: {fileID: 6195239110127356498}
   pointLight: {fileID: 0}
+  CollectableDropPrefab: {fileID: 0}
   animator: {fileID: 5073201996397056388}
   destroyAfterDeath: 1
-  health: 3
+  health: 2
   destroyed: 0
   clip_hit: {fileID: 8300000, guid: ac7d5513afcc8e446ab4e4307ebf17bf, type: 3}
   clip_destroy: {fileID: 8300000, guid: cbb27cfc77ad9ff498d5bc8c66c0d99f, type: 3}
@@ -308,7 +309,7 @@ MonoBehaviour:
   - {x: -2.5585327, y: 12.810196, z: 0}
   m_ShapePathHash: 977679893
   m_Mesh: {fileID: 0}
-  m_InstanceId: 62016
+  m_InstanceId: 454154
 --- !u!1001 &3096087516323988428
 PrefabInstance:
   m_ObjectHideFlags: 0
