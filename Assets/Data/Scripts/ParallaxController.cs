@@ -18,8 +18,11 @@ public class ParallaxController : MonoBehaviour
         //cam = Camera.main;
         onCameraMove += MoveLayer;
         FindLayers();
-        oldCameraPosition.x = cam.transform.position.x;
-        oldCameraPosition.y = cam.transform.position.y;
+
+        if (cam) {
+            oldCameraPosition.x = cam.transform.position.x;
+            oldCameraPosition.y = cam.transform.position.y;
+        }
     }
 
     private void FixedUpdate()

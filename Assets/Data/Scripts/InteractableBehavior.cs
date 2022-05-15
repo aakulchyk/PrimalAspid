@@ -5,12 +5,11 @@ using UnityEngine;
 
 public class InteractableBehavior : MonoBehaviour
 {
-    
-    private GameObject canvas = null;
+    protected GameObject canvas = null;
 
     public float interactRadius = 3f;
     public bool openForInteraction = false;
-    
+
     public bool active = true;
     public string interactableName;
     public string[] initialTexts;
@@ -18,37 +17,44 @@ public class InteractableBehavior : MonoBehaviour
     public string[] currentTexts = {"...",};
 
     [SerializeField] private LeverBehavior lever;
-    
 
+    [SerializeField] private AudioClip clip_interact;
+
+    public bool IsSavePoint;
+ 
     void Start()
     {
         Transform t = transform.Find("Canvas");
         if (t) {
             canvas = t.gameObject;
+            canvas.SetActive(false);
         }
-
         currentTexts = initialTexts;
     }
 
-    // Update is called once per frame
-    void Update()
+    void OnTriggerEnter2D(Collider2D other)
     {
-        if (canvas) {
-            var pTransform = Utils.GetPlayerTransform();
-
-            if (pTransform == null)
-                return;
-            float pDist = Vector2.Distance(pTransform.position, transform.position); 
-            openForInteraction = (pDist < interactRadius && active);
-            canvas.SetActive(openForInteraction);
-        }
-
-        if (openForInteraction) {
+        if (other.tag == "Player") {
+            openForInteraction = true;
+            if (canvas) {
+                canvas.SetActive(openForInteraction);
+            }
             Utils.GetPlayer().activeInteractor = this;
         }
     }
 
-    public void SetActive(bool val) {
+    void OnTriggerExit2D(Collider2D other)
+    {
+        if (other.tag == "Player") {
+            openForInteraction = false;
+            if (canvas) {
+                canvas.SetActive(false);
+            }
+        }
+    }
+
+    public void SetActive(bool val)
+    {
         active = val;
     }
 
@@ -63,6 +69,19 @@ public class InteractableBehavior : MonoBehaviour
 
         if (lever) {
             lever.SwitchLever();
+        }
+
+        if (IsSavePoint) {
+            if (canvas)
+                canvas.SetActive(false);
+
+            GetComponent<AudioSource>().PlayOneShot(clip_interact);
+            Game.SharedInstance.SaveGame();
+            Game.SharedInstance.SetPopupText("Bonfire", "The Game is Succesfully Saved");
+            Game.SharedInstance.OpenPopup();
+
+            if (canvas)
+                canvas.SetActive(true);
         }
     }
 }

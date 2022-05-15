@@ -28,9 +28,7 @@ public class Door : MonoBehaviour
 
     public void Open()
     {
-        opened = true;
         PlayerPrefs.SetInt(_keyName, 1);
-
         StartCoroutine(OpenCoroutine());
     }
 
@@ -59,7 +57,11 @@ public class Door : MonoBehaviour
         
         GetComponent<AudioSource>().Stop();
         GetComponent<Collider2D>().enabled = true;
+    }
 
+    public void OnDoorOpeningFinished()
+    {
+        SetOpened(true);
     }
 
 }

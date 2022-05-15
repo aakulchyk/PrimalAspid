@@ -13,8 +13,7 @@ public class GrabbableBehavior : MonoBehaviour
     private SimpleCallback getCapturedCallback = null;
     private SimpleCallback getReleasedCallback = null;
 
-    void Start()
-    {
+    void Start() {
         Transform t = transform.Find("Canvas");
         if (t) {
             canvas = t.gameObject;
@@ -26,13 +25,7 @@ public class GrabbableBehavior : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
-    {
-       /* if (canvas) {
-            bool showGrabText = CheckGrabability() && !captured;
-            canvas.SetActive(showGrabText);
-        }*/
-
+    void Update() {
         if (hasBodyParentFrame) {
             Transform t = transform.parent.Find("Body");
             transform.localPosition = t.localPosition;
@@ -80,22 +73,19 @@ public class GrabbableBehavior : MonoBehaviour
         getReleasedCallback = callback;
     }
 
-    public virtual void getCaptured()
-    {
+    public virtual void getCaptured() {
         if (getCapturedCallback != null)
             getCapturedCallback();
         captured = true;
     }
 
-    public virtual void getReleased()
-    {
+    public virtual void getReleased() {
         if (getReleasedCallback != null)
             getReleasedCallback();
         captured = false;
     }
 
-    public bool isGrounded()
-    {
+    public bool isGrounded() {
         Debug.Log("Grounded?");
         RaycastHit2D hit = Physics2D.Raycast(transform.position, Vector2.down, 1.0f, LayerMask.GetMask("Ground"));
 

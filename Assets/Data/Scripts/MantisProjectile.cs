@@ -10,9 +10,6 @@ public class MantisProjectile : MonoBehaviour
     [SerializeField] protected GameObject deathParticles;
     [SerializeField] protected ParticleSystem impactParticles;
     public int speed;          // The speed our bullet travels
-    //public Vector3 targetVector;    // the direction it travels
-    //public int lifetime = 200;     // how long it lives before destroying itself
-    //public float damage = 10;       // how much damage this projectile causes
 
     // Start is called before the first frame update
     public int MAX_HITS = 3;
@@ -23,30 +20,24 @@ public class MantisProjectile : MonoBehaviour
         Physics2D.IgnoreLayerCollision(LayerMask.NameToLayer("EnemyProjectile"), LayerMask.NameToLayer("Enemy"), true);
         Physics2D.IgnoreLayerCollision(LayerMask.NameToLayer("EnemyProjectile"), LayerMask.NameToLayer("Background"), true);
         Physics2D.IgnoreLayerCollision(LayerMask.NameToLayer("EnemyProjectile"), LayerMask.NameToLayer("PlayerProjectile"), true);
+        Physics2D.IgnoreLayerCollision(LayerMask.NameToLayer("EnemyProjectile"), LayerMask.NameToLayer("EnemyProjectile"), true);
 
         impactParticles.Stop();
-
-        //Destroy(this.gameObject, 4f);
     }
 
     public void setImpulse(Vector3 vector) {
         // add force 
         Rigidbody2D rb = gameObject.GetComponentInChildren<Rigidbody2D>();
-        //Debug.Log("vector" + vector);
-        //rb.AddForce(vector * speed);
         rb.velocity = new Vector2 (vector.x * speed, vector.y * speed);
     }
 
     void OnCollisionEnter2D(Collision2D collision) {
-
         Collider2D collider = collision.collider;
-
         if (collider.tag == "Ground" || collider.tag == "Obstacle" || collider.tag == "StickyWall" || collider.tag == "Breakable")
         {
             if (++hits >= MAX_HITS) {
                 Utils.GetPlayer().cameraEffects.Shake(0.2f, 500, 0.4f);
                 Die();
-                return;
             } else {
                 impactParticles.Emit(10);
                 GetComponent<AudioSource>().PlayOneShot(clip_bump);
@@ -54,7 +45,6 @@ public class MantisProjectile : MonoBehaviour
         } else if (collider.tag == "Player" || collider.tag == "Boulder") {
             Die();     
         }
-
     }
 
     public void Die()

@@ -6,8 +6,6 @@ using System;
 using System.Text;
 using System.Collections;
 
-//public delegate void SimpleCallback();
-
 public class PlayerGrabber : MonoBehaviour
 {
     private PlayerControl playerMainControl;
@@ -56,9 +54,6 @@ public class PlayerGrabber : MonoBehaviour
     private bool grab_button_hold = false;
 
     // RT
-    //private bool dash_button_triggered = false;
-    //private bool prev_dash = false;
-    //private bool dash_hold = false;
 
     private int moveX=0, moveY=0;
     private int prev_moveX = 0, prev_moveY = 0;
@@ -394,7 +389,6 @@ public class PlayerGrabber : MonoBehaviour
         sounds.PlayOneShot(clip_clutch);
         anim.SetBool("IsHangingOnWall", true);
         body.velocity = Vector2.zero;
-
     }
 
     public void MoveOnWall(float moveY)
@@ -411,8 +405,6 @@ public class PlayerGrabber : MonoBehaviour
 
     public void endHangOnWall()
     {
-        //Debug.Log("End Hang");
-
         var wall = _attachedTo.gameObject.GetComponent<StickyWallBehavior>();
 
         if (wall) {

@@ -20,7 +20,7 @@ public class PlayerControl : MonoBehaviour
     protected AudioSource sounds;
     private Game game = null;
     public InteractableBehavior activeInteractor;
-    public SavePointBehavior activeSavePoint;
+
     protected PcAttack _attack;
     private PlayerGrabber grabber;
     private Rigidbody2D platformBody = null;
@@ -136,7 +136,6 @@ public class PlayerControl : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-
         thisTransform = this.transform;
 
         isDead = false;
@@ -153,9 +152,7 @@ public class PlayerControl : MonoBehaviour
             Debug.LogError("ERROR: PlayerGrabber not found!");
 
         faceRight = true;
-        
-        //StartCoroutine(blinkInvulnerable());
-        //_isGrounded = true;
+
         checkGrounded(true);
 
         CapsuleCollider2D col = GetComponent<CapsuleCollider2D>();
@@ -246,19 +243,12 @@ public class PlayerControl : MonoBehaviour
             return;
         }
 
-        // if (_isDashing || grabber.IsGrabbing())
-        //     return;
-
         checkGrounded();
 
         if (Input.GetButtonDown("Interact")) {
             if (activeInteractor && activeInteractor.openForInteraction) {
                 activeInteractor.Interact();
             } 
-            else 
-            if (activeSavePoint && activeSavePoint.canInteract) {
-                activeSavePoint.SaveGame();
-            }
         }
 
         if (Input.GetButtonDown("Hit")) {
@@ -757,9 +747,7 @@ public class PlayerControl : MonoBehaviour
         if (collider == null || invulnerable == true)
             return;
 
-
         if (collider.tag == "Ground" || collider.tag == "StickyWall") {
-            //collider.gameObject.transform.SetParent(transform, true);
             thisTransform.SetParent(collider.gameObject.transform, true);
             platformBody = collider.gameObject.GetComponent<Rigidbody2D>();
         }
@@ -802,14 +790,6 @@ public class PlayerControl : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D other)
     {
-        /*if (other.tag == "Lever") {
-            LeverBehavior script = other.gameObject.GetComponent<LeverBehavior>();
-            if (!script || script.toggled)
-                return;
-            
-            script.SwitchLever();
-        }*/
-
         if (other.tag == "LevelPortal") {
             other.gameObject.GetComponent<LevelPortal>().TransferToAnotherLevel(gameObject);
             return;
@@ -824,7 +804,6 @@ public class PlayerControl : MonoBehaviour
             other.gameObject.GetComponent<DoorTrigger>().GetTriggered();
         }
         
-
         if (other.tag == "BossFightTrigger") {
             MantisBehavior boss = (MantisBehavior)FindObjectOfType(typeof(MantisBehavior));
 
@@ -842,10 +821,10 @@ public class PlayerControl : MonoBehaviour
             other.gameObject.SetActive(false);
             GetGame().OpenPopup();
         }
-
     }
 
-    void OnTriggerExit2D(Collider2D other) {
+    void OnTriggerExit2D(Collider2D other)
+    {
     }
 
     public void hurt(Vector2 force, Types.DamageType damageType = Types.DamageType.Spikes)
@@ -859,7 +838,6 @@ public class PlayerControl : MonoBehaviour
         if (--PlayerStats.HP < 0) {
             sounds.volume = 0.5f;
             sounds.PlayOneShot(clip_death);
-            //sounds.volume = 1;
             _isPlayingWalkSound = false;
             anim.SetBool("IsDying", true);
             isDead = true;
@@ -871,7 +849,6 @@ public class PlayerControl : MonoBehaviour
             sounds.pitch = 1;
             sounds.volume = 0.5f;
             sounds.PlayOneShot(clip_hurt);
-            //sounds.volume = 1;
             _isPlayingWalkSound = false;
             StartCoroutine(blinkInvulnerable());
         }
@@ -918,8 +895,6 @@ public class PlayerControl : MonoBehaviour
         SceneManager.LoadScene(Game.currentScene);
     }
 
-
-
     public void LoseAndRespawn()
     {
         PlayerStats.Losses++;
@@ -929,7 +904,6 @@ public class PlayerControl : MonoBehaviour
 
     public void onSaveGame()
     {
-        //PlayerStats.HP = INITIAL_HP;
     }
 
     public void EnableControl(bool val)

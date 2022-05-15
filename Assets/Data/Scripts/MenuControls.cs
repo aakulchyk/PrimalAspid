@@ -8,6 +8,8 @@ public class MenuControls : MonoBehaviour
 {
     public bool _gamePad = false;
 
+    [SerializeField] private AudioClip sound_select;
+
     private void Start()
     {
         Game.SharedInstance.LightenScreenAsync();
@@ -54,5 +56,10 @@ public class MenuControls : MonoBehaviour
         Text buttonText = GameObject.Find("TutorialButtonText").GetComponent<Text>();
         Debug.Log("Button text: " + buttonText.text);
         buttonText.text = PlayerStats.ShowTutorial ? "Tutorial ON" : "Tutorial OFF";
+    }
+
+    public void AnyButtonSelected()
+    {
+        GetComponent<AudioSource>().PlayOneShot(sound_select);
     }
 }

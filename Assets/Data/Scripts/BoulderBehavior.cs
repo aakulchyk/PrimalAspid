@@ -50,7 +50,7 @@ public class BoulderBehavior : MonoBehaviour
             Crash();
             DestroyablePlatform pl = collider.gameObject.GetComponent<DestroyablePlatform>();
             if (pl) {
-                pl.StartCollapsing();
+                pl.OnCollapsed();
             }
         }
      }

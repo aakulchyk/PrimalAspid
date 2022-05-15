@@ -39,13 +39,13 @@ public class StickyWallBehavior : MonoBehaviour
         //Debug.Log("Joint: " + joint.anchor.y + " size: " + GetComponent<Collider2D>().bounds.size.y);
 
         float anchor = joint.anchor.y * transform.localScale.y;
-        if (moveY < 0 && (anchor + moveY) < -2)
+        if (moveY < 0 && (anchor + moveY) < -1)
             return;
 
-        if (moveY > 0 && (anchor + moveY) > GetComponent<Collider2D>().bounds.size.y - 3)
+        if (moveY > 0 && (anchor + moveY) > GetComponent<Collider2D>().bounds.size.y - 2)
             return;
         
-        joint.anchor += new Vector2(0, moveY);
+        joint.anchor += new Vector2(0, moveY / transform.localScale.y);
     }
 
     public void DetachBody()

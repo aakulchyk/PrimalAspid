@@ -119,8 +119,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   deathParticles: {fileID: 307344773776447615}
-  isCollapsing: 0
-  clip_rumble: {fileID: 8300000, guid: 12c53fb943130e94f800a4c3aa80185f, type: 3}
+  needsExtraEffort: 0
+  isShaking: 0
+  clip_rumble: {fileID: 8300000, guid: ac7d5513afcc8e446ab4e4307ebf17bf, type: 3}
   clip_crack: {fileID: 8300000, guid: cbb27cfc77ad9ff498d5bc8c66c0d99f, type: 3}
 --- !u!82 &1859300452470871844
 AudioSource:
@@ -129,10 +130,10 @@ AudioSource:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1859300452470871866}
-  m_Enabled: 0
+  m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: ac7d5513afcc8e446ab4e4307ebf17bf, type: 3}
+  m_audioClip: {fileID: 0}
   m_PlayOnAwake: 1
   m_Volume: 0.604
   m_Pitch: 1
