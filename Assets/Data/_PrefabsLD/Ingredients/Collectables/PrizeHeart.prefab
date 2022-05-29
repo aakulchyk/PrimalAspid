@@ -186,7 +186,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   clip_collect: {fileID: 8300000, guid: 6dd5b29a7a56307448beee013da2b42f, type: 3}
-  renderer: {fileID: 623653160883283178}
+  _renderer: {fileID: 623653160883283178}
 --- !u!1001 &4369286932751999528
 PrefabInstance:
   m_ObjectHideFlags: 0

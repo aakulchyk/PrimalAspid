@@ -3,12 +3,12 @@ using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using UnityEngine.VFX;
 
-using System.Collections;
-using System.Collections.Generic;
-
 using System;
 using System.Text;
 using System.Collections;
+using System.Collections.Generic;
+
+
 
 public class PlayerControl : MonoBehaviour
 {
@@ -17,8 +17,6 @@ public class PlayerControl : MonoBehaviour
     private Animator anim;
     private Renderer _renderer;
 
-    protected AudioSource sounds;
-    private Game game = null;
     public InteractableBehavior activeInteractor;
 
     protected PcAttack _attack;
@@ -34,6 +32,7 @@ public class PlayerControl : MonoBehaviour
     [SerializeField] private GameObject flapTrail;
     
     [Header ("Sounds")]
+    protected AudioSource sounds;
     public AudioClip clip_hurt;
     public AudioClip clip_death;
     public AudioClip clip_flap;
@@ -107,7 +106,6 @@ public class PlayerControl : MonoBehaviour
     public float pWidth, pHeight;
 
     private int moveX, moveY;
-    private int prev_moveX = 0, prev_moveY = 0;
 
     private float upTime, downTime;
 
@@ -419,7 +417,7 @@ public class PlayerControl : MonoBehaviour
 
         // RESTORE FLAPS
         if ((_isGrounded || grabber.IsHanging())) {
-            PlayerStats.FlapsLeft = PlayerStats.MaxFlaps;
+            //PlayerStats.FlapsLeft = PlayerStats.MaxFlaps;
             PlayerStats.FullyRestoreStamina();
         }
 
@@ -544,7 +542,7 @@ public class PlayerControl : MonoBehaviour
         if (_jumpStarted || _flapStarted)
             return;
 
-        if (PlayerStats.FlapsLeft < 1)
+        if (!PlayerStats.BatWingsUnlocked)
             return;
 
         if (_attackStarted)
@@ -573,7 +571,7 @@ public class PlayerControl : MonoBehaviour
             // TODO/TBD: Will wall hanging affect jump direction?
         } 
 
-        --PlayerStats.FlapsLeft;
+        //--PlayerStats.FlapsLeft;
 
         _flapStarted = true;
 
@@ -887,19 +885,6 @@ public class PlayerControl : MonoBehaviour
         PlayerStats.Deaths++;
         Debug.Log("Deaths: " + PlayerStats.Deaths);
         Game.SharedInstance.LoadGame();
-    }
-
-    IEnumerator RestartAfterDelay()
-    {
-        yield return new WaitForSeconds(3);
-        SceneManager.LoadScene(Game.currentScene);
-    }
-
-    public void LoseAndRespawn()
-    {
-        PlayerStats.Losses++;
-        Debug.Log("Losses: " + PlayerStats.Losses);
-        StartCoroutine(RestartAfterDelay());
     }
 
     public void onSaveGame()

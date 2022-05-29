@@ -457,8 +457,8 @@ InputManager:
     m_Name: Vertical Look
     descriptiveName: 
     descriptiveNegativeName: 
-    negativeButton: '['
-    positiveButton: ']'
+    negativeButton: up
+    positiveButton: down
     altNegativeButton: 
     altPositiveButton: 
     gravity: 100

@@ -260,6 +260,16 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5518406247468537637, guid: 8a65534f30637ea4fb5b58091c692560,
         type: 3}
+      propertyPath: m_ConnectedAnchor.x
+      value: 2.56
+      objectReference: {fileID: 0}
+    - target: {fileID: 5518406247468537637, guid: 8a65534f30637ea4fb5b58091c692560,
+        type: 3}
+      propertyPath: m_ConnectedAnchor.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5518406247468537637, guid: 8a65534f30637ea4fb5b58091c692560,
+        type: 3}
       propertyPath: m_ConnectedRigidBody
       value: 
       objectReference: {fileID: 5723982589242629019}
@@ -330,8 +340,23 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9083248452197056627, guid: 8a65534f30637ea4fb5b58091c692560,
         type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9083248452197056627, guid: 8a65534f30637ea4fb5b58091c692560,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9083248452197056627, guid: 8a65534f30637ea4fb5b58091c692560,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 9.44
+      objectReference: {fileID: 0}
+    - target: {fileID: 9083248452197056627, guid: 8a65534f30637ea4fb5b58091c692560,
+        type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.25
+      value: 0.14
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8a65534f30637ea4fb5b58091c692560, type: 3}
@@ -732,7 +757,7 @@ PrefabInstance:
     - target: {fileID: 7693992531988256765, guid: 0f9207d7cc74a354594eefde4e1bf0da,
         type: 3}
       propertyPath: m_ConnectedAnchor.x
-      value: 5.19
+      value: 1.28
       objectReference: {fileID: 0}
     - target: {fileID: 7693992531988256765, guid: 0f9207d7cc74a354594eefde4e1bf0da,
         type: 3}
@@ -1222,12 +1247,12 @@ PrefabInstance:
     - target: {fileID: 7833146734520581627, guid: baf8b352b6a475e49907e2bdab5b06e7,
         type: 3}
       propertyPath: m_LocalScale.x
-      value: 0.25
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7833146734520581627, guid: baf8b352b6a475e49907e2bdab5b06e7,
         type: 3}
       propertyPath: m_LocalScale.y
-      value: 0.49999994
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7833146734520581627, guid: baf8b352b6a475e49907e2bdab5b06e7,
         type: 3}
@@ -1307,8 +1332,8 @@ HingeJoint2D:
   m_BreakForce: Infinity
   m_BreakTorque: Infinity
   m_AutoConfigureConnectedAnchor: 0
-  m_Anchor: {x: -5.1, y: 0}
-  m_ConnectedAnchor: {x: 0.4999429, y: -0.49997365}
+  m_Anchor: {x: -1.28, y: 0}
+  m_ConnectedAnchor: {x: 0.47, y: -0.512}
   m_UseMotor: 0
   m_Motor:
     m_MotorSpeed: 0
@@ -1327,7 +1352,7 @@ PrefabInstance:
     - target: {fileID: 202586209637079420, guid: f240a22a086ec4d4ead874c6d1fa9efc,
         type: 3}
       propertyPath: m_ConnectedAnchor.x
-      value: 5.09
+      value: 2.56
       objectReference: {fileID: 0}
     - target: {fileID: 202586209637079420, guid: f240a22a086ec4d4ead874c6d1fa9efc,
         type: 3}
@@ -1564,12 +1589,12 @@ PrefabInstance:
     - target: {fileID: 2885903451917357985, guid: 6b9dc1110be9a3e43b2b60d3c9967779,
         type: 3}
       propertyPath: m_LocalScale.x
-      value: 0.49999988
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2885903451917357985, guid: 6b9dc1110be9a3e43b2b60d3c9967779,
         type: 3}
       propertyPath: m_LocalScale.y
-      value: 0.49999988
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2885903451917357985, guid: 6b9dc1110be9a3e43b2b60d3c9967779,
         type: 3}
@@ -1654,8 +1679,8 @@ HingeJoint2D:
   m_BreakForce: Infinity
   m_BreakTorque: Infinity
   m_AutoConfigureConnectedAnchor: 0
-  m_Anchor: {x: -5, y: 0}
-  m_ConnectedAnchor: {x: 0.7, y: -0.37}
+  m_Anchor: {x: -2.56, y: 0}
+  m_ConnectedAnchor: {x: 0.512, y: -0.512}
   m_UseMotor: 0
   m_Motor:
     m_MotorSpeed: 0

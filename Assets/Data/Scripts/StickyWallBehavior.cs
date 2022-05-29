@@ -24,8 +24,8 @@ public class StickyWallBehavior : MonoBehaviour
             //joint.anchor = fromLeft ? Vector2.left : Vector2.right * 5;//  fromLeft ? -5 : 5;
 
             float y = (go.transform.position.y - transform.position.y) / transform.localScale.y;
-            joint.anchor = new Vector2( fromLeft ? -5 : 5, y);
-            joint.connectedAnchor = new Vector2(0f, (fromLeft ? +1f : -1f) / coeff);
+            joint.anchor = new Vector2( fromLeft ? -2.5f : 2.5f, y);
+            joint.connectedAnchor = new Vector2(0f, 0f); // 
             joint.enabled = true;
         } else {
             Debug.LogError("Hanger: Joint Not Found!");
@@ -36,13 +36,15 @@ public class StickyWallBehavior : MonoBehaviour
     {
         var joint = GetComponent<FixedJoint2D>();
 
-        //Debug.Log("Joint: " + joint.anchor.y + " size: " + GetComponent<Collider2D>().bounds.size.y);
+        Debug.Log("Joint: " + joint.anchor.y + " size: " + GetComponent<Collider2D>().bounds.size.y);
+
+        float sizeY = GetComponent<Collider2D>().bounds.size.y;
 
         float anchor = joint.anchor.y * transform.localScale.y;
-        if (moveY < 0 && (anchor + moveY) < -1)
+        if (moveY < 0 && (anchor + moveY) < (-sizeY/2 - 1.2f))
             return;
 
-        if (moveY > 0 && (anchor + moveY) > GetComponent<Collider2D>().bounds.size.y - 2)
+        if (moveY > 0 && (anchor + moveY) > (sizeY/2 - 2.2f))
             return;
         
         joint.anchor += new Vector2(0, moveY / transform.localScale.y);

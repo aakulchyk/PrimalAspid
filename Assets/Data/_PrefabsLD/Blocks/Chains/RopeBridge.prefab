@@ -495,7 +495,7 @@ PrefabInstance:
     - target: {fileID: 7693992531988256765, guid: 0f9207d7cc74a354594eefde4e1bf0da,
         type: 3}
       propertyPath: m_ConnectedAnchor.x
-      value: 5.19
+      value: 1.28
       objectReference: {fileID: 0}
     - target: {fileID: 7693992531988256765, guid: 0f9207d7cc74a354594eefde4e1bf0da,
         type: 3}
@@ -864,7 +864,7 @@ PrefabInstance:
     - target: {fileID: 202586209637079420, guid: f240a22a086ec4d4ead874c6d1fa9efc,
         type: 3}
       propertyPath: m_ConnectedAnchor.x
-      value: 5.09
+      value: 2.56
       objectReference: {fileID: 0}
     - target: {fileID: 202586209637079420, guid: f240a22a086ec4d4ead874c6d1fa9efc,
         type: 3}
@@ -1060,7 +1060,7 @@ HingeJoint2D:
   m_BreakForce: Infinity
   m_BreakTorque: Infinity
   m_AutoConfigureConnectedAnchor: 0
-  m_Anchor: {x: -5.1, y: 0}
+  m_Anchor: {x: -1.28, y: 0}
   m_ConnectedAnchor: {x: 0.5, y: -0.5}
   m_UseMotor: 0
   m_Motor:
@@ -1201,22 +1201,22 @@ PrefabInstance:
     - target: {fileID: 2885903451917357985, guid: 6b9dc1110be9a3e43b2b60d3c9967779,
         type: 3}
       propertyPath: m_LocalScale.x
-      value: 0.49999988
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2885903451917357985, guid: 6b9dc1110be9a3e43b2b60d3c9967779,
         type: 3}
       propertyPath: m_LocalScale.y
-      value: 0.49999988
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2885903451917357985, guid: 6b9dc1110be9a3e43b2b60d3c9967779,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 12.529998
+      value: 12.031
       objectReference: {fileID: 0}
     - target: {fileID: 2885903451917357985, guid: 6b9dc1110be9a3e43b2b60d3c9967779,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -1.3000007
+      value: -1.6480001
       objectReference: {fileID: 0}
     - target: {fileID: 2885903451917357985, guid: 6b9dc1110be9a3e43b2b60d3c9967779,
         type: 3}
@@ -1291,8 +1291,8 @@ HingeJoint2D:
   m_BreakForce: Infinity
   m_BreakTorque: Infinity
   m_AutoConfigureConnectedAnchor: 0
-  m_Anchor: {x: -5, y: 0}
-  m_ConnectedAnchor: {x: 0.7, y: -0.37}
+  m_Anchor: {x: -2.56, y: 0}
+  m_ConnectedAnchor: {x: 0.5, y: -0.512}
   m_UseMotor: 0
   m_Motor:
     m_MotorSpeed: 0

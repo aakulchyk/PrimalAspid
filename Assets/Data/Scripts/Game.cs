@@ -19,7 +19,7 @@ public class Game : MonoBehaviour
     public bool isPopupOpen = false;
 
     public bool isGameInProgress = false;
-    [SerializeField] private string defaultScene = "LD_Level_1_0";
+    [SerializeField] private string defaultScene = "Level_1_0";
     public static string currentScene;
 
     public Camera mainCamera;
@@ -29,6 +29,9 @@ public class Game : MonoBehaviour
 
     public const int INITIAL_HP = 2;
     public const int INITIAL_STAMINA = 10;
+
+    public Vector2 LastCheckPointPosition;
+    public string LastCheckPointScene;
 
 
     private void Awake()
@@ -49,21 +52,31 @@ public class Game : MonoBehaviour
         LightenScreenAsync();
     }
 
+    public void MemorizeCheckPoint(Vector2 pos)
+    {
+        LastCheckPointPosition = new Vector2(pos.x, pos.y);
+        LastCheckPointScene = currentScene;
+    }
+
     private Save CreateSaveGameObject()
     {
         Save save = new Save();
         save.Initialize();
 
         // gather player data
-        save.currentScene = currentScene;
+        save.currentScene = LastCheckPointScene;
         
-        save.px = Utils.GetPlayer().transform.position.x;
-        save.py = Utils.GetPlayer().transform.position.y;
+        save.px = LastCheckPointPosition.x;
+        save.py = LastCheckPointPosition.y;
+        save.max_hp = PlayerStats.MAX_HP;
+        save.max_stamina = PlayerStats.MaxStamina;
+
+        // Abilities
+        save.bat_unlocked = PlayerStats.BatWingsUnlocked;
 
         save.deaths = PlayerStats.Deaths;
         save.losses = PlayerStats.Losses;
         save.time = PlayerStats.Time;
-        //save.npc_saved = PlayerStats.NpcsSavedAlive;
         //save.npc_dead = PlayerStats.NpcsLostDead;
 
         save.coins = PlayerStats.Coins;
@@ -101,11 +114,6 @@ public class Game : MonoBehaviour
         Debug.Log("Save Game");
         Save save = CreateSaveGameObject();
 
-        // restore player HP to maximum
-
-        PlayerStats.FullyRestoreHP();
-        //Utils.GetPlayer().onSaveGame();
-
         BinaryFormatter bf = new BinaryFormatter();
         FileStream file = File.Create(Application.persistentDataPath + "/gamesave.save");
         bf.Serialize(file, save);
@@ -117,10 +125,12 @@ public class Game : MonoBehaviour
     public void StartNewGame()
     {
         ClearGame();
-        SceneManager.LoadScene(defaultScene);
+        SceneManager.LoadScene("LD_" + defaultScene);
+        SceneManager.LoadScene("LA_" + defaultScene, LoadSceneMode.Additive);
         isGameInProgress = true;
         PlayerStats.MAX_HP = INITIAL_HP;
         PlayerStats.MaxStamina = INITIAL_STAMINA;
+        PlayerStats.BatWingsUnlocked = false;
         PlayerStats.FullyRestoreHP();
         PlayerStats.FullyRestoreStamina();
     }
@@ -144,15 +154,14 @@ public class Game : MonoBehaviour
 
         // load player data
         // assign loaded values
-        //PlayerStats.playerSpawnCoord = new Vector2(save.px, save.py);
         PlayerStats.Deaths = save.deaths;
         PlayerStats.Losses = save.losses;
         PlayerStats.Time = save.time;
-        //PlayerStats.NpcsSavedAlive = save.npc_saved;
-        //PlayerStats.NpcsLostDead = save.npc_dead;
 
         PlayerStats.BloodBodies = save.bloodBodies;
         PlayerStats.Coins = save.coins;
+
+        PlayerStats.BatWingsUnlocked = save.bat_unlocked;
 
         // load scene
         SpawnManager.SharedInstance.SetSpawn(new Vector2(save.px, save.py));
@@ -183,7 +192,8 @@ public class Game : MonoBehaviour
 
         Debug.Log("Game Loaded");
         isGameInProgress = true;
-        PlayerStats.MAX_HP = INITIAL_HP;
+        PlayerStats.MAX_HP = save.max_hp;
+        PlayerStats.MaxStamina = save.max_stamina;
         PlayerStats.FullyRestoreHP();
     }
 

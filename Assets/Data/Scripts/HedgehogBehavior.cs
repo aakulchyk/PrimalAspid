@@ -96,7 +96,7 @@ public class HedgehogBehavior : NpcBehavior
 
     void ChangeDirection()
     {
-        //Debug.Log("Hedgehog: flip");
+       // Debug.Log("Hedgehog: flip");
         faceRight = !faceRight;
         flip();
     }

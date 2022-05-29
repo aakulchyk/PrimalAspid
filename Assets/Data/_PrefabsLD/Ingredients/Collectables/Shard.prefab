@@ -63,7 +63,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   clip_collect: {fileID: 8300000, guid: 800edabb37d986a4c94a04b5c8ee84ac, type: 3}
-  renderer: {fileID: 7012371500616920851}
+  _renderer: {fileID: 7012371500616920851}
 --- !u!82 &6093016157984421392
 AudioSource:
   m_ObjectHideFlags: 0

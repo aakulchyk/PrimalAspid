@@ -6,14 +6,16 @@ public class RoomCamera : MonoBehaviour
 {
     //public Vector3 camOffset;
     public CameraEffects cameraEffects = null;
-    [SerializeField] private Collider2D confiner;
+    [SerializeField] private Collider confiner;
+    [SerializeField] private Collider mainSceneConfiner;
 
-    [SerializeField] private Collider2D mainSceneConfiner;
+    [SerializeField] private Collider2D confiner2D;
+    [SerializeField] private Collider2D mainSceneConfiner2D;
 
     public bool isMain = false;
     private bool _confinerSet = false;
 
-    void OnTriggerEnter2D(Collider2D other) {
+    void OnTriggerStay2D(Collider2D other) {
         if (other.tag == "Player" && !_confinerSet) {
             if (cameraEffects == null) {
                 if (Utils.GetPlayer())
@@ -25,6 +27,19 @@ public class RoomCamera : MonoBehaviour
             _confinerSet = true;
         }
     }
+
+   /* void OnTriggerEnter(Collider other) {
+        if (other.tag == "Player" && !_confinerSet) {
+            if (cameraEffects == null) {
+                if (Utils.GetPlayer())
+                    cameraEffects = Utils.GetPlayer().cameraEffects;
+                //return;
+            }
+
+            cameraEffects.SetConfiner(confiner);
+            _confinerSet = true;
+        }
+    }*/
 
     void OnTriggerExit2D(Collider2D other) {
         if (other.tag == "Player") {

@@ -65,12 +65,22 @@ public class CameraEffects : MonoBehaviour
         cinemachineFramingTransposer.m_TrackedObjectOffset = trackedObjectOffsetDefault - hardOffset - playerOffset;
     }
 
-    public void SetConfiner(Collider2D confiner)
+    public void SetConfiner(Collider confiner)
+    {
+        GetComponent<CinemachineConfiner>().m_BoundingVolume = confiner;
+    }
+
+    public Collider CurrentConfiner()
+    {
+        return GetComponent<CinemachineConfiner>().m_BoundingVolume;
+    }
+
+    public void SetConfiner2D(Collider2D confiner)
     {
         GetComponent<CinemachineConfiner>().m_BoundingShape2D = confiner;
     }
 
-    public Collider2D CurrentConfiner()
+    public Collider2D CurrentConfiner2D()
     {
         return GetComponent<CinemachineConfiner>().m_BoundingShape2D;
     }

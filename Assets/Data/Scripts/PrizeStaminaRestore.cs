@@ -13,7 +13,7 @@ public class PrizeStaminaRestore : Collectable
         PlayerStats.FullyRestoreStamina();
         GetComponent<AudioSource>().volume = 1f;
         GetComponent<AudioSource>().PlayOneShot(clip_collect);
-        renderer.enabled = false;
+        GetComponent<Renderer>().enabled = false;
         Destroy(this.gameObject, 1f);
     }
 }

@@ -18,7 +18,7 @@ public class Coins : Collectable
 
         GetComponent<AudioSource>().PlayOneShot(clip_collect);
         
-        renderer.enabled = false;
+        _renderer.enabled = false;
         
         Destroy(this.gameObject, 1f);
     }

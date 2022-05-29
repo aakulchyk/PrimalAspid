@@ -10,7 +10,22 @@ PrefabInstance:
     - target: {fileID: 3243960356039177381, guid: e81610e5bc7d38440b1cc5f9158c26db,
         type: 3}
       propertyPath: m_Name
-      value: "Block_\u0421limb_4x2"
+      value: "Block_\u0421limb_4x2 Variant"
+      objectReference: {fileID: 0}
+    - target: {fileID: 3809994283271738559, guid: e81610e5bc7d38440b1cc5f9158c26db,
+        type: 3}
+      propertyPath: m_Color.b
+      value: 0.10980392
+      objectReference: {fileID: 0}
+    - target: {fileID: 3809994283271738559, guid: e81610e5bc7d38440b1cc5f9158c26db,
+        type: 3}
+      propertyPath: m_Color.g
+      value: 0.43137255
+      objectReference: {fileID: 0}
+    - target: {fileID: 3809994283271738559, guid: e81610e5bc7d38440b1cc5f9158c26db,
+        type: 3}
+      propertyPath: m_Color.r
+      value: 0.23529412
       objectReference: {fileID: 0}
     - target: {fileID: 6741862411721437294, guid: e81610e5bc7d38440b1cc5f9158c26db,
         type: 3}

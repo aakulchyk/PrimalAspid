@@ -27,7 +27,6 @@ public class Breakable : MonoBehaviour
     //[SerializeField] private RecoveryCounter recoveryCounter;
     //[SerializeField] private bool requireDownAttack;
     private SpriteRenderer spriteRenderer;
-    private BoxCollider2D collider;
 
     [SerializeField] private GameObject attachedObject;
 
@@ -38,10 +37,9 @@ public class Breakable : MonoBehaviour
     {
         //recoveryCounter = GetComponent<RecoveryCounter>();
         spriteRenderer = gameObject.GetComponent<SpriteRenderer>();
-        collider = GetComponent<BoxCollider2D>();
 
         if (destroyed) {
-            collider.enabled = false;
+            GetComponent<BoxCollider2D>().enabled = false;
             spriteRenderer.enabled = false;
         }
     }

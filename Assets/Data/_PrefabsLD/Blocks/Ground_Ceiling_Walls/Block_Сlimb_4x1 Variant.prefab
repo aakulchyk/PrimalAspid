@@ -67,10 +67,35 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5740082786690382257, guid: ed81db46795af074797aa97394ebffda,
+        type: 3}
+      propertyPath: m_Color.b
+      value: 0.29803923
+      objectReference: {fileID: 0}
+    - target: {fileID: 5740082786690382257, guid: ed81db46795af074797aa97394ebffda,
+        type: 3}
+      propertyPath: m_Color.g
+      value: 0.79607844
+      objectReference: {fileID: 0}
+    - target: {fileID: 5740082786690382257, guid: ed81db46795af074797aa97394ebffda,
+        type: 3}
+      propertyPath: m_Color.r
+      value: 0.54901963
+      objectReference: {fileID: 0}
+    - target: {fileID: 5740082786690382257, guid: ed81db46795af074797aa97394ebffda,
+        type: 3}
+      propertyPath: m_SortingLayer
+      value: -2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5740082786690382257, guid: ed81db46795af074797aa97394ebffda,
+        type: 3}
+      propertyPath: m_SortingLayerID
+      value: 1014917431
+      objectReference: {fileID: 0}
     - target: {fileID: 6229555519351675307, guid: ed81db46795af074797aa97394ebffda,
         type: 3}
       propertyPath: m_Name
-      value: "Block_\u0421limb_4x1"
+      value: "Block_\u0421limb_4x1 Variant"
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ed81db46795af074797aa97394ebffda, type: 3}

@@ -6,7 +6,7 @@ public class Collectable : MonoBehaviour
 {
     protected bool collected = false;
     public AudioClip clip_collect;
-    public Renderer renderer;
+    [SerializeField] protected Renderer _renderer;
     // Start is called before the first frame update
 
     public virtual void GetCollected() {
@@ -20,8 +20,9 @@ public class Collectable : MonoBehaviour
         GetComponent<AudioSource>().volume = 1f;
         GetComponent<AudioSource>().PlayOneShot(clip_collect);
         
-        renderer.enabled = false;
+        _renderer.enabled = false;
         
         Destroy(this.gameObject, 1f);
     }
 }
+

@@ -149,7 +149,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   clip_collect: {fileID: 8300000, guid: 800edabb37d986a4c94a04b5c8ee84ac, type: 3}
-  renderer: {fileID: 4647406678384038410}
+  _renderer: {fileID: 4647406678384038410}
   value: 1
 --- !u!58 &4647406678988659672
 CircleCollider2D:

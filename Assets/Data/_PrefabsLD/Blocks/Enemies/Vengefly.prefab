@@ -164,7 +164,7 @@ MonoBehaviour:
   MAX_KNOCKBACK: 6
   collectiblePrefab: {fileID: 5314788777006985090, guid: cebeb26d5d10a494c9022a590111b634,
     type: 3}
-  clip_hurt: {fileID: 8300000, guid: f7503083c7614784ba315aa47a4d0254, type: 3}
+  clip_hurt: {fileID: 8300000, guid: 8a57fb381212b08498b7220e6caeff5f, type: 3}
   clip_death: {fileID: 8300000, guid: 3603262efd8d41e4996baccdc1df2124, type: 3}
   INITIAL_HP: 2
   invulnerable: 0
@@ -173,6 +173,12 @@ MonoBehaviour:
   _followRadius: 30
   moveSpeed: 6
   clip_captured: {fileID: 8300000, guid: 0a4612bfd38f7fe408aa30f7268a6304, type: 3}
+  waypoints:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
 --- !u!82 &4152528819531725613
 AudioSource:
   m_ObjectHideFlags: 0

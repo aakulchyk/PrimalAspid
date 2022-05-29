@@ -6,7 +6,8 @@ public class DoorLeverBehavior : LeverBehavior
 {
     public bool closing = false;
 
-    [SerializeField] private Collider2D tempCameraViewPort;
+    [SerializeField] private Collider tempCameraViewPort;
+    [SerializeField] private Collider2D tempCameraViewPort2D;
     IEnumerator OpenDoorAfterDelay(float time)
     {
         yield return new WaitForSeconds(time);

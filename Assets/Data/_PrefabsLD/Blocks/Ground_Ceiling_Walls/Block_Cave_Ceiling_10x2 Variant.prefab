@@ -72,6 +72,16 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5667149388078078901, guid: f2a9b2cf4916af24d8c769db3f62563b,
+        type: 3}
+      propertyPath: m_Size.y
+      value: 5.12
+      objectReference: {fileID: 0}
+    - target: {fileID: 5667149388078078901, guid: f2a9b2cf4916af24d8c769db3f62563b,
+        type: 3}
+      propertyPath: m_SpriteTilingProperty.newSize.y
+      value: 5.12
+      objectReference: {fileID: 0}
     - target: {fileID: 6543836310425423505, guid: f2a9b2cf4916af24d8c769db3f62563b,
         type: 3}
       propertyPath: m_Mesh
@@ -85,7 +95,22 @@ PrefabInstance:
     - target: {fileID: 8317002718087343818, guid: f2a9b2cf4916af24d8c769db3f62563b,
         type: 3}
       propertyPath: m_Name
-      value: Block_Cave_Ceiling_10x2
+      value: Block_Cave_Ceiling_10x2 Variant
+      objectReference: {fileID: 0}
+    - target: {fileID: 8722753872365758523, guid: f2a9b2cf4916af24d8c769db3f62563b,
+        type: 3}
+      propertyPath: m_Size.y
+      value: 5.12
+      objectReference: {fileID: 0}
+    - target: {fileID: 8722753872365758523, guid: f2a9b2cf4916af24d8c769db3f62563b,
+        type: 3}
+      propertyPath: m_SortingLayer
+      value: -2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8722753872365758523, guid: f2a9b2cf4916af24d8c769db3f62563b,
+        type: 3}
+      propertyPath: m_SortingLayerID
+      value: 1014917431
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f2a9b2cf4916af24d8c769db3f62563b, type: 3}

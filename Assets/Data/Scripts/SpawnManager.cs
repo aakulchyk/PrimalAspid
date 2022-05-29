@@ -16,12 +16,15 @@ public class SpawnManager : MonoBehaviour
     private Transform defaultPoint;
     private Vector3 spawnPoint;
     private bool SetPoint;
+
+    private bool Backward;
  
      
-    public void SetSpawn(Vector3 x)
+    public void SetSpawn(Vector3 x, bool back = false)
     {
         SetPoint = true;
         spawnPoint = x;
+        Backward = back;
     }
  
     private void Awake()
@@ -58,6 +61,16 @@ public class SpawnManager : MonoBehaviour
         Debug.Log("Done spawning at set location");
         GameObject go = Instantiate(DefaultPlayer, spawnPoint, Quaternion.identity);
         SetPoint = false;
+        if (Backward) {
+            StartCoroutine(TurnPlayerBack());
+            Backward = false;
+        }
+    }
+
+    IEnumerator TurnPlayerBack()
+    {
+        yield return null;
+        Utils.GetPlayer().MakeInstantTurn();
     }
  
     void spawnAtStart()
@@ -69,7 +82,7 @@ public class SpawnManager : MonoBehaviour
     IEnumerator SetCamBoundaries()
     {
         yield return null;//new WaitForSeconds(0.01F);
-        var confiner = GameObject.Find("MainLevelBoundaries").GetComponent<Collider2D>();
+        var confiner = GameObject.Find("MainLevelBoundaries").GetComponent<Collider>();
         Utils.GetPlayer().cameraEffects.SetConfiner(confiner);
     }
 }

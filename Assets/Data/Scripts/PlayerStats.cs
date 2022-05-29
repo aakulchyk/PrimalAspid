@@ -48,7 +48,9 @@ public static class PlayerStats
 
     public static int MaxFlaps { get; set; }
 
-    public static int FlapsLeft { get; set; }
+    //public static int FlapsLeft { get; set; }
+
+    public static bool BatWingsUnlocked { get; set; }
 
     public static bool UpGrabEnabled { get; set; }
 

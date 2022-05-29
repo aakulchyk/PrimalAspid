@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -10,12 +11,11 @@ public class NpcBehavior : MonoBehaviour
 
     public int MAX_KNOCKBACK;
    
-    protected Animator anim;
-    protected Rigidbody2D body;
+    [NonSerialized] protected Animator anim;
+    [NonSerialized] protected Rigidbody2D body;
     
-    protected GrabbableBehavior grabbable = null;
-    protected InteractableBehavior interactable = null;
-
+    [NonSerialized] protected GrabbableBehavior grabbable = null;
+    [NonSerialized] protected InteractableBehavior interactable = null;
 
     protected AudioSource sounds;
 
@@ -23,13 +23,14 @@ public class NpcBehavior : MonoBehaviour
 
     public AudioClip clip_hurt;
     public AudioClip clip_death;
-    [SerializeField] protected int INITIAL_HP;
+    
     protected int _hp;
 
     public bool invulnerable = false;
 
     protected int _knockback = 0;
 
+    [SerializeField] protected int INITIAL_HP;
     [SerializeField] protected ParticleSystem damageParticles;
     [SerializeField] protected GameObject deathParticles;
 

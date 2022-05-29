@@ -23,7 +23,7 @@ public class PrizeBloodBody : Collectable
         } else {
             GetComponent<AudioSource>().PlayOneShot(clip_collect);
         }
-        renderer.enabled = false;
+        _renderer.enabled = false;
         Destroy(this.gameObject, 1f);
 
         

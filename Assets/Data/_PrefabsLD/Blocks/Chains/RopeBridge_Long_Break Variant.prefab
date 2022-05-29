@@ -95,12 +95,12 @@ PrefabInstance:
     - target: {fileID: 8777985524317914725, guid: 7e942b922a5baab478cf1e4042ecdbe6,
         type: 3}
       propertyPath: m_Anchor.x
-      value: -5
+      value: -2.56
       objectReference: {fileID: 0}
     - target: {fileID: 8777985524317914725, guid: 7e942b922a5baab478cf1e4042ecdbe6,
         type: 3}
       propertyPath: m_ConnectedAnchor.x
-      value: 0
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 8777985524317914725, guid: 7e942b922a5baab478cf1e4042ecdbe6,
         type: 3}
@@ -395,7 +395,7 @@ PrefabInstance:
     - target: {fileID: 6166809797220478330, guid: 3898f365bcbcff341b39e86e06b38f43,
         type: 3}
       propertyPath: m_Name
-      value: RopeBridge_Long_Break
+      value: RopeBridge_Long_Break Variant
       objectReference: {fileID: 0}
     - target: {fileID: 6166809797220478331, guid: 3898f365bcbcff341b39e86e06b38f43,
         type: 3}
@@ -580,7 +580,7 @@ PrefabInstance:
     - target: {fileID: 6294717005295445339, guid: 3898f365bcbcff341b39e86e06b38f43,
         type: 3}
       propertyPath: m_ConnectedAnchor.x
-      value: 5.2
+      value: 2.56
       objectReference: {fileID: 0}
     - target: {fileID: 6294717005295445339, guid: 3898f365bcbcff341b39e86e06b38f43,
         type: 3}
@@ -665,12 +665,12 @@ PrefabInstance:
     - target: {fileID: 9050019942569405948, guid: 3898f365bcbcff341b39e86e06b38f43,
         type: 3}
       propertyPath: m_LocalScale.x
-      value: 0.5
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 9050019942569405948, guid: 3898f365bcbcff341b39e86e06b38f43,
         type: 3}
       propertyPath: m_LocalScale.y
-      value: 0.5
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 9169881789554126111, guid: 3898f365bcbcff341b39e86e06b38f43,
         type: 3}

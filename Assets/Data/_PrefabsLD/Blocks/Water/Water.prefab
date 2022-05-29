@@ -54,7 +54,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
+  - {fileID: 2100000, guid: f2ca055c8943ce044aced5e8fc523ad6, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -80,7 +80,7 @@ SpriteRenderer:
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 2
-  m_Size: {x: 28.515388, y: 2.56}
+  m_Size: {x: 27.019901, y: 3.913902}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -124,7 +124,7 @@ BoxCollider2D:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
     oldSize: {x: 20.48, y: 2.56}
-    newSize: {x: 28.515388, y: 2.56}
+    newSize: {x: 27.019901, y: 3.913902}
     adaptiveTilingThreshold: 0.5
     drawMode: 2
     adaptiveTiling: 0
@@ -146,6 +146,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   clip_splash: {fileID: 8300000, guid: 0a310feef99001543b942f7790f14867, type: 3}
   clip_jumpout: {fileID: 8300000, guid: 6a249aff95dfeb84a862735fee495f54, type: 3}
+  clip_reflux: {fileID: 0}
 --- !u!82 &5398496966628333778
 AudioSource:
   m_ObjectHideFlags: 0

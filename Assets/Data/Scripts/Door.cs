@@ -16,8 +16,6 @@ public class Door : MonoBehaviour
     private string _keyName;
 
     
-
-
     public void Awake()
     {
         _keyName = SceneManager.GetActiveScene().name + transform.parent.gameObject.name;

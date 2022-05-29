@@ -8,7 +8,10 @@ public class Save
     public float px = 0.0f;
     public float py = 0.0f;
 
-    public int hp = 0;
+    public int max_hp = 0;
+    public int max_stamina = 0;
+
+    public bool bat_unlocked;
 
     public int deaths, losses;
 

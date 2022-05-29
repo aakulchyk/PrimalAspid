@@ -203,19 +203,21 @@ MonoBehaviour:
   collectiblePrefab: {fileID: 1119065653168000968, guid: ab67544546bf64744b77fd96d59f69dc,
     type: 3}
   clip_hurt: {fileID: 8300000, guid: 434110287f7af30489d26302d282b108, type: 3}
-  clip_death: {fileID: 0}
-  INITIAL_HP: 3
+  clip_death: {fileID: 8300000, guid: e40e72c26deb3ef498caa807d4aaebec, type: 3}
   invulnerable: 0
+  INITIAL_HP: 5
   damageParticles: {fileID: 6143553206193993561}
   deathParticles: {fileID: 7545449593020591414}
-  maxShotTimeout: 200
   projectilePrefab: {fileID: 8444222165621308518, guid: 1cbf2eb888e5d504cabd49a65e603d34,
     type: 3}
-  shootTimeout: 0
   _shootRadius: 50
   clip_shoot: {fileID: 8300000, guid: 041574ae82d18024a919b0a456a986f3, type: 3}
   clip_shriek: {fileID: 8300000, guid: 3eb8a2d23e623694085249e3973ea2cc, type: 3}
-  controlledWall: {fileID: 0}
+  boss_theme: {fileID: 8300000, guid: 47b6d888b517dbd429cd301126df964e, type: 3}
+  prev_theme: {fileID: 0}
+  backgroundMusic: {fileID: 0}
+  triggerPlatform: {fileID: 0}
+  deathZone: {fileID: 0}
   idle: 0
 --- !u!82 &1709318892354001626
 AudioSource:

@@ -60,28 +60,36 @@ public class InteractableBehavior : MonoBehaviour
 
     public virtual void Interact()
     {
-        var npc = gameObject.GetComponentInParent<NpcBehavior>();
-        if (npc) {
-            npc.onTalk();
-            Game.SharedInstance.SetPopupTexts(interactableName, currentTexts);
-            Game.SharedInstance.OpenPopup();
-        }
-
         if (lever) {
             lever.SwitchLever();
+            return;
         }
 
         if (IsSavePoint) {
             if (canvas)
                 canvas.SetActive(false);
 
+            // restore player HP to maximum
+            PlayerStats.FullyRestoreHP();
             GetComponent<AudioSource>().PlayOneShot(clip_interact);
+
+            // Memorize Save Point position
+            Game.SharedInstance.MemorizeCheckPoint(transform.position);
             Game.SharedInstance.SaveGame();
             Game.SharedInstance.SetPopupText("Bonfire", "The Game is Succesfully Saved");
             Game.SharedInstance.OpenPopup();
 
             if (canvas)
                 canvas.SetActive(true);
+            return;
         }
+
+        var npc = gameObject.GetComponentInParent<NpcBehavior>();
+        if (npc) {
+            npc.onTalk();
+        }
+
+        Game.SharedInstance.SetPopupTexts(interactableName, currentTexts);
+        Game.SharedInstance.OpenPopup();
     }
 }
