@@ -217,6 +217,10 @@ public class NpcBehavior : MonoBehaviour
         if (grabbable) {
             grabbable.FlipCanvas();
         }
+
+        if (interactable) {
+            interactable.FlipCanvas();
+        }
     }
 
 }

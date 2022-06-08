@@ -73,6 +73,7 @@ public class Game : MonoBehaviour
 
         // Abilities
         save.bat_unlocked = PlayerStats.BatWingsUnlocked;
+        save.halflife_collected = PlayerStats.HalfLifeCollected;
 
         save.deaths = PlayerStats.Deaths;
         save.losses = PlayerStats.Losses;
@@ -131,6 +132,7 @@ public class Game : MonoBehaviour
         PlayerStats.MAX_HP = INITIAL_HP;
         PlayerStats.MaxStamina = INITIAL_STAMINA;
         PlayerStats.BatWingsUnlocked = false;
+        PlayerStats.HalfLifeCollected = false;
         PlayerStats.FullyRestoreHP();
         PlayerStats.FullyRestoreStamina();
     }
@@ -162,6 +164,7 @@ public class Game : MonoBehaviour
         PlayerStats.Coins = save.coins;
 
         PlayerStats.BatWingsUnlocked = save.bat_unlocked;
+        PlayerStats.HalfLifeCollected = save.halflife_collected;
 
         // load scene
         SpawnManager.SharedInstance.SetSpawn(new Vector2(save.px, save.py));

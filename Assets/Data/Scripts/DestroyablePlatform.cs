@@ -15,6 +15,8 @@ public class DestroyablePlatform : MonoBehaviour
     public AudioClip clip_rumble;
     public AudioClip clip_crack;
 
+    public bool respawnable = false;
+
     public void StartCollapsing()
     {
         StartCoroutine(CollapseAfterDelay());
@@ -63,7 +65,19 @@ public class DestroyablePlatform : MonoBehaviour
             deathParticles.transform.parent = null;
         }
         
-        Destroy(this.gameObject, 1f);
+        if (respawnable) {
+            StartCoroutine(Respawn());
+        } else {
+            Destroy(this.gameObject, 1f);
+        }
+    }
+
+    IEnumerator Respawn()
+    {
+        yield return new WaitForSeconds(4f);
+        deathParticles.SetActive(false);
+        GetComponent<Collider2D>().enabled = true;
+        GetComponent<SpriteRenderer>().enabled = true;
     }
 
 }

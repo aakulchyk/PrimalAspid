@@ -92,4 +92,9 @@ public class InteractableBehavior : MonoBehaviour
         Game.SharedInstance.SetPopupTexts(interactableName, currentTexts);
         Game.SharedInstance.OpenPopup();
     }
+
+    public void FlipCanvas() {
+        Vector3 scale = transform.localScale;
+        transform.localScale = new Vector3(-1*scale.x, scale.y, scale.z);
+    }
 }

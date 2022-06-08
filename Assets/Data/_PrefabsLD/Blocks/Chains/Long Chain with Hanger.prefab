@@ -1097,7 +1097,7 @@ PrefabInstance:
     - target: {fileID: 202586209637079420, guid: f240a22a086ec4d4ead874c6d1fa9efc,
         type: 3}
       propertyPath: m_ConnectedAnchor.y
-      value: -2.0284882
+      value: -1.3
       objectReference: {fileID: 0}
     - target: {fileID: 202586209637079420, guid: f240a22a086ec4d4ead874c6d1fa9efc,
         type: 3}

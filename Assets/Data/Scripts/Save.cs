@@ -12,6 +12,7 @@ public class Save
     public int max_stamina = 0;
 
     public bool bat_unlocked;
+    public bool halflife_collected;
 
     public int deaths, losses;
 

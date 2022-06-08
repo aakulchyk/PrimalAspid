@@ -43,16 +43,15 @@ public static class PlayerStats
 
     public static int Coins { get; set; }
 
-
     public static bool ShowTutorial { get; set; }
 
     public static int MaxFlaps { get; set; }
-
-    //public static int FlapsLeft { get; set; }
 
     public static bool BatWingsUnlocked { get; set; }
 
     public static bool UpGrabEnabled { get; set; }
 
     public static bool SideGrabEnabled { get; set; }
+
+    public static bool HalfLifeCollected { get; set; }
 }

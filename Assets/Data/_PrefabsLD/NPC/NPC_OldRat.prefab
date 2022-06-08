@@ -11,8 +11,8 @@ GameObject:
   - component: {fileID: 3151154181738944288}
   - component: {fileID: 3151154181738944291}
   - component: {fileID: 3151154181738944290}
-  - component: {fileID: 3151154181738944289}
   - component: {fileID: 3151154181738944294}
+  - component: {fileID: 8056965927719224404}
   m_Layer: 0
   m_Name: NPC_OldRat
   m_TagString: Untagged
@@ -72,8 +72,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: 1014917431
+  m_SortingLayer: -2
   m_SortingOrder: -1
   m_Sprite: {fileID: 21300000, guid: ca61e321d869eb44ca1f26e8fc044a0b, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -105,32 +105,6 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!114 &3151154181738944289
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3151154181738944317}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0b870191c558c1646b17765d1abdf0ed, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  waitSuccess: 0
-  interactRadius: 3
-  target: {fileID: 0}
-  controlledWall: {fileID: 0}
-  clip_sad_idle: {fileID: 8300000, guid: a46a88a428921704b980f50f360a4937, type: 3}
-  clip_success: {fileID: 0}
-  clip_cry: {fileID: 0}
-  waitState: 0
-  npcName: Old Rat
-  initialText: Good evening young man...
-  happyText: 
-  sadText: 
-  currentText: 
-  openForDialogue: 0
 --- !u!82 &3151154181738944294
 AudioSource:
   m_ObjectHideFlags: 0
@@ -227,6 +201,44 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &8056965927719224404
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3151154181738944317}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: efe4937733c1c1540819a55cb1038afe, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isDead: 0
+  MAX_KNOCKBACK: 0
+  collectiblePrefab: {fileID: 0}
+  clip_hurt: {fileID: 0}
+  clip_death: {fileID: 0}
+  invulnerable: 0
+  INITIAL_HP: 0
+  damageParticles: {fileID: 0}
+  deathParticles: {fileID: 0}
+  initialTexts:
+  - Ahh, so finally you are grow up...  and It's time for you to leave our shelter...
+  - I know, your childhood was not ...  *very happy*... I don't think you will miss
+    your "fellows"
+  - But many of them will remember you forever, with the bites and bruises you left
+    them, hohoho! I could not even imagine that a rat tail can break bones!
+  - I hope, you will forgive them some day... The fate was cruel to all of you...
+  - That's all we could give to you. Since now you're on your own.  May the Goddess
+    watch you closely!
+  randomTexts:
+  - You're truly the strangest creature I've seen in all my life...
+  - I hope this world  will not be too cruel to you...
+  - Maybe the bats of the Capital City will take you on their service? Although I
+    don't think they will like your tail...
+  - You were a really difficult child... But I will miss you anyway...
+  - I remember the day when they brought you here... When I saw you at first, I lost
+    my consciousness, hohoho!
 --- !u!1001 &5862981229530488646
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -307,12 +319,17 @@ PrefabInstance:
     - target: {fileID: 8525202453717516412, guid: 99edda657f55b0440a59f267e99ca172,
         type: 3}
       propertyPath: interactableName
-      value: Old Rat
+      value: Nanny
+      objectReference: {fileID: 0}
+    - target: {fileID: 8525202453717516412, guid: 99edda657f55b0440a59f267e99ca172,
+        type: 3}
+      propertyPath: currentTexts.Array.size
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8525202453717516412, guid: 99edda657f55b0440a59f267e99ca172,
         type: 3}
       propertyPath: initialTexts.Array.size
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8525202453717516412, guid: 99edda657f55b0440a59f267e99ca172,
         type: 3}

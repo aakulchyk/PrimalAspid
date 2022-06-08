@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 1119065653168000974}
   - component: {fileID: 1119065653168000972}
   - component: {fileID: 1119065653168000975}
-  - component: {fileID: 1274228776355106167}
+  - component: {fileID: 4414043485993145006}
   m_Layer: 0
   m_Name: PrizeHeart
   m_TagString: Collectable
@@ -28,7 +28,7 @@ Transform:
   m_GameObject: {fileID: 1119065653168000968}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -23.34, y: 9.24, z: 0}
-  m_LocalScale: {x: 1.5, y: 1.5, z: 1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 7115969983443173640}
   m_Father: {fileID: 0}
@@ -60,7 +60,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: d322b3ea22200d54184ee56dbaa652f8, type: 3}
+  m_audioClip: {fileID: 0}
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
@@ -173,7 +173,7 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!114 &1274228776355106167
+--- !u!114 &4414043485993145006
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -182,7 +182,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1119065653168000968}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 52cdcc71878e26547a2b514b8828f5df, type: 3}
+  m_Script: {fileID: 11500000, guid: 29a06543ea6a3c94fbc7952bb17cccb4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   clip_collect: {fileID: 8300000, guid: 6dd5b29a7a56307448beee013da2b42f, type: 3}
@@ -243,12 +243,12 @@ PrefabInstance:
     - target: {fileID: 6801512613701837600, guid: f4ee275d57c94504d87e43e25cced227,
         type: 3}
       propertyPath: m_LocalScale.x
-      value: 1
+      value: 1.2
       objectReference: {fileID: 0}
     - target: {fileID: 6801512613701837600, guid: f4ee275d57c94504d87e43e25cced227,
         type: 3}
       propertyPath: m_LocalScale.y
-      value: 1
+      value: 1.2
       objectReference: {fileID: 0}
     - target: {fileID: 6801512613701837600, guid: f4ee275d57c94504d87e43e25cced227,
         type: 3}

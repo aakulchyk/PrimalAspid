@@ -185,7 +185,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ae3fe6d29cf7a0848bef7a5a53f055e0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  clip_collect: {fileID: 8300000, guid: f530f87314519d5478d67cd3cc2adac1, type: 3}
+  clip_collect: {fileID: 8300000, guid: 3771a94d8c25abb4fbb36e32f1d66c9d, type: 3}
   _renderer: {fileID: 2277416056857709730}
 --- !u!1001 &3143085621829519968
 PrefabInstance:
