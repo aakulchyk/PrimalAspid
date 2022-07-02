@@ -206,3 +206,4 @@ crashlytics-build.properties
 /ProjectSettings/MemorySettings.asset
 /ProjectSettings/ShaderGraphSettings.asset
 /ProjectSettings/boot.config
+/Assets/Scenes/Gym/Gym_Alex/*.meta
