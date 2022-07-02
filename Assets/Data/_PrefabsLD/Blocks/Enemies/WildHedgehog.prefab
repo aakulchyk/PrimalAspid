@@ -312,12 +312,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isDead: 0
   MAX_KNOCKBACK: 4
-  collectiblePrefab: {fileID: 5314788777006985090, guid: cebeb26d5d10a494c9022a590111b634,
+  collectiblePrefab: {fileID: 4647406678988659686, guid: 90aac0a86b5b3c54696cab9b61284049,
     type: 3}
   clip_hurt: {fileID: 8300000, guid: 8a57fb381212b08498b7220e6caeff5f, type: 3}
   clip_death: {fileID: 8300000, guid: 3603262efd8d41e4996baccdc1df2124, type: 3}
-  INITIAL_HP: 1
   invulnerable: 0
+  INITIAL_HP: 1
   damageParticles: {fileID: 908970534440541097}
   deathParticles: {fileID: 8556151328478948833}
   clip_crawl: {fileID: 8300000, guid: 7736d332be472e7408d88f9a11b600d7, type: 3}

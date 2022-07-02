@@ -141,7 +141,7 @@ CircleCollider2D:
   m_GameObject: {fileID: 4152528819531725588}
   m_Enabled: 1
   m_Density: 1
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: f3cfacc4f834d234eb9b6fd5ab22eb5f, type: 2}
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
@@ -162,23 +162,25 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isDead: 0
   MAX_KNOCKBACK: 6
-  collectiblePrefab: {fileID: 5314788777006985090, guid: cebeb26d5d10a494c9022a590111b634,
+  collectiblePrefab: {fileID: 4647406678988659686, guid: 90aac0a86b5b3c54696cab9b61284049,
     type: 3}
   clip_hurt: {fileID: 8300000, guid: 8a57fb381212b08498b7220e6caeff5f, type: 3}
   clip_death: {fileID: 8300000, guid: 3603262efd8d41e4996baccdc1df2124, type: 3}
-  INITIAL_HP: 2
   invulnerable: 0
+  INITIAL_HP: 2
   damageParticles: {fileID: 1398088920209108084}
   deathParticles: {fileID: 8354577481271344299}
   _followRadius: 30
   moveSpeed: 6
   clip_captured: {fileID: 8300000, guid: 0a4612bfd38f7fe408aa30f7268a6304, type: 3}
+  MaxChaseTimeout: 125
   waypoints:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
+  currentTarget: {fileID: 0}
 --- !u!82 &4152528819531725613
 AudioSource:
   m_ObjectHideFlags: 0
