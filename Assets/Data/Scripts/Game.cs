@@ -28,7 +28,7 @@ public class Game : MonoBehaviour
     private Queue<string> textQueue = new Queue<string>();
 
     public const int INITIAL_HP = 2;
-    public const int INITIAL_STAMINA = 10;
+    public const int INITIAL_STAMINA = 2;
 
     public Vector2 LastCheckPointPosition;
     public string LastCheckPointScene;

@@ -54,4 +54,6 @@ public static class PlayerStats
     public static bool SideGrabEnabled { get; set; }
 
     public static bool HalfLifeCollected { get; set; }
+
+    public static bool HalfStaminaCollected { get; set; }
 }

@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MaxHealthCollectable : Collectable
+public class MaxStaminaCollectable : Collectable
 {
     public AudioClip clip_accum;
 
@@ -12,15 +12,15 @@ public class MaxHealthCollectable : Collectable
         base.GetCollected();
 
         // apply stats
-        if (PlayerStats.HalfLifeCollected == true) {
+        if (PlayerStats.HalfStaminaCollected == true) {
             StartCoroutine(Utils.FreezeFrameEffect(0.05f));
             GetComponent<AudioSource>().PlayOneShot(clip_accum);
-            PlayerStats.MAX_HP++;
-            PlayerStats.FullyRestoreHP();
-            PlayerStats.HalfLifeCollected = false;
+            PlayerStats.MaxStamina++;
+            PlayerStats.FullyRestoreStamina();
+            PlayerStats.HalfStaminaCollected = false;
         } else {
             StartCoroutine(Utils.FreezeFrameEffect(0.01f));
-            PlayerStats.HalfLifeCollected = true;
+            PlayerStats.HalfStaminaCollected = true;
         }
 
         Game.SharedInstance.SaveGame();

@@ -47,8 +47,8 @@ public class PlayerControl : MonoBehaviour
 
     [Header ("Constants")]
     public const float FLAP_MIN_TIMEOUT = 0.3f;
-    public const int FLAP_STAMINA_COST = 5;
-    public const int DASH_STAMINA_COST = 5;
+    public const int FLAP_STAMINA_COST = 1;
+    public const int DASH_STAMINA_COST = 1;
     public const float COYOTE_TIME_SEC = 0.1f;
     public const int MAX_KNOCKBACK = 4;
 

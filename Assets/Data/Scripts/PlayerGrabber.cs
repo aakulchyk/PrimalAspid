@@ -47,7 +47,7 @@ public class PlayerGrabber : MonoBehaviour
 
     private bool _cannotGrab = false;
 
-    public const int GRAB_STAMINA_COST = 5;
+    public const int GRAB_STAMINA_COST = 1;
 
     // RB
     private bool grab_button_triggered = false;
