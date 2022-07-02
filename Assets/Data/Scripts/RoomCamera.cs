@@ -28,19 +28,6 @@ public class RoomCamera : MonoBehaviour
         }
     }
 
-   /* void OnTriggerEnter(Collider other) {
-        if (other.tag == "Player" && !_confinerSet) {
-            if (cameraEffects == null) {
-                if (Utils.GetPlayer())
-                    cameraEffects = Utils.GetPlayer().cameraEffects;
-                //return;
-            }
-
-            cameraEffects.SetConfiner(confiner);
-            _confinerSet = true;
-        }
-    }*/
-
     void OnTriggerExit2D(Collider2D other) {
         if (other.tag == "Player") {
             

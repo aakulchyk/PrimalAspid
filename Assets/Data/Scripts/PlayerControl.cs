@@ -467,6 +467,10 @@ public class PlayerControl : MonoBehaviour
             sounds.PlayOneShot(clip_swing_crack);
         }
 
+        if (grabber.IsPulling()) {
+            grabber.releaseBody();
+        }
+
         _tailHitImpulse = true;
     }
 
@@ -757,14 +761,14 @@ public class PlayerControl : MonoBehaviour
         }
 
         if (collider.tag == "Spike") {
-            hurt(new Vector2(0, 3000f));
-            PlayerStats.PartlyRestoreStamina(5);
+            hurt(new Vector2(0, 10f));
+            PlayerStats.PartlyRestoreStamina(1);
         }
 
         if (collider.tag == "Enemy") {
             NpcBehavior behavior = collider.gameObject.GetComponent<NpcBehavior>();
             if (!behavior.isDead)
-                hurt(new Vector2(0, 1000f));
+                hurt((collider.gameObject.transform.position - transform.position).normalized * -20f);
         }
 
         if (collider.tag == "DestroyablePlatform") {
@@ -830,7 +834,8 @@ public class PlayerControl : MonoBehaviour
         if (isDead) return; // one cannot die twice...
         if (invulnerable) return;
 
-        body.AddForce(force);
+        //body.AddForce(force);
+        knockback(force);
         cameraEffects.Shake(0.6f, 1000, 1f);
         
         if (--PlayerStats.HP < 0) {
