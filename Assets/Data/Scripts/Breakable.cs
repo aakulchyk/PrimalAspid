@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 //Allows object to break after depleting its "health".
 
@@ -30,6 +31,14 @@ public class Breakable : MonoBehaviour
 
     [SerializeField] private GameObject attachedObject;
 
+    private string _keyName;
+
+    public void Awake()
+    {
+        _keyName = SceneManager.GetActiveScene().name + transform.parent.gameObject.name;
+        if (PlayerPrefs.GetInt(_keyName) == 1)
+            destroyed = true;
+    }
 
 
     // Use this for initialization
@@ -129,6 +138,7 @@ public class Breakable : MonoBehaviour
         //Destroy me, or set my sprite to the brokenSprite
         if (destroyAfterDeath)
         {
+            PlayerPrefs.SetInt(_keyName, 1);
             Destroy(gameObject, 1f);
         }
         else
