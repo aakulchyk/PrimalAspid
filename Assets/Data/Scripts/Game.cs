@@ -33,6 +33,11 @@ public class Game : MonoBehaviour
     public Vector2 LastCheckPointPosition;
     public string LastCheckPointScene;
 
+    private int popupCloseStatus = 0; // 0=ok, 1=yes. -1=no
+
+    public GameObject closePopupButton;
+    public GameObject yesNoPopupButtons;
+
 
     private void Awake()
     {
@@ -121,6 +126,32 @@ public class Game : MonoBehaviour
         file.Close();
 
         Debug.Log("Game Saved");
+    }
+
+    public bool CheckIfGameSaveExistsAndNeedsToBeSaved()
+    {
+        if (File.Exists(Application.persistentDataPath + "/gamesave.save")) {
+            SetPopupText("Start new game", "The game save exists on the disk. Do you want to delete it?");
+            closePopupButton.SetActive(false);
+            yesNoPopupButtons.SetActive(true);
+            OpenPopup();
+
+            while (isPopupOpen) {
+                StartCoroutine(waiter());
+            }
+
+            closePopupButton.SetActive(true);
+            yesNoPopupButtons.SetActive(false);
+
+            if (popupCloseStatus != -1) // yes, delete
+                return false;
+            else
+                return true; 
+            
+            Debug.Log("I run anyway");
+        }
+
+        return false;
     }
 
     public void StartNewGame()
@@ -239,10 +270,27 @@ public class Game : MonoBehaviour
         if (textQueue.Count > 0) {
             PopTextAndSetToPopup();
         } else {
+            popupCloseStatus = 0;
             popupWindow.SetActive(false);
             Time.timeScale = 1;
             isPopupOpen = false;
         }
+    }
+
+    public void onPopupClose() {
+        Debug.Log("close");
+        popupCloseStatus = 0;
+        popupWindow.SetActive(false);
+    }
+
+    public void onPopupAccepted() {
+        popupCloseStatus = 1;
+        popupWindow.SetActive(false);
+    }
+
+    public void onPopupRejected() {
+        popupCloseStatus = -1;
+        popupWindow.SetActive(false);
     }
 
     public void DarkenScreenAsync() {
@@ -251,6 +299,13 @@ public class Game : MonoBehaviour
 
     public void LightenScreenAsync() {
         StartCoroutine(SetScreenAlphaAsync(1f, 0f, 0.5f));
+    }
+
+    private IEnumerator WaitWhilePopupOpen() {
+
+        while (isPopupOpen) {
+            yield return new WaitForSeconds(0.1f);
+        }
     }
 
     public IEnumerator SetScreenAlphaAsync(float alphaBegin, float alphaEnd, float time) {

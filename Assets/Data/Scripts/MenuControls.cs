@@ -23,9 +23,13 @@ public class MenuControls : MonoBehaviour
 
     public IEnumerator OnStartPressed()
     {
-        // darken
-        yield return Game.SharedInstance.SetScreenAlphaAsync(0f, 1f, 0.6f);
-        Game.SharedInstance.StartNewGame();
+
+        //if (!Game.SharedInstance.CheckIfGameSaveExistsAndNeedsToBeSaved())
+        {
+            // darken
+            yield return Game.SharedInstance.SetScreenAlphaAsync(0f, 1f, 0.6f);
+            Game.SharedInstance.StartNewGame();
+        }
     }
 
     public void ContinuePressed()
