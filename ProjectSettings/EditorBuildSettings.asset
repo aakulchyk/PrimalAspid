@@ -30,10 +30,10 @@ EditorBuildSettings:
     path: Assets/Data/Levels/Level_1_4/LD_Level_1_4.unity
     guid: f9ee902e39157be41a86130e911650ad
   - enabled: 0
-    path: Assets/Scenes/Gym/Gym_Alex/Gym_Alex _Wind.unity
+    path: Assets/Scenes/Gym/Gym_Alex/LD_Gym_Alex_Wind.unity
     guid: b45dc47a8a74b0a4ca2b85ac5d85089b
   - enabled: 0
-    path: Assets/Scenes/Gym/Gym_Alex/Gym_Alex.unity
+    path: Assets/Scenes/Gym/Gym_Alex/LD_Gym_Alex.unity
     guid: 19d0ce65ec0c3294fa1f92c03e7389a4
   m_configObjects:
     com.unity.xr.management.loader_settings: {fileID: 11400000, guid: abe599f0fa6862b42abd90eb02bbd8eb,
