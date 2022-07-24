@@ -8,25 +8,23 @@ using UnityEngine.SceneManagement;
 
 public class Breakable : MonoBehaviour
 {
-//    [SerializeField] private Animator animator;
     [SerializeField] private Sprite brokenSprite; //If destroyAfterDeath is false, a broken sprite will appear instead
     [SerializeField] private GameObject deathParticles;
     [SerializeField] private GameObject pointLight;
 
-    [SerializeField] private GameObject CollectableDropPrefab;
+    [SerializeField] protected Droppable droppable;
 
     [SerializeField] private Animator animator;
     [SerializeField] private bool destroyAfterDeath = true; //If false, a broken sprite will appear instead of complete destruction
     public int health;
     public bool destroyed = false;
-  //  [SerializeField] private Instantiator instantiator;
+  
     [SerializeField] private AudioClip clip_hit;
     [SerializeField] private AudioClip clip_destroy;
     private bool recovered;
 
     [SerializeField] private Rigidbody2D rigidBody;
-    //[SerializeField] private RecoveryCounter recoveryCounter;
-    //[SerializeField] private bool requireDownAttack;
+    
     private SpriteRenderer spriteRenderer;
 
     [SerializeField] private GameObject attachedObject;
@@ -126,8 +124,8 @@ public class Breakable : MonoBehaviour
         if (pointLight)
             pointLight.SetActive(false);
 
-        if (CollectableDropPrefab) {
-            StartCoroutine(dropCollectable());
+        if (droppable) {
+            droppable.Drop();
         }
 
         /*if (instantiator != null)
@@ -147,11 +145,4 @@ public class Breakable : MonoBehaviour
         }
     }
 
-    IEnumerator dropCollectable() {
-        yield return new WaitForSeconds(0.2F);
-        GameObject go = Instantiate(CollectableDropPrefab);
-
-        go.transform.position = gameObject.transform.position + Vector3.up;
-        go.transform.rotation = Quaternion.identity;
-    }
 }

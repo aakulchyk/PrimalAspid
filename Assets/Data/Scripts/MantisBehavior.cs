@@ -285,23 +285,9 @@ public class MantisBehavior : NpcBehavior
 
         Destroy(this.gameObject, 3.5f);
 
-        // drop loot
-        if (collectiblePrefab) {
-            StartCoroutine(dropCollectibles());
-        }
+        if (droppable)
+            droppable.Drop();
     }
-
-    IEnumerator dropCollectibles() {
-        yield return new WaitForSeconds(0.4F);
-
-        for (int i = -1; i<2; i++) {
-            GameObject go = Instantiate(collectiblePrefab);
-
-            go.transform.position = gameObject.transform.position + new Vector3(i,1,0);
-            go.transform.rotation = Quaternion.identity;
-        }      
-    }
-
 
     void OnDestroy()
     {

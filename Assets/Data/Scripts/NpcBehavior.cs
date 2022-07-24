@@ -17,9 +17,9 @@ public class NpcBehavior : MonoBehaviour
     [NonSerialized] protected GrabbableBehavior grabbable = null;
     [NonSerialized] protected InteractableBehavior interactable = null;
 
-    protected AudioSource sounds;
+    [SerializeField] protected Droppable droppable;
 
-    public GameObject collectiblePrefab;  // the prefab of our collectible
+    protected AudioSource sounds;
 
     public AudioClip clip_hurt;
     public AudioClip clip_death;
@@ -33,6 +33,7 @@ public class NpcBehavior : MonoBehaviour
     [SerializeField] protected int INITIAL_HP;
     [SerializeField] protected ParticleSystem damageParticles;
     [SerializeField] protected GameObject deathParticles;
+
 
         
     protected void BaseInit()
@@ -124,29 +125,23 @@ public class NpcBehavior : MonoBehaviour
             deathParticles.transform.parent = transform.parent;
         }
 
-        if (collectiblePrefab) {
-            StartCoroutine(dropCollectable());
-        }
-
         StartCoroutine(Utils.FreezeFrameEffect(.01f));
+
+        GetComponent<Collider2D>().enabled = false;
 
         if (grabbable)
             grabbable.gameObject.SetActive(false);
 
         if (interactable)
             interactable.gameObject.SetActive(false);
+
+
+        if (droppable)
+            droppable.Drop();
+        
     }
 
-
-    IEnumerator dropCollectable() {
-        yield return new WaitForSeconds(0.4F);
-        GameObject go = Instantiate(collectiblePrefab);
-
-        go.transform.position = gameObject.transform.position + Vector3.up*2;
-        go.transform.rotation = Quaternion.identity;
-    }
-
-    public bool CheckGrounded()
+    public virtual bool CheckGrounded()
     {
         Vector3 pos = transform.position;
         RaycastHit2D hit = Physics2D.Raycast(pos + Vector3.up, Vector3.down, 1.2f, LayerMask.GetMask("Ground"));

@@ -227,8 +227,8 @@ public class AntlionBehavior : NpcBehavior
         }
 
         // drop loot
-        if (collectiblePrefab) {
-            StartCoroutine(dropCollectibles());
+        if (droppable) {
+            droppable.Drop();
         }
         
         Destroy(this.gameObject, 2f);
@@ -239,18 +239,6 @@ public class AntlionBehavior : NpcBehavior
 
         deathZone.SetActive(false);
     }
-
-    IEnumerator dropCollectibles() {
-        yield return new WaitForSeconds(0.4F);
-
-        for (int i = -1; i<2; i++) {
-            GameObject go = Instantiate(collectiblePrefab);
-
-            go.transform.position = gameObject.transform.position + new Vector3(i,1,0);
-            go.transform.rotation = Quaternion.identity;
-        }      
-    }
-
 
     void OnDestroy()
     {
