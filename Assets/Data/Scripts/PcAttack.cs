@@ -48,6 +48,12 @@ public class PcAttack : MonoBehaviour
             player.cameraEffects.Shake(0.3f, 1000, 0.4f);
             player.knockback(new Vector2(-dir.x*15f, 0));
             PlayerStats.FullyRestoreStamina();
+
+            if (PlayerStats.Energy < PlayerStats.MaxEnergy()) {
+                PlayerStats.Energy += 2;
+                Debug.Log("Energy = " + PlayerStats.Energy);
+            }
+            
         } else if (other.tag=="Breakable") {
             Breakable breakable = other.gameObject.GetComponent<Breakable>();
             breakable.hurt(1);

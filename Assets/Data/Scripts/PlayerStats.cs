@@ -17,6 +17,10 @@ public static class PlayerStats
 
     public static int MaxStamina { get; set; }
 
+    public static int Energy { get; set; }
+
+    public static int MaxEnergy() { return 100; }
+
     public static void FullyRestoreStamina()
     {
         Stamina = MaxStamina;

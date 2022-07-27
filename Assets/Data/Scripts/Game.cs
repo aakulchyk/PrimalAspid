@@ -166,6 +166,7 @@ public class Game : MonoBehaviour
         PlayerStats.HalfLifeCollected = false;
         PlayerStats.FullyRestoreHP();
         PlayerStats.FullyRestoreStamina();
+        PlayerStats.Energy = 0;
     }
 
     public void LoadGame()
@@ -229,6 +230,7 @@ public class Game : MonoBehaviour
         PlayerStats.MAX_HP = save.max_hp;
         PlayerStats.MaxStamina = save.max_stamina;
         PlayerStats.FullyRestoreHP();
+        PlayerStats.Energy = 0;
     }
 
     public void SetPopupText(string title, string text) {

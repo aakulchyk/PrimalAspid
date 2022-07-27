@@ -13,6 +13,10 @@ public class StatusBar : MonoBehaviour
     [SerializeField] private GameObject hpShard;
     [SerializeField] private GameObject staminaShard;
 
+    [SerializeField] private GameObject energyPanel;
+    [SerializeField] private GameObject energyLevel;
+    private Vector2 initialEnergyPanelPos;
+
     GameObject popup;
 
     [SerializeField] private GameObject moneyCount;
@@ -42,6 +46,9 @@ public class StatusBar : MonoBehaviour
         }
         popup = GameObject.Find("PopUp");
 
+        energyLevel.GetComponent<RectTransform>().anchoredPosition = new Vector2(0, -76);
+        initialEnergyPanelPos = energyPanel.GetComponent<RectTransform>().anchoredPosition;
+
     }
 
 
@@ -69,6 +76,18 @@ public class StatusBar : MonoBehaviour
 
         //bbCount.GetComponent<Text>().text = PlayerStats.BloodBodies.ToString();
         moneyCount.GetComponent<Text>().text = PlayerStats.Coins.ToString();
+
+        // -23 .. -77
+        // 0  ... 100
+        float coeff = (90-9)/100f;
+        float y = ((float)PlayerStats.Energy * coeff) - 90;
+
+        energyLevel.GetComponent<RectTransform>().anchoredPosition = new Vector2(0, y);
+
+        if (PlayerStats.Energy > 99) {
+            Vector2 randomVector = Random.insideUnitCircle.normalized;
+            energyPanel.GetComponent<RectTransform>().anchoredPosition = initialEnergyPanelPos + randomVector;
+        }
     }
 
     public void onPopupClose() {
