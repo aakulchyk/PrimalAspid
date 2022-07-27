@@ -9893,7 +9893,7 @@ PrefabInstance:
     - target: {fileID: 1747312234280885138, guid: 512aa499f8397624a82994624d931b5e,
         type: 3}
       propertyPath: collectablePrefabs.Array.size
-      value: 3
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1747312234280885138, guid: 512aa499f8397624a82994624d931b5e,
         type: 3}

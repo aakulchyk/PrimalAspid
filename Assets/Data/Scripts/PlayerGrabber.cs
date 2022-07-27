@@ -92,9 +92,11 @@ public class PlayerGrabber : MonoBehaviour
         /*if (Input.GetButtonDown("Grab"))
             grab_button_triggered = true;*/
 
+
         bool curr_grab = g_axis>0.5f || g_axis<-0.5f;
 
-        grab_button_triggered = !grab_button_hold && curr_grab;
+        if (!grab_button_triggered && !grab_button_hold && curr_grab)
+            grab_button_triggered = true;
         grab_button_hold = curr_grab;
 
         //grab_button_hold = Input.GetButton("Grab");
@@ -111,6 +113,7 @@ public class PlayerGrabber : MonoBehaviour
     void FixedUpdate()
     {
         if (grab_button_triggered) {
+            grab_button_triggered = false;
             if (!_isPulling && activeGrabbable && !_cannotGrab) {
                 bool stillCooldownTime = Time.time - grabCooldownTimeStarted < GRAB_COOLDOWN_TIME_SEC;
                 if (playerMainControl.IsGrounded() && !bodygrab_from_ground_started) {
@@ -312,7 +315,7 @@ public class PlayerGrabber : MonoBehaviour
         } 
     }
 
-    void OnTriggerEnter2D(Collider2D other)
+    void OnTriggerStay2D(Collider2D other)
     {
         if (other.tag == "Grabbable") {
             activeGrabbable = other.gameObject.GetComponent<GrabbableBehavior>();
