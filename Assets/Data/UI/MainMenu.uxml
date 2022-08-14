@@ -1,17 +1,35 @@
 <ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" editor-extension-mode="False">
-    <Style src="Styles/MenuStyles.uss" />
-    <ui:VisualElement name="Background" style="background-image: url(&apos;/Assets/Data/Sprites/UI/ui-menu-bat.png&apos;); height: auto; flex-grow: 1; background-color: rgb(85, 149, 255); -unity-background-image-tint-color: rgba(45, 71, 106, 0.28); flex-wrap: nowrap; border-left-width: 10px; border-right-width: 10px; border-top-width: 10px; border-bottom-width: 10px; border-top-left-radius: 10px; border-bottom-left-radius: 10px; border-top-right-radius: 10px; border-bottom-right-radius: 10px; top: 0; align-items: center; justify-content: center;">
-        <ui:VisualElement name="Root" style="justify-content: center; align-items: center; padding-left: 0; padding-right: 0; padding-top: 0; padding-bottom: 0; margin-top: 0; margin-bottom: 200px; margin-left: 0; margin-right: 0; flex-wrap: nowrap; flex-direction: column; cursor: url(&apos;/Assets/Data/Sprites/UI/ui-menu-bat.png&apos;);">
-            <ui:VisualElement name="Title" style="top: auto; margin-left: 100px; margin-right: 100px; margin-top: 100px; margin-bottom: 200px;">
-                <ui:Label text="Grim Saviour" display-tooltip-when-elided="true" name="GameTitle" style="font-size: 164px; -unity-text-align: middle-center; -unity-font-style: bold;" />
-                <ui:Label text="Demo Version 0.2 " display-tooltip-when-elided="true" style="align-items: auto; font-size: 34px; -unity-text-align: upper-center;" />
+    <Style src="project://database/Assets/Data/UI/Styles/MenuStyles.uss?fileID=7433441132597879392&amp;guid=a216dd5915f54a346882bd710720afc6&amp;type=3#MenuStyles" />
+    <ui:VisualElement name="Background" style="background-image: url(&apos;project://database/Assets/Data/Sprites/UI/ui-menu-bat.png?fileID=21300000&amp;guid=cefcfd4033d0ee84fa72bd2c6252fc03&amp;type=3#ui-menu-bat&apos;); height: auto; flex-grow: 1; background-color: rgb(85, 149, 255); -unity-background-image-tint-color: rgba(45, 71, 106, 0.28); flex-wrap: nowrap; border-left-width: 10px; border-right-width: 10px; border-top-width: 10px; border-bottom-width: 10px; border-top-left-radius: 10px; border-bottom-left-radius: 10px; border-top-right-radius: 10px; border-bottom-right-radius: 10px; top: 0; align-items: center; justify-content: center;">
+        <ui:VisualElement name="RootMenu" style="justify-content: center; align-items: center; padding-left: 0; padding-right: 0; padding-top: 0; padding-bottom: 0; margin-top: 0; margin-bottom: 100px; margin-left: 0; margin-right: 0; flex-wrap: nowrap; flex-direction: column; cursor: url(&apos;project://database/Assets/Data/Sprites/UI/ui-menu-bat.png?fileID=21300000&amp;guid=cefcfd4033d0ee84fa72bd2c6252fc03&amp;type=3#ui-menu-bat&apos;); opacity: 1; display: flex;">
+            <ui:VisualElement name="Title" style="margin-left: 0; margin-right: 0; margin-top: 100px; margin-bottom: 150px; width: 100%; padding-bottom: 10px; display: flex;">
+                <ui:Label text="Grim Saviour" display-tooltip-when-elided="true" name="GameTitle" style="font-size: 100%; -unity-text-align: middle-center; -unity-font-style: bold; padding-bottom: 5px; justify-content: center; width: 100%;" />
+                <ui:Label text="Demo Version 0.2 " display-tooltip-when-elided="true" style="align-items: auto; font-size: 20%; -unity-text-align: upper-center;" />
             </ui:VisualElement>
-            <ui:VisualElement name="MainMenuButtons" style="align-items: center; justify-content: center;">
+            <ui:VisualElement name="MainMenuButtons" style="align-items: center; justify-content: center; width: 80%; height: 60%;">
                 <ui:Button text="Start New Game" display-tooltip-when-elided="true" name="StartGame" focusable="true" class="button" />
                 <ui:Button text="Load Saved Game" display-tooltip-when-elided="true" name="LoadGame" tabindex="1" focusable="true" class="button" />
-                <ui:Button text="Exit" display-tooltip-when-elided="true" name="Exit" tabindex="2" focusable="true" class="button" />
+                <ui:Button text="Exit" display-tooltip-when-elided="true" name="ExitGame" tabindex="2" focusable="true" class="button" />
             </ui:VisualElement>
             <ui:VisualElement name="Bottom" />
+        </ui:VisualElement>
+        <ui:VisualElement name="SaveSlotSelect" style="width: 90%; height: 552px; flex-grow: 0; display: none;">
+            <ui:Label text="Select your Game Save Slot" display-tooltip-when-elided="true" style="font-size: 38%; -unity-text-align: middle-center; white-space: nowrap; margin-bottom: 50px;" />
+            <ui:VisualElement name="SlotGroup" style="flex-direction: row; align-items: auto; justify-content: center; padding-left: 10px; padding-right: 10px; padding-top: 10px; padding-bottom: 10px; margin-left: 0; margin-right: 0; margin-top: 0; margin-bottom: 0; flex-grow: 1; height: 479px;">
+                <ui:Button text="Empty&#10;" display-tooltip-when-elided="true" enable-rich-text="true" name="Slot1" class="save-slot" />
+                <ui:Button text="Empty" display-tooltip-when-elided="true" name="Slot2" tabindex="1" class="save-slot" />
+                <ui:Button text="Empty" display-tooltip-when-elided="true" name="Slot3" tabindex="2" class="save-slot" />
+            </ui:VisualElement>
+            <ui:Button text="Back to Main Menu" display-tooltip-when-elided="true" name="BackToMain" class="button" />
+        </ui:VisualElement>
+        <ui:VisualElement name="RewriteSlotDialog" style="width: 70%; height: 40%; align-items: center; justify-content: center; display: none;">
+            <ui:Label text="WARNING!" display-tooltip-when-elided="true" style="font-size: 40%; -unity-text-align: middle-center; white-space: nowrap; margin-bottom: 0; color: rgb(241, 133, 133);" />
+            <ui:Label text="This slot already contains a saved game" display-tooltip-when-elided="true" name="Label" style="font-size: 30%; -unity-text-align: middle-center; white-space: nowrap; margin-bottom: 0;" />
+            <ui:Label text="Are you sure you want to overwrite it?" display-tooltip-when-elided="true" name="Label" style="font-size: 30%; -unity-text-align: middle-center; white-space: nowrap; margin-bottom: 50px;" />
+            <ui:VisualElement name="ButtonGroup" style="height: 50%; width: 50%; align-items: center; justify-content: center; margin-bottom: 0; margin-top: 0; border-left-width: 0; border-right-width: 0; border-top-width: 0; border-bottom-width: 0; border-top-left-radius: 0; border-bottom-left-radius: 0; border-top-right-radius: 0; border-bottom-right-radius: 0; border-left-color: rgba(0, 0, 0, 0.23); border-right-color: rgba(0, 0, 0, 0.23); border-top-color: rgba(0, 0, 0, 0.23); border-bottom-color: rgba(0, 0, 0, 0.23);">
+                <ui:Button text="Start a new game in this slot" display-tooltip-when-elided="true" name="RewriteSlot" tabindex="1" class="button" style="font-size: 24px; justify-content: center; flex-grow: 0; align-items: center;" />
+                <ui:Button text="Back to Menu" display-tooltip-when-elided="true" name="BackToSlotSelect" class="button" style="font-size: 24px; flex-grow: 0; align-items: center;" />
+            </ui:VisualElement>
         </ui:VisualElement>
     </ui:VisualElement>
 </ui:UXML>

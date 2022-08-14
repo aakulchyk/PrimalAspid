@@ -5,16 +5,16 @@ using UnityEngine;
 public class PcAttack : MonoBehaviour
 {
     public GameObject dustFromWhipFxPrefab;
-    private PlayerControl player = null;
+    [SerializeField] private PlayerControl player = null;
     // Start is called before the first frame update
     void Start()
     {
-        player = GetComponentInParent<PlayerControl>();
+        //player = GetComponentInParent<PlayerControl>();
     }
 
     public void Animate() {
         if (!player)
-            player = GetComponentInParent<PlayerControl>();
+            player = Utils.GetPlayer();
             
         GetComponent<Animator>().SetTrigger("hit");
         

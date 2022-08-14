@@ -19,7 +19,7 @@ public class PlayerControl : MonoBehaviour
 
     public InteractableBehavior activeInteractor;
 
-    protected PcAttack _attack;
+    [SerializeField] private PcAttack _attack;
     private PlayerGrabber grabber;
     private Rigidbody2D platformBody = null;
     private Transform thisTransform = null;
@@ -140,7 +140,7 @@ public class PlayerControl : MonoBehaviour
         startTime = System.DateTime.UtcNow;
         lastFlapTime = Time.time;
 
-	    body = GetComponent<Rigidbody2D>();
+	    body = GetComponentInParent<Rigidbody2D>();
         anim = GetComponent<Animator>();
         sounds = GetComponent<AudioSource>();
         _renderer = GetComponent<Renderer>();
@@ -157,21 +157,25 @@ public class PlayerControl : MonoBehaviour
         pWidth = col.size.x;
         pHeight = col.size.y;
 
-        GetComponent<FixedJoint2D>().enabled = false;
+        GetComponentInParent<FixedJoint2D>().enabled = false;
 
         Physics2D.IgnoreLayerCollision(playerLayer, npcLayer, true);
         Physics2D.IgnoreLayerCollision(playerLayer, LayerMask.NameToLayer("Hanger"), true);
         Physics2D.IgnoreLayerCollision(playerLayer, LayerMask.NameToLayer("Background"), true);
         Physics2D.IgnoreLayerCollision(playerLayer, LayerMask.NameToLayer("PlayerProjectile"), true);
 
+        // Ignore collision with enemies to not to stuck to them
+        // To detect damage the trigger, which is child of emeny's object is used
+        Physics2D.IgnoreLayerCollision(playerLayer, LayerMask.NameToLayer("Enemy"), true);
+
         body.gravityScale = _gravityScale;
         body.mass = _mass;
         body.drag = _drag;
 
-        Transform t = thisTransform.Find("HitBox");
+        /*Transform t = thisTransform.parent.Find("HitBox");
         if (t) {
             _attack = t.gameObject.GetComponent<PcAttack>();
-        }
+        }*/
 
         jumpTrailParticles.Stop();
     }
@@ -547,8 +551,8 @@ public class PlayerControl : MonoBehaviour
 
     void flip()
     {
-        Vector3 scale = thisTransform.localScale;
-        thisTransform.localScale = new Vector3(-1*scale.x, scale.y, scale.z);
+        Vector3 scale = thisTransform.parent.transform.localScale;
+        thisTransform.parent.transform.localScale = new Vector3(-1*scale.x, scale.y, scale.z);
     }
 
     void startFlap()
@@ -760,7 +764,7 @@ public class PlayerControl : MonoBehaviour
             return;
 
         if (collider.tag == "Ground" || collider.tag == "StickyWall") {
-            thisTransform.SetParent(collider.gameObject.transform, true);
+            thisTransform.parent.SetParent(collider.gameObject.transform, true);
             platformBody = collider.gameObject.GetComponent<Rigidbody2D>();
         }
 
@@ -773,12 +777,6 @@ public class PlayerControl : MonoBehaviour
         if (collider.tag == "Spike") {
             hurt(new Vector2(0, 10f));
             PlayerStats.PartlyRestoreStamina(1);
-        }
-
-        if (collider.tag == "Enemy") {
-            NpcBehavior behavior = collider.gameObject.GetComponent<NpcBehavior>();
-            if (!behavior.isDead)
-                hurt((collider.gameObject.transform.position - transform.position).normalized * -20f);
         }
 
         if (collider.tag == "DestroyablePlatform") {
@@ -795,7 +793,7 @@ public class PlayerControl : MonoBehaviour
     void OnCollisionExit2d(Collision2D collision)
     {
         if (collision.collider.tag == "Ground" || collision.collider.tag == "StickyWall") {
-            thisTransform.parent = null;
+            thisTransform.parent.parent = null;
             platformBody = null;
         }
     }
@@ -803,7 +801,7 @@ public class PlayerControl : MonoBehaviour
     void OnTriggerEnter2D(Collider2D other)
     {
         if (other.tag == "LevelPortal") {
-            other.gameObject.GetComponent<LevelPortal>().TransferToAnotherLevel(gameObject);
+            other.gameObject.GetComponent<LevelPortal>().TransferToAnotherLevel(thisTransform.parent.gameObject);
             return;
         }
 
@@ -832,6 +830,13 @@ public class PlayerControl : MonoBehaviour
             GetGame().SetPopupText("Tutorial", text.text);
             other.gameObject.SetActive(false);
             GetGame().OpenPopup();
+        }
+
+        if (other.tag == "Enemy") {
+            GameObject parentObj = other.transform.parent.gameObject;
+            NpcBehavior behavior =  parentObj.GetComponent<NpcBehavior>();
+            if (!behavior.isDead)
+                hurt((GetComponent<Collider2D>().gameObject.transform.position - transform.position).normalized * -20f);
         }
     }
 
@@ -899,7 +904,7 @@ public class PlayerControl : MonoBehaviour
         anim.SetBool("IsDying", false);
         PlayerStats.Deaths++;
         Debug.Log("Deaths: " + PlayerStats.Deaths);
-        Game.SharedInstance.LoadGame();
+        Game.SharedInstance.LoadGame(Game.SharedInstance.selectedSaveSlot);
     }
 
     public void onSaveGame()

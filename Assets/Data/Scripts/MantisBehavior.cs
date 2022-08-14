@@ -234,7 +234,7 @@ public class MantisBehavior : NpcBehavior
 
         PlayerControl pc = Utils.GetPlayer();
 
-        if (pc.IsPulling() && pc.GetComponent<FixedJoint2D>().connectedBody == GetComponent<Rigidbody2D>()) {
+        if (pc.IsPulling() && pc.GetComponentInParent<FixedJoint2D>().connectedBody == GetComponent<Rigidbody2D>()) {
             pc.releaseBody();
             pc.throwByImpulse(new Vector2 (GetVectorToPlayer().x, GetVectorToPlayer().y*30), true);
         }

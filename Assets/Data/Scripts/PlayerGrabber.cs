@@ -10,6 +10,7 @@ public class PlayerGrabber : MonoBehaviour
 {
     private PlayerControl playerMainControl;
     private Rigidbody2D body;
+    private FixedJoint2D joint;
     private AudioSource sounds;
     private Animator anim;
 
@@ -63,7 +64,8 @@ public class PlayerGrabber : MonoBehaviour
 
     void Awake()
     {
-        body = GetComponent<Rigidbody2D>();
+        body = GetComponentInParent<Rigidbody2D>();
+        joint = GetComponentInParent<FixedJoint2D>();
         sounds = GetComponent<AudioSource>();
         anim = GetComponent<Animator>();
         playerMainControl = GetComponent<PlayerControl>();
@@ -396,7 +398,7 @@ public class PlayerGrabber : MonoBehaviour
             playerMainControl.endDash();
         }
 
-        wall.AttachBody(this.gameObject, _isWallOnRight);
+        wall.AttachBody(transform.parent.gameObject, _isWallOnRight);
         //body.velocity = Vector2.zero;
         _isHangingOnWall = true;    
         _attachedTo = _touchingWall.transform;
@@ -497,7 +499,7 @@ public class PlayerGrabber : MonoBehaviour
         var hanger = nearestHanger.gameObject.GetComponent<HangerBehavior>();
 
         if (hanger) {
-            hanger.AttachBody(this.gameObject);
+            hanger.AttachBody(transform.parent.gameObject);
             body.velocity = Vector2.zero;
             _isHangingUpsideDown = true;
             _attachedTo = nearestHanger;
@@ -577,10 +579,10 @@ public class PlayerGrabber : MonoBehaviour
         Debug.Log("grabBody");
         grabbable.getCaptured();
         Rigidbody2D b = activeGrabbable.gameObject.GetComponentInParent<Rigidbody2D>();
-        GetComponent<FixedJoint2D>().connectedBody = b;
+        joint.connectedBody = b;
         float coeff = b.gameObject.transform.localScale.y;
-        GetComponent<FixedJoint2D>().connectedAnchor  = new Vector2(0f, +1.2f / coeff);
-        GetComponent<FixedJoint2D>().enabled = true;
+        joint.connectedAnchor  = new Vector2(0f, +1.2f / coeff);
+        joint.enabled = true;
         _isPulling = true;
 
         // deactivate ability to speak while grabbing
@@ -597,7 +599,7 @@ public class PlayerGrabber : MonoBehaviour
         if (playerMainControl.activeInteractor)
             playerMainControl.activeInteractor.SetActive(true);
 
-        Rigidbody2D b = GetComponent<FixedJoint2D>().connectedBody;
+        Rigidbody2D b = joint.connectedBody;
 
         if (b) {
             Transform t = b.transform.Find("Grabbable");
@@ -605,10 +607,10 @@ public class PlayerGrabber : MonoBehaviour
                 t = b.transform.parent.Find("Grabbable");
             if (t)
                 t.gameObject.GetComponent<GrabbableBehavior>().getReleased();
-            GetComponent<FixedJoint2D>().connectedBody = null;
+            joint.connectedBody = null;
         }
 
-        GetComponent<FixedJoint2D>().enabled = false;
+        joint.enabled = false;
         grabCooldownTimeStarted = Time.time;
     }
 
@@ -617,7 +619,7 @@ public class PlayerGrabber : MonoBehaviour
         if (activeGrabbable)
             return activeGrabbable;
 
-        Rigidbody2D b = GetComponent<FixedJoint2D>().connectedBody;
+        Rigidbody2D b = joint.connectedBody;
 
         if (b) {
             Transform t = b.transform.Find("Grabbable");

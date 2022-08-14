@@ -29,14 +29,14 @@ public class MenuControls : MonoBehaviour
         {
             // darken
             yield return Game.SharedInstance.SetScreenAlphaAsync(0f, 1f, 0.6f);
-            Game.SharedInstance.StartNewGame();
+            Game.SharedInstance.StartNewGame(0);
         }
     }
 
     public void ContinuePressed()
     {
         //Game.SharedInstance.DarkenScreenAsync();
-        Game.SharedInstance.LoadGame();
+        Game.SharedInstance.LoadGame(0);
     }
 
     public void ExitPressed()

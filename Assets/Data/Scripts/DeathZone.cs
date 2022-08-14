@@ -33,7 +33,7 @@ public class DeathZone : MonoBehaviour
             //pos.y = save.py;
             Utils.GetPlayer().hurt(Vector2.zero, Types.DamageType.DeathZone);
             Game.SharedInstance.DarkenScreen();
-            Utils.GetPlayer().transform.position = new Vector3(pos.x, pos.y, pos.z);
+            Utils.GetPlayer().transform.parent.position = new Vector3(pos.x, pos.y, pos.z);
             fallCooldown = true;
             StartCoroutine(restoreFallCooldownShortly());
         }

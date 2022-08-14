@@ -17,6 +17,7 @@ public class Projectile : MonoBehaviour
         rb = gameObject.GetComponent<Rigidbody2D>();
     }
 
+
     void Update()
     {
         float angle = SignedAngleBetween(rb.velocity, prev_velocity, transform.forward);

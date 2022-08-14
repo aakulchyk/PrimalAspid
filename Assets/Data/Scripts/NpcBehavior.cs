@@ -80,7 +80,7 @@ public class NpcBehavior : MonoBehaviour
 
         if (isDead) return;
 
-        if (Utils.GetPlayer().IsPulling() && Utils.GetPlayer().GetComponent<FixedJoint2D>().connectedBody == GetComponent<Rigidbody2D>()) {
+        if (Utils.GetPlayer().IsPulling() && Utils.GetPlayer().GetComponentInParent<FixedJoint2D>().connectedBody == GetComponent<Rigidbody2D>()) {
             Utils.GetPlayer().releaseBody();
             Utils.GetPlayer().throwByImpulse(new Vector2 (GetVectorToPlayer().x, GetVectorToPlayer().y*20), true);
             invulnerable = true;

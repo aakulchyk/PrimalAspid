@@ -45,9 +45,12 @@ public class Game : MonoBehaviour
     public GameObject closePopupButton;
     public GameObject yesNoPopupButtons;
 
+    public int selectedSaveSlot;
+
 
     private void Awake()
     {
+        Debug.Log("Game Awake");
         if (SharedInstance == null) {
             SharedInstance = this;
             DontDestroyOnLoad(gameObject);
@@ -117,54 +120,44 @@ public class Game : MonoBehaviour
         return save;
     }
 
+    public string SaveFileFullPath(int slot)
+    {
+        return Application.persistentDataPath  + "/gamesave-" + slot +".save";
+    }
+
     public void ClearGame()
     {
-        File.Delete(Application.persistentDataPath + "/gamesave.save");
+        File.Delete(SaveFileFullPath(selectedSaveSlot));
+        File.Delete(SaveFileFullPath(selectedSaveSlot) + ".screen");
         PlayerPrefs.DeleteAll();
         Debug.Log("Game Deleted");
     }
 
     public void SaveGame()
     {
+        ScreenCapture.CaptureScreenshot(SaveFileFullPath(selectedSaveSlot) + ".screen");
+
         Debug.Log("Save Game");
         Save save = CreateSaveGameObject();
 
         BinaryFormatter bf = new BinaryFormatter();
-        FileStream file = File.Create(Application.persistentDataPath + "/gamesave.save");
+        FileStream file = File.Create(SaveFileFullPath(selectedSaveSlot));
         bf.Serialize(file, save);
         file.Close();
+
 
         Debug.Log("Game Saved");
     }
 
-    public bool CheckIfGameSaveExistsAndNeedsToBeSaved()
+    public bool CheckIfSaveSlotBusy(int slot)
     {
-        if (File.Exists(Application.persistentDataPath + "/gamesave.save")) {
-            SetPopupText("Start new game", "The game save exists on the disk. Do you want to delete it?");
-            closePopupButton.SetActive(false);
-            yesNoPopupButtons.SetActive(true);
-            OpenPopup();
-
-            while (isPopupOpen) {
-                StartCoroutine(waiter());
-            }
-
-            closePopupButton.SetActive(true);
-            yesNoPopupButtons.SetActive(false);
-
-            if (popupCloseStatus != -1) // yes, delete
-                return false;
-            else
-                return true; 
-            
-            Debug.Log("I run anyway");
-        }
-
-        return false;
+        return File.Exists(SaveFileFullPath(slot));
     }
 
-    public void StartNewGame()
+    public void StartNewGame(int slot)
     {
+        selectedSaveSlot = slot;
+
         ClearGame();
         SceneManager.LoadScene("LD_" + defaultScene);
         SceneManager.LoadScene("LA_" + defaultScene, LoadSceneMode.Additive);
@@ -178,18 +171,19 @@ public class Game : MonoBehaviour
         PlayerStats.Energy = 0;
     }
 
-    public void LoadGame()
+    public void LoadGame(int slot)
     {
-        //Time.timeScale = 1f;
-        if (!File.Exists(Application.persistentDataPath + "/gamesave.save")) {
+        selectedSaveSlot = slot;
+
+        if (!File.Exists(SaveFileFullPath(selectedSaveSlot))) {
              Debug.Log("Cannot find a saved game");
-             StartNewGame();
+             StartNewGame(slot);
              return;
         }
             
         Debug.Log("Loading Game " + Application.persistentDataPath);
         BinaryFormatter bf = new BinaryFormatter();
-        FileStream file = File.Open(Application.persistentDataPath + "/gamesave.save", FileMode.Open);
+        FileStream file = File.Open(SaveFileFullPath(selectedSaveSlot), FileMode.Open);
         Save save = (Save)bf.Deserialize(file);
         file.Close();
 

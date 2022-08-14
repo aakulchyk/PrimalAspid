@@ -1,5 +1,5 @@
 .button {
-    font-size: 64px;
+    font-size: 250%;
     -unity-text-align: upper-center;
     background-color: rgba(0, 0, 0, 0);
     border-left-color: rgba(0, 0, 0, 0);
@@ -18,12 +18,55 @@
     border-bottom-left-radius: 20px;
     border-top-right-radius: 20px;
     border-bottom-right-radius: 20px;
+    transition-duration: 200ms;
 }
 
 .button:hover {
     background-color: rgba(0, 0, 0, 0.16);
+    transition-duration: 100ms;
 }
 
 .button:focus {
     background-color: rgba(0, 0, 0, 0.35);
+    transition-duration: 200ms;
+}
+
+.save-slot {
+    width: 30%;
+    height: 100%;
+    margin-left: 10px;
+    margin-right: 10px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-top: 1px;
+    padding-bottom: 1px;
+    font-size: 20px;
+    -unity-text-align: middle-center;
+    background-color: rgba(0, 0, 0, 0.64);
+    border-left-width: 10px;
+    border-right-width: 10px;
+    border-top-width: 10px;
+    border-bottom-width: 10px;
+    border-top-left-radius: 20px;
+    border-bottom-left-radius: 20px;
+    border-top-right-radius: 20px;
+    border-bottom-right-radius: 20px;
+    border-left-color: rgba(0, 0, 0, 0);
+    border-right-color: rgba(0, 0, 0, 0);
+    border-top-color: rgba(0, 0, 0, 0);
+    border-bottom-color: rgba(0, 0, 0, 0);
+    transition-duration: 200ms;
+}
+
+.save-slot:focus {
+    border-left-color: rgb(0, 0, 0);
+    border-right-color: rgb(0, 0, 0);
+    border-top-color: rgb(0, 0, 0);
+    border-bottom-color: rgb(0, 0, 0);
+}
+
+.save-slot:hover {
+    background-color: rgba(0, 0, 0, 0.4);
 }
