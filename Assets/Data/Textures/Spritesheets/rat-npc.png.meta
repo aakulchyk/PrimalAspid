@@ -57,6 +57,7 @@ TextureImporter:
   streamingMipmaps: 0
   streamingMipmapsPriority: 0
   vTOnly: 0
+  ignoreMasterTextureLimit: 0
   grayScaleToAlpha: 0
   generateCubemap: 6
   cubemapConvolution: 0
@@ -364,6 +365,18 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
+    nameFileIdTable:
+      baby-hang-0: 8072192097548669493
+      baby-idle-1: -5311706716106309847
+      rat-npc_0: 3426998219009559647
+      rat-npc_11: 5578882749809646278
+      baby-hang-2: 7727516803423133010
+      rat-hurt-: 8855285574144990017
+      rat-hurt-1: -5900317903331578944
+      baby-dead: -8923955968333404686
+      baby-idle-2: -3798169694339762356
+      baby-hang-1: 7005802556949504383
+      baby-idle-0: -1713632063044586676
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

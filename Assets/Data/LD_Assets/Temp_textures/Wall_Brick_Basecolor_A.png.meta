@@ -75,6 +75,7 @@ TextureImporter:
   streamingMipmaps: 0
   streamingMipmapsPriority: 0
   vTOnly: 0
+  ignoreMasterTextureLimit: 0
   grayScaleToAlpha: 0
   generateCubemap: 6
   cubemapConvolution: 0
@@ -487,6 +488,23 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
+    nameFileIdTable:
+      Wall_Brick_Basecolor_A_13: 7779894342337967007
+      Wall_Brick_Basecolor_A_15: -455433262096288579
+      Wall_Brick_Basecolor_A_14: -4871476865424416437
+      Wall_Brick_Basecolor_A_9: 6844333525376173752
+      Wall_Brick_Basecolor_A_8: -3946651824108629928
+      Wall_Brick_Basecolor_A_10: 5933686207430871141
+      Wall_Brick_Basecolor_A_12: 5445496094366367177
+      Wall_Brick_Basecolor_A_4: -5439219290330619204
+      Wall_Brick_Basecolor_A_3: 89828012460305304
+      Wall_Brick_Basecolor_A_1: -6131964755675019132
+      Wall_Brick_Basecolor_A_11: -2162043676505850297
+      Wall_Brick_Basecolor_A_0: -1516998109834715310
+      Wall_Brick_Basecolor_A_7: -721653310924830801
+      Wall_Brick_Basecolor_A_6: 8392851302240215200
+      Wall_Brick_Basecolor_A_5: -8286800422348770732
+      Wall_Brick_Basecolor_A_2: -1696766108858117878
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0
