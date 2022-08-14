@@ -96,6 +96,7 @@ TextureImporter:
   streamingMipmaps: 0
   streamingMipmapsPriority: 0
   vTOnly: 0
+  ignoreMasterTextureLimit: 0
   grayScaleToAlpha: 0
   generateCubemap: 6
   cubemapConvolution: 0
@@ -104,9 +105,9 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: -1
-    aniso: -1
-    mipBias: -100
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
     wrapU: 1
     wrapV: 1
     wrapW: 1
@@ -676,6 +677,31 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
+    nameFileIdTable:
+      GrimChild_4: -1481888568107386354
+      GrimTurn0: -6407946675482861645
+      GrimHurt3: 1552925885766734731
+      GrimAct1: -1134009682026733327
+      GrimIIdle0: -4426971419794954112
+      GrimChild_1: 4771378437165057317
+      GrimChild_5: 7683865509736339127
+      GrimChild_3: 2840909542552296044
+      GrimChild_2: 155994203312192188
+      GrimHurt4: -270688397153820303
+      GrimTurn1: 40996718962428386
+      GrimChild_0: -6507176305428606057
+      GrimAct0: 2342666104610958368
+      GrimHurt0: 6487857361489008826
+      GrimStand1: 588601898662581925
+      GrimAct3: -6866185012371429120
+      GrimHurt1: 2484680855107824622
+      GrimStand0: 7448928568435820561
+      GrimKill0: 4319431321231458119
+      GrimIdle1: 3258654331863422258
+      GrimKill1: 1793360154861129632
+      GrimHurt2: -3263116789872529510
+      GrimAct2: -5740183351848955676
+      GrimHurt5: -7067500447610601575
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

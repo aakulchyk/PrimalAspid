@@ -164,6 +164,8 @@ TextureImporter:
   isReadable: 0
   streamingMipmaps: 0
   streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMasterTextureLimit: 0
   grayScaleToAlpha: 0
   generateCubemap: 6
   cubemapConvolution: 0
@@ -172,9 +174,9 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: -1
-    aniso: -1
-    mipBias: -100
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
     wrapU: 1
     wrapV: 1
     wrapW: 1
@@ -195,9 +197,12 @@ TextureImporter:
   textureType: 8
   textureShape: 1
   singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
   maxTextureSizeSet: 0
   compressionQualitySet: 0
   textureFormatSet: 0
+  ignorePngGamma: 0
   applyGammaDecoding: 0
   platformSettings:
   - serializedVersion: 3
@@ -1224,6 +1229,54 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
+    nameFileIdTable:
+      mushrooms_6: -3167151908931116313
+      mushrooms_7: 301343901626450071
+      mushrooms_12: -7786893316065337120
+      mushrooms_11: -9071323932750858422
+      mushrooms_32: -7091859611288016149
+      mushrooms_37: -6803184971533201571
+      mushrooms_41: 7586689546378342891
+      mushrooms_45: 2463733107066383844
+      mushrooms_10: -4361023292821057525
+      mushrooms_13: 7270555188564151210
+      mushrooms_19: 5676414774959468772
+      mushrooms_28: -267475736995341557
+      mushrooms_2: 2288768979443741509
+      mushrooms_26: -1108923152103343593
+      mushrooms_34: -6454600014136029217
+      mushrooms_35: -2402757596752561130
+      mushrooms_44: 1023537258096951592
+      mushrooms_0: -3097342991762851659
+      mushrooms_9: -3684012966538521353
+      mushrooms_33: 261854646522022277
+      mushrooms_23: 8888558409112406360
+      mushrooms_16: -6184727201607368191
+      mushrooms_1: -8835274597533513770
+      mushrooms_17: -446147581655321468
+      mushrooms_25: -5702230015517692880
+      mushrooms_46: -5286926015299240686
+      mushrooms_31: 8986158394184517000
+      mushrooms_29: -5113431407177802705
+      mushrooms_40: -6298552359227467375
+      mushrooms_18: 7838425534189677199
+      mushrooms_27: -6259389139208701562
+      mushrooms_24: -7886754934431309344
+      mushrooms_43: 7307977448461496375
+      mushrooms_5: -8861781733154742386
+      mushrooms_30: 7587773050077311738
+      mushrooms_3: 8108619787234300647
+      mushrooms_42: 8955537381904160524
+      mushrooms_38: 4686542053042825526
+      mushrooms_4: -8325622248024906782
+      mushrooms_15: 7331966246187792622
+      mushrooms_20: -8611533704177837725
+      mushrooms_39: -8431820569087921266
+      mushrooms_36: -7568914683372503679
+      mushrooms_8: 1676756968335390894
+      mushrooms_14: 7850841664248022025
+      mushrooms_22: -8403159268202189197
+      mushrooms_21: 7967635497645683935
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

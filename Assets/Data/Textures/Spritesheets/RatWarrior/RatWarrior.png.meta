@@ -114,6 +114,7 @@ TextureImporter:
   streamingMipmaps: 0
   streamingMipmapsPriority: 0
   vTOnly: 0
+  ignoreMasterTextureLimit: 0
   grayScaleToAlpha: 0
   generateCubemap: 6
   cubemapConvolution: 0
@@ -547,6 +548,24 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
+    nameFileIdTable:
+      RatWarrior_1: 4694403715880170883
+      RatWarrior_20: -5725889634138622598
+      RatWarrior_5: -4042641362533390905
+      Spear: -379832449965853987
+      RatWarrior_31: -1840615297635093427
+      RatWarrior_14: -5646895733186760476
+      RatWarrior_15: -4769741912767356547
+      RatWarrior_0: 2607383638010741168
+      RatWarrior_13: -7882228776918542482
+      RatWarrior_: -9088003606777392405
+      RatWarrior_26: 6601145675230262744
+      RatWarrior_2: -4324043473972362917
+      RatWarrior_21: -5766893261746788353
+      RatWarrior_6: -8061098185322535911
+      RatWarrior_4: -8989795984098153614
+      RatWarrior_3: -3298102935862558631
+      RatWarrior_37: -2754234413926706904
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0
