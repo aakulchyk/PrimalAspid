@@ -167,8 +167,6 @@ TextureImporter:
   isReadable: 0
   streamingMipmaps: 0
   streamingMipmapsPriority: 0
-  vTOnly: 0
-  ignoreMasterTextureLimit: 0
   grayScaleToAlpha: 0
   generateCubemap: 6
   cubemapConvolution: 0
@@ -177,9 +175,9 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 1
-    aniso: 1
-    mipBias: 0
+    filterMode: -1
+    aniso: -1
+    mipBias: -100
     wrapU: 1
     wrapV: 1
     wrapW: 1
@@ -200,12 +198,9 @@ TextureImporter:
   textureType: 8
   textureShape: 1
   singleChannelComponent: 0
-  flipbookRows: 1
-  flipbookColumns: 1
   maxTextureSizeSet: 0
   compressionQualitySet: 0
   textureFormatSet: 0
-  ignorePngGamma: 0
   applyGammaDecoding: 0
   platformSettings:
   - serializedVersion: 3
@@ -1253,55 +1248,6 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable:
-      environ1_27: -1724745906857842259
-      environ1_31: -1839057152171384734
-      environ1_3: 225905245059411111
-      environ1_42: 1497474303535109966
-      environ1_12: 4397942379949867646
-      environ1_36: 2895909208931510906
-      environ1_5: 4501927187409232657
-      environ1_25: 4664635946294696268
-      environ1_2: -7713854418611476558
-      environ1_39: -2669272393777564861
-      environ1_1: 4600612356043259848
-      environ1_11: 7426409674523831420
-      environ1_22: 8513082523253755960
-      environ1_17: -161509893166199981
-      environ1_32: 143118719529925745
-      environ1_35: -468616222994558027
-      environ1_34: 3897151602065104158
-      environ1_16: 4076511954673056418
-      environ1_29: 14889235495428035
-      environ1_47: -1273176304441080969
-      environ1_20: -5670324751001220632
-      environ1_13: 7449269092763865072
-      environ1_28: -425267628942580476
-      environ1_0: -6164619343759303754
-      environ1_30: 2442067209783861410
-      environ1_19: 9201710591798400923
-      environ1_40: -8716997863339915897
-      environ1_15: -6271111987310083247
-      environ1_26: -1140061072539605390
-      environ1_45: 5127682850893142988
-      environ1_6: -3448480414523848885
-      environ1_9: -5838042976733595806
-      environ1_33: -1940916915151422352
-      environ1_14: 6825787152895852047
-      environ1_44: -7305407957465237566
-      environ1_7: -8197094584893926634
-      environ1_23: -8421876418360935399
-      environ1_38: -6535885091125051951
-      environ1_21: 8355610871894388789
-      environ1_4: -69162859611613603
-      environ1_41: -5905150389018977372
-      environ1_46: -2425322627772493579
-      environ1_24: -6525333020887674123
-      environ1_10: -7392779448128194925
-      environ1_37: -8429344448274120127
-      environ1_43: 382209213719461985
-      environ1_8: 9115514733364584535
-      environ1_18: 779688836463469782
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

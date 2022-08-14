@@ -86,8 +86,6 @@ TextureImporter:
   isReadable: 0
   streamingMipmaps: 0
   streamingMipmapsPriority: 0
-  vTOnly: 0
-  ignoreMasterTextureLimit: 0
   grayScaleToAlpha: 0
   generateCubemap: 6
   cubemapConvolution: 0
@@ -96,9 +94,9 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 1
-    aniso: 1
-    mipBias: 0
+    filterMode: -1
+    aniso: -1
+    mipBias: -100
     wrapU: 1
     wrapV: 1
     wrapW: 1
@@ -119,12 +117,9 @@ TextureImporter:
   textureType: 8
   textureShape: 1
   singleChannelComponent: 0
-  flipbookRows: 1
-  flipbookColumns: 1
   maxTextureSizeSet: 0
   compressionQualitySet: 0
   textureFormatSet: 0
-  ignorePngGamma: 0
   applyGammaDecoding: 0
   platformSettings:
   - serializedVersion: 3
@@ -233,7 +228,7 @@ TextureImporter:
       tessellationDetail: 0
       bones: []
       spriteID: 288550a4f829a16a0800000000000000
-      internalID: -3557600109054692809
+      internalID: -6477703969899194238
       vertices: []
       indices: 
       edges: []
@@ -317,7 +312,7 @@ TextureImporter:
       tessellationDetail: 0
       bones: []
       spriteID: 0175241015954de70800000000000000
-      internalID: -8013225747276542897
+      internalID: 9139027748289926928
       vertices: []
       indices: 
       edges: []
@@ -380,7 +375,7 @@ TextureImporter:
       tessellationDetail: 0
       bones: []
       spriteID: 03805dd315d3ae710800000000000000
-      internalID: -8045106213729320756
+      internalID: 1723257226561652784
       vertices: []
       indices: 
       edges: []
@@ -521,24 +516,6 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable:
-      critters_6: -8013225747276542897
-      critters_10: 2832466106271208503
-      critters_19: 8026338527249515694
-      critters_1: 2114644687712509372
-      critters_5: -1416687569279199842
-      critters_12: 3223865592597575675
-      critters_0: 2521232002814953734
-      critters_3: 6249577196761235046
-      critters_9: 5380517501368046697
-      critters_13: 4814637531541276045
-      critters_4: -3557600109054692809
-      critters_7: -8045106213729320756
-      critters_2: -2086291807556124730
-      critters_8: -5050050473691789107
-      critters_17: -7765727813790475085
-      critters_18: -2282716061379440593
-      critters_15: 8547550229932424849
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

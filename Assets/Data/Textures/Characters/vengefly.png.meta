@@ -63,7 +63,6 @@ TextureImporter:
   streamingMipmaps: 0
   streamingMipmapsPriority: 0
   vTOnly: 0
-  ignoreMasterTextureLimit: 0
   grayScaleToAlpha: 0
   generateCubemap: 6
   cubemapConvolution: 0
@@ -413,20 +412,6 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable:
-      vengefly_2: -8207006162821869258
-      vengefly_death_2: -5764846714115930336
-      vengefly_death_1: -1793025556107014840
-      vengefly_hurt_1: 2811207854542537526
-      vengefly_chase_0: -1947273778876428405
-      vengefly_4: 1906772021520426802
-      vengefly_death_0: -4843929514079517864
-      vengefly_chase_1: 9002387843728423011
-      vengefly_3: -4686625382395578201
-      vengefly_1: -3773286071252788064
-      vengefly_0: 2189956658547348223
-      vengefly_hurt_2: 2352961436388636054
-      vengefly_hurt_0: -4579077671031893977
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

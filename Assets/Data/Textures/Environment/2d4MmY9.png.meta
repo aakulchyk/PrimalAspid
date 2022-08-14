@@ -119,8 +119,6 @@ TextureImporter:
   isReadable: 0
   streamingMipmaps: 0
   streamingMipmapsPriority: 0
-  vTOnly: 0
-  ignoreMasterTextureLimit: 0
   grayScaleToAlpha: 0
   generateCubemap: 6
   cubemapConvolution: 0
@@ -129,9 +127,9 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 1
-    aniso: 1
-    mipBias: 0
+    filterMode: -1
+    aniso: -1
+    mipBias: -100
     wrapU: 1
     wrapV: 1
     wrapW: 1
@@ -152,12 +150,9 @@ TextureImporter:
   textureType: 8
   textureShape: 1
   singleChannelComponent: 0
-  flipbookRows: 1
-  flipbookColumns: 1
   maxTextureSizeSet: 0
   compressionQualitySet: 0
   textureFormatSet: 0
-  ignorePngGamma: 0
   applyGammaDecoding: 0
   platformSettings:
   - serializedVersion: 3
@@ -776,34 +771,6 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable:
-      lantern2_0: 4452149134366291953
-      2d4MmY9_29: -2672950960345806886
-      lantern4_0: 3540669907111847381
-      2d4MmY9_19: 262555091015102320
-      2d4MmY9_24: 3948706366909430424
-      2d4MmY9_20: -6138818488177462615
-      nantern2_1: 8075934984686446636
-      2d4MmY9_13: 2232393135391958228
-      lantern4_2: 1079951660062194615
-      lantern1_1: -1844839109132511793
-      2d4MmY9_22: 2504499980605776555
-      lantern3_0: 7496300640581702929
-      2d4MmY9_25: 7818705594330382393
-      lantern4_1: -2914811622723365071
-      lantern3_2: -2162778673341538241
-      lantern1_2: -4323373528644948258
-      2d4MmY9_18: 9031434139548199095
-      2d4MmY9_15: -1448244979436199557
-      lantern2_2: 5158064995081961658
-      lantern1_3: 2726026203878145901
-      lantern1_0: 8325720128914832730
-      2d4MmY9_28: -5289316207063667408
-      lantern3_3: 6244226427957343471
-      2d4MmY9_30: -7756565064445217308
-      lantern3_1: -5932224453532847399
-      lantern2_3: 1114115628304493381
-      2d4MmY9_23: -4183490443745802252
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

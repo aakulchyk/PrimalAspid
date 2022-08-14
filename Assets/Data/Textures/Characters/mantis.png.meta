@@ -101,8 +101,6 @@ TextureImporter:
   isReadable: 0
   streamingMipmaps: 0
   streamingMipmapsPriority: 0
-  vTOnly: 0
-  ignoreMasterTextureLimit: 0
   grayScaleToAlpha: 0
   generateCubemap: 6
   cubemapConvolution: 0
@@ -111,9 +109,9 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 1
-    aniso: 1
-    mipBias: 0
+    filterMode: -1
+    aniso: -1
+    mipBias: -100
     wrapU: 1
     wrapV: 1
     wrapW: 1
@@ -134,12 +132,9 @@ TextureImporter:
   textureType: 8
   textureShape: 1
   singleChannelComponent: 0
-  flipbookRows: 1
-  flipbookColumns: 1
   maxTextureSizeSet: 0
   compressionQualitySet: 0
   textureFormatSet: 0
-  ignorePngGamma: 0
   applyGammaDecoding: 0
   platformSettings:
   - serializedVersion: 3
@@ -767,35 +762,6 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable:
-      mantis_chunk_1: -8462738611206306280
-      mantis_turn_2: 5683559758469627696
-      mantis_projectile_end_1: 2539056117506904072
-      mantis_shoot_8: 8610349687269614888
-      mantis_fly_7: -1283915195449972802
-      mantis_fly_3: -7305290213527782163
-      mantis_shoot_1: 7448006278323579663
-      mantis_shoot_4: 3061922813672825325
-      mantis_shoot_6: 495206443656248725
-      mantis_projectile: -7994439804482713435
-      mantis_chunk_2: 4025569359678284157
-      mantis_fly_6: 7936252081672345754
-      mantis_fly_5: 8153344302342835542
-      mantis_fly_4: -9176327825334237166
-      mantis_shoot_2: -1708674091404162620
-      mantis_projectile_3: -1536819191056845675
-      mantis_projectile_2: -4703280248245939270
-      mantis_chunk_7: -2594468874856888680
-      mantis_shoot_5: 800166917014867315
-      mantis_shoot_3: 299493670991071555
-      mantis_chunk_3: 4732862119804475945
-      mantis_chunk_5: -7217674177591290684
-      mantis_fly_1: 3086637298595965778
-      mantis_shoot_9: 347394445253353054
-      mantis_chunk_4: 8314591750907212882
-      mantis_shoot_7: -197060460618798918
-      mantis_projectile_end_0: -4991823806774262538
-      mantis_fly_2: 665313845716424348
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

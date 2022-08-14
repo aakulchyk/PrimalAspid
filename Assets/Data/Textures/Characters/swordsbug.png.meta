@@ -221,8 +221,6 @@ TextureImporter:
   isReadable: 0
   streamingMipmaps: 0
   streamingMipmapsPriority: 0
-  vTOnly: 0
-  ignoreMasterTextureLimit: 0
   grayScaleToAlpha: 0
   generateCubemap: 6
   cubemapConvolution: 0
@@ -231,9 +229,9 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 1
-    aniso: 1
-    mipBias: 0
+    filterMode: -1
+    aniso: -1
+    mipBias: -100
     wrapU: 1
     wrapV: 1
     wrapW: 1
@@ -254,12 +252,9 @@ TextureImporter:
   textureType: 8
   textureShape: 1
   singleChannelComponent: 0
-  flipbookRows: 1
-  flipbookColumns: 1
   maxTextureSizeSet: 0
   compressionQualitySet: 0
   textureFormatSet: 0
-  ignorePngGamma: 0
   applyGammaDecoding: 0
   platformSettings:
   - serializedVersion: 3
@@ -1685,73 +1680,6 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable:
-      swordsbug_22: -9131453906649399787
-      swordsbug_39: 1352787232119926643
-      swordsbug_43: -4936955237460954553
-      swordsbug_59: -716189726845552025
-      swordsbug_20: 5114776757007135936
-      swordsbug_34: -639938211503920118
-      swordsbug_36: -823728572228516780
-      swordsbug_7: 6548436990247463646
-      swordsbug_63: -1944985903083011196
-      swordsbug_56: 8495700238129183214
-      swordsbug_51: 6087116859672926816
-      swordsbug_47: -489019565321157810
-      swordsbug_54: -4890884951939269784
-      swordsbug_17: 4965464466191516630
-      swordsbug_6: 1766664440656558253
-      swordsbug_14: -4244042820449239979
-      swordsbug_29: 4611888568854952463
-      swordsbug_48: 4405687737850033853
-      swordsbug_10: -5161811393089020314
-      swordsbug_53: -6635617700718884619
-      swordsbug_16: 2597550294828277718
-      swordsbug_52: -2724423564736249458
-      swordsbug_42: 3653374497000674736
-      swordsbug_60: 7417284299242089364
-      swordsbug_4: -7204098754122042545
-      swordsbug_38: -8790106094825682437
-      swordsbug_40: -8843735792873488966
-      swordsbug_0: 6828654213902301670
-      swordsbug_5: 3366126243824285474
-      swordsbug_27: 4644448405266197525
-      swordsbug_26: -519346443113380094
-      swordsbug_25: -853606472403075674
-      swordsbug_62: -383429579964791051
-      swordsbug_35: -5628280898924991071
-      swordsbug_46: 8221049014285933492
-      swordsbug_55: -4085480442268846825
-      swordsbug_61: -5497499171792431634
-      swordsbug_8: -6279312343486789214
-      swordsbug_28: -8853356393537873848
-      swordsbug_9: 7682919282427378324
-      swordsbug_15: -7464976189436583755
-      swordsbug_49: -184432025814843761
-      swordsbug_65: 6048241237113178856
-      swordsbug_21: 7670880371764547564
-      swordsbug_2: -7152922111457385704
-      swordsbug_11: 1648360228340113636
-      swordsbug_3: 6037948083702469947
-      swordsbug_13: 2588367519026292805
-      swordsbug_12: -6969231207703843112
-      swordsbug_31: 3807471348429118953
-      swordsbug_30: 8965314785564127449
-      swordsbug_23: 104378129955083421
-      swordsbug_19: 3642941308952545705
-      swordsbug_33: -7657842746934693036
-      swordsbug_24: -1460884533996198233
-      swordsbug_64: -804029441582367383
-      swordsbug_50: 6147670685116301359
-      swordsbug_58: -3376906567823768089
-      swordsbug_45: -1372029913561332821
-      swordsbug_57: 2186374165146666225
-      swordsbug_44: 830409422609077778
-      swordsbug_41: 9059671181602710649
-      swordsbug_18: 8773999939762309701
-      swordsbug_1: 5523118421073621002
-      swordsbug_37: -8022712188336258622
-      swordsbug_32: -2731074264179509600
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0
