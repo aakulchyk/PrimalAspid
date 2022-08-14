@@ -72,7 +72,6 @@ TextureImporter:
   streamingMipmaps: 0
   streamingMipmapsPriority: 0
   vTOnly: 0
-  ignoreMasterTextureLimit: 0
   grayScaleToAlpha: 0
   generateCubemap: 6
   cubemapConvolution: 0
@@ -81,9 +80,9 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 1
-    aniso: 1
-    mipBias: 0
+    filterMode: -1
+    aniso: -1
+    mipBias: -100
     wrapU: 1
     wrapV: 1
     wrapW: 1
@@ -485,23 +484,6 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable:
-      maggot-found_9: -3349320045307419227
-      maggot-found_4: 2075010548372375718
-      maggot-happy-2: 5176929311343013778
-      maggot-found_1: 5300746127424528197
-      maggot-found_11: -7965651111699730219
-      maggot-found_15: -7191008294423302820
-      maggot-found_12: -368787469057809854
-      maggot-found_3: 8280714000635305722
-      maggot-happy-0: -967772638948793886
-      maggot-found_14: -7771464597769705246
-      maggot-found_2: 897217054281254421
-      maggot-found_0: 1887532623670782641
-      maggot-happy-1: 4226005581251698771
-      maggot-found_5: -8413063049157051136
-      maggot-found_13: 9180556648735991047
-      maggot-found_10: 1101831957522464015
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

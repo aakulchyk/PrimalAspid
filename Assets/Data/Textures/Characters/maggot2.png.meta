@@ -69,7 +69,6 @@ TextureImporter:
   streamingMipmaps: 0
   streamingMipmapsPriority: 0
   vTOnly: 0
-  ignoreMasterTextureLimit: 0
   grayScaleToAlpha: 0
   generateCubemap: 6
   cubemapConvolution: 0
@@ -78,9 +77,9 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 1
-    aniso: 1
-    mipBias: 0
+    filterMode: -1
+    aniso: -1
+    mipBias: -100
     wrapU: 1
     wrapV: 1
     wrapW: 1
@@ -461,22 +460,6 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable:
-      maggot2_7: -635807607762431565
-      maggot2_1: 3129803731994004760
-      maggot2_death12: 740423222217041676
-      maggot2_death10: 4151562912255488495
-      maggot2_8: 1324331652307482291
-      maggot2_6: 3770530393561740455
-      maggot2_2: -2000634664312278988
-      maggot2_death11: 6078926752098205907
-      maggot2_3: -6062066289274906212
-      maggot2_5: 7897158309069344244
-      maggot2_death0: -2524726195677615376
-      maggot2_death1: -8466812722337305593
-      maggot2_4: -4906504305173992101
-      maggot2_0: -7572332669267614540
-      maggot2_death2: -418713805789394632
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

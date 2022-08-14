@@ -30,7 +30,6 @@ TextureImporter:
   streamingMipmaps: 0
   streamingMipmapsPriority: 0
   vTOnly: 0
-  ignoreMasterTextureLimit: 0
   grayScaleToAlpha: 0
   generateCubemap: 6
   cubemapConvolution: 0
@@ -485,25 +484,6 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable:
-      charms_22: 2234585567235100287
-      charms_12: 5527675147224479358
-      charms_36: 6072737343686123039
-      soul: -9031233410950456893
-      charms_34: 3550287457843020225
-      charms_53: -7745099581265485795
-      ChimmChild: -3954039232644882889
-      charms_52: -7136425678258784607
-      charms_23: 6306032835713227128
-      charms_33: 5801168335291994251
-      charms_51: -9001460195799562417
-      charms_49: 774034273179177446
-      charms_39: -1066872019350953852
-      charms_55: -7769674089017175865
-      charms_32: 5247424867938238222
-      charms_54: -5952363278396243342
-      shard: 3335064162627810215
-      charms_half: -8173900116105385015
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0
