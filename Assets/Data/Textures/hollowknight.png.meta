@@ -161,6 +161,8 @@ TextureImporter:
   isReadable: 0
   streamingMipmaps: 0
   streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMasterTextureLimit: 0
   grayScaleToAlpha: 0
   generateCubemap: 6
   cubemapConvolution: 0
@@ -169,9 +171,9 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: -1
-    aniso: -1
-    mipBias: -100
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
     wrapU: 1
     wrapV: 1
     wrapW: 1
@@ -192,9 +194,12 @@ TextureImporter:
   textureType: 8
   textureShape: 1
   singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
   maxTextureSizeSet: 0
   compressionQualitySet: 0
   textureFormatSet: 0
+  ignorePngGamma: 0
   applyGammaDecoding: 0
   platformSettings:
   - serializedVersion: 3
@@ -1200,6 +1205,53 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
+    nameFileIdTable:
+      hollowknight_19: -438769415888274688
+      hollowknight_120: 7874312470201148685
+      hollowknight_117: -6519239503168036034
+      circle: 8770366547964926137
+      hollowknight_16: -4891162004972208871
+      hollowknight_13: 3657020182491807348
+      hollowknight_17: -4169058716463257780
+      hollowknight_0: -7605006662551540368
+      hollowknight_122: -2516135686063743257
+      hollowknight_116: -4575253963564989476
+      mediator: -8096744516872989402
+      hollowknight_48: 4330502390598943255
+      hollowknight_128: 5348854158375858351
+      hollowknight_92: 8693222773511989016
+      hollowknight_32: 2603326181756199007
+      hollowknight_119: 4830803696081288100
+      hollowknight_28: 2638671530513648535
+      hollowknight_23: 1200885254968800256
+      face2: -3023549977456150920
+      hollowknight_14: -7354042365407052106
+      hollowknight_21: -4569644305085094523
+      face0: 9220545054059740012
+      hollowknight_26: 334902439023165996
+      prize2: 4157864411290864378
+      hollowknight_25: 4072521880117522517
+      hollowknight_10: -8076156530605003656
+      hollowknight_15: 7383422436057019204
+      hollowknight_118: 5449855278688667734
+      hollowknight_131: -9022589254958415814
+      hollowknight_12: 4416849371915337015
+      hollowknight_30: 2350592330875124449
+      hollowknight_115: -8280034359387006951
+      prize1: -1748418744428878915
+      hollowknight_22: 911574615024338333
+      hollowknight_20: -4631550513700656999
+      hollowknight_18: -1752165569796795787
+      hollowknight_24: -8442378909700931589
+      hollowknight_27: -9165798156563603490
+      hollowknight_113: 8036298227138176951
+      hollowknight_123: 7586321693831435317
+      hollowknight_31: -2373276840738698374
+      hollowknight_104: -1324303114418976348
+      hollowknight_114: -3362986222757444864
+      hollowknight_121: -1015206524671885689
+      hollowknight_11: 3428950686823783382
+      hollowknight_29: 5065267781973270236
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

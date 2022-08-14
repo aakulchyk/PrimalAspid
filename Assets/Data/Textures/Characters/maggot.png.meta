@@ -129,6 +129,7 @@ TextureImporter:
   streamingMipmaps: 0
   streamingMipmapsPriority: 0
   vTOnly: 0
+  ignoreMasterTextureLimit: 0
   grayScaleToAlpha: 0
   generateCubemap: 6
   cubemapConvolution: 0
@@ -137,9 +138,9 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: -1
-    aniso: -1
-    mipBias: -100
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
     wrapU: 1
     wrapV: 1
     wrapW: 1
@@ -940,6 +941,42 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
+    nameFileIdTable:
+      maggot_22: 5097822297615412753
+      maggot_2: 2144087623634056258
+      maggot_16: 5693590279087455312
+      maggot_10: -8721423200314912080
+      maggot_7: 5075506168188631795
+      maggot_33: -8833258651512157436
+      maggot_26: 8913806013241277395
+      maggot_23: 220470035276181609
+      maggot_30: 7495384801614475319
+      maggot_32: -2661759403048248776
+      maggot_14: -1473896035231147192
+      maggot_17: -6200232371060751576
+      maggot_18: -8204505208044520815
+      maggot_8: -6563007864389901167
+      maggot_3: 3617996775428928453
+      maggot_12: -7024391231528985236
+      maggot_6: 496029628542218873
+      maggot_21: -7701382298353075302
+      maggot_15: 7056786236703117895
+      maggot_28: 5610063388246482048
+      maggot_34: -5417775519850604247
+      maggot_24: -7757619185538028110
+      maggot_13: 2629193501300873136
+      maggot_4: 4684239549955499838
+      maggot_19: -8772687033050702676
+      maggot_0: -7673213691580825933
+      maggot_27: -6374243171783726206
+      maggot_5: -820195326331309133
+      maggot_9: -8992841175269060804
+      maggot_31: -2779991847221978924
+      maggot_1: -8714856686536838595
+      maggot_29: -6981540933534348428
+      maggot_25: 424498087002816594
+      maggot_20: 3768603714640385731
+      maggot_11: -684669551695251276
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

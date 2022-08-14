@@ -48,6 +48,7 @@ TextureImporter:
   streamingMipmaps: 0
   streamingMipmapsPriority: 0
   vTOnly: 0
+  ignoreMasterTextureLimit: 0
   grayScaleToAlpha: 0
   generateCubemap: 6
   cubemapConvolution: 0
@@ -151,7 +152,7 @@ TextureImporter:
       tessellationDetail: 0
       bones: []
       spriteID: ee4f767c6c75c36b0800000000000000
-      internalID: -5315276948943407890
+      internalID: -6239037727998546823
       vertices: []
       indices: 
       edges: []
@@ -214,7 +215,7 @@ TextureImporter:
       tessellationDetail: 0
       bones: []
       spriteID: 97ce2620e3c7a69a0800000000000000
-      internalID: -6239037727998546823
+      internalID: -608153979275756661
       vertices: []
       indices: 
       edges: []
@@ -277,7 +278,7 @@ TextureImporter:
       tessellationDetail: 0
       bones: []
       spriteID: b8b37809d276f87f0800000000000000
-      internalID: -608153979275756661
+      internalID: 5846900652808066849
       vertices: []
       indices: 
       edges: []
@@ -292,6 +293,15 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
+    nameFileIdTable:
+      PC-tailhit_6: 5846900652808066849
+      PC-tailhit_2: 7670887178672655480
+      PC-tailhit_0: -6239037727998546823
+      PC-tailhit_10: -877623742456041481
+      PC-tailhit_1: 262602061174488612
+      PC-tailhit_3: -608153979275756661
+      PC-tailhit_5: -3132842640045518669
+      PC-tailhit_4: -376493165877089372
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0
