@@ -14,6 +14,7 @@ public class MenuControls : MonoBehaviour
     {
         Game.SharedInstance.LightenScreenAsync();
     }
+    
     public void StartPressed()
     {
         //Game.SharedInstance.DarkenScreenAsync();

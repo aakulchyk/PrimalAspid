@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using UnityEngine.EventSystems;
 
 using System.Text;
 using System.IO;
@@ -13,10 +14,16 @@ public class Game : MonoBehaviour
 {
     public static Game SharedInstance { get; private set; }
 
+    public GameObject eventSystem; 
+
     public GameObject popupWindow;
+
+    public SpeciesSelectMenu speciesSelectMenu;
 
     [SerializeField] private Image blackScreen;
     public bool isPopupOpen = false;
+
+    public bool isMenuOpen = false;
 
     public bool isGameInProgress = false;
     [SerializeField] private string defaultScene = "Level_1_0";
@@ -46,6 +53,8 @@ public class Game : MonoBehaviour
             DontDestroyOnLoad(gameObject);
             blackScreen.GetComponent<RectTransform>().sizeDelta = new Vector2(Screen.width, Screen.height);
             blackScreen.enabled = true;
+
+            DontDestroyOnLoad(eventSystem);
         }
         else Destroy(gameObject);
     }
@@ -266,6 +275,20 @@ public class Game : MonoBehaviour
         isPopupOpen = true;
         Time.timeScale = 0;
         popupWindow.SetActive(true);
+    }
+
+    public void OpenSpeciesMenu()
+    {
+        isMenuOpen = true;
+        speciesSelectMenu.Open();
+        //eventSystem.firstSelectedGameObject = speciesSelectMenu.DefaultButton().gameObject;
+        //eventSystem.UpdateModules();
+    }
+
+    public void CloseSpeciesMenu()
+    {
+        speciesSelectMenu.Close();
+        isMenuOpen = false;
     }
 
     public void ClosePopup() {

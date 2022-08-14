@@ -225,7 +225,17 @@ public class PlayerControl : MonoBehaviour
             return;
         }
 
+        if (Input.GetKeyDown(KeyCode.I)) {
+            if (GetGame().isMenuOpen)
+                GetGame().CloseSpeciesMenu();
+            else
+                GetGame().OpenSpeciesMenu();
+        }
+
+
         if (Input.GetKeyDown(KeyCode.Escape)) {
+            if (GetGame().isMenuOpen)
+                GetGame().CloseSpeciesMenu();
             //SceneManager.LoadScene("TitleScreen");
             Application.Quit();
         }

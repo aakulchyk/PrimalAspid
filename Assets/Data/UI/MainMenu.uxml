@@ -1,0 +1,17 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" editor-extension-mode="False">
+    <Style src="Styles/MenuStyles.uss" />
+    <ui:VisualElement name="Background" style="background-image: url(&apos;/Assets/Data/Sprites/UI/ui-menu-bat.png&apos;); height: auto; flex-grow: 1; background-color: rgb(85, 149, 255); -unity-background-image-tint-color: rgba(45, 71, 106, 0.28); flex-wrap: nowrap; border-left-width: 10px; border-right-width: 10px; border-top-width: 10px; border-bottom-width: 10px; border-top-left-radius: 10px; border-bottom-left-radius: 10px; border-top-right-radius: 10px; border-bottom-right-radius: 10px; top: 0; align-items: center; justify-content: center;">
+        <ui:VisualElement name="Root" style="justify-content: center; align-items: center; padding-left: 0; padding-right: 0; padding-top: 0; padding-bottom: 0; margin-top: 0; margin-bottom: 200px; margin-left: 0; margin-right: 0; flex-wrap: nowrap; flex-direction: column; cursor: url(&apos;/Assets/Data/Sprites/UI/ui-menu-bat.png&apos;);">
+            <ui:VisualElement name="Title" style="top: auto; margin-left: 100px; margin-right: 100px; margin-top: 100px; margin-bottom: 200px;">
+                <ui:Label text="Grim Saviour" display-tooltip-when-elided="true" name="GameTitle" style="font-size: 164px; -unity-text-align: middle-center; -unity-font-style: bold;" />
+                <ui:Label text="Demo Version 0.2 " display-tooltip-when-elided="true" style="align-items: auto; font-size: 34px; -unity-text-align: upper-center;" />
+            </ui:VisualElement>
+            <ui:VisualElement name="MainMenuButtons" style="align-items: center; justify-content: center;">
+                <ui:Button text="Start New Game" display-tooltip-when-elided="true" name="StartGame" focusable="true" class="button" />
+                <ui:Button text="Load Saved Game" display-tooltip-when-elided="true" name="LoadGame" tabindex="1" focusable="true" class="button" />
+                <ui:Button text="Exit" display-tooltip-when-elided="true" name="Exit" tabindex="2" focusable="true" class="button" />
+            </ui:VisualElement>
+            <ui:VisualElement name="Bottom" />
+        </ui:VisualElement>
+    </ui:VisualElement>
+</ui:UXML>

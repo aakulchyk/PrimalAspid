@@ -44,9 +44,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b2a3cdc2ff3bdcd4f9abf31246c2a97a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  eventSystem: {fileID: 0}
   popupWindow: {fileID: 2765342635586140879}
+  speciesSelectMenu: {fileID: 0}
   blackScreen: {fileID: 3925436125161391799}
   isPopupOpen: 0
+  isMenuOpen: 0
   isGameInProgress: 0
   defaultScene: Level_1_0
   mainCamera: {fileID: 0}

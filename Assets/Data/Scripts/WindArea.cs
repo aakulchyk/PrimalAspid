@@ -54,6 +54,7 @@ public class WindArea : MonoBehaviour
         velocity.speedModifier = particleSpeedModifier;
         velocity.x = v.x;
         velocity.y = v.y - 0.1f;
+        velocity.z = 0;
 
         var shape = particles.shape;
         shape.position = v * -20;
