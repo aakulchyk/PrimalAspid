@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using UnityEngine.InputSystem;
 
 using System;
 using System.Text;
@@ -17,6 +18,13 @@ public class PlayerGrabber : MonoBehaviour
     public AudioClip clip_clutch;
     public AudioClip clip_grab;
 
+    [Header ("Input")]
+    public PlayerInputActions playerInputActions;
+    private InputAction moveAction;
+    private InputAction grabAction;
+
+
+    [Header ("GrabStates")]
     [SerializeField] private bool _isHangingUpsideDown = false;
     [SerializeField] private bool _isHangingOnWall = false;
     private bool _isSideGrabbing = false;
@@ -69,6 +77,33 @@ public class PlayerGrabber : MonoBehaviour
         sounds = GetComponent<AudioSource>();
         anim = GetComponent<Animator>();
         playerMainControl = GetComponent<PlayerControl>();
+        playerInputActions = new PlayerInputActions();
+    }
+
+    private void OnEnable()
+    {
+        moveAction = playerInputActions.Player.Move;
+        moveAction.Enable();
+
+        grabAction = playerInputActions.Player.Grab;
+        grabAction.Enable();
+        grabAction.started += OnGrabPressed;
+    }
+
+    private void OnDisable()
+    {
+        moveAction.Disable();
+        grabAction.Disable();
+
+    }
+
+    private void OnGrabPressed(InputAction.CallbackContext context)
+    {
+        if (Game.SharedInstance.isPopupOpen) return;
+        grab_button_triggered = true;
+        grabCoyoteTimeStarted = Time.time;
+        anim.SetTrigger("Grab");
+
     }
 
     void Start()
@@ -83,25 +118,26 @@ public class PlayerGrabber : MonoBehaviour
 
     void Update()
     {
-        float treshold = 0.01f;
-        float moveXfloat = Input.GetAxis ("Horizontal");
+        if (null == moveAction) {
+            Debug.LogError("ERROR: No moveAction!");
+            return;
+        }
+
+        float treshold = 0.5f;
+        Vector2 moveDirection = moveAction.ReadValue<Vector2>();
+        float moveXfloat = moveDirection.x;
+
         moveX = moveXfloat > treshold ? 1 : moveXfloat < -treshold ? -1 : 0;
 
-        float moveYfloat = Input.GetAxis ("Vertical");
+        float moveYfloat = moveDirection.y;
         moveY = moveYfloat > treshold ? 1 : moveYfloat < -treshold ? -1 : 0;
 
-        float g_axis = Input.GetAxisRaw("Grab");
-        /*if (Input.GetButtonDown("Grab"))
-            grab_button_triggered = true;*/
 
-
-        bool curr_grab = g_axis>0.5f || g_axis<-0.5f;
+        /*bool curr_grab = grabAction.ReadValue<float>() > 0.05f;
 
         if (!grab_button_triggered && !grab_button_hold && curr_grab)
             grab_button_triggered = true;
-        grab_button_hold = curr_grab;
-
-        //grab_button_hold = Input.GetButton("Grab");
+        grab_button_hold = curr_grab;*/
 
         /*float d_axis = Input.GetAxisRaw("Dash");
         dash_hold = (d_axis>0.8f || d_axis < -0.8f) || Input.GetKey(KeyCode.G);
@@ -114,108 +150,44 @@ public class PlayerGrabber : MonoBehaviour
 
     void FixedUpdate()
     {
-        if (grab_button_triggered) {
+        // reset jump/flap request after some time
+        if (grab_button_triggered && Time.time - grabCoyoteTimeStarted > GRAB_COYOTE_TIME_SEC)
             grab_button_triggered = false;
+
+
+        if (grab_button_triggered) {
             if (!_isPulling && activeGrabbable && !_cannotGrab) {
                 bool stillCooldownTime = Time.time - grabCooldownTimeStarted < GRAB_COOLDOWN_TIME_SEC;
-                if (playerMainControl.IsGrounded() && !bodygrab_from_ground_started) {
-                    if (stillCooldownTime)
+                if (stillCooldownTime)
                         return;
+                grab_button_triggered = false;
+                if (playerMainControl.IsGrounded() && !bodygrab_from_ground_started) {
                     playerMainControl.throwByImpulse(new Vector2(0, 3000), false);
                     StartCoroutine(GrabBodyAfterShortDelay(activeGrabbable, 0.2f));
                 } else {
-                    if (stillCooldownTime)
-                        return;
                     grabBody(activeGrabbable);
                 }
+            } else if (_isPulling) {
+                grab_button_triggered = false;
+                releaseBody();
             }
         }
 
-        if (!grab_button_hold && _isPulling) {
-            releaseBody();
-        }
-
-        bool direction_triggered = (prev_moveX==0 && prev_moveY==0) && (moveX!=0 || moveY!=0);
-
-
-        // if (dash_button_triggered) {
-        //     if (_isHangingOnWall) {
-        //         endHangOnWall();
-        //         /*if (moveX!=0) {
-        //             if ((_isWallOnRight && moveX < 0) || (!_isWallOnRight && moveX > 0)) {
-        //                 Debug.Log("StartSideGrab?");
-        //                 playerMainControl.MakeInstantTurn();
-        //                 startSideGrab();
-        //                 _doNotGrabRightNow_kostyl = true;
-        //             }
-        //         }*/
-        //     }
-
-        //     if (_isHangingUpsideDown)
-        //         endHangOnCeiling();
-
-        //     if (_isPulling)
-        //         releaseBody();
-
-        //     dash_button_triggered = false;
-        // }
+        //bool direction_triggered = (prev_moveX==0 && prev_moveY==0) && (moveX!=0 || moveY!=0);
 
         bool stillCoyoteTime = Time.time - hangerJumpCoyoteTimeStarted < GRAB_COYOTE_TIME_SEC;
 
         bool NotHangingConditions = playerMainControl._attackStarted || stillCoyoteTime;    
-        Physics2D.IgnoreLayerCollision(LayerMask.NameToLayer("PC"), LayerMask.NameToLayer("Hanger"), /*moveY <= 0*/!grab_button_hold || NotHangingConditions);
+        Physics2D.IgnoreLayerCollision(LayerMask.NameToLayer("PC"), LayerMask.NameToLayer("Hanger"), /*moveY <= 0*/!grab_button_triggered || NotHangingConditions);
 
-        if (/*moveY > 0 */ grab_button_hold && nearestHanger) {
+        if (grab_button_triggered && nearestHanger) {
             Debug.Log("Start hang on ceiling");
             startHangOnCeiling();
-        }
-
-        if (_isHangingOnWall && !grab_button_hold) {
-            endHangOnWall();
-        }
-
-        if (_isHangingUpsideDown && !grab_button_hold) {
-            endHangOnCeiling();
         }
 
         if (moveY != 0 && _isHangingOnWall) {
             MoveOnWall(0.2f * moveY);
         }
-        
-
-        /*if (activeGrabbable && IsGrabbing()) {
-            Debug.Log("Grab body?");
-            Rigidbody2D b = activeGrabbable.gameObject.GetComponentInParent<Rigidbody2D>();
-            if (b && !_cannotGrab) {
-                _isSideGrabbing = _isDownwardGrabbing = _isUpwardGrabbing = false;
-                Debug.Log("Grab body");
-                if (_isGrounded) {
-                    throwByImpulse(new Vector2(0, 2000), false);            
-                    StartCoroutine(GrabBodyAfterShortDelay(activeGrabbable, b, 0.15f));
-                } else {
-                    grabBody(activeGrabbable, b);
-                }
-            }
-        }*/
-
-        //if (Input.GetButton("Grab")) {
-        //if (dash_hold) {
-            /*if (IsHanging()) {
-                body.constraints |= RigidbodyConstraints2D.FreezePosition;
-            }*/
-        //}
-        /*else {
-            if (_isHangingOnWall)
-                endHangOnWall();
-
-            //if (_isPulling)
-            //    throwByImpulse(new Vector2 (0, 1000), false);
-            
-            if (_isHangingUpsideDown)
-                endHangOnCeiling();
-
-            releaseBody();
-        }*/
 
         prev_moveX = moveX;
         prev_moveY = moveY;
@@ -497,6 +469,7 @@ public class PlayerGrabber : MonoBehaviour
         anim.SetBool("IsHanging", true);
 
         var hanger = nearestHanger.gameObject.GetComponent<HangerBehavior>();
+        Debug.Log("Hanger: " + hanger);
 
         if (hanger) {
             hanger.AttachBody(transform.parent.gameObject);

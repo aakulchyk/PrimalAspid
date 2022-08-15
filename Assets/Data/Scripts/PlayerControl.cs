@@ -2,6 +2,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using UnityEngine.VFX;
+using UnityEngine.InputSystem;
 
 using System;
 using System.Text;
@@ -30,6 +31,19 @@ public class PlayerControl : MonoBehaviour
     [SerializeField] private ParticleSystem jumpTrailParticles;
 
     [SerializeField] private GameObject flapTrail;
+
+    [Header ("Input")]
+    public PlayerInputActions playerInputActions;
+    private InputAction moveAction;
+    private InputAction lookAction;
+    private InputAction jumpAction;
+    private InputAction floatAction;
+    private InputAction hitAction;
+    private InputAction interactAction;
+
+    private InputAction menuAction;
+    //private InputAction escapeAction;
+
     
     [Header ("Sounds")]
     protected AudioSource sounds;
@@ -77,7 +91,6 @@ public class PlayerControl : MonoBehaviour
     private System.DateTime startTime;
     private System.DateTime prevUpdateTime;
 
-
     private bool isDead;
 
     private int _knockback = 0;
@@ -124,6 +137,46 @@ public class PlayerControl : MonoBehaviour
         enemyLayer = LayerMask.NameToLayer("Enemy");
         npcLayer = LayerMask.NameToLayer("NPC");
         ignoreRaycastLayer = LayerMask.NameToLayer("Ignore Raycast");
+
+        playerInputActions = new PlayerInputActions();
+    }
+
+    private void OnEnable()
+    {
+        moveAction = playerInputActions.Player.Move;
+        moveAction.Enable();
+
+        lookAction = playerInputActions.Player.Look;
+        lookAction.Enable();
+
+        jumpAction = playerInputActions.Player.Jump;
+        jumpAction.Enable();
+
+        floatAction = playerInputActions.Player.Float;
+        floatAction.Enable();
+        jumpAction.performed += OnJumpPressed;
+
+        hitAction = playerInputActions.Player.Fire;
+        hitAction.Enable();
+        hitAction.performed += OnHitPressed;
+
+        interactAction = playerInputActions.Player.Interact;
+        interactAction.Enable();
+        interactAction.performed += OnInteractPressed;
+
+        menuAction = playerInputActions.UI.Menu;
+        menuAction.Enable();
+        menuAction.performed += OnMenuPressed;
+    }
+
+    private void OnDisable()
+    {
+        moveAction.Disable();
+        jumpAction.Disable();
+        floatAction.Disable();
+        hitAction.Disable();
+        interactAction.Disable();
+        menuAction.Disable();
     }
 
     private Game GetGame()
@@ -224,26 +277,6 @@ public class PlayerControl : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (GetGame().isPopupOpen && Input.anyKeyDown) {
-            GetGame().ClosePopup();
-            return;
-        }
-
-        if (Input.GetKeyDown(KeyCode.I)) {
-            if (GetGame().isMenuOpen)
-                GetGame().CloseSpeciesMenu();
-            else
-                GetGame().OpenSpeciesMenu();
-        }
-
-
-        if (Input.GetKeyDown(KeyCode.Escape)) {
-            if (GetGame().isMenuOpen)
-                GetGame().CloseSpeciesMenu();
-            //SceneManager.LoadScene("TitleScreen");
-            Application.Quit();
-        }
-
         if (isDead)
             return;
 
@@ -257,25 +290,10 @@ public class PlayerControl : MonoBehaviour
 
         checkGrounded();
 
-        if (Input.GetButtonDown("Interact")) {
-            if (activeInteractor && activeInteractor.openForInteraction) {
-                activeInteractor.Interact();
-            } 
-        }
-
-        if (Input.GetButtonDown("Hit")) {
-            AnticipateAttack();
-        }
-
-        if (Input.GetButtonDown("Flap")) {
-            flap_button_triggered = true;
-            JumpRequestTime = Time.time;
-        }
-
         // KeyCode.JoystickButton4 - LB
         // KeyCode.JoystickButton5 - RB
 
-        float d_axis = Input.GetAxisRaw("Dash");
+        /*float d_axis = Input.GetAxisRaw("Dash");
         bool dash_pressed = (d_axis>0.8f || d_axis < -0.8f) || Input.GetKey(KeyCode.G);
         if (!prev_dash && dash_pressed) {
             dash_button_triggered = true;
@@ -284,13 +302,16 @@ public class PlayerControl : MonoBehaviour
 
         if (!dash_pressed && prev_dash) {
             prev_dash = false;
-        }
+        }*/
 
-        float treshold = 0.01f;
-        float moveXfloat = Input.GetAxis ("Horizontal");
+
+        Vector2 moveDirection = moveAction.ReadValue<Vector2>();
+
+        float treshold = 0.5f;
+        float moveXfloat = moveDirection.x;//Input.GetAxis ("Horizontal");
         moveX = moveXfloat > treshold ? 1 : moveXfloat < -treshold ? -1 : 0;
 
-        float moveYfloat = Input.GetAxis ("Vertical");
+        float moveYfloat = moveDirection.y;//Input.GetAxis ("Vertical");
         moveY = moveYfloat > treshold ? 1 : moveYfloat < -treshold ? -1 : 0;
 
         bool newTurn = false;   
@@ -299,6 +320,9 @@ public class PlayerControl : MonoBehaviour
         } else if (moveX < 0 && faceRight) {
             newTurn = true;
         }
+
+        Vector2 lookDirection = lookAction.ReadValue<Vector2>().normalized;
+        cameraEffects.SetPlayerOffset(new Vector3(-lookDirection.x*10, -lookDirection.y*10, 0));
 
         if (!_turnStarted && newTurn && !_attackStarted) {
             if (grabber.IsHangingOnCeiling()) {
@@ -343,9 +367,6 @@ public class PlayerControl : MonoBehaviour
                 }
             }
         }
-
-        float look_axis = Input.GetAxis("Vertical Look");
-        cameraEffects.SetPlayerOffset(new Vector3(0, look_axis * 10, 0));
     }
 
     void FixedUpdate()
@@ -355,7 +376,7 @@ public class PlayerControl : MonoBehaviour
             return;
         }
         // reset jump/flap request after some time
-        if (flap_button_triggered && Time.time - JumpRequestTime > COYOTE_TIME_SEC*2)
+        if (flap_button_triggered && Time.time - JumpRequestTime > COYOTE_TIME_SEC)
             flap_button_triggered = false;
 
         float moveSpeedX = _turnStarted && _isGrounded ? 0 : _maxSpeed*moveX;
@@ -397,8 +418,9 @@ public class PlayerControl : MonoBehaviour
         }
 
         if (!_jumpStarted && !_isGrounded/*body.velocity.y<0f*/ && !grabber.IsHanging()) {
-            float f_axis = Input.GetAxisRaw("Float");
-            bool floatPressed = (f_axis>0.5f || f_axis < -0.5f) || Input.GetKey(KeyCode.LeftShift) || Input.GetKey(KeyCode.RightShift);
+            //float f_axis = Input.GetAxisRaw("Float");
+            //bool floatPressed = (f_axis>0.5f || f_axis < -0.5f) || Input.GetKey(KeyCode.LeftShift) || Input.GetKey(KeyCode.RightShift);
+            bool floatPressed = floatAction.ReadValue<float>() > 0.5f;
             //bool floatPressed = Input.GetButton("Float");//moveY > 0;
             if (!floatPressed) {
                 _floatStarted = false;
@@ -423,7 +445,7 @@ public class PlayerControl : MonoBehaviour
             }
         } /*else 
             body.gravityScale = _gravityScale;*/
-        else if (_jumpStarted && !Input.GetButton("Flap")) {
+        else if (_jumpStarted && jumpAction.ReadValue<float>() < 0.5f) {
             body.velocity += Vector2.up * Physics2D.gravity.y * 8f * Time.deltaTime;
         }
 
@@ -450,6 +472,40 @@ public class PlayerControl : MonoBehaviour
         }
     }
 
+    private void OnHitPressed(InputAction.CallbackContext context)
+    {
+        if (GetGame().isPopupOpen) return;
+        AnticipateAttack();
+    }
+
+    private void OnJumpPressed(InputAction.CallbackContext context)
+    {
+        if (GetGame().isPopupOpen) return;
+        flap_button_triggered = true;
+        JumpRequestTime = Time.time;
+    }
+
+    private void OnInteractPressed(InputAction.CallbackContext context)
+    {
+        if (GetGame().isPopupOpen) return;
+        if (activeInteractor && activeInteractor.openForInteraction) {
+            activeInteractor.Interact();
+        } 
+    }
+
+    private void OnMenuPressed(InputAction.CallbackContext context)
+    {
+        if (GetGame().isPopupOpen) {
+            GetGame().ClosePopup();
+            return;
+        }
+
+        
+        if (GetGame().isMenuOpen)
+            GetGame().CloseSpeciesMenu();
+        else
+            GetGame().OpenSpeciesMenu();
+    }
 
     public void AnticipateAttack()
     {
@@ -463,6 +519,12 @@ public class PlayerControl : MonoBehaviour
         anim.SetTrigger("SwingAttack");
         sounds.pitch = 1;
         sounds.PlayOneShot(clip_swing);
+    }
+
+    public void InterruptCurrentAnimations()
+    {
+        FinishTurnIfStarted();
+        InterruptFlyOrJump();
     }
 
     public void OnAnticipationFinished()
