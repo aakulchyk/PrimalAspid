@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.UIElements;
 using UnityEngine.InputSystem;
+using UnityEngine.EventSystems;
 
 using System;
 using System.IO;
@@ -28,8 +29,13 @@ public class NewMainMenu : MonoBehaviour
 
     private int selectedSlot;
 
+    private EventSystem eventSystem;
+
     public void Start()
     {
+        eventSystem = EventSystem.current;
+        eventSystem.SetSelectedGameObject(gameObject);
+
         Debug.Log("UI Start");
 
         Game.SharedInstance.LightenScreenAsync();
@@ -44,10 +50,12 @@ public class NewMainMenu : MonoBehaviour
         _load = uiDocument.rootVisualElement.Q<Button>("LoadGame");
         _exit = uiDocument.rootVisualElement.Q<Button>("ExitGame");
 
-        _start.RegisterCallback<ClickEvent>(OnStartPressed);
+        _start.RegisterCallback<ClickEvent>(ev => OnStartPressed());
+        _start.RegisterCallback<PointerDownEvent>(
+            ev => OnStartPressed(),
+            TrickleDown.TrickleDown);
         _load.RegisterCallback<ClickEvent>(OnLoadPressed);
         _exit.RegisterCallback<ClickEvent>(ev => Application.Quit());
-
 
         // Save Slot select menu
         _saveSlotSelect = uiDocument.rootVisualElement.Q<VisualElement>("SaveSlotSelect");
@@ -96,11 +104,12 @@ public class NewMainMenu : MonoBehaviour
 
     private void OnDestroy()
     {
-        _start.UnregisterCallback<ClickEvent>(OnStartPressed);
+        _start.UnregisterCallback<ClickEvent>(ev => OnStartPressed());
+        _start.UnregisterCallback<PointerDownEvent>(ev => OnStartPressed());
     }
 
     // callbacks
-    public void OnStartPressed(ClickEvent evt)
+    public void OnStartPressed()
     {
         _newGame = true;
         _rootMenu.style.display = DisplayStyle.None;
@@ -121,6 +130,7 @@ public class NewMainMenu : MonoBehaviour
         _rootMenu.style.display = DisplayStyle.None;
         _saveSlotSelect.style.display = DisplayStyle.Flex;
         _rewriteSlotDlg.style.display = DisplayStyle.None;
+        _slot1.Focus();
     }
 
     public void SaveSlotSelected(Button slot, int id)
@@ -130,6 +140,7 @@ public class NewMainMenu : MonoBehaviour
                 selectedSlot = id;
                 _saveSlotSelect.style.display = DisplayStyle.None;
                 _rewriteSlotDlg.style.display = DisplayStyle.Flex;
+                _backToSlotSelect.Focus();
                 return;
             }
             
@@ -153,6 +164,7 @@ public class NewMainMenu : MonoBehaviour
         _rootMenu.style.display = DisplayStyle.Flex;
         _saveSlotSelect.style.display = DisplayStyle.None;
         _rewriteSlotDlg.style.display = DisplayStyle.None;
+        _start.Focus();
     }
 
 }

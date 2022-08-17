@@ -275,8 +275,6 @@ public class Game : MonoBehaviour
     {
         isMenuOpen = true;
         speciesSelectMenu.Open();
-        //eventSystem.firstSelectedGameObject = speciesSelectMenu.DefaultButton().gameObject;
-        //eventSystem.UpdateModules();
     }
 
     public void CloseSpeciesMenu()

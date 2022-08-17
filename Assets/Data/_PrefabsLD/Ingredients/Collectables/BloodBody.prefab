@@ -29,6 +29,7 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -11.405079, y: 17.84446, z: 0}
   m_LocalScale: {x: 4, y: 4, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 8424950046090182675}
   m_Father: {fileID: 0}
@@ -178,6 +179,16 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 3748536877738559170, guid: f4ee275d57c94504d87e43e25cced227,
+        type: 3}
+      propertyPath: m_SortingLayer
+      value: -2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3748536877738559170, guid: f4ee275d57c94504d87e43e25cced227,
+        type: 3}
+      propertyPath: m_SortingLayerID
+      value: 1014917431
+      objectReference: {fileID: 0}
     - target: {fileID: 6801512613701837600, guid: f4ee275d57c94504d87e43e25cced227,
         type: 3}
       propertyPath: m_RootOrder
@@ -235,15 +246,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f4ee275d57c94504d87e43e25cced227, type: 3}
---- !u!4 &8424950046090182675 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 6801512613701837600, guid: f4ee275d57c94504d87e43e25cced227,
-    type: 3}
-  m_PrefabInstance: {fileID: 3064907089187218227}
-  m_PrefabAsset: {fileID: 0}
 --- !u!212 &2201634236259870193 stripped
 SpriteRenderer:
   m_CorrespondingSourceObject: {fileID: 3748536877738559170, guid: f4ee275d57c94504d87e43e25cced227,
+    type: 3}
+  m_PrefabInstance: {fileID: 3064907089187218227}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &8424950046090182675 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 6801512613701837600, guid: f4ee275d57c94504d87e43e25cced227,
     type: 3}
   m_PrefabInstance: {fileID: 3064907089187218227}
   m_PrefabAsset: {fileID: 0}

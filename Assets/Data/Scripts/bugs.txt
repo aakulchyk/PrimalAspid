@@ -1,3 +1,2 @@
-- дергается камера при загрузке уровня
-- краб не прыгает
-- у ящера дроп внизу (нельзя взять)
+- UI toolkit - submitting button doest not work with Kbd/gamepad!
+
