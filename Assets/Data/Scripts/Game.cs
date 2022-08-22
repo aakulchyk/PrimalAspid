@@ -20,7 +20,6 @@ public class Game : MonoBehaviour
 
     public SpeciesSelectMenu speciesSelectMenu;
 
-    [SerializeField] private Image blackScreen;
     public bool isPopupOpen = false;
 
     public bool isMenuOpen = false;
@@ -35,7 +34,7 @@ public class Game : MonoBehaviour
     private Queue<string> textQueue = new Queue<string>();
 
     public const int INITIAL_HP = 2;
-    public const int INITIAL_STAMINA = 2;
+    public const int INITIAL_STAMINA = 0;
 
     public Vector2 LastCheckPointPosition;
     public string LastCheckPointScene;
@@ -47,6 +46,10 @@ public class Game : MonoBehaviour
 
     public int selectedSaveSlot;
 
+    public NewMainMenu _mainMenu;
+
+    public bool showBlackScreen = false;
+
 
     private void Awake()
     {
@@ -54,8 +57,7 @@ public class Game : MonoBehaviour
         if (SharedInstance == null) {
             SharedInstance = this;
             DontDestroyOnLoad(gameObject);
-            blackScreen.GetComponent<RectTransform>().sizeDelta = new Vector2(Screen.width, Screen.height);
-            blackScreen.enabled = true;
+            showBlackScreen = true;
 
             DontDestroyOnLoad(eventSystem);
         }
@@ -64,9 +66,9 @@ public class Game : MonoBehaviour
 
     private void OnLevelWasLoaded(int level)
     {
-        currentScene = SceneManager.GetActiveScene().name;
+        currentScene = SceneManager.GetActiveScene().name.Substring(2);
         Debug.Log("Game - OnLevelWasLoaded " + level + " " + currentScene);
-        LightenScreenAsync();
+        showBlackScreen = false;
     }
 
     public void MemorizeCheckPoint(Vector2 pos)
@@ -156,6 +158,8 @@ public class Game : MonoBehaviour
 
     public void StartNewGame(int slot)
     {
+        showBlackScreen = true;
+
         selectedSaveSlot = slot;
 
         ClearGame();
@@ -173,6 +177,8 @@ public class Game : MonoBehaviour
 
     public void LoadGame(int slot)
     {
+        showBlackScreen = true;
+
         selectedSaveSlot = slot;
 
         if (!File.Exists(SaveFileFullPath(selectedSaveSlot))) {
@@ -203,7 +209,8 @@ public class Game : MonoBehaviour
 
         // load scene
         SpawnManager.SharedInstance.SetSpawn(new Vector2(save.px, save.py));
-        SceneManager.LoadScene(currentScene);
+        SceneManager.LoadScene("LD_" + currentScene);
+        SceneManager.LoadScene("LA_" + currentScene, LoadSceneMode.Additive);
 
         // load npcs
         {
@@ -271,15 +278,15 @@ public class Game : MonoBehaviour
         popupWindow.SetActive(true);
     }
 
-    public void OpenSpeciesMenu()
+    public void OpenInGameMenu()
     {
         isMenuOpen = true;
-        speciesSelectMenu.Open();
+        _mainMenu.ShowInGameMenu();
     }
 
-    public void CloseSpeciesMenu()
+    public void CloseInGameMenu()
     {
-        speciesSelectMenu.Close();
+        _mainMenu.HideInGameMenu();
         isMenuOpen = false;
     }
 
@@ -311,11 +318,9 @@ public class Game : MonoBehaviour
     }
 
     public void DarkenScreenAsync() {
-        StartCoroutine(SetScreenAlphaAsync(0f, 1f, 0.5f));
     }
 
     public void LightenScreenAsync() {
-        StartCoroutine(SetScreenAlphaAsync(1f, 0f, 0.5f));
     }
 
     private IEnumerator WaitWhilePopupOpen() {
@@ -324,52 +329,5 @@ public class Game : MonoBehaviour
             yield return new WaitForSeconds(0.1f);
         }
     }
-
-    public IEnumerator SetScreenAlphaAsync(float alphaBegin, float alphaEnd, float time) {
-        float alpha = alphaBegin;
-
-        if (alphaBegin < alphaEnd) {
-            while (alpha < alphaEnd) {
-                yield return null;
-                alpha += 0.025f;
-                blackScreen.color = new Color(0f, 0f, 0f, alpha);
-            }
-        } else {
-            yield return new WaitForSeconds(0.4f);
-            while (alpha > alphaEnd) {
-                yield return null;
-                alpha -= 0.025f;
-                blackScreen.color = new Color(0f, 0f, 0f, alpha);
-            }
-        }
-    }
-
-
-    public void DarkenScreen() {
-        SetScreenAlpha(0f, 1f, 0.5f);
-    }
-
-    public void LightenScreen() {
-        SetScreenAlpha(1f, 0f, 0.1f);
-    }
-
-    IEnumerator waiter() {
-        yield return null;
-    }
-    private void SetScreenAlpha(float alphaBegin, float alphaEnd, float time) {
-        float alpha = alphaBegin;
-
-        if (alphaBegin < alphaEnd) {
-            while (alpha < alphaEnd) {
-                StartCoroutine(waiter());
-                alpha += 0.01f;
-                blackScreen.color = new Color(0f, 0f, 0f, alpha);
-            }
-        } else {
-            while (alpha > alphaEnd) {
-                alpha -= 0.01f;
-                blackScreen.color = new Color(0f, 0f, 0f, alpha);
-            }
-        }
-    }
+   
 }

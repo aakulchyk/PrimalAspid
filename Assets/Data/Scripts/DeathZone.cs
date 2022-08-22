@@ -32,7 +32,7 @@ public class DeathZone : MonoBehaviour
             //pos.x = save.px;
             //pos.y = save.py;
             Utils.GetPlayer().hurt(Vector2.zero, Types.DamageType.DeathZone);
-            Game.SharedInstance.DarkenScreen();
+            Game.SharedInstance.showBlackScreen = true;
             Utils.GetPlayer().transform.parent.position = new Vector3(pos.x, pos.y, pos.z);
             fallCooldown = true;
             StartCoroutine(restoreFallCooldownShortly());
@@ -43,6 +43,6 @@ public class DeathZone : MonoBehaviour
     {
         yield return new WaitForSeconds(0.5F);
         fallCooldown = false;
-        Game.SharedInstance.LightenScreenAsync();
+        Game.SharedInstance.showBlackScreen = false;
     }
 }

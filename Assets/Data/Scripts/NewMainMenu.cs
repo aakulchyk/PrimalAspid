@@ -9,7 +9,9 @@ using System.Collections;
 
 public class NewMainMenu : MonoBehaviour
 {
-    private VisualElement _rootMenu;
+    private VisualElement _mainMenu;
+
+    private VisualElement _titleMenu;
     private Button _start;
     private Button _load;
     private Button _exit;
@@ -29,10 +31,16 @@ public class NewMainMenu : MonoBehaviour
 
     private int selectedSlot;
 
+    private VisualElement _hud;
+
+    private VisualElement _controlsMenu;
+
+
     public EventSystem eventSystem;
 
 
     [SerializeField] private AudioClip sound_select;
+    [SerializeField] private AudioClip sound_press;
 
     public void Start()
     {
@@ -41,26 +49,23 @@ public class NewMainMenu : MonoBehaviour
 
         Debug.Log("UI Start");
 
-        Game.SharedInstance.LightenScreenAsync();
+        Game.SharedInstance.showBlackScreen = false;
 
         // The UXML is already instantiated by the UIDocument component
         var uiDocument = GetComponent<UIDocument>();
 
+        // Main elements
+        _mainMenu = uiDocument.rootVisualElement.Q<VisualElement>("MainMenu");
+        _hud = uiDocument.rootVisualElement.Q<VisualElement>("HUD");
+        _controlsMenu = uiDocument.rootVisualElement.Q<VisualElement>("ControlsMenu");
+
         // Root Menu
-        _rootMenu = uiDocument.rootVisualElement.Q<VisualElement>("RootMenu");
+        _titleMenu = uiDocument.rootVisualElement.Q<VisualElement>("TitleMenu");
 
         _start = uiDocument.rootVisualElement.Q<Button>("StartGame");
         _load = uiDocument.rootVisualElement.Q<Button>("LoadGame");
         _exit = uiDocument.rootVisualElement.Q<Button>("ExitGame");
 
-        _start.RegisterCallback<ClickEvent>(ev => OnStartPressed());
-        _start.RegisterCallback<NavigationSubmitEvent>(ev => OnStartPressed());
-        
-        _load.RegisterCallback<ClickEvent>(ev => OnLoadPressed());
-        _load.RegisterCallback<NavigationSubmitEvent>(ev => OnLoadPressed());
-
-        _exit.RegisterCallback<ClickEvent>(ev => Application.Quit());
-        _exit.RegisterCallback<NavigationSubmitEvent>(ev => Application.Quit());
 
         // Save Slot select menu
         _saveSlotSelect = uiDocument.rootVisualElement.Q<VisualElement>("SaveSlotSelect");
@@ -71,7 +76,32 @@ public class NewMainMenu : MonoBehaviour
         _slot3 = uiDocument.rootVisualElement.Q<Button>("Slot3");
         LoadSaveSlotInfo(_slot3, 2);
         _back = uiDocument.rootVisualElement.Q<Button>("BackToMain");
+       
+        // Rewrite Slot dialogue
+        _rewriteSlotDlg = uiDocument.rootVisualElement.Q<VisualElement>("RewriteSlotDialog");
+        _rewrite = uiDocument.rootVisualElement.Q<Button>("RewriteSlot");
+        _backToSlotSelect = uiDocument.rootVisualElement.Q<Button>("BackToSlotSelect");
+        
+        RegisterCallbacks();
+        
+        ShowMainMenu();
+        //DontDestroyOnLoad(gameObject);
+    }
 
+
+    void RegisterCallbacks()
+    {
+        // Root menu
+        _start.RegisterCallback<ClickEvent>(ev => OnStartPressed());
+        _start.RegisterCallback<NavigationSubmitEvent>(ev => OnStartPressed());
+        
+        _load.RegisterCallback<ClickEvent>(ev => OnLoadPressed());
+        _load.RegisterCallback<NavigationSubmitEvent>(ev => OnLoadPressed());
+
+        _exit.RegisterCallback<ClickEvent>(ev => Application.Quit());
+        _exit.RegisterCallback<NavigationSubmitEvent>(ev => Application.Quit());
+
+        // Save slots
         _slot1.RegisterCallback<ClickEvent>(ev => SaveSlotSelected(_slot1, 0));
         _slot1.RegisterCallback<NavigationSubmitEvent>(ev => SaveSlotSelected(_slot1, 0));
 
@@ -83,12 +113,9 @@ public class NewMainMenu : MonoBehaviour
 
         _back.RegisterCallback<ClickEvent>(ev => ShowMainMenu());
         _back.RegisterCallback<NavigationSubmitEvent>(ev => ShowMainMenu());
+        _back.RegisterCallback<NavigationSubmitEvent>(ev => PlayButtonPressSound());
 
-        // Rewrite Slot dialogue
-        _rewriteSlotDlg = uiDocument.rootVisualElement.Q<VisualElement>("RewriteSlotDialog");
-        _rewrite = uiDocument.rootVisualElement.Q<Button>("RewriteSlot");
-        _backToSlotSelect = uiDocument.rootVisualElement.Q<Button>("BackToSlotSelect");
-        
+         // Rewrite Slot dialogue
         _rewrite.RegisterCallback<ClickEvent>(ev => StartCoroutine(DarkenScreenAndStartNewGame(selectedSlot)));
         _rewrite.RegisterCallback<NavigationSubmitEvent>(ev => StartCoroutine(DarkenScreenAndStartNewGame(selectedSlot)));
 
@@ -107,15 +134,87 @@ public class NewMainMenu : MonoBehaviour
         _exit.RegisterCallback<NavigationMoveEvent>(ev => PlayButtonFocusSound());
         
         _slot1.RegisterCallback<PointerEnterEvent>(ev => PlayButtonFocusSound());
+        _slot1.RegisterCallback<NavigationMoveEvent>(ev => PlayButtonFocusSound());
+
         _slot2.RegisterCallback<PointerEnterEvent>(ev => PlayButtonFocusSound());
+        _slot2.RegisterCallback<NavigationMoveEvent>(ev => PlayButtonFocusSound());
+
         _slot3.RegisterCallback<PointerEnterEvent>(ev => PlayButtonFocusSound());
+        _slot3.RegisterCallback<NavigationMoveEvent>(ev => PlayButtonFocusSound());
+
         _back.RegisterCallback<PointerEnterEvent>(ev => PlayButtonFocusSound());
+        _back.RegisterCallback<NavigationMoveEvent>(ev => PlayButtonFocusSound());
         
         _rewrite.RegisterCallback<PointerEnterEvent>(ev => PlayButtonFocusSound());
-        _backToSlotSelect.RegisterCallback<PointerEnterEvent>(ev => PlayButtonFocusSound());
+        _rewrite.RegisterCallback<NavigationMoveEvent>(ev => PlayButtonFocusSound());
 
-        ShowMainMenu();
+        _backToSlotSelect.RegisterCallback<PointerEnterEvent>(ev => PlayButtonFocusSound());
+        _backToSlotSelect.RegisterCallback<NavigationMoveEvent>(ev => PlayButtonFocusSound());
+
+    }
+
+    void UnregisterCallbacks()
+    {
+        // Root menu
+        _start.UnregisterCallback<ClickEvent>(ev => OnStartPressed());
+        _start.UnregisterCallback<NavigationSubmitEvent>(ev => OnStartPressed());
         
+        _load.UnregisterCallback<ClickEvent>(ev => OnLoadPressed());
+        _load.UnregisterCallback<NavigationSubmitEvent>(ev => OnLoadPressed());
+
+        _exit.UnregisterCallback<ClickEvent>(ev => Application.Quit());
+        _exit.UnregisterCallback<NavigationSubmitEvent>(ev => Application.Quit());
+
+        // Save slots
+        _slot1.UnregisterCallback<ClickEvent>(ev => SaveSlotSelected(_slot1, 0));
+        _slot1.UnregisterCallback<NavigationSubmitEvent>(ev => SaveSlotSelected(_slot1, 0));
+
+        _slot2.UnregisterCallback<ClickEvent>(ev => SaveSlotSelected(_slot2, 1));
+        _slot2.UnregisterCallback<NavigationSubmitEvent>(ev => SaveSlotSelected(_slot2, 0));
+
+        _slot3.UnregisterCallback<ClickEvent>(ev => SaveSlotSelected(_slot3, 2));
+        _slot3.UnregisterCallback<NavigationSubmitEvent>(ev => SaveSlotSelected(_slot3, 0));
+
+        _back.UnregisterCallback<ClickEvent>(ev => ShowMainMenu());
+        _back.UnregisterCallback<NavigationSubmitEvent>(ev => ShowMainMenu());
+        _back.UnregisterCallback<NavigationSubmitEvent>(ev => PlayButtonPressSound());
+
+         // Rewrite Slot dialogue
+        _rewrite.UnregisterCallback<ClickEvent>(ev => StartCoroutine(DarkenScreenAndStartNewGame(selectedSlot)));
+        _rewrite.UnregisterCallback<NavigationSubmitEvent>(ev => StartCoroutine(DarkenScreenAndStartNewGame(selectedSlot)));
+
+        _backToSlotSelect.UnregisterCallback<ClickEvent>(ev => OnLoadPressed());
+        _backToSlotSelect.UnregisterCallback<NavigationSubmitEvent>(ev => OnLoadPressed());
+
+
+        // Register button sound callbacks
+        _start.UnregisterCallback<PointerEnterEvent>(ev => PlayButtonFocusSound());
+        _start.UnregisterCallback<NavigationMoveEvent>(ev => PlayButtonFocusSound());
+
+        _load.UnregisterCallback<PointerEnterEvent>(ev => PlayButtonFocusSound());
+        _load.UnregisterCallback<NavigationMoveEvent>(ev => PlayButtonFocusSound());
+
+        _exit.UnregisterCallback<PointerEnterEvent>(ev => PlayButtonFocusSound());
+        _exit.UnregisterCallback<NavigationMoveEvent>(ev => PlayButtonFocusSound());
+        
+        _slot1.UnregisterCallback<PointerEnterEvent>(ev => PlayButtonFocusSound());
+        _slot1.UnregisterCallback<NavigationMoveEvent>(ev => PlayButtonFocusSound());
+
+        _slot2.UnregisterCallback<PointerEnterEvent>(ev => PlayButtonFocusSound());
+        _slot2.UnregisterCallback<NavigationMoveEvent>(ev => PlayButtonFocusSound());
+
+        _slot3.UnregisterCallback<PointerEnterEvent>(ev => PlayButtonFocusSound());
+        _slot3.UnregisterCallback<NavigationMoveEvent>(ev => PlayButtonFocusSound());
+
+        _back.UnregisterCallback<PointerEnterEvent>(ev => PlayButtonFocusSound());
+        _back.UnregisterCallback<NavigationMoveEvent>(ev => PlayButtonFocusSound());
+        
+        _rewrite.UnregisterCallback<PointerEnterEvent>(ev => PlayButtonFocusSound());
+        _rewrite.UnregisterCallback<NavigationMoveEvent>(ev => PlayButtonFocusSound());
+
+        _backToSlotSelect.UnregisterCallback<PointerEnterEvent>(ev => PlayButtonFocusSound());
+        _backToSlotSelect.UnregisterCallback<NavigationMoveEvent>(ev => PlayButtonFocusSound());
+
     }
 
     private void LoadSaveSlotInfo(Button slot, int id)
@@ -137,8 +236,7 @@ public class NewMainMenu : MonoBehaviour
 
     private void OnDestroy()
     {
-        _start.UnregisterCallback<ClickEvent>(ev => OnStartPressed());
-        _start.UnregisterCallback<PointerDownEvent>(ev => OnStartPressed());
+        UnregisterCallbacks();
     }
 
     // callbacks
@@ -146,23 +244,28 @@ public class NewMainMenu : MonoBehaviour
     {
         PlayButtonFocusSound();
         _newGame = true;
-        _rootMenu.style.display = DisplayStyle.None;
+        _titleMenu.style.display = DisplayStyle.None;
         _saveSlotSelect.style.display = DisplayStyle.Flex;
         //StartCoroutine(DarkenScreenAndStartNewGame());
     }
 
     public IEnumerator DarkenScreenAndStartNewGame(int id)
     {
+        // hide menu
+        _mainMenu.style.display = DisplayStyle.None;
+        _hud.style.display = DisplayStyle.Flex;
+        UnregisterCallbacks();
+
+
         // darken
-        yield return Game.SharedInstance.SetScreenAlphaAsync(0f, 1f, 0.6f);
         Game.SharedInstance.StartNewGame(id);
     }
 
         // callbacks
     public void OnLoadPressed()
     {
-        PlayButtonFocusSound();
-        _rootMenu.style.display = DisplayStyle.None;
+        PlayButtonPressSound();
+        _titleMenu.style.display = DisplayStyle.None;
         _saveSlotSelect.style.display = DisplayStyle.Flex;
         _rewriteSlotDlg.style.display = DisplayStyle.None;
         _slot1.Focus();
@@ -170,7 +273,7 @@ public class NewMainMenu : MonoBehaviour
 
     public void SaveSlotSelected(Button slot, int id)
     {
-        PlayButtonFocusSound();
+        PlayButtonPressSound();
         if (_newGame) {
             if (slot.text != "Empty") {
                 selectedSlot = id;
@@ -191,7 +294,11 @@ public class NewMainMenu : MonoBehaviour
 
     public IEnumerator DarkenScreenAndStartLoadGame(int id)
     {
-        yield return Game.SharedInstance.SetScreenAlphaAsync(0f, 1f, 0.6f);
+        // hide menu
+        _mainMenu.style.display = DisplayStyle.None;
+        _hud.style.display = DisplayStyle.Flex;
+        UnregisterCallbacks();
+
         Game.SharedInstance.LoadGame(id);
     }
 
@@ -200,12 +307,34 @@ public class NewMainMenu : MonoBehaviour
         GetComponent<AudioSource>().PlayOneShot(sound_select);
     }
 
+    public void PlayButtonPressSound()
+    {
+        GetComponent<AudioSource>().PlayOneShot(sound_press);
+    }
+
     public void ShowMainMenu()
     {
-        _rootMenu.style.display = DisplayStyle.Flex;
+        _mainMenu.style.display = DisplayStyle.Flex;
+        _hud.style.display = DisplayStyle.None;
+        _controlsMenu.style.display = DisplayStyle.None;
+
+
+        _titleMenu.style.display = DisplayStyle.Flex;
         _saveSlotSelect.style.display = DisplayStyle.None;
         _rewriteSlotDlg.style.display = DisplayStyle.None;
         _start.Focus();
+    }
+
+    public void ShowInGameMenu()
+    {
+        _hud.style.display = DisplayStyle.None;
+        _controlsMenu.style.display = DisplayStyle.Flex;
+    }
+
+    public void HideInGameMenu()
+    {
+        _hud.style.display = DisplayStyle.Flex;
+        _controlsMenu.style.display = DisplayStyle.None;
     }
 
 }

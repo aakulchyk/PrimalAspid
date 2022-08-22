@@ -60,4 +60,6 @@ public static class PlayerStats
     public static bool HalfLifeCollected { get; set; }
 
     public static bool HalfStaminaCollected { get; set; }
+
+    public static bool ObtainedSomeImportantShit_changeMyName { get; set; }
 }

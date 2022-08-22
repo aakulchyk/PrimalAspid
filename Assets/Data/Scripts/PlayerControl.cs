@@ -42,7 +42,9 @@ public class PlayerControl : MonoBehaviour
     private InputAction interactAction;
 
     private InputAction menuAction;
-    //private InputAction escapeAction;
+    private InputAction submitAction;
+    // temp
+    private InputAction exitAction;
 
     
     [Header ("Sounds")]
@@ -167,6 +169,14 @@ public class PlayerControl : MonoBehaviour
         menuAction = playerInputActions.UI.Menu;
         menuAction.Enable();
         menuAction.performed += OnMenuPressed;
+
+        submitAction = playerInputActions.UI.Submit;
+        submitAction.Enable();
+        submitAction.performed += OnSubmitPressed;
+
+        exitAction = playerInputActions.UI.Exit;
+        exitAction.Enable();
+        exitAction.performed += OnExitPressed;
     }
 
     private void OnDisable()
@@ -177,6 +187,8 @@ public class PlayerControl : MonoBehaviour
         hitAction.Disable();
         interactAction.Disable();
         menuAction.Disable();
+        submitAction.Disable();
+        exitAction.Disable();
     }
 
     private Game GetGame()
@@ -495,16 +507,33 @@ public class PlayerControl : MonoBehaviour
 
     private void OnMenuPressed(InputAction.CallbackContext context)
     {
+        /*if (GetGame().isPopupOpen) {
+            GetGame().ClosePopup();
+            return;
+        }*/
+
+        
+        if (GetGame().isMenuOpen) {
+            Time.timeScale = 1;
+            GetGame().CloseInGameMenu();
+        }
+        else {
+            Time.timeScale = 0;
+            GetGame().OpenInGameMenu();
+        }
+    }
+
+    private void OnSubmitPressed(InputAction.CallbackContext context)
+    {
         if (GetGame().isPopupOpen) {
             GetGame().ClosePopup();
             return;
         }
-
-        
-        if (GetGame().isMenuOpen)
-            GetGame().CloseSpeciesMenu();
-        else
-            GetGame().OpenSpeciesMenu();
+    }
+    
+    private void OnExitPressed(InputAction.CallbackContext context)
+    {
+        Application.Quit();
     }
 
     public void AnticipateAttack()
@@ -887,12 +916,12 @@ public class PlayerControl : MonoBehaviour
             }
         }
 
-        if (other.tag == "Text" && PlayerStats.ShowTutorial) { 
+        /*if (other.tag == "Text" && PlayerStats.ShowTutorial) { 
             Text text = other.gameObject.GetComponent<Text>();
             GetGame().SetPopupText("Tutorial", text.text);
             other.gameObject.SetActive(false);
             GetGame().OpenPopup();
-        }
+        }*/
 
         if (other.tag == "Enemy") {
             GameObject parentObj = other.transform.parent.gameObject;

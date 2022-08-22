@@ -6,11 +6,12 @@ using UnityEngine;
 public class StaticNpcBehavior : NpcBehavior
 {
     private bool faceRight = false;
+    private bool _firstEncounder;
 
+    [Header ("Texts")]
     public string[] initialTexts;
     public string[] randomTexts;
 
-    private bool _firstEncounder;
 
     void Start()
     {
@@ -22,7 +23,8 @@ public class StaticNpcBehavior : NpcBehavior
     void Update()
     {
         Transform target = PlayerTransform();
-        EnsureRightDirection(target); 
+        if (target)
+            EnsureRightDirection(target); 
     }
 
     void EnsureRightDirection(Transform pt)

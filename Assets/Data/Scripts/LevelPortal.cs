@@ -35,7 +35,7 @@ public class LevelPortal : MonoBehaviour
 
     IEnumerator LoadNextLevelAsync()
     {
-        yield return Game.SharedInstance.SetScreenAlphaAsync(0f, 1f, 0.6f);
+        Game.SharedInstance.showBlackScreen = true;
         //  LoadSceneMode.Additive
         AsyncOperation asyncLoad = SceneManager.LoadSceneAsync("LD_" + sceneToLoad);
 

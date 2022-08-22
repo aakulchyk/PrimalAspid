@@ -27,6 +27,9 @@ public class Collectable : MonoBehaviour
 
         collected = true;
 
+        // TEMP
+        PlayerStats.ObtainedSomeImportantShit_changeMyName = true;
+
         // apply stats
         Debug.Log("Collect item. ");
 

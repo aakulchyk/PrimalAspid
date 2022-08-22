@@ -42,9 +42,11 @@ public class PcAttack : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D other) {
         if (other.tag=="Enemy") {
-            NpcBehavior behavior = other.gameObject.GetComponent<NpcBehavior>();
             Vector3 dir = (other.transform.position - player.transform.position).normalized;
-            behavior.hurt(new Vector2(dir.x*50, 1), Types.DamageType.PcHit);
+            
+            NpcBehavior behavior = other.gameObject.GetComponent<NpcBehavior>();
+            if (behavior)
+                behavior.hurt(new Vector2(dir.x*50, 1), Types.DamageType.PcHit);
             player.cameraEffects.Shake(0.3f, 1000, 0.4f);
             player.knockback(new Vector2(-dir.x*15f, 0));
             PlayerStats.FullyRestoreStamina();

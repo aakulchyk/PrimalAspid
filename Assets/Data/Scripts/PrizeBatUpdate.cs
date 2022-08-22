@@ -10,6 +10,7 @@ public class PrizeBatUpdate : Collectable
         collected = true;
         
         PlayerStats.BatWingsUnlocked = true;
+        PlayerStats.MaxStamina = 2;
 
         GetComponent<AudioSource>().PlayOneShot(clip_collect);
         _renderer.enabled = false;

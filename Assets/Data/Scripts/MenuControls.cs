@@ -17,8 +17,6 @@ public class MenuControls : MonoBehaviour
     
     public void StartPressed()
     {
-        //Game.SharedInstance.DarkenScreenAsync();
-        //Game.SharedInstance.StartNewGame();
         StartCoroutine(OnStartPressed());
     }
 
@@ -28,14 +26,12 @@ public class MenuControls : MonoBehaviour
         //if (!Game.SharedInstance.CheckIfGameSaveExistsAndNeedsToBeSaved())
         {
             // darken
-            yield return Game.SharedInstance.SetScreenAlphaAsync(0f, 1f, 0.6f);
             Game.SharedInstance.StartNewGame(0);
         }
     }
 
     public void ContinuePressed()
     {
-        //Game.SharedInstance.DarkenScreenAsync();
         Game.SharedInstance.LoadGame(0);
     }
 
