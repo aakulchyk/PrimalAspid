@@ -13,11 +13,6 @@ public class SpeciesSelectMenu : MonoBehaviour
         gameObject.SetActive(false);
     }
 
-    void Update()
-    {
-
-    }
-
     public void Open()
     {
         Time.timeScale = 0;

@@ -49,8 +49,6 @@ public class NewMainMenu : MonoBehaviour
 
         Debug.Log("UI Start");
 
-        Game.SharedInstance.showBlackScreen = false;
-
         // The UXML is already instantiated by the UIDocument component
         var uiDocument = GetComponent<UIDocument>();
 
@@ -251,10 +249,14 @@ public class NewMainMenu : MonoBehaviour
 
     public IEnumerator DarkenScreenAndStartNewGame(int id)
     {
+        Game.SharedInstance.DarkenScreen();
+        yield return new WaitForSeconds(0.5f);
         // hide menu
         _mainMenu.style.display = DisplayStyle.None;
         _hud.style.display = DisplayStyle.Flex;
         UnregisterCallbacks();
+
+        //yield return new WaitForSeconds(0.01f);
 
 
         // darken
@@ -294,10 +296,14 @@ public class NewMainMenu : MonoBehaviour
 
     public IEnumerator DarkenScreenAndStartLoadGame(int id)
     {
+        Game.SharedInstance.DarkenScreen();
+        yield return new WaitForSeconds(0.5f);
         // hide menu
         _mainMenu.style.display = DisplayStyle.None;
         _hud.style.display = DisplayStyle.Flex;
         UnregisterCallbacks();
+
+        //yield return new WaitForSeconds(0.1f);
 
         Game.SharedInstance.LoadGame(id);
     }

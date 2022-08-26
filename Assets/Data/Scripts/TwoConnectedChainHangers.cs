@@ -24,11 +24,11 @@ public class TwoConnectedChainHangers : MonoBehaviour
     private float _chainHeight;
     void Start()
     {
-        Debug.Log("low: " + lowestPos.position.y);
+        /*Debug.Log("low: " + lowestPos.position.y);
         Debug.Log("high: " + highestPos.position.y);
 
         Debug.Log("left: " + leftHanger.hangerTransform().position.y);
-        Debug.Log("right: " + rightHanger.hangerTransform().position.y);
+        Debug.Log("right: " + rightHanger.hangerTransform().position.y);*/
 
         _chainHeight = leftChain.position.y - leftHanger.hangerTransform().position.y;
     }

@@ -49,6 +49,7 @@ public class Game : MonoBehaviour
     public NewMainMenu _mainMenu;
 
     public bool showBlackScreen = false;
+    [SerializeField] private GameObject blackScreen;
 
 
     private void Awake()
@@ -57,7 +58,7 @@ public class Game : MonoBehaviour
         if (SharedInstance == null) {
             SharedInstance = this;
             DontDestroyOnLoad(gameObject);
-            showBlackScreen = true;
+            blackScreen.GetComponent<RectTransform>().sizeDelta = new Vector2(Screen.width, Screen.height);
 
             DontDestroyOnLoad(eventSystem);
         }
@@ -66,9 +67,8 @@ public class Game : MonoBehaviour
 
     private void OnLevelWasLoaded(int level)
     {
-        currentScene = SceneManager.GetActiveScene().name.Substring(2);
+        currentScene = SceneManager.GetActiveScene().name.Substring(3);
         Debug.Log("Game - OnLevelWasLoaded " + level + " " + currentScene);
-        showBlackScreen = false;
     }
 
     public void MemorizeCheckPoint(Vector2 pos)
@@ -158,7 +158,6 @@ public class Game : MonoBehaviour
 
     public void StartNewGame(int slot)
     {
-        showBlackScreen = true;
 
         selectedSaveSlot = slot;
 
@@ -177,8 +176,6 @@ public class Game : MonoBehaviour
 
     public void LoadGame(int slot)
     {
-        showBlackScreen = true;
-
         selectedSaveSlot = slot;
 
         if (!File.Exists(SaveFileFullPath(selectedSaveSlot))) {
@@ -317,17 +314,12 @@ public class Game : MonoBehaviour
         popupWindow.SetActive(false);
     }
 
-    public void DarkenScreenAsync() {
+    public void DarkenScreen() {
+        blackScreen.GetComponent<Animator>().SetBool("loading", true);
     }
 
-    public void LightenScreenAsync() {
+    public void LightenScreen() {
+        blackScreen.GetComponent<Animator>().SetBool("loading", false);
     }
-
-    private IEnumerator WaitWhilePopupOpen() {
-
-        while (isPopupOpen) {
-            yield return new WaitForSeconds(0.1f);
-        }
-    }
-   
+  
 }

@@ -9,10 +9,4 @@ public class MainCameraBehavior : MonoBehaviour
     {
         Game.SharedInstance.mainCamera = GetComponent<Camera>();
     }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 }

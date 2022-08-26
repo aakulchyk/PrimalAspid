@@ -943,7 +943,7 @@ PrefabInstance:
     - target: {fileID: 5900883146737035819, guid: 305294212f70c3d4486677ea9c6f4586,
         type: 3}
       propertyPath: m_Anchor.y
-      value: -9
+      value: -2.6
       objectReference: {fileID: 0}
     - target: {fileID: 7880432505085843265, guid: 305294212f70c3d4486677ea9c6f4586,
         type: 3}
@@ -953,12 +953,12 @@ PrefabInstance:
     - target: {fileID: 7880432505085843265, guid: 305294212f70c3d4486677ea9c6f4586,
         type: 3}
       propertyPath: m_LocalScale.x
-      value: 0.14208984
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7880432505085843265, guid: 305294212f70c3d4486677ea9c6f4586,
         type: 3}
       propertyPath: m_LocalScale.y
-      value: 0.28515625
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7880432505085843265, guid: 305294212f70c3d4486677ea9c6f4586,
         type: 3}
@@ -1019,42 +1019,52 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: -1738717858787898450, guid: 96d0fd4650c8216479a456fef9bb6fc1,
+      objectReference: {fileID: 21300000, guid: 277128f27b3e3443eb80ea302e0022f9,
         type: 3}
     - target: {fileID: 7880432505085843270, guid: 305294212f70c3d4486677ea9c6f4586,
         type: 3}
       propertyPath: m_DrawMode
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7880432505085843271, guid: 305294212f70c3d4486677ea9c6f4586,
         type: 3}
       propertyPath: m_Size.x
-      value: 10
+      value: 1.3243408
       objectReference: {fileID: 0}
     - target: {fileID: 7880432505085843271, guid: 305294212f70c3d4486677ea9c6f4586,
         type: 3}
       propertyPath: m_Size.y
-      value: 5
+      value: 1.2314682
+      objectReference: {fileID: 0}
+    - target: {fileID: 7880432505085843271, guid: 305294212f70c3d4486677ea9c6f4586,
+        type: 3}
+      propertyPath: m_Offset.x
+      value: -0.001953125
       objectReference: {fileID: 0}
     - target: {fileID: 7880432505085843271, guid: 305294212f70c3d4486677ea9c6f4586,
         type: 3}
       propertyPath: m_Offset.y
-      value: -0.83
+      value: -0.22169876
+      objectReference: {fileID: 0}
+    - target: {fileID: 7880432505085843271, guid: 305294212f70c3d4486677ea9c6f4586,
+        type: 3}
+      propertyPath: m_SpriteTilingProperty.pivot.y
+      value: 0.55
       objectReference: {fileID: 0}
     - target: {fileID: 7880432505085843271, guid: 305294212f70c3d4486677ea9c6f4586,
         type: 3}
       propertyPath: m_SpriteTilingProperty.drawMode
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7880432505085843271, guid: 305294212f70c3d4486677ea9c6f4586,
         type: 3}
       propertyPath: m_SpriteTilingProperty.oldSize.x
-      value: 2.91
+      value: 2.14
       objectReference: {fileID: 0}
     - target: {fileID: 7880432505085843271, guid: 305294212f70c3d4486677ea9c6f4586,
         type: 3}
       propertyPath: m_SpriteTilingProperty.oldSize.y
-      value: 2.92
+      value: 2.14
       objectReference: {fileID: 0}
     - target: {fileID: 8228356430927079950, guid: 305294212f70c3d4486677ea9c6f4586,
         type: 3}
@@ -1108,9 +1118,9 @@ HingeJoint2D:
   m_ConnectedRigidBody: {fileID: 5180981357687616583}
   m_BreakForce: Infinity
   m_BreakTorque: Infinity
-  m_AutoConfigureConnectedAnchor: 1
-  m_Anchor: {x: 0, y: 2.68}
-  m_ConnectedAnchor: {x: 0.5397676, y: -0.43143925}
+  m_AutoConfigureConnectedAnchor: 0
+  m_Anchor: {x: 0, y: 0.512}
+  m_ConnectedAnchor: {x: 0.5397676, y: -0.512}
   m_UseMotor: 0
   m_Motor:
     m_MotorSpeed: 0
@@ -1119,3 +1129,112 @@ HingeJoint2D:
   m_AngleLimits:
     m_LowerAngle: 0
     m_UpperAngle: 359
+--- !u!82 &8487258319500061392
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3082091583268251605}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 0}
+  m_PlayOnAwake: 1
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+--- !u!114 &9020076120015928829
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3082091583268251605}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e64a11d183270e46ab52eba5fd582e0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  clip_hit: {fileID: 8300000, guid: 0be7166a9f46b52408f6d210cc374970, type: 3}

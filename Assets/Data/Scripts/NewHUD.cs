@@ -28,7 +28,7 @@ public class NewHUD : MonoBehaviour
     {
         var uiDocument = GetComponent<UIDocument>();
 
-        //_start = uiDocument.rootVisualElement.Q<VisualElement>("HpBar");
+        _hud = uiDocument.rootVisualElement.Q<VisualElement>("HUD");
         //_hp = uiDocument.rootVisualElement.Q<Label>("HpListView");
 
 
@@ -84,12 +84,6 @@ public class NewHUD : MonoBehaviour
 
     void Update()
     {
-        // Black screen
-        if (Game.SharedInstance.showBlackScreen) {
-            _blackScreen.style.display = DisplayStyle.Flex;
-        } else
-            _blackScreen.style.display = DisplayStyle.None;
-
         // HP
         for (int i=0; i<PlayerStats.MAX_HP; i++) {
             hpBar[i].style.visibility = Visibility.Visible;

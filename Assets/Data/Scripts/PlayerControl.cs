@@ -3,11 +3,16 @@ using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using UnityEngine.VFX;
 using UnityEngine.InputSystem;
+using UnityEngine.InputSystem.Users;
+using UnityEngine.Assertions;
 
 using System;
 using System.Text;
 using System.Collections;
 using System.Collections.Generic;
+
+
+
 
 
 
@@ -177,6 +182,9 @@ public class PlayerControl : MonoBehaviour
         exitAction = playerInputActions.UI.Exit;
         exitAction.Enable();
         exitAction.performed += OnExitPressed;
+
+
+        InputUser.onChange += onInputDeviceChange;
     }
 
     private void OnDisable()
@@ -189,6 +197,8 @@ public class PlayerControl : MonoBehaviour
         menuAction.Disable();
         submitAction.Disable();
         exitAction.Disable();
+
+        InputUser.onChange -= onInputDeviceChange;
     }
 
     private Game GetGame()
@@ -500,6 +510,9 @@ public class PlayerControl : MonoBehaviour
     private void OnInteractPressed(InputAction.CallbackContext context)
     {
         if (GetGame().isPopupOpen) return;
+
+        if (!_isGrounded) return;
+
         if (activeInteractor && activeInteractor.openForInteraction) {
             activeInteractor.Interact();
         } 
@@ -507,12 +520,10 @@ public class PlayerControl : MonoBehaviour
 
     private void OnMenuPressed(InputAction.CallbackContext context)
     {
-        /*if (GetGame().isPopupOpen) {
-            GetGame().ClosePopup();
+        if (GetGame().isPopupOpen) {
             return;
-        }*/
+        }
 
-        
         if (GetGame().isMenuOpen) {
             Time.timeScale = 1;
             GetGame().CloseInGameMenu();
@@ -916,13 +927,6 @@ public class PlayerControl : MonoBehaviour
             }
         }
 
-        /*if (other.tag == "Text" && PlayerStats.ShowTutorial) { 
-            Text text = other.gameObject.GetComponent<Text>();
-            GetGame().SetPopupText("Tutorial", text.text);
-            other.gameObject.SetActive(false);
-            GetGame().OpenPopup();
-        }*/
-
         if (other.tag == "Enemy") {
             GameObject parentObj = other.transform.parent.gameObject;
             NpcBehavior behavior =  parentObj.GetComponent<NpcBehavior>();
@@ -940,17 +944,16 @@ public class PlayerControl : MonoBehaviour
         if (isDead) return; // one cannot die twice...
         if (invulnerable) return;
 
-        //body.AddForce(force);
         knockback(force);
         cameraEffects.Shake(0.6f, 1000, 1f);
         
         if (--PlayerStats.HP < 0) {
-            sounds.volume = 0.5f;
+            body.constraints |= RigidbodyConstraints2D.FreezePositionX | RigidbodyConstraints2D.FreezePositionY;
+             sounds.volume = 0.5f;
             sounds.PlayOneShot(clip_death);
             _isPlayingWalkSound = false;
             anim.SetBool("IsDying", true);
             isDead = true;
-            body.velocity = Vector2.zero;
         } else {
             anim.SetTrigger("Hurt");
             if (sounds.isPlaying)
@@ -995,6 +998,14 @@ public class PlayerControl : MonoBehaviour
         anim.SetBool("IsDying", false);
         PlayerStats.Deaths++;
         Debug.Log("Deaths: " + PlayerStats.Deaths);
+        
+        StartCoroutine(DarkenScreenAndReload());
+    }
+
+    IEnumerator DarkenScreenAndReload()
+    {
+        Game.SharedInstance.DarkenScreen();
+        yield return new WaitForSeconds(0.5F);
         Game.SharedInstance.LoadGame(Game.SharedInstance.selectedSaveSlot);
     }
 
@@ -1006,5 +1017,18 @@ public class PlayerControl : MonoBehaviour
     {
         body.velocity = Vector3.zero;
         _controlEnabled = val;
+    }
+
+    void onInputDeviceChange(InputUser user, InputUserChange change, InputDevice device) {
+        if (change == InputUserChange.ControlSchemeChanged) {
+            //updateButtonImage(user.controlScheme.Value.name);
+            var output = JsonUtility.ToJson(user.controlScheme, true);
+
+            if (user.controlScheme != null) {
+                InputControlScheme scheme = user.controlScheme.Value;
+
+                PlayerPrefs.SetString( "ControlScheme", scheme.name);
+            }
+        }
     }
 }

@@ -91,22 +91,22 @@ PrefabInstance:
     - target: {fileID: 262236393742858153, guid: 46320b652e7f4d9478949dd7d78890c3,
         type: 3}
       propertyPath: m_Anchor.x
-      value: -4.79
+      value: -0.17
       objectReference: {fileID: 0}
     - target: {fileID: 262236393742858153, guid: 46320b652e7f4d9478949dd7d78890c3,
         type: 3}
       propertyPath: m_Anchor.y
-      value: 2.58
+      value: 0.7
       objectReference: {fileID: 0}
     - target: {fileID: 262236393742858153, guid: 46320b652e7f4d9478949dd7d78890c3,
         type: 3}
       propertyPath: m_ConnectedAnchor.x
-      value: 0.48
+      value: 0.512
       objectReference: {fileID: 0}
     - target: {fileID: 262236393742858153, guid: 46320b652e7f4d9478949dd7d78890c3,
         type: 3}
       propertyPath: m_ConnectedAnchor.y
-      value: -0.56
+      value: -0.512
       objectReference: {fileID: 0}
     - target: {fileID: 262236393742858153, guid: 46320b652e7f4d9478949dd7d78890c3,
         type: 3}
@@ -176,6 +176,11 @@ PrefabInstance:
         type: 3}
     - target: {fileID: 7998196125674928469, guid: 46320b652e7f4d9478949dd7d78890c3,
         type: 3}
+      propertyPath: m_SpriteTilingProperty.pivot.y
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 7998196125674928469, guid: 46320b652e7f4d9478949dd7d78890c3,
+        type: 3}
       propertyPath: m_SpriteTilingProperty.oldSize.x
       value: 10.24
       objectReference: {fileID: 0}
@@ -188,6 +193,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Block_RigidHanger_1x1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8183981741030147100, guid: 46320b652e7f4d9478949dd7d78890c3,
+        type: 3}
+      propertyPath: m_Mass
+      value: 20
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 46320b652e7f4d9478949dd7d78890c3, type: 3}
@@ -324,12 +334,12 @@ PrefabInstance:
     - target: {fileID: 202586209637079420, guid: f240a22a086ec4d4ead874c6d1fa9efc,
         type: 3}
       propertyPath: m_ConnectedAnchor.x
-      value: 4.97
+      value: 0.12
       objectReference: {fileID: 0}
     - target: {fileID: 202586209637079420, guid: f240a22a086ec4d4ead874c6d1fa9efc,
         type: 3}
       propertyPath: m_ConnectedAnchor.y
-      value: 2.32
+      value: 0.7
       objectReference: {fileID: 0}
     - target: {fileID: 202586209637079420, guid: f240a22a086ec4d4ead874c6d1fa9efc,
         type: 3}
@@ -1736,7 +1746,7 @@ HingeJoint2D:
   m_BreakForce: Infinity
   m_BreakTorque: Infinity
   m_AutoConfigureConnectedAnchor: 0
-  m_Anchor: {x: -1.28, y: 0}
+  m_Anchor: {x: -0.07, y: -1.26}
   m_ConnectedAnchor: {x: 0.512, y: -0.512}
   m_UseMotor: 0
   m_Motor:

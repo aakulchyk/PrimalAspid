@@ -20119,7 +20119,7 @@ MonoBehaviour:
   - {x: -0.79925203, y: 1.3546127, z: 0}
   m_ShapePathHash: -1126395471
   m_Mesh: {fileID: 0}
-  m_InstanceId: 422264
+  m_InstanceId: 289878
 --- !u!114 &5205005178100962209
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -20147,7 +20147,7 @@ MonoBehaviour:
       m_Calls: []
   m_ActionEvents: []
   m_NeverAutoSwitchControlSchemes: 0
-  m_DefaultControlScheme: 
+  m_DefaultControlScheme: Keyboard&Mouse
   m_DefaultActionMap: Player
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 0}

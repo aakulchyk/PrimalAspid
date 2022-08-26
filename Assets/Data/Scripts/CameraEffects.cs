@@ -38,6 +38,15 @@ public class CameraEffects : MonoBehaviour
 
         //Tells the virtualCamera what to follow
         virtualCamera.Follow = Utils.GetPlayer().transform;
+
+        //Game.SharedInstance.LightenScreen();
+        StartCoroutine(LightenScreenAsync());
+    }
+
+    IEnumerator LightenScreenAsync()
+    {
+        yield return new WaitForSeconds(0.2F);
+        Game.SharedInstance.LightenScreen();
     }
 
     void Update()

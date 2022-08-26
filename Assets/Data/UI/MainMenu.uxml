@@ -1,7 +1,7 @@
 <ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" editor-extension-mode="False">
     <Style src="project://database/Assets/Data/UI/Styles/MenuStyles.uss?fileID=7433441132597879392&amp;guid=a216dd5915f54a346882bd710720afc6&amp;type=3#MenuStyles" />
     <ui:VisualElement name="MainMenu" style="background-image: url(&apos;project://database/Assets/Data/Sprites/UI/ui-menu-bat.png?fileID=21300000&amp;guid=cefcfd4033d0ee84fa72bd2c6252fc03&amp;type=3#ui-menu-bat&apos;); height: auto; flex-grow: 1; background-color: rgb(105, 104, 141); -unity-background-image-tint-color: rgba(45, 71, 106, 0.28); flex-wrap: nowrap; border-left-width: 10px; border-right-width: 10px; border-top-width: 10px; border-bottom-width: 10px; border-top-left-radius: 10px; border-bottom-left-radius: 10px; border-top-right-radius: 10px; border-bottom-right-radius: 10px; top: 0; align-items: center; justify-content: center; display: flex; visibility: visible;">
-        <ui:VisualElement name="TitleMenu" style="justify-content: center; align-items: center; padding-left: 0; padding-right: 0; padding-top: 0; padding-bottom: 0; margin-top: 0; margin-bottom: 100px; margin-left: 0; margin-right: 0; flex-wrap: nowrap; flex-direction: column; cursor: url(&apos;project://database/Assets/Data/Sprites/UI/ui-menu-bat.png?fileID=21300000&amp;guid=cefcfd4033d0ee84fa72bd2c6252fc03&amp;type=3#ui-menu-bat&apos;); opacity: 1; display: none;">
+        <ui:VisualElement name="TitleMenu" style="justify-content: center; align-items: center; padding-left: 0; padding-right: 0; padding-top: 0; padding-bottom: 0; margin-top: 0; margin-bottom: 100px; margin-left: 0; margin-right: 0; flex-wrap: nowrap; flex-direction: column; cursor: url(&apos;project://database/Assets/Data/Sprites/UI/ui-menu-bat.png?fileID=21300000&amp;guid=cefcfd4033d0ee84fa72bd2c6252fc03&amp;type=3#ui-menu-bat&apos;); opacity: 1; display: flex;">
             <ui:VisualElement name="Title" style="margin-left: 0; margin-right: 0; margin-top: 100px; margin-bottom: 150px; width: 100%; padding-bottom: 10px; display: flex;">
                 <ui:Label text="Grim Saviour" display-tooltip-when-elided="true" name="GameTitle" style="font-size: 100%; -unity-text-align: middle-center; -unity-font-style: bold; padding-bottom: 5px; justify-content: center; width: 100%;" />
                 <ui:Label text="Demo Version 0.2 " display-tooltip-when-elided="true" style="align-items: auto; font-size: 20%; -unity-text-align: upper-center;" />
@@ -13,7 +13,7 @@
             </ui:VisualElement>
             <ui:VisualElement name="Bottom" />
         </ui:VisualElement>
-        <ui:VisualElement name="SaveSlotSelect" style="width: 90%; height: 552px; flex-grow: 0; display: flex;">
+        <ui:VisualElement name="SaveSlotSelect" style="width: 90%; height: 552px; flex-grow: 0; display: none;">
             <ui:Label text="Select your Game Save Slot" display-tooltip-when-elided="true" style="font-size: 38%; -unity-text-align: middle-center; white-space: nowrap; margin-bottom: 50px;" />
             <ui:VisualElement name="SlotGroup" style="flex-direction: row; align-items: auto; justify-content: center; padding-left: 10px; padding-right: 10px; padding-top: 10px; padding-bottom: 10px; margin-left: 0; margin-right: 0; margin-top: 0; margin-bottom: 0; flex-grow: 1; height: 479px;">
                 <ui:Button text="Empty&#10;" display-tooltip-when-elided="true" enable-rich-text="true" name="Slot1" class="save-slot" />

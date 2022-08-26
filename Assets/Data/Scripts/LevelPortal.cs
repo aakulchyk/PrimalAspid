@@ -22,20 +22,27 @@ public class LevelPortal : MonoBehaviour
     {
         if (triggered)
             return;
+
         triggered = true;
         
-        Destroy(player);
+        Destroy(player, 0.1f);
+        StartCoroutine(TransferAsync());
+    }
+
+    IEnumerator TransferAsync()
+    {
+        Game.SharedInstance.DarkenScreen();
+        yield return new WaitForSeconds(0.5F);
+
         Debug.Log("Spawning at point: " + spawnPoint.position);
         SpawnManager.SharedInstance.SetSpawn(spawnPoint.position, backward);
 
-        //var currSceneIndex = SceneManager.GetActiveScene().buildIndex;
         StartCoroutine(LoadNextLevelAsync());
-        //StartCoroutine(UnloadCurrentLevelAsync(currSceneIndex));
     }
 
     IEnumerator LoadNextLevelAsync()
     {
-        Game.SharedInstance.showBlackScreen = true;
+        
         //  LoadSceneMode.Additive
         AsyncOperation asyncLoad = SceneManager.LoadSceneAsync("LD_" + sceneToLoad);
 

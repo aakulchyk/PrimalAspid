@@ -15,12 +15,6 @@ public class DeathZone : MonoBehaviour
         
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
     void OnTriggerEnter2D(Collider2D other) {
         //GetComponent<AudioSource>().PlayOneShot(clip_splash);
 
