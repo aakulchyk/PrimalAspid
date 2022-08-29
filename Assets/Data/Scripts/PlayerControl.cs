@@ -158,10 +158,10 @@ public class PlayerControl : MonoBehaviour
 
         jumpAction = playerInputActions.Player.Jump;
         jumpAction.Enable();
+        jumpAction.performed += OnJumpPressed;
 
         floatAction = playerInputActions.Player.Float;
         floatAction.Enable();
-        jumpAction.performed += OnJumpPressed;
 
         hitAction = playerInputActions.Player.Fire;
         hitAction.Enable();
@@ -179,9 +179,9 @@ public class PlayerControl : MonoBehaviour
         submitAction.Enable();
         submitAction.performed += OnSubmitPressed;
 
-        exitAction = playerInputActions.UI.Exit;
+        /*exitAction = playerInputActions.UI.Exit;
         exitAction.Enable();
-        exitAction.performed += OnExitPressed;
+        exitAction.performed += OnExitPressed;*/
 
 
         InputUser.onChange += onInputDeviceChange;
@@ -196,7 +196,7 @@ public class PlayerControl : MonoBehaviour
         interactAction.Disable();
         menuAction.Disable();
         submitAction.Disable();
-        exitAction.Disable();
+        //exitAction.Disable();
 
         InputUser.onChange -= onInputDeviceChange;
     }
@@ -518,19 +518,24 @@ public class PlayerControl : MonoBehaviour
         } 
     }
 
+    public void DisableJumpAction(bool disable) {
+        if (disable) {
+            jumpAction.Disable();
+        } else
+            jumpAction.Enable();
+    }
+
     private void OnMenuPressed(InputAction.CallbackContext context)
     {
         if (GetGame().isPopupOpen) {
             return;
         }
 
-        if (GetGame().isMenuOpen) {
-            Time.timeScale = 1;
-            GetGame().CloseInGameMenu();
-        }
-        else {
-            Time.timeScale = 0;
+        if (!GetGame().isMenuOpen) {
+            Debug.Log("OnMenuPressed");
             GetGame().OpenInGameMenu();
+        } else {
+            GetGame().CloseInGameMenu();
         }
     }
 
@@ -542,10 +547,10 @@ public class PlayerControl : MonoBehaviour
         }
     }
     
-    private void OnExitPressed(InputAction.CallbackContext context)
+    /*private void OnExitPressed(InputAction.CallbackContext context)
     {
         Application.Quit();
-    }
+    }*/
 
     public void AnticipateAttack()
     {
@@ -865,7 +870,7 @@ public class PlayerControl : MonoBehaviour
         if (collider == null || invulnerable == true)
             return;
 
-        if (collider.tag == "Ground" || collider.tag == "StickyWall") {
+        if (collider.tag == "Platform" || collider.tag == "StickyWall") {
             thisTransform.parent.SetParent(collider.gameObject.transform, true);
             platformBody = collider.gameObject.GetComponent<Rigidbody2D>();
         }
@@ -894,7 +899,7 @@ public class PlayerControl : MonoBehaviour
 
     void OnCollisionExit2d(Collision2D collision)
     {
-        if (collision.collider.tag == "Ground" || collision.collider.tag == "StickyWall") {
+        if (collision.collider.tag == "Platform" || collision.collider.tag == "StickyWall") {
             thisTransform.parent.parent = null;
             platformBody = null;
         }
@@ -907,8 +912,7 @@ public class PlayerControl : MonoBehaviour
             return;
         }
 
-        if (other.tag == "Collectable") 
-        {
+        if (other.tag == "Collectable") {
             other.gameObject.GetComponent<Collectable>().GetCollected();
         }
 
@@ -1026,8 +1030,7 @@ public class PlayerControl : MonoBehaviour
 
             if (user.controlScheme != null) {
                 InputControlScheme scheme = user.controlScheme.Value;
-
-                PlayerPrefs.SetString( "ControlScheme", scheme.name);
+                Utils.SaveCurrentControlScheme(scheme.name);
             }
         }
     }

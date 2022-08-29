@@ -42,7 +42,6 @@ public class Game : MonoBehaviour
     private int popupCloseStatus = 0; // 0=ok, 1=yes. -1=no
 
     public GameObject closePopupButton;
-    public GameObject yesNoPopupButtons;
 
     public int selectedSaveSlot;
 
@@ -134,11 +133,14 @@ public class Game : MonoBehaviour
         PlayerPrefs.DeleteAll();
         Debug.Log("Game Deleted");
     }
+    
+    public void MakeScreenshot()
+    {
+        ScreenCapture.CaptureScreenshot(SaveFileFullPath(selectedSaveSlot) + ".screen");
+    }
 
     public void SaveGame()
     {
-        ScreenCapture.CaptureScreenshot(SaveFileFullPath(selectedSaveSlot) + ".screen");
-
         Debug.Log("Save Game");
         Save save = CreateSaveGameObject();
 
@@ -158,7 +160,7 @@ public class Game : MonoBehaviour
 
     public void StartNewGame(int slot)
     {
-
+        Debug.Log("Start New Game");
         selectedSaveSlot = slot;
 
         ClearGame();
@@ -172,6 +174,7 @@ public class Game : MonoBehaviour
         PlayerStats.FullyRestoreHP();
         PlayerStats.FullyRestoreStamina();
         PlayerStats.Energy = 0;
+        MakeScreenshot();
     }
 
     public void LoadGame(int slot)
@@ -248,7 +251,6 @@ public class Game : MonoBehaviour
         PopTextAndSetToPopup();
     }
 
-
     public void SetPopupTexts(string title, string[] texts) {
         Text titleWindow = popupWindow.transform.Find("Title").gameObject.GetComponent<Text>();
         titleWindow.text = title;
@@ -277,13 +279,17 @@ public class Game : MonoBehaviour
 
     public void OpenInGameMenu()
     {
+        Time.timeScale = 0;
         isMenuOpen = true;
         _mainMenu.ShowInGameMenu();
+        Utils.GetPlayer().enabled = false;
     }
 
     public void CloseInGameMenu()
     {
+        Time.timeScale = 1;
         _mainMenu.HideInGameMenu();
+        Utils.GetPlayer().enabled = true;
         isMenuOpen = false;
     }
 

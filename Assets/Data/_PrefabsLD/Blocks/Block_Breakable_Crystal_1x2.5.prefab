@@ -52,10 +52,11 @@ MonoBehaviour:
   m_Intensity: 1
   m_LightVolumeIntensity: 0.12
   m_LightVolumeIntensityEnabled: 1
-  m_ApplyToSortingLayers: 00000000
+  m_ApplyToSortingLayers: 0000000037697e3cb5ec2bb3951f8a6951de0708c9693190
   m_LightCookieSprite: {fileID: 0}
   m_DeprecatedPointLightCookieSprite: {fileID: 0}
   m_LightOrder: 0
+  m_AlphaBlendOnOverlap: 0
   m_OverlapOperation: 0
   m_NormalMapDistance: 3
   m_NormalMapQuality: 2

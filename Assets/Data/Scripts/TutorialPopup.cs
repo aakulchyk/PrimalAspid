@@ -7,29 +7,15 @@ using UnityEngine.UI;
 
 public class TutorialPopup : MonoBehaviour
 {
-    public enum ControlTypes {
-        KeyboardAndMouse = 0,
-        Gamepad = 1
-    }
-
     public bool IsControlIndependent;
 
     public string[] schemeDependableText;
     void OnTriggerEnter2D(Collider2D other) {
         if (other.tag == "Player") {
-            ControlTypes currentScheme = ControlTypes.KeyboardAndMouse;
 
             if (!IsControlIndependent) {
-                string scheme = PlayerPrefs.GetString( "ControlScheme");
-                if (scheme != null) {
-                    if (scheme == "Keyboard&Mouse")
-                        currentScheme = ControlTypes.KeyboardAndMouse;
-                    else if (scheme == "Gamepad")
-                        currentScheme = ControlTypes.Gamepad;
-                } 
-
-                Debug.Log("Change Control Scheme: " + scheme + ", index: " + (int)currentScheme);
-                GetComponent<Text>().text = schemeDependableText[(int)currentScheme];
+                int index = (int)Utils.GetCurrentControlType();
+                GetComponent<Text>().text = schemeDependableText[index];
             }
             GetComponent<Animator>().SetBool("showText", true);
         }

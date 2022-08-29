@@ -1,6 +1,9 @@
+using System.Text;
 using System.Collections;
 using System.Collections.Generic;
+
 using UnityEngine;
+using UnityEngine.UI;
 
 
 public class InteractableBehavior : MonoBehaviour
@@ -12,6 +15,11 @@ public class InteractableBehavior : MonoBehaviour
 
     public bool active = true;
     public string interactableName;
+
+    [SerializeField] private string[] schemeDependableHint;
+
+    [SerializeField] private Text textField;
+
     public string[] initialTexts;
 
     public string[] currentTexts = {"...",};
@@ -21,6 +29,8 @@ public class InteractableBehavior : MonoBehaviour
     [SerializeField] private AudioClip clip_interact;
 
     public bool IsSavePoint;
+
+
  
     void Start()
     {
@@ -35,6 +45,10 @@ public class InteractableBehavior : MonoBehaviour
     void OnTriggerEnter2D(Collider2D other)
     {
         if (other.tag == "Player") {
+            
+            int index = (int)Utils.GetCurrentControlType();
+            textField.text = schemeDependableHint[index];
+            
             openForInteraction = true;
             if (canvas) {
                 canvas.SetActive(openForInteraction);
@@ -72,6 +86,9 @@ public class InteractableBehavior : MonoBehaviour
             // restore player HP to maximum
             PlayerStats.FullyRestoreHP();
             GetComponent<AudioSource>().PlayOneShot(clip_interact);
+
+            // create a screenshot for the save slot selection menu
+            Game.SharedInstance.MakeScreenshot();
 
             // Memorize Save Point position
             Game.SharedInstance.MemorizeCheckPoint(transform.position);

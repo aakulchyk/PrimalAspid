@@ -4,6 +4,32 @@ using UnityEngine;
 
 public static class Utils
 {
+    public enum ControlTypes {
+        KeyboardAndMouse = 0,
+        Gamepad = 1
+    }
+
+
+    public static void SaveCurrentControlScheme(string schemeName)
+    {
+        PlayerPrefs.SetString( "ControlScheme", schemeName);
+    }
+
+    public static ControlTypes GetCurrentControlType()
+    {
+        ControlTypes currentScheme = ControlTypes.KeyboardAndMouse;
+        string scheme = PlayerPrefs.GetString( "ControlScheme");
+        if (scheme != null) {
+            if (scheme == "Keyboard&Mouse")
+                currentScheme = ControlTypes.KeyboardAndMouse;
+            else if (scheme == "Gamepad")
+                currentScheme = ControlTypes.Gamepad;
+        } 
+
+        return currentScheme;
+    }
+
+
     private static PlayerControl _player = null;
     private static PlayerGrabber _playerGrabber = null;
     private static Transform _playerTransform = null;
