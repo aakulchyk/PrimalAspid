@@ -6,6 +6,7 @@ using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 using UnityEngine.EventSystems;
 
+using System;
 using System.Text;
 using System.IO;
 using System.Runtime.Serialization.Formatters.Binary;
@@ -175,6 +176,7 @@ public class Game : MonoBehaviour
         PlayerStats.FullyRestoreStamina();
         PlayerStats.Energy = 0;
         MakeScreenshot();
+        Game.SharedInstance.MemorizeCheckPoint(transform.position);
     }
 
     public void LoadGame(int slot)
@@ -291,6 +293,22 @@ public class Game : MonoBehaviour
         _mainMenu.HideInGameMenu();
         Utils.GetPlayer().enabled = true;
         isMenuOpen = false;
+    }
+
+    public void OpenRaceMenu()
+    {
+        Time.timeScale = 0;
+        isMenuOpen = true;
+        _mainMenu.ShowRaceSelectMenu();
+        Utils.GetPlayer().enabled = false;
+    }
+
+    public void CloseRaceMenu()
+    {
+        Time.timeScale = 1;
+        isMenuOpen = false;
+        _mainMenu.HideRaceSelectMenu();
+        Utils.GetPlayer().enabled = true;
     }
 
     public void ClosePopup() {

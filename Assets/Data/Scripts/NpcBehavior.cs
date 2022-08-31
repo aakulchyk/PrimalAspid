@@ -76,7 +76,8 @@ public class NpcBehavior : MonoBehaviour
         }
     }
 
-    public virtual void hurt(Vector2 force, Types.DamageType damageType = Types.DamageType.Spikes) {
+
+    public virtual void hurt(Vector2 force, Types.DamageType damageType = Types.DamageType.Spikes, int damage = 1) {
 
         if (isDead) return;
 
@@ -88,9 +89,11 @@ public class NpcBehavior : MonoBehaviour
 
         sounds.PlayOneShot(clip_hurt);
         anim.SetTrigger("hurt");
-        
+
+
+        _hp -= damage;
         //Debug.Log("NPC Hurt");
-        if (--_hp < 0 && !isDead) {
+        if (_hp < 0 && !isDead) {
             die();
         } else {
             knockback(force);

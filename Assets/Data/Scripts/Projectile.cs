@@ -4,75 +4,115 @@ using UnityEngine;
 
 public class Projectile : MonoBehaviour
 {
-    public int speed;          // The speed our bullet travels
-    // Start is called before the first frame update
-    private Rigidbody2D rb;
+    [SerializeField] private AudioClip clip_bump;
+    [SerializeField] private AudioClip clip_destroy;
 
-    Vector3 prev_velocity;
+    [SerializeField] protected GameObject deathParticles;
+    [SerializeField] protected Explosion explosion;
+    [SerializeField] protected ParticleSystem impactParticles;
+
+
+    [SerializeField] protected Rigidbody2D body;
+
+    public int speed;          // The speed our bullet travels
+
+    // Start is called before the first frame update
+    protected float ejectTime;
+
+    public float MaxLiveTimeout;
+
+    public bool strongImpact;
+
+    public string targetColliderTag = "Enemy";
+
+
+    public bool isOwnedByPlayer;
+
+    protected bool isDead = false;
+
     void Start()
     {
+        string layer = isOwnedByPlayer ? "PlayerProjectile" : "EnemyProjectile";
+        string ownerLayer = isOwnedByPlayer ? "PC" : "Enemy";
         Debug.Log("Projectile: created");
-        StartCoroutine(DeleteAfterDelay(3));
 
-        rb = gameObject.GetComponent<Rigidbody2D>();
+        Physics2D.IgnoreLayerCollision(LayerMask.NameToLayer(layer), LayerMask.NameToLayer(ownerLayer), true);
+        Physics2D.IgnoreLayerCollision(LayerMask.NameToLayer(layer), LayerMask.NameToLayer("Background"), true);
+
+        if (impactParticles)
+            impactParticles.Stop();
+
+        ejectTime = Time.time;
     }
-
 
     void Update()
     {
-        float angle = SignedAngleBetween(rb.velocity, prev_velocity, transform.forward);
-        //transform.Rotate(0,0,-angle);
-        //Debug.Log("angle betwwen " + rb.velocity + " and " + prev_velocity + " = " + angle);
-        //transform.rotation = new Quaternion(0,0, -angle, 1);
-        transform.Rotate(0,0, -angle, Space.Self);
-
-        prev_velocity = rb.velocity;
+        if (Time.time - ejectTime > MaxLiveTimeout)
+            Die();
     }
 
     public void setImpulse(Vector3 vector) {
-        Debug.Log("Projectile: Set Impulse");
         // add force 
-        Rigidbody2D rb = gameObject.GetComponent<Rigidbody2D>();
-        //rb.velocity = Vector3.zero;
-        rb.AddForce(vector * 2000);
-        prev_velocity = rb.velocity;
-        //Debug.Log("vector" + vector);
-        //rb.AddForce(vector * speed);
-        //rb.velocity = new Vector2 (vector.x * speed, vector.y * speed);
-    }
-
-    public float SignedAngleBetween(Vector3 a, Vector3 b, Vector3 n){
-        // angle in [0,180]
-        float angle = Vector3.Angle(a,b);
-        float sign = Mathf.Sign(Vector3.Dot(n,Vector3.Cross(a,b)));
-
-        // angle in [-179,180]
-        float signed_angle = angle * sign;
-
-        // angle in [0,360] (not used but included here for completeness)
-        //float angle360 =  (signed_angle + 180) % 360;
-
-        return signed_angle;
+        body.velocity = new Vector2 (vector.x, vector.y);
     }
 
     void OnCollisionEnter2D(Collision2D collision) {
-
         Collider2D collider = collision.collider;
-        if (collider.tag == "Ground" && collider.tag == "Obstacle")
+        if (collider.tag == "Ground" || collider.tag == "Platform" || collider.tag == "Obstacle" || collider.tag == "StickyWall" || collider.tag == "Breakable")
         {
-            Debug.Log("Projectile: Hit to obstacle");
-            Destroy(gameObject);
+            if (strongImpact) {
+                Utils.GetPlayer().cameraEffects.Shake(0.2f, 500, 0.4f);
+            }
+            
+            if (impactParticles)
+                impactParticles.Emit(10);
+
+            if (clip_bump)    
+                GetComponent<AudioSource>().PlayOneShot(clip_bump);
+            
+        } else if (collider.tag == targetColliderTag) {
+            Die();
         }
     }
 
-    IEnumerator DeleteAfterDelay(float sec) {
-        yield return new WaitForSeconds(sec);
-        Destroy(gameObject);
+    public void Die()
+    {
+        if (isDead)
+            return;
+
+
+        isDead = true;
+        GetComponent<SpriteRenderer>().enabled = false;
+        GetComponent<Collider2D>().enabled = false;
+        GetComponent<AudioSource>().enabled = false;
+
+        //GetComponent<AudioSource>().PlayOneShot(clip_destroy);
+
+        if (explosion) {
+            body.velocity = Vector2.zero;
+            body.isKinematic = true;
+            body.freezeRotation = true;
+            explosion.Explode();
+
+        }
+        
+        /*if (deathParticles) {
+            deathParticles.SetActive(true);
+            deathParticles.transform.parent = transform.parent;
+        }*/
+        
+        Destroy(gameObject, 3f);
     }
 
     public void Delete() 
     {
-        
+        Destroy(gameObject);
         Debug.Log("Projectile: Deleted");
+    }
+
+
+    void OnDestroy()
+    {
+        Debug.Log("Projectile: Destroyed");
     }
 }

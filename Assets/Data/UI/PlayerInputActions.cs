@@ -89,6 +89,33 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Dash"",
+                    ""type"": ""Button"",
+                    ""id"": ""024bf264-5590-43f7-b5d1-184ad3f3571f"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""SpecialAction"",
+                    ""type"": ""Button"",
+                    ""id"": ""ebbdeeaf-e7ec-4689-b8f9-f644087ae5a9"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": ""Tap"",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""SpecialAction2"",
+                    ""type"": ""Button"",
+                    ""id"": ""0fe7c01a-a172-4246-a9e7-a59c8a4944c7"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": ""Hold(duration=0.9,pressPoint=1)"",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -282,7 +309,7 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
                 {
                     ""name"": """",
                     ""id"": ""4b6b2509-cd07-4792-9f32-515954ae921d"",
-                    ""path"": ""<Gamepad>/buttonNorth"",
+                    ""path"": ""<Gamepad>/leftStick/up"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""Gamepad"",
@@ -297,6 +324,17 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""Keyboard&Mouse"",
+                    ""action"": ""Interact"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""8584c7f0-44b7-460c-8f4d-275e37f4f6d3"",
+                    ""path"": ""<Gamepad>/dpad/up"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
                     ""action"": ""Interact"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
@@ -353,6 +391,83 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""groups"": ""Gamepad"",
                     ""action"": ""Float"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""bcadd708-7aa8-49cf-b0d3-e2ff0768a842"",
+                    ""path"": ""<Mouse>/middleButton"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Dash"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""5c8fd125-3c54-4647-a3f0-2746ce02fec9"",
+                    ""path"": ""<Gamepad>/rightTrigger"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Gamepad"",
+                    ""action"": ""Dash"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""bae47b39-050f-40b0-88a2-cc4a0c772faa"",
+                    ""path"": ""<Keyboard>/backslash"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard&Mouse"",
+                    ""action"": ""Dash"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""d82f1318-4992-4d66-b99c-578c37cca3d3"",
+                    ""path"": ""<Keyboard>/q"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard&Mouse"",
+                    ""action"": ""SpecialAction"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""370cf8a4-d516-4f12-a1d0-92224cc4ae09"",
+                    ""path"": ""<Gamepad>/buttonEast"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Gamepad"",
+                    ""action"": ""SpecialAction"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""b58758d9-2435-4bc7-985e-f0d8f194b3e4"",
+                    ""path"": ""<Keyboard>/q"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard&Mouse"",
+                    ""action"": ""SpecialAction2"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""22546676-16f2-44eb-9e5b-f6f6b087c336"",
+                    ""path"": ""<Gamepad>/buttonEast"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Gamepad"",
+                    ""action"": ""SpecialAction2"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -980,6 +1095,9 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
         m_Player_Interact = m_Player.FindAction("Interact", throwIfNotFound: true);
         m_Player_Grab = m_Player.FindAction("Grab", throwIfNotFound: true);
         m_Player_Float = m_Player.FindAction("Float", throwIfNotFound: true);
+        m_Player_Dash = m_Player.FindAction("Dash", throwIfNotFound: true);
+        m_Player_SpecialAction = m_Player.FindAction("SpecialAction", throwIfNotFound: true);
+        m_Player_SpecialAction2 = m_Player.FindAction("SpecialAction2", throwIfNotFound: true);
         // UI
         m_UI = asset.FindActionMap("UI", throwIfNotFound: true);
         m_UI_Navigate = m_UI.FindAction("Navigate", throwIfNotFound: true);
@@ -1058,6 +1176,9 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
     private readonly InputAction m_Player_Interact;
     private readonly InputAction m_Player_Grab;
     private readonly InputAction m_Player_Float;
+    private readonly InputAction m_Player_Dash;
+    private readonly InputAction m_Player_SpecialAction;
+    private readonly InputAction m_Player_SpecialAction2;
     public struct PlayerActions
     {
         private @PlayerInputActions m_Wrapper;
@@ -1069,6 +1190,9 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
         public InputAction @Interact => m_Wrapper.m_Player_Interact;
         public InputAction @Grab => m_Wrapper.m_Player_Grab;
         public InputAction @Float => m_Wrapper.m_Player_Float;
+        public InputAction @Dash => m_Wrapper.m_Player_Dash;
+        public InputAction @SpecialAction => m_Wrapper.m_Player_SpecialAction;
+        public InputAction @SpecialAction2 => m_Wrapper.m_Player_SpecialAction2;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -1099,6 +1223,15 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
                 @Float.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnFloat;
                 @Float.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnFloat;
                 @Float.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnFloat;
+                @Dash.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnDash;
+                @Dash.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnDash;
+                @Dash.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnDash;
+                @SpecialAction.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnSpecialAction;
+                @SpecialAction.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnSpecialAction;
+                @SpecialAction.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnSpecialAction;
+                @SpecialAction2.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnSpecialAction2;
+                @SpecialAction2.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnSpecialAction2;
+                @SpecialAction2.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnSpecialAction2;
             }
             m_Wrapper.m_PlayerActionsCallbackInterface = instance;
             if (instance != null)
@@ -1124,6 +1257,15 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
                 @Float.started += instance.OnFloat;
                 @Float.performed += instance.OnFloat;
                 @Float.canceled += instance.OnFloat;
+                @Dash.started += instance.OnDash;
+                @Dash.performed += instance.OnDash;
+                @Dash.canceled += instance.OnDash;
+                @SpecialAction.started += instance.OnSpecialAction;
+                @SpecialAction.performed += instance.OnSpecialAction;
+                @SpecialAction.canceled += instance.OnSpecialAction;
+                @SpecialAction2.started += instance.OnSpecialAction2;
+                @SpecialAction2.performed += instance.OnSpecialAction2;
+                @SpecialAction2.canceled += instance.OnSpecialAction2;
             }
         }
     }
@@ -1287,6 +1429,9 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
         void OnInteract(InputAction.CallbackContext context);
         void OnGrab(InputAction.CallbackContext context);
         void OnFloat(InputAction.CallbackContext context);
+        void OnDash(InputAction.CallbackContext context);
+        void OnSpecialAction(InputAction.CallbackContext context);
+        void OnSpecialAction2(InputAction.CallbackContext context);
     }
     public interface IUIActions
     {

@@ -127,8 +127,8 @@ public class KrabBehavior : CrawlerBehavior
         base.processCollision(hit);
     }
 
-    public override void hurt(Vector2 force, Types.DamageType damageType = Types.DamageType.Spikes) {
-        base.hurt(force, damageType);
+    public override void hurt(Vector2 force, Types.DamageType damageType = Types.DamageType.Spikes, int damage = 1) {
+        base.hurt(force, damageType, damage);
         state = KStates.GettingHit;
     }
    protected override void die()

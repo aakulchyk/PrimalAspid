@@ -72,8 +72,6 @@
     background-color: rgba(201, 150, 80, 0.32);
 }
 
-# 1E4ED1
-# 30, 78, 209
 .life-point {
     width: 30px;
     height: 30px;
@@ -89,14 +87,13 @@
     -unity-background-image-tint-color: rgba(255, 255, 255, 0.2);
 }
 
-
 .stamina-point {
-	width: 30px;
+    width: 30px;
     height: 30px;
     background-image: url('project://database/Assets/Data/Textures/charms.png?fileID=-7136425678258784607&guid=b264f929369e2d443947c60f43198c66&type=3#charms_52');
     background-color: rgba(0, 0, 0, 0);
-	-unity-background-scale-mode: stretch-to-fill;
-	-unity-background-image-tint-color: rgba(37, 78, 209, 1);
+    -unity-background-scale-mode: stretch-to-fill;
+    -unity-background-image-tint-color: rgb(37, 78, 209);
     transform-origin: center;
     flex-shrink: 0;
 }
@@ -105,3 +102,6 @@
     -unity-background-image-tint-color: rgba(37, 78, 209, 0.2);
 }
 
+.button-grayed {
+    -unity-background-image-tint-color: rgba(125, 125, 125, 0.12);
+}

@@ -24,6 +24,14 @@ public class NewHUD : MonoBehaviour
 
     private VisualElement _blackScreen;
 
+
+    private PlayerClass.RaceClass currentClass;
+
+    [SerializeField] Texture2D bat;
+    [SerializeField] Texture2D rat;
+    [SerializeField] Texture2D cat;
+    [SerializeField] Texture2D nml;
+
     void Start()
     {
         var uiDocument = GetComponent<UIDocument>();
@@ -79,6 +87,9 @@ public class NewHUD : MonoBehaviour
 
         _blackScreen = uiDocument.rootVisualElement.Q<VisualElement>("BlackScreen");
 
+
+        currentClass = PlayerStats.ActiveClass;
+
     }
 
 
@@ -112,6 +123,32 @@ public class NewHUD : MonoBehaviour
         // Animal pict
         _energyPict.style.visibility = PlayerStats.BatWingsUnlocked ? Visibility.Visible : Visibility.Hidden;
 
-        
+
+
+        if (PlayerStats.ActiveClass != currentClass) {
+            // class changed
+            currentClass = PlayerStats.ActiveClass;
+
+            switch (currentClass) {
+                case PlayerClass.RaceClass.NoClass:
+                    _energyPict.style.backgroundImage = null;
+                    break;
+                case PlayerClass.RaceClass.Bat_SilentFlyer:
+                    _energyPict.style.backgroundImage = Background.FromTexture2D(bat);
+                    break;
+                case PlayerClass.RaceClass.Rat_Mechanic:
+                    _energyPict.style.backgroundImage = Background.FromTexture2D(rat);
+                    break;
+                case PlayerClass.RaceClass.Cat_KnightPalladin:
+                    _energyPict.style.backgroundImage = Background.FromTexture2D(cat);
+                    break;
+                case PlayerClass.RaceClass.NakedMoleRat_Mage:
+                    _energyPict.style.backgroundImage = Background.FromTexture2D(nml);
+                    break;
+            }
+
+            Debug.Log("Image:" + _energyPict.style.backgroundImage);
+
+        }
     }
 }

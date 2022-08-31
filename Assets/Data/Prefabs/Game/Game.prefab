@@ -88,6 +88,7 @@ GameObject:
   - component: {fileID: 6341183537388661189}
   - component: {fileID: 8809068568186635252}
   - component: {fileID: 7156038329212502623}
+  - component: {fileID: 5215413132452349274}
   m_Layer: 5
   m_Name: NewMainMenu
   m_TagString: Untagged
@@ -238,6 +239,19 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &5215413132452349274
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4047778506964113537}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d644c63365c192342a599ff6bff31ba4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  uss: {fileID: 0}
 --- !u!1 &5312051709591362909
 GameObject:
   m_ObjectHideFlags: 0
@@ -288,7 +302,6 @@ MonoBehaviour:
   eventSystem: {fileID: 0}
   popupWindow: {fileID: 2765342635586140879}
   speciesSelectMenu: {fileID: 7789545383497013114}
-  blackScreen: {fileID: 486494996384770430}
   isPopupOpen: 0
   isMenuOpen: 0
   isGameInProgress: 0
@@ -297,9 +310,10 @@ MonoBehaviour:
   LastCheckPointPosition: {x: 0, y: 0}
   LastCheckPointScene: 
   closePopupButton: {fileID: 2765342634799231581}
-  yesNoPopupButtons: {fileID: 0}
   selectedSaveSlot: 0
   _mainMenu: {fileID: 8809068568186635252}
+  showBlackScreen: 0
+  blackScreen: {fileID: 0}
 --- !u!1001 &5312051709841901448
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -445,7 +459,7 @@ PrefabInstance:
     - target: {fileID: 6412628893469019175, guid: 2c6ac8b5ffd6c9945aa612e35b1996e4,
         type: 3}
       propertyPath: m_RootOrder
-      value: 9
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 6695132338794213091, guid: 2c6ac8b5ffd6c9945aa612e35b1996e4,
         type: 3}

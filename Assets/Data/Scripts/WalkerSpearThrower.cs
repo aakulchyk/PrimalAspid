@@ -33,7 +33,7 @@ public class WalkerSpearThrower : NpcBehavior
 
     [SerializeField]
     private GameObject projectilePrefab;     // the prefab of our bullet
-    Projectile currentProjectile;
+    ThrowableSpear currentProjectile;
 
     [SerializeField] private Transform projectileSpawnPoint;
 
@@ -164,7 +164,7 @@ public class WalkerSpearThrower : NpcBehavior
         go.transform.rotation = Quaternion.identity;
         //go.transform.localScale = new Vector3(5, 5, 1);
         
-        currentProjectile = go.GetComponent<Projectile>();
+        currentProjectile = go.GetComponent<ThrowableSpear>();
         Vector3 v = (GetVectorToPlayer() + initialVectorToPlayer).normalized;
         float angle = currentProjectile.SignedAngleBetween(v, initialVectorToPlayer /*faceRight? Vector2.right : Vector2.left*/,  transform.forward);
         Debug.Log("angle = " + angle);
@@ -176,7 +176,6 @@ public class WalkerSpearThrower : NpcBehavior
         else if (angle <-maxAngle) {
             v = Quaternion.AngleAxis(-maxAngle, Vector3.back) * initialVectorToPlayer;
             angle = -maxAngle;
-            
         }
 
         //v = (GetVectorToPlayer() + initialVectorToPlayer).normalized;
@@ -205,7 +204,7 @@ public class WalkerSpearThrower : NpcBehavior
         }
     }
 
-    public override void hurt(Vector2 force, Types.DamageType damageType = Types.DamageType.Spikes) {
+    public override void hurt(Vector2 force, Types.DamageType damageType = Types.DamageType.Spikes, int damage = 1) {
         if (isDead) return;
 
         _isAnticipating = false;
@@ -215,7 +214,7 @@ public class WalkerSpearThrower : NpcBehavior
             _hp = -1;
         }
 
-        base.hurt(force, damageType);
+        base.hurt(force, damageType, damage);
     }
    protected override void die()
    {

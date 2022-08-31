@@ -38,6 +38,9 @@ public class NewMainMenu : MonoBehaviour
     private Button _returnToMenu;
     private Button _exitFromInGameMenu;
 
+    private VisualElement _raceMenu;
+    private Button _bat, _rat, _cat, _nml, _noClasses;
+
     public EventSystem eventSystem;
 
     [SerializeField] private AudioClip sound_select;
@@ -46,6 +49,8 @@ public class NewMainMenu : MonoBehaviour
 
     bool _mainCallbacksRegistered = false;
     bool _ingameCallbacksRegistered = false;
+    bool _raceCallbacksRegistered = false;
+
 
     public void Start()
     {
@@ -58,6 +63,7 @@ public class NewMainMenu : MonoBehaviour
         _mainMenu = uiDocument.rootVisualElement.Q<VisualElement>("MainMenu");
         _hud = uiDocument.rootVisualElement.Q<VisualElement>("HUD");
         _controlsMenu = uiDocument.rootVisualElement.Q<VisualElement>("ControlsMenu");
+        _raceMenu = uiDocument.rootVisualElement.Q<VisualElement>("RaceSelectMenu");
 
         // Root Menu
         _titleMenu = uiDocument.rootVisualElement.Q<VisualElement>("TitleMenu");
@@ -83,6 +89,13 @@ public class NewMainMenu : MonoBehaviour
         _continuePlaying = uiDocument.rootVisualElement.Q<Button>("ContinuePlaying");
         _returnToMenu = uiDocument.rootVisualElement.Q<Button>("ReturnToMenu");
         _exitFromInGameMenu = uiDocument.rootVisualElement.Q<Button>("ExitFromInGameMenu");
+
+        // Race Select
+        _bat = uiDocument.rootVisualElement.Q<Button>("BatClass");
+        _rat = uiDocument.rootVisualElement.Q<Button>("RatClass");
+        _cat = uiDocument.rootVisualElement.Q<Button>("CatClass");
+        _nml = uiDocument.rootVisualElement.Q<Button>("NMLClass");
+        _noClasses = uiDocument.rootVisualElement.Q<Button>("NoClasses");
 
         ShowMainMenu();
     }
@@ -240,6 +253,7 @@ public class NewMainMenu : MonoBehaviour
         _ingameCallbacksRegistered = true;
     }
 
+
     void UnregisterInGameCallbacks()
     {
         _continuePlaying.UnregisterCallback<ClickEvent>(ev => OnContinuePlayingPressed());
@@ -261,6 +275,49 @@ public class NewMainMenu : MonoBehaviour
 
         _ingameCallbacksRegistered = false;
     }
+
+
+    void RegisterRaceMenuCallbacks()
+    {
+        _bat.RegisterCallback<ClickEvent>(ev => OnRaceClassSelected(PlayerClass.RaceClass.Bat_SilentFlyer));
+        _bat.RegisterCallback<NavigationSubmitEvent>(ev => OnRaceClassSelected(PlayerClass.RaceClass.Bat_SilentFlyer));
+
+        _rat.RegisterCallback<ClickEvent>(ev => OnRaceClassSelected(PlayerClass.RaceClass.Rat_Mechanic));
+        _rat.RegisterCallback<NavigationSubmitEvent>(ev => OnRaceClassSelected(PlayerClass.RaceClass.Rat_Mechanic));
+
+        _cat.RegisterCallback<ClickEvent>(ev => OnRaceClassSelected(PlayerClass.RaceClass.Cat_KnightPalladin));
+        _cat.RegisterCallback<NavigationSubmitEvent>(ev => OnRaceClassSelected(PlayerClass.RaceClass.Cat_KnightPalladin));
+
+        _nml.RegisterCallback<ClickEvent>(ev => OnRaceClassSelected(PlayerClass.RaceClass.NakedMoleRat_Mage));
+        _nml.RegisterCallback<NavigationSubmitEvent>(ev => OnRaceClassSelected(PlayerClass.RaceClass.NakedMoleRat_Mage));
+
+        _noClasses.RegisterCallback<ClickEvent>(ev => OnRaceClassSelected(PlayerClass.RaceClass.NoClass));
+        _noClasses.RegisterCallback<NavigationSubmitEvent>(ev => OnRaceClassSelected(PlayerClass.RaceClass.NoClass));
+
+        _raceCallbacksRegistered = true;
+    }
+
+
+    void UnregisterRaceMenuCallbacks()
+    {
+        _bat.UnregisterCallback<ClickEvent>(ev => OnRaceClassSelected(PlayerClass.RaceClass.Bat_SilentFlyer));
+        _bat.UnregisterCallback<NavigationSubmitEvent>(ev => OnRaceClassSelected(PlayerClass.RaceClass.Bat_SilentFlyer));
+
+        _rat.UnregisterCallback<ClickEvent>(ev => OnRaceClassSelected(PlayerClass.RaceClass.Rat_Mechanic));
+        _rat.UnregisterCallback<NavigationSubmitEvent>(ev => OnRaceClassSelected(PlayerClass.RaceClass.Rat_Mechanic));
+
+        _cat.UnregisterCallback<ClickEvent>(ev => OnRaceClassSelected(PlayerClass.RaceClass.Cat_KnightPalladin));
+        _cat.UnregisterCallback<NavigationSubmitEvent>(ev => OnRaceClassSelected(PlayerClass.RaceClass.Cat_KnightPalladin));
+
+        _nml.UnregisterCallback<ClickEvent>(ev => OnRaceClassSelected(PlayerClass.RaceClass.NakedMoleRat_Mage));
+        _nml.UnregisterCallback<NavigationSubmitEvent>(ev => OnRaceClassSelected(PlayerClass.RaceClass.NakedMoleRat_Mage));
+
+        _noClasses.UnregisterCallback<ClickEvent>(ev => OnRaceClassSelected(PlayerClass.RaceClass.NoClass));
+        _noClasses.UnregisterCallback<NavigationSubmitEvent>(ev => OnRaceClassSelected(PlayerClass.RaceClass.NoClass));
+
+        _raceCallbacksRegistered = false;
+    }
+
 
     private void LoadSaveSlotInfo(Button slot, int id)
     {
@@ -285,8 +342,12 @@ public class NewMainMenu : MonoBehaviour
 
     private void OnDestroy()
     {
-        UnregisterCallbacks();
-        UnregisterInGameCallbacks();
+        Debug.Log("UI OnDestroy ????");
+        if (_mainCallbacksRegistered)
+            UnregisterCallbacks();
+
+        if (_ingameCallbacksRegistered)
+            UnregisterInGameCallbacks();
     }
 
     // callbacks
@@ -344,11 +405,9 @@ public class NewMainMenu : MonoBehaviour
 
     public IEnumerator DarkenScreenAndStartNewGame(int id)
     {
-        Debug.Log("DarkenScreenAndStartNewGame " + id);
+        //Debug.Log("DarkenScreenAndStartNewGame " + id);
         Game.SharedInstance.DarkenScreen();
         yield return new WaitForSeconds(0.5f);
-
-        Debug.Log("after yield ");
 
         HideMainMenu();
         _hud.style.display = DisplayStyle.Flex;
@@ -401,7 +460,7 @@ public class NewMainMenu : MonoBehaviour
 
     public void ShowInGameMenu()
     {
-        Debug.Log("ShowInGameMenu");
+        //Debug.Log("ShowInGameMenu");
         if (!_ingameCallbacksRegistered)
             RegisterInGameCallbacks();
         _hud.style.display = DisplayStyle.None;
@@ -428,7 +487,79 @@ public class NewMainMenu : MonoBehaviour
         HideInGameMenu();
         Game.SharedInstance.isMenuOpen = false;
         ShowMainMenu();
+    }
 
+    public void ShowRaceSelectMenu()
+    {
+        //Debug.Log("ShowRaceSelectMenu");
+        if (!_raceCallbacksRegistered)
+            RegisterRaceMenuCallbacks();
+        _hud.style.display = DisplayStyle.None;
+        _raceMenu.style.display = DisplayStyle.Flex;
+
+
+        _bat.pickingMode =  PlayerStats.BatWingsUnlocked ? PickingMode.Position : PickingMode.Ignore;
+        _bat.focusable = PlayerStats.BatWingsUnlocked;
+        if (!PlayerStats.BatWingsUnlocked)
+            _bat.AddToClassList("button-grayed");
+        else
+            _bat.RemoveFromClassList("button-grayed");
+                
+
+        _rat.pickingMode =  PlayerStats.RatExplosivesUnlocked ? PickingMode.Position : PickingMode.Ignore;
+        _rat.focusable = PlayerStats.RatExplosivesUnlocked;
+        if (!PlayerStats.RatExplosivesUnlocked)
+            _rat.AddToClassList("button-grayed");
+        else
+            _rat.RemoveFromClassList("button-grayed");
+
+        _cat.pickingMode =  PlayerStats.CatPowersUnlocked ? PickingMode.Position : PickingMode.Ignore;
+        _cat.focusable = PlayerStats.CatPowersUnlocked;
+        if (!PlayerStats.CatPowersUnlocked)
+            _cat.AddToClassList("button-grayed");
+        else
+            _cat.RemoveFromClassList("button-grayed");
+
+        _nml.pickingMode =  PlayerStats.NmlMagicUnlocked ? PickingMode.Position : PickingMode.Ignore;
+        _nml.focusable = PlayerStats.NmlMagicUnlocked;
+        if (!PlayerStats.NmlMagicUnlocked)
+            _nml.AddToClassList("button-grayed");
+        else
+            _nml.RemoveFromClassList("button-grayed");
+
+        switch (PlayerStats.ActiveClass) {
+            case PlayerClass.RaceClass.NoClass:
+                _noClasses.Focus();
+                break;
+            case PlayerClass.RaceClass.Bat_SilentFlyer:
+                _bat.Focus();
+                break;
+            case PlayerClass.RaceClass.Rat_Mechanic:
+                _rat.Focus();
+                break;
+            case PlayerClass.RaceClass.Cat_KnightPalladin:
+                _cat.Focus();
+                break;
+            case PlayerClass.RaceClass.NakedMoleRat_Mage:
+                _nml.Focus();
+                break;
+        }
+    }
+
+    public void HideRaceSelectMenu()
+    {
+        UnregisterRaceMenuCallbacks();
+        _hud.style.display = DisplayStyle.Flex;
+        _raceMenu.style.display = DisplayStyle.None;
+    }
+
+    public void OnRaceClassSelected(PlayerClass.RaceClass raceClass)
+    {
+        PlayerStats.ActiveClass = raceClass;
+
+        Debug.Log("Race selected: " + raceClass);
+
+        Game.SharedInstance.CloseRaceMenu();
     }
 
 }

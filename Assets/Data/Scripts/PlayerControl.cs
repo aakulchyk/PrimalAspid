@@ -37,6 +37,11 @@ public class PlayerControl : MonoBehaviour
 
     [SerializeField] private GameObject flapTrail;
 
+    [SerializeField] private GameObject projectilePrefab;
+
+    [SerializeField] private GameObject minePrefab;
+    [SerializeField] private GameObject shootingSpellPrefab;
+
     [Header ("Input")]
     public PlayerInputActions playerInputActions;
     private InputAction moveAction;
@@ -44,7 +49,11 @@ public class PlayerControl : MonoBehaviour
     private InputAction jumpAction;
     private InputAction floatAction;
     private InputAction hitAction;
+    private InputAction dashAction;
     private InputAction interactAction;
+
+    private InputAction specialAction;
+    private InputAction specialAction2;
 
     private InputAction menuAction;
     private InputAction submitAction;
@@ -65,13 +74,23 @@ public class PlayerControl : MonoBehaviour
     public AudioClip clip_swing;
     public AudioClip clip_swing_crack;
     public AudioClip clip_float;
+    public AudioClip clip_click;
+    public AudioClip clip_spellcast;
+    public AudioClip clip_heal;
 
     [Header ("Constants")]
     public const float FLAP_MIN_TIMEOUT = 0.3f;
     public const int FLAP_STAMINA_COST = 1;
     public const int DASH_STAMINA_COST = 1;
+    public const float DASH_COOLDOWN_TIME_SEC = 0.5f;
+
     public const float COYOTE_TIME_SEC = 0.1f;
     public const int MAX_KNOCKBACK = 4;
+
+
+    public const float THROW_COOLDOWN_TIME_SEC = 2f;
+    public const float BOMB_INSTALL_COOLDOWN_TIME_SEC = 5f;
+    public const float SPELLCAST_COOLDOWN_TIME_SEC = 8f;
 
 
     [Header ("State")]
@@ -135,7 +154,17 @@ public class PlayerControl : MonoBehaviour
     private bool hit_button_triggered = false;
 
     private bool dash_button_triggered = false;
-    private bool prev_dash = false;
+    private float DashEndTime;
+
+
+    private float grenadeThrowTime;
+    private float bombInstallTime;
+    private float spellcastTime;
+    
+
+    private PlayerClass[] playerClasses = new PlayerClass[4];
+
+    private PlayerClass _activeClass;
 
     void Awake()
     {
@@ -167,9 +196,24 @@ public class PlayerControl : MonoBehaviour
         hitAction.Enable();
         hitAction.performed += OnHitPressed;
 
+
+        dashAction = playerInputActions.Player.Dash;
+        dashAction.Enable();
+        dashAction.performed += OnDashPressed;
+
+
         interactAction = playerInputActions.Player.Interact;
         interactAction.Enable();
         interactAction.performed += OnInteractPressed;
+
+        specialAction = playerInputActions.Player.SpecialAction;
+        specialAction.Enable();
+        specialAction.performed += OnSpecialActionPressed;
+
+
+        specialAction2 = playerInputActions.Player.SpecialAction2;
+        specialAction2.Enable();
+        specialAction2.performed += OnSpecialAction2Pressed;
 
         menuAction = playerInputActions.UI.Menu;
         menuAction.Enable();
@@ -178,10 +222,6 @@ public class PlayerControl : MonoBehaviour
         submitAction = playerInputActions.UI.Submit;
         submitAction.Enable();
         submitAction.performed += OnSubmitPressed;
-
-        /*exitAction = playerInputActions.UI.Exit;
-        exitAction.Enable();
-        exitAction.performed += OnExitPressed;*/
 
 
         InputUser.onChange += onInputDeviceChange;
@@ -193,10 +233,10 @@ public class PlayerControl : MonoBehaviour
         jumpAction.Disable();
         floatAction.Disable();
         hitAction.Disable();
+        dashAction.Disable();
         interactAction.Disable();
         menuAction.Disable();
         submitAction.Disable();
-        //exitAction.Disable();
 
         InputUser.onChange -= onInputDeviceChange;
     }
@@ -253,6 +293,8 @@ public class PlayerControl : MonoBehaviour
         }*/
 
         jumpTrailParticles.Stop();
+
+        PlayerStats.ActiveClass = PlayerClass.RaceClass.NakedMoleRat_Mage;   //Rat_Mechanic;
     }
 
     public void throwByImpulse(Vector2 vector, bool enemy = true) {
@@ -311,21 +353,6 @@ public class PlayerControl : MonoBehaviour
         }
 
         checkGrounded();
-
-        // KeyCode.JoystickButton4 - LB
-        // KeyCode.JoystickButton5 - RB
-
-        /*float d_axis = Input.GetAxisRaw("Dash");
-        bool dash_pressed = (d_axis>0.8f || d_axis < -0.8f) || Input.GetKey(KeyCode.G);
-        if (!prev_dash && dash_pressed) {
-            dash_button_triggered = true;
-            prev_dash = true;
-        }
-
-        if (!dash_pressed && prev_dash) {
-            prev_dash = false;
-        }*/
-
 
         Vector2 moveDirection = moveAction.ReadValue<Vector2>();
 
@@ -475,7 +502,6 @@ public class PlayerControl : MonoBehaviour
 
         // RESTORE FLAPS
         if ((_isGrounded || grabber.IsHanging())) {
-            //PlayerStats.FlapsLeft = PlayerStats.MaxFlaps;
             PlayerStats.FullyRestoreStamina();
         }
 
@@ -489,7 +515,7 @@ public class PlayerControl : MonoBehaviour
         }
 
         if (dash_button_triggered) {
-            //startDash();
+            startDash();
             dash_button_triggered = false;
         }
     }
@@ -507,6 +533,17 @@ public class PlayerControl : MonoBehaviour
         JumpRequestTime = Time.time;
     }
 
+    private void OnDashPressed(InputAction.CallbackContext context)
+    {
+        if (GetGame().isPopupOpen) return;
+
+        if (_isDashing) return;
+
+        if (Time.time - DashEndTime > DASH_COOLDOWN_TIME_SEC)
+            dash_button_triggered = true;
+
+    }
+
     private void OnInteractPressed(InputAction.CallbackContext context)
     {
         if (GetGame().isPopupOpen) return;
@@ -517,6 +554,186 @@ public class PlayerControl : MonoBehaviour
             activeInteractor.Interact();
         } 
     }
+
+
+    private void OnSpecialActionPressed(InputAction.CallbackContext context)
+    {
+        if (GetGame().isPopupOpen) return;
+
+        if (PlayerStats.ActiveClass == PlayerClass.RaceClass.Rat_Mechanic) {
+            if (PlayerStats.RatExplosivesUnlocked && projectilePrefab) {
+                AnticipateThrow();
+            }
+        } else if (PlayerStats.ActiveClass == PlayerClass.RaceClass.NakedMoleRat_Mage) {
+            if (PlayerStats.NmlMagicUnlocked && shootingSpellPrefab) {
+                AnticipateSpellcast();
+            }
+        }
+    }
+
+
+    private void AnticipateThrow()
+    {
+        if (_attackStarted || _isDashing || grabber.IsDoingSomething())
+            return;
+
+        if (Time.time - grenadeThrowTime < THROW_COOLDOWN_TIME_SEC)
+            return;
+
+        // NEW Attack spends stamina too!
+        if (ApplyStaminaCostOrCancel(FLAP_STAMINA_COST) == false)
+            return;
+        
+        FinishTurnIfStarted();
+        InterruptFlyOrJump();
+
+        if (anim)
+            anim.SetTrigger("throw");
+
+        _attackActivePhase = true;
+    }
+
+    public void ThrowProjectile()
+    {
+        GameObject go = Instantiate(projectilePrefab);
+        DontDestroyOnLoad(go);
+        go.transform.position = transform.position + new Vector3(0, pHeight/2, 0);
+        go.transform.rotation = Quaternion.identity;
+
+        Vector3 dir = (faceRight ? Vector3.right : Vector3.left);
+        Vector3 v =  (Vector3.up + dir).normalized;
+
+        if (moveY > 0) {
+            v += Vector3.up;
+            v -= dir/4;
+            v*= 27;
+        } else
+
+        if (moveY < 0) {
+            v -= Vector3.up*2;
+            //v -= dir/2;
+            v*=10;
+        } else 
+            v*=37;
+
+        go.transform.Find("GrenadeGraphics").GetComponent<Projectile>().setImpulse(v);
+
+        grenadeThrowTime = Time.time;
+
+        _attackActivePhase = false;
+    }
+
+    private bool ApplyStaminaCostOrCancel(int cost)
+    {
+        // Bats do not spend stamina
+        if (PlayerStats.ActiveClass == PlayerClass.RaceClass.Bat_SilentFlyer)
+            return true;
+
+        int potentialStamina = PlayerStats.Stamina - cost;
+        if (potentialStamina < 0)
+            return false;
+
+        PlayerStats.Stamina = potentialStamina;
+
+        return true;
+
+    }
+
+    private void AnticipateSpellcast()
+    {
+
+        if (_attackStarted || _isDashing || grabber.IsDoingSomething())
+            return;
+
+        if (Time.time - spellcastTime < SPELLCAST_COOLDOWN_TIME_SEC)
+            return;
+
+        // NEW Attack spends stamina too!
+        if (ApplyStaminaCostOrCancel(FLAP_STAMINA_COST) == false)
+            return;
+        
+        FinishTurnIfStarted();
+        InterruptFlyOrJump();
+
+        if (anim)
+            anim.SetTrigger("castspell");
+
+        _attackActivePhase = true;
+    }
+
+    public void CastShootingSpell()
+    {
+        GameObject go = Instantiate(shootingSpellPrefab);
+        DontDestroyOnLoad(go);
+        go.transform.position = transform.position + new Vector3(0, pHeight/2, 0);
+        go.transform.rotation = Quaternion.identity;
+
+        Vector3 dir = (faceRight ? Vector3.right : Vector3.left);
+        Vector3 v =  dir * 200;
+
+        sounds.PlayOneShot(clip_spellcast);
+        go.GetComponent<ShootingSpell>().setImpulse(v);
+
+        spellcastTime = Time.time;
+
+        _attackActivePhase = false;
+    }
+
+    private void OnSpecialAction2Pressed(InputAction.CallbackContext context)
+    {
+        if (GetGame().isPopupOpen)
+            return;
+        
+        if (PlayerStats.ActiveClass == PlayerClass.RaceClass.Rat_Mechanic) {
+            if (PlayerStats.RatExplosivesUnlocked && minePrefab) {
+                InstallBomb();
+            }
+        } else if (PlayerStats.ActiveClass == PlayerClass.RaceClass.NakedMoleRat_Mage) {
+            if (PlayerStats.NmlMagicUnlocked) {
+                MagicHeal();
+            }
+        }
+    }
+
+
+    private void InstallBomb() {
+        if (!_isGrounded && !grabber.IsHanging())
+            return;
+
+        if (Time.time - bombInstallTime < BOMB_INSTALL_COOLDOWN_TIME_SEC)
+            return;
+        
+        sounds.PlayOneShot(clip_click);
+
+        GameObject go = Instantiate(minePrefab);
+        DontDestroyOnLoad(go);
+        
+        go.transform.position = transform.position + new Vector3(0, pHeight/2, 0);
+        go.transform.rotation = Quaternion.identity;
+
+        go.transform.Find("MineGraphics").GetComponent<Projectile>().setImpulse(Vector3.zero);
+
+        bombInstallTime = Time.time;
+    }
+
+    private void MagicHeal() {
+        if (!_isGrounded && !grabber.IsHanging())
+            return;
+
+        if (PlayerStats.HP == PlayerStats.MAX_HP)
+            return;
+
+        if (Time.time - spellcastTime < SPELLCAST_COOLDOWN_TIME_SEC)
+            return;
+
+        sounds.PlayOneShot(clip_heal);
+
+        PlayerStats.HP++;
+
+        spellcastTime = Time.time;
+    }
+
+    
 
     public void DisableJumpAction(bool disable) {
         if (disable) {
@@ -547,14 +764,15 @@ public class PlayerControl : MonoBehaviour
         }
     }
     
-    /*private void OnExitPressed(InputAction.CallbackContext context)
-    {
-        Application.Quit();
-    }*/
 
     public void AnticipateAttack()
     {
         if (_attackStarted || _isDashing || grabber.IsDoingSomething())
+            return;
+
+        
+        // NEW Attack spends stamina too!
+        if (ApplyStaminaCostOrCancel(FLAP_STAMINA_COST) == false)
             return;
         
         FinishTurnIfStarted();
@@ -620,18 +838,17 @@ public class PlayerControl : MonoBehaviour
 
     public void startDash()
     {
+        Debug.Log("startDash");
+
         if (grabber.IsHanging())
             return;
 
         Physics2D.IgnoreLayerCollision(playerLayer, enemyLayer, true);
 
         StartCoroutine(shortInvulnerability());
-        int potentialStamina = PlayerStats.Stamina - DASH_STAMINA_COST;
-        if (potentialStamina < 0) {
+        
+        if (ApplyStaminaCostOrCancel(DASH_STAMINA_COST) == false)
             return;
-        }
-
-        PlayerStats.Stamina = potentialStamina;
 
         FinishTurnIfStarted();
         InterruptFlyOrJump();
@@ -654,6 +871,8 @@ public class PlayerControl : MonoBehaviour
     {
         Physics2D.IgnoreLayerCollision(playerLayer, enemyLayer, false);
         _isDashing = false;
+
+        DashEndTime = Time.time;
     }
 
     void flip()
@@ -680,12 +899,8 @@ public class PlayerControl : MonoBehaviour
 
         lastFlapTime = Time.time;
         
-        int potentialStamina = PlayerStats.Stamina - FLAP_STAMINA_COST;
-
-        if (potentialStamina < 0)
+        if (ApplyStaminaCostOrCancel(FLAP_STAMINA_COST) == false)
             return;
-
-        PlayerStats.Stamina = potentialStamina;
 
         if (grabber.IsHangingOnCeiling()) {
             grabber.endHangOnCeiling();   
@@ -695,8 +910,6 @@ public class PlayerControl : MonoBehaviour
             grabber.endHangOnCeiling();   
             // TODO/TBD: Will wall hanging affect jump direction?
         } 
-
-        //--PlayerStats.FlapsLeft;
 
         _flapStarted = true;
 
@@ -943,7 +1156,7 @@ public class PlayerControl : MonoBehaviour
     {
     }
 
-    public void hurt(Vector2 force, Types.DamageType damageType = Types.DamageType.Spikes)
+    public void hurt(Vector2 force, Types.DamageType damageType = Types.DamageType.Spikes, int damage = 1)
     {    
         if (isDead) return; // one cannot die twice...
         if (invulnerable) return;
@@ -1010,7 +1223,11 @@ public class PlayerControl : MonoBehaviour
     {
         Game.SharedInstance.DarkenScreen();
         yield return new WaitForSeconds(0.5F);
-        Game.SharedInstance.LoadGame(Game.SharedInstance.selectedSaveSlot);
+
+        if (Game.SharedInstance.CheckIfSaveSlotBusy(Game.SharedInstance.selectedSaveSlot))
+            Game.SharedInstance.LoadGame(Game.SharedInstance.selectedSaveSlot);
+        else
+            Game.SharedInstance.StartNewGame(Game.SharedInstance.selectedSaveSlot);
     }
 
     public void onSaveGame()

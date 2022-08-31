@@ -93,11 +93,14 @@ public class InteractableBehavior : MonoBehaviour
             // Memorize Save Point position
             Game.SharedInstance.MemorizeCheckPoint(transform.position);
             Game.SharedInstance.SaveGame();
-            Game.SharedInstance.SetPopupText("Bonfire", "The Game is Succesfully Saved");
-            Game.SharedInstance.OpenPopup();
 
-            if (canvas)
-                canvas.SetActive(true);
+            Game.SharedInstance.OpenRaceMenu();
+
+            //Game.SharedInstance.SetPopupText("Bonfire", "The Game is Succesfully Saved");
+            //Game.SharedInstance.OpenPopup();
+
+            //if (canvas)
+                //canvas.SetActive(true);
             return;
         }
 

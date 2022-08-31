@@ -144,7 +144,7 @@ public class HedgehogBehavior : NpcBehavior
     }
 
 
-    public override void hurt(Vector2 force, Types.DamageType damageType = Types.DamageType.Spikes) {
+    public override void hurt(Vector2 force, Types.DamageType damageType = Types.DamageType.Spikes, int damage = 1) {
         if (isDead) return;
 
         if (damageType == Types.DamageType.Spikes) {
@@ -156,9 +156,13 @@ public class HedgehogBehavior : NpcBehavior
             if (_isBristled) {
                 sounds.PlayOneShot(clip_reflect);
             } else {
-                base.hurt(force, damageType);
+                base.hurt(force, damageType, damage);
             }
+        } else {
+            base.hurt(force, damageType, damage);
         }
+
+        
     }
    protected override void die()
    {

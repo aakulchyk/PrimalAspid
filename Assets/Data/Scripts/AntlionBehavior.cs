@@ -172,7 +172,7 @@ public class AntlionBehavior : NpcBehavior
         }*/
     }
 
-    public override void hurt(Vector2 force, Types.DamageType damageType = Types.DamageType.Spikes) {
+    public override void hurt(Vector2 force, Types.DamageType damageType = Types.DamageType.Spikes, int damage = 1) {
 
         if (state == States.Dead) return;
 

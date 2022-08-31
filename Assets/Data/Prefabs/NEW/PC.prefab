@@ -20068,6 +20068,12 @@ MonoBehaviour:
   stepParticles: {fileID: 9154877491552902912}
   jumpTrailParticles: {fileID: 7228494238787794086}
   flapTrail: {fileID: 0}
+  projectilePrefab: {fileID: 8444222165621308518, guid: 1cbf2eb888e5d504cabd49a65e603d34,
+    type: 3}
+  minePrefab: {fileID: 8444222165621308518, guid: c3609b8d47a742e4e9cacf378808baef,
+    type: 3}
+  shootingSpellPrefab: {fileID: 1614629168110685569, guid: 0196530dd4510884099f624c98c05730,
+    type: 3}
   clip_hurt: {fileID: 8300000, guid: f6058a91c42585c4588af8302b0ab577, type: 3}
   clip_death: {fileID: 8300000, guid: 6f654d8548ecaf644b8f707cf579527c, type: 3}
   clip_flap: {fileID: 8300000, guid: 1d020eeb42ea90f4fa02bc3b31a5cc9d, type: 3}
@@ -20078,6 +20084,9 @@ MonoBehaviour:
   clip_swing: {fileID: 8300000, guid: c213ed92702a468408b4d42a559d20aa, type: 3}
   clip_swing_crack: {fileID: 8300000, guid: f1cb312caca406f4bae24914847135bf, type: 3}
   clip_float: {fileID: 8300000, guid: af437d3b2ddf00045933cf91653873fb, type: 3}
+  clip_click: {fileID: 8300000, guid: c0dc88be85d345141a9e245db4783c12, type: 3}
+  clip_spellcast: {fileID: 8300000, guid: d4d21fd37db866948b86b602b4e18db2, type: 3}
+  clip_heal: {fileID: 8300000, guid: 6dd5b29a7a56307448beee013da2b42f, type: 3}
   faceRight: 0
   _maxSpeed: 15
   _gravityScale: 8
@@ -20119,7 +20128,7 @@ MonoBehaviour:
   - {x: -0.79925203, y: 1.3546127, z: 0}
   m_ShapePathHash: -1126395471
   m_Mesh: {fileID: 0}
-  m_InstanceId: 289878
+  m_InstanceId: 1323536
 --- !u!114 &5205005178100962209
 MonoBehaviour:
   m_ObjectHideFlags: 0

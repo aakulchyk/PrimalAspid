@@ -123,14 +123,14 @@ public class CrawlerBehavior : NpcBehavior
     }
 
 
-    public override void hurt(Vector2 force, Types.DamageType damageType = Types.DamageType.Spikes) {
+    public override void hurt(Vector2 force, Types.DamageType damageType = Types.DamageType.Spikes, int damage = 1) {
         if (isDead) return;
 
         if (damageType == Types.DamageType.Spikes) {
             _hp = -1;
         }
 
-        base.hurt(force, damageType);
+        base.hurt(force, damageType, damage);
 
         state = States.GettingHit;
     }
